@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import Sidebar from '../components/SideBar';
 
 const Home = () => {
   return (
     <StyledHome>
+      <Sidebar />
       <div className='center'>
         <p>
           This element is both horizontaly and vertically center.
