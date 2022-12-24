@@ -19,11 +19,16 @@ const LinkItems: Array<LinkItemProps> = [
     { name: t("sidebar.settings"), icon: FiSettings },
 ];
 
-export default function Sidebar() {
+type SidebarProps = {
+    children?: JSX.Element | JSX.Element[];
+}
+
+export default function Sidebar({ children }: SidebarProps) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
-        <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+        <Box minH="100vh" bg='white'>
             <SidebarContent
+                bg={useColorModeValue('gray.100', 'gray.900')}
                 onClose={() => onClose}
                 display={{ base: 'none', md: 'block' }}
             />
@@ -41,15 +46,18 @@ export default function Sidebar() {
             </Drawer>
             {/* mobilenav */}
             <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
+            <Box ml={{ base: 0, md: 60 }} p="4">
+                {children}
+            </Box>
         </Box>
     );
 }
 
-interface SidebarProps extends BoxProps {
+interface SidebarContentProps extends BoxProps {
     onClose: () => void;
 }
 
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+const SidebarContent = ({ onClose, ...rest }: SidebarContentProps) => {
     return (
         <Box
             bg={useColorModeValue('white', 'gray.900')}
