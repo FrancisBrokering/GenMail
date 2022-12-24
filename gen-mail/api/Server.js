@@ -1,7 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
-const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const { Configuration, OpenAIApi } = require('openai');
 const app = express();
@@ -14,28 +13,20 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-app.use((req, res, next) => {
-    // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, X-Custom-Header');
-    // res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, X-Custom-Header');
-    next();
-});
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-    console.log("body is", req.body)
+app.post('/', (req, res) => {
     openai.createCompletion({
         model: "text-davinci-002",
-        prompt: generatePrompt(JSON.parse(req.body).email),
-        // prompt: "write an email to satoki",
+        prompt: generatePrompt(req.body.email),
         temperature: 0.6,
         max_tokens: 2000,
+        n: 3,
     }).then((completion) => {
-        res.status(200).json({ result: completion.data.choices[0].text });
+        console.log(completion.data)
+        res.status(200).json({ result: [completion.data.choices[0].text, completion.data.choices[1].text, completion.data.choices[2].text] });
     }).catch((error) => { console.log(error) })
 });
 
@@ -44,15 +35,5 @@ app.listen(8080, () => {
 });
 
 function generatePrompt(email) {
-    console.log("body is", email)
     return email;
-    //     const capitalizedAnimal = email[0].toUpperCase() + email.slice(1).toLowerCase();
-    //     return `Suggest three names for an animal that is a superhero.
-
-    //   Animal: Cat
-    //   Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-    //   Animal: Dog
-    //   Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-    //   Animal: ${capitalizedAnimal}
-    //   Names:`;
 }

@@ -26,8 +26,9 @@ type SidebarProps = {
 export default function Sidebar({ children }: SidebarProps) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
-        <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+        <Box minH="100vh" bg='white'>
             <SidebarContent
+                bg={useColorModeValue('gray.100', 'gray.900')}
                 onClose={() => onClose}
                 display={{ base: 'none', md: 'block' }}
             />
