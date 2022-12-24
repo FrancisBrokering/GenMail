@@ -12,7 +12,7 @@ const NewEmail = () => {
     setIsGenerating(true)
     event.preventDefault()
     const data = {
-      email: 'write a' + tone + 'email to' + receiver + 'about' + emailDescription,
+      email: 'write a ' + tone + ' email to ' + receiver + ' about ' + emailDescription,
     };
     const response = await fetch("http://localhost:8080", {
       method: "POST",
