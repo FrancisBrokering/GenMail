@@ -1,17 +1,21 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Sidebar from '../components/SideBar';
+import EmailPrompt from '../components/NewEmail';
+import { Box, Center } from '@chakra-ui/react';
 
 const Home = () => {
   return (
-    <StyledHome>
-      <Sidebar />
-      <div className='center'>
-        <p>
-          This element is both horizontaly and vertically center.
-        </p>
-      </div>
-    </StyledHome>
+    <>
+      <Sidebar >
+        <StyledHome>
+          <Box margin='100px 200px 0px 200px'>
+            <EmailPrompt />
+          </Box>
+        </StyledHome>
+      </Sidebar>
+    </>
+
   )
 }
 
