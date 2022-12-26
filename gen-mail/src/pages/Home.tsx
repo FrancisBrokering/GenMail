@@ -4,6 +4,7 @@ import Sidebar from '../components/SideBar';
 import NewEmail from '../components/NewEmail';
 import { Box, Center, Select } from '@chakra-ui/react';
 import ReplyEmail from '../components/ReplyEmail';
+import ReviewEmail from '../components/ReviewEmail';
 
 const Home = () => {
   const [generateOption, setGenerateOption] = useState("New");
@@ -14,7 +15,7 @@ const Home = () => {
       case "Reply":
         return (<ReplyEmail />)
       default:
-        return (<Box>Coming Soon</Box>);
+        return (<ReviewEmail />);
     }
   }
 
