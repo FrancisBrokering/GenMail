@@ -18,6 +18,7 @@ app.use(express.json());
 app.use(cors());
 
 app.post('/', (req, res) => {
+    console.log(generatePrompt(req.body.email))
     openai.createCompletion({
         model: "text-davinci-002",
         prompt: generatePrompt(req.body.email),
@@ -25,7 +26,7 @@ app.post('/', (req, res) => {
         max_tokens: 2000,
         n: 3,
     }).then((completion) => {
-        console.log(completion.data)
+        
         res.status(200).json({ result: [completion.data.choices[0].text, completion.data.choices[1].text, completion.data.choices[2].text] });
     }).catch((error) => { console.log(error) })
 });

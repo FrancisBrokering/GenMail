@@ -3,21 +3,7 @@ import { IconButton, Box, CloseButton, Flex, Icon, useColorModeValue, Link, Draw
 import { FiHome, FiTrendingUp, FiStar, FiSettings, FiMenu, } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
-import { t } from "react-i18nify";
-import { i18n } from "../i18n";
-
-i18n();
-
-interface LinkItemProps {
-    name: string;
-    icon: IconType;
-}
-const LinkItems: Array<LinkItemProps> = [
-    { name: t("sidebar.home"), icon: FiHome },
-    { name: t("sidebar.trend"), icon: FiTrendingUp },
-    { name: t("sidebar.favorite"), icon: FiStar },
-    { name: t("sidebar.settings"), icon: FiSettings },
-];
+import { useTranslation } from 'react-i18next'
 
 type SidebarProps = {
     children?: JSX.Element | JSX.Element[];
@@ -58,6 +44,18 @@ interface SidebarContentProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarContentProps) => {
+    const { t, i18n } = useTranslation()
+    
+    interface LinkItemProps {
+        name: string;
+        icon: IconType;
+    }
+    const LinkItems: Array<LinkItemProps> = [
+        { name: t("sidebar.home"), icon: FiHome },
+        { name: t("sidebar.trend"), icon: FiTrendingUp },
+        { name: t("sidebar.favorite"), icon: FiStar },
+        { name: t("sidebar.settings"), icon: FiSettings },
+    ];
     return (
         <Box
             bg={useColorModeValue('white', 'gray.900')}
