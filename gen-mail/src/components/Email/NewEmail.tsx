@@ -1,6 +1,7 @@
 import { Box, Text, Input, FormControl, FormLabel, Button, Divider, Select } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next'
+import GeneratedText from '../common/GeneratedText';
 
 type NewEmailProps = {
   lang: string;
@@ -61,13 +62,7 @@ const NewEmail = (props: NewEmailProps) => {
       <Box maxW='100%' whiteSpace='pre-wrap' pb='200px' >
         {results[0] === "" ? <></> : results.map((r, index) => {
           return (
-            <Box key={index} mt='30px'>
-              <Divider mt='10px' orientation='horizontal' />
-              <Box mt='40px' rounded='5px' _hover={{ bg: "gray.100" }}>
-                <Text fontWeight="bold"> {t("email.option")} {index + 1}</Text>
-                <Text margin='5px 5px 5px 5px'>{r.replace(/^\s+|\s+$/g, '')}</Text>
-              </Box>
-            </Box>
+            <GeneratedText key={index} index={index} result={r} />
           )
         })}
       </Box>
