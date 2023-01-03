@@ -15,6 +15,9 @@ i18n
           logo: "GenMail",
           sidebar: {
             home: "Home",
+            email: "Email",
+            sns: "SNS",
+            chat: "Chat",
             trend: "Trending",
             favorite: "Favorites",
             settings: "Settings",
@@ -76,6 +79,9 @@ i18n
           logo: "ジェネメール",
           sidebar: {
             home: "ホーム",
+            email: "Eメール",
+            sns: "SNS",
+            chat: "チャット",
             trend: "トレンド",
             favorite: "お気に入り",
             settings: "設定",
