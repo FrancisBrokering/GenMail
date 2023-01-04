@@ -22,16 +22,16 @@ i18n
             favorite: "Favorites",
             settings: "Settings",
           },
+          tone: {
+            button: "Select a Tone",
+            friendly: "Friendly",
+            formal: "Formal",
+            angry: "Angry",
+            casual: "Casual",
+            professional: "Professional",
+          },
           email: {
             option: "Option",
-            tone: {
-              button: "Select a Tone",
-              friendly: "Friendly",
-              formal: "Formal",
-              angry: "Angry",
-              casual: "Casual",
-              professional: "Professional",
-            },
             newEmail: {
               examples: {
                 about: "e.g. not going to work tomorrow",
@@ -71,7 +71,27 @@ i18n
               button: "Cleanup Email",
               paste: "Paste the Email you want to review",
             },
-          }
+          },
+          sns: {
+            platform: {
+              button: "Select a Platform",
+              twitter: "Twitter",
+              facebook: "Facebook",
+              instagram: "Instagram",
+              youtube: "YouTube",
+              linkedin: "LinkedIn",
+            },
+            newSns: {
+              examples: {
+                about: "e.g. I went to Hawaii",
+              },
+              about: "What should this post be about?",
+              platform: "Select a Platform",
+              option: "Generate Post",
+              pageTitle: "Generate SNS Post",
+              button: "Generate Post",
+            },
+          },
         }
       },
       ja: {
@@ -86,16 +106,16 @@ i18n
             favorite: "お気に入り",
             settings: "設定",
           },
+          tone: {
+            button: "- 選択 -",
+            friendly: "フレンドリー",
+            formal: "フォーマル",
+            angry: "怒り",
+            casual: "カジュアル",
+            professional: "プロフェッショナル",
+          },
           email: {
             option: "オプション",
-            tone: {
-              button: "- 選択 -",
-              friendly: "フレンドリー",
-              formal: "フォーマル",
-              angry: "怒り",
-              casual: "カジュアル",
-              professional: "プロフェッショナル",
-            },
             newEmail: {
               examples: {
                 about: "（例）明日仕事をを休む",
@@ -135,7 +155,27 @@ i18n
               button: "確認",
               paste: "確認したいEメールを貼り付けてください",
             },
-          }
+          },
+          sns: {
+            platform: {
+              button: "- 選択 -",
+              twitter: "Twitter",
+              facebook: "Facebook",
+              instagram: "Instagram",
+              youtube: "YouTube",
+              linkedin: "LinkedIn",
+            },
+            newSns: {
+              examples: {
+                about: "（例）ハワイ旅行に行って海亀を見た",
+              },
+              about: "SNSの投稿の内容を入力してください",
+              platform: "プラットフォームを選択してください",
+              option: "投稿の生成",
+              pageTitle: "SNSの投稿を生成",
+              button: "生成",
+            },
+          },
         }
       },
     },
