@@ -8,12 +8,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Sidebar >
-        <Routes>
-          <Route path='/home' element={<Home />} />
-          <Route path='/email' element={<EmailPage />} />
-        </Routes>
-      </Sidebar>
+      <Routes>
+      <Route path='/' element={<Home />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/email' element={<EmailPage />} />
+      </Routes>
     </BrowserRouter>
   );
 }

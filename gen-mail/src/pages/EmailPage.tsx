@@ -6,6 +6,7 @@ import ReviewEmail from '../components/Email/ReviewEmail';
 import EditEmail from '../components/Email/EditEmail';
 import { useTranslation } from "react-i18next";
 import EditArea from '../components/EditArea';
+import Sidebar from '../components/SideBar';
 
 const EmailPage = () => {
     const [generateOption, setGenerateOption] = useState("New");
@@ -31,26 +32,28 @@ const EmailPage = () => {
         }
     }
     return (
-        <Grid templateColumns={'repeat(5, 1fr)'}>
-            <GridItem colSpan={3}>
-                <Box margin='100px 20px 0px 20px'>
-                    <Select mb='15px' onChange={(e) => setLanguage(e.target.value)} w='300px'>
-                        <option value="ja">JP 🇯🇵</option>
-                        <option value="en">EN 🇺🇸</option>
-                    </Select>
-                    <Select mb='15px' onChange={(e) => setGenerateOption(e.target.value)} w='300px'>
-                        <option value='New'>✉️ {t("email.newEmail.option")}</option>
-                        <option value='Reply'>📩 {t("email.replyEmail.option")}</option>
-                        <option value='Edit'>📧 {t("email.editEmail.option")}</option>
-                        <option value='Review'>📨 {t("email.reviewEmail.option")}</option>
-                    </Select>
-                    {GenerateOption()}
-                </Box>
-            </GridItem>
-            <GridItem colSpan={2}>
-                <EditArea></EditArea>
-            </GridItem>
-        </Grid>
+        <Sidebar >
+            <Grid templateColumns={'repeat(5, 1fr)'}>
+                <GridItem colSpan={3}>
+                    <Box margin='100px 20px 0px 20px'>
+                        <Select mb='15px' onChange={(e) => setLanguage(e.target.value)} w='300px'>
+                            <option value="ja">JP 🇯🇵</option>
+                            <option value="en">EN 🇺🇸</option>
+                        </Select>
+                        <Select mb='15px' onChange={(e) => setGenerateOption(e.target.value)} w='300px'>
+                            <option value='New'>✉️ {t("email.newEmail.option")}</option>
+                            <option value='Reply'>📩 {t("email.replyEmail.option")}</option>
+                            <option value='Edit'>📧 {t("email.editEmail.option")}</option>
+                            <option value='Review'>📨 {t("email.reviewEmail.option")}</option>
+                        </Select>
+                        {GenerateOption()}
+                    </Box>
+                </GridItem>
+                <GridItem colSpan={2}>
+                    <EditArea></EditArea>
+                </GridItem>
+            </Grid>
+        </Sidebar>
     )
 }
 
