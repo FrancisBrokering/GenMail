@@ -48,13 +48,14 @@ const SidebarContent = ({ onClose, ...rest }: SidebarContentProps) => {
     
     interface LinkItemProps {
         name: string;
+        link: string;
         icon: IconType;
     }
     const LinkItems: Array<LinkItemProps> = [
-        { name: t("sidebar.home"), icon: FiHome },
-        { name: t("sidebar.email"), icon: FiMail },
-        { name: t("sidebar.sns"), icon: FiTwitter },
-        { name: t("sidebar.chat"), icon: FiSend },
+        { name: t("sidebar.home"), link: "home", icon: FiHome },
+        { name: t("sidebar.email"), link: "email", icon: FiMail },
+        { name: t("sidebar.sns"), link: "sns", icon: FiTwitter },
+        { name: t("sidebar.chat"), link: "chat", icon: FiSend },
         // { name: t("sidebar.trend"), icon: FiTrendingUp },
         // { name: t("sidebar.favorite"), icon: FiStar },
         // { name: t("sidebar.settings"), icon: FiSettings },
@@ -75,7 +76,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarContentProps) => {
                 <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
             </Flex>
             {LinkItems.map((link) => (
-                <NavItem key={link.name} icon={link.icon}>
+                <NavItem key={link.name} link={link.link} icon={link.icon} >
                     {link.name}
                 </NavItem>
             ))}
@@ -85,11 +86,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarContentProps) => {
 
 interface NavItemProps extends FlexProps {
     icon: IconType;
+    link: string;
     children: ReactText;
 }
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, children, link, ...rest }: NavItemProps) => {
     return (
-        <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+        <Link href={link} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
             <Flex
                 align="center"
                 p="4"
