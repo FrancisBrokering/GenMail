@@ -20,7 +20,7 @@ app.use(cors());
 app.post('/', (req, res) => {
     console.log(generatePrompt(req.body.email))
     openai.createCompletion({
-        model: "text-davinci-002",
+        model: "text-davinci-003",
         prompt: generatePrompt(req.body.email),
         temperature: 0.6,
         max_tokens: 2000,

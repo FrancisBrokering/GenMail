@@ -54,12 +54,12 @@ const ReplyEmail = (props: ReplyEmailProps) => {
                     <Input mb='15px' type='text' name="description" value={emailDescription}
                         onChange={(e) => setEmailDescription(e.target.value)} placeholder={t("email.replyEmail.examples.what") as string} />
                     <FormLabel fontWeight="bold" >{t("email.replyEmail.tone")}</FormLabel>
-                    <Select mb='15px' placeholder={t("email.tone.button") as string} onChange={(e) => setTone(e.target.value)}>
-                        <option value={props.lang === 'en' ? 'friendly' : 'フレンドリーな'}>😊 {t("email.tone.friendly")}</option>
-                        <option value={props.lang === 'en' ? 'formal' : 'フォーマルな'}>💼 {t("email.tone.formal")}</option>
-                        <option value={props.lang === 'en' ? 'angry' : '怒っている'}>🤬 {t("email.tone.angry")}</option>
-                        <option value={props.lang === 'en' ? 'casual' : 'カジュアルな'}>😌 {t("email.tone.casual")}</option>
-                        <option value={props.lang === 'en' ? 'professional' : '礼儀正しい'}>👔 {t("email.tone.professional")}</option>
+                    <Select mb='15px' placeholder={t("tone.button") as string} onChange={(e) => setTone(e.target.value)}>
+                        <option value={t("tone.friendly") as string}>😊 {t("tone.friendly")}</option>
+                        <option value={t("tone.formal") as string}>💼 {t("tone.formal")}</option>
+                        <option value={t("tone.angry") as string}>🤬 {t("tone.angry")}</option>
+                        <option value={t("tone.casual") as string}>😌 {t("tone.casual")}</option>
+                        <option value={t("tone.professional") as string}>👔 {t("tone.professional")}</option>
                     </Select>
                     {isGenerating ? <Button mt='20px' isLoading loadingText='Generating' /> : <Button mt='20px' colorScheme='blue' bg='#0dc5ea' _hover={{ bg: "#7dc5ea" }} variant='solid' type="submit" >{t("email.replyEmail.button") as string}</Button>}
                 </FormControl>
