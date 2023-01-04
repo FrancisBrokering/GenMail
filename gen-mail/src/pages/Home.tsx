@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Sidebar from '../components/SideBar';
 import NewEmail from '../components/Email/NewEmail';
-import { Box, Center, Select, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Center, Select, Grid, GridItem, useMediaQuery } from '@chakra-ui/react';
 import ReplyEmail from '../components/Email/ReplyEmail';
 import ReviewEmail from '../components/Email/ReviewEmail';
 import EditEmail from '../components/Email/EditEmail';
@@ -13,6 +13,7 @@ const Home = () => {
   const [generateOption, setGenerateOption] = useState("New");
   const [language, setLanguage] = useState("ja");
   const { t, i18n } = useTranslation()
+  const [isLargerThan1025] = useMediaQuery('(min-width: 1025px)');
 
   function GenerateOption() {
     switch (generateOption) {
@@ -38,7 +39,7 @@ return (
     <Sidebar >
       <StyledHome>
         <Grid templateColumns={'repeat(5, 1fr)'}>
-          <GridItem colSpan={3}>
+          <GridItem colSpan={isLargerThan1025 ? 3 : 5}>
             <Box margin='100px 20px 0px 20px'>
               <Select mb='15px' onChange={(e)=>setLanguage(e.target.value)} w='300px'>
                 <option value="ja">JP 🇯🇵</option>
@@ -53,7 +54,7 @@ return (
               {GenerateOption()}
             </Box>
           </GridItem>
-          <GridItem colSpan={2}>
+          <GridItem colSpan={isLargerThan1025 ? 2 : 0}>
             <EditArea></EditArea>
           </GridItem>
         </Grid>
