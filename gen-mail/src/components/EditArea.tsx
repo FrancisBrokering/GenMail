@@ -11,9 +11,10 @@ const EditArea = () => {
   const { onCopy, value, setValue, hasCopied } = useClipboard("");
 
   return (
-    <Box position={'sticky'}>
+    <Box position={'sticky'} >
       <Text fontWeight={'bold'} width={'100%'}>Paste your email</Text>
       <Textarea 
+      bg='white'
         height={'90vh'} 
         width={'100%'} 
         border={'1px solid black'} 

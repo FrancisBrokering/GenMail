@@ -36,12 +36,12 @@ const ChatPage = () => {
                         <option value='Reply'>💬 {t("chat.replyChat.option")}</option>
                     </Select> */}
                     <Tabs variant='enclosed'>
-                        <TabList>
-                            <Tab onClick={(e) => setGenerateOption('Reply')}>
-                                <Text color={generateOption === 'Reply' ? 'black' : 'grey'}>{t("chat.replyChat.option")}</Text>
+                        <TabList >
+                            <Tab bg={generateOption === 'Reply' ? 'white' : 'transparent'} onClick={(e) => setGenerateOption('Reply')}>
+                                <Text color={generateOption === 'Reply' ? 'black' : 'gray.600'}>{t("chat.replyChat.option")}</Text>
                             </Tab>
                         </TabList>
-                        <TabPanels>
+                        <TabPanels bg='white'>
                             <TabPanel border='1px solid' borderColor='#e2e8f0'>
                                 <LanguageInputOutput pageTitle={GenerateOptionTitle()} setLanguage={setLanguage} />
                                 <ReplyChat lang={language} />

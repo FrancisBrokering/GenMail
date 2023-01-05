@@ -38,17 +38,17 @@ const NewEmail = (props: NewEmailProps) => {
   }
 
   return (
-    <Box position={'relative'} >
+    <Box position={'relative'}>
       <form onSubmit={handleSubmit}>
         <FormControl >
           <FormLabel>②{t("email.newEmail.about")}</FormLabel>
-          <Input mb='px' type='text' name="description" value={emailDescription}
+          <Input bg='white' mb='px' type='text' name="description" value={emailDescription}
             onChange={(e) => setEmailDescription(e.target.value)} placeholder={t("email.newEmail.examples.about") as string} />
           <FormLabel>③{t("email.newEmail.who")}</FormLabel>
-          <Input mb='20px' type='text' name="receiver" value={receiver}
+          <Input bg='white' mb='20px' type='text' name="receiver" value={receiver}
             onChange={(e) => setReceiver(e.target.value)} placeholder={t("email.newEmail.examples.who") as string} />
           <FormLabel>④{t("email.newEmail.tone")}</FormLabel>
-          <Select placeholder={t("tone.button") as string} onChange={(e) => setTone(e.target.value)}>
+          <Select bg='white' placeholder={t("tone.button") as string} onChange={(e) => setTone(e.target.value)}>
             <option value={t("tone.friendly") as string}>😊 {t("tone.friendly")}</option>
             <option value={t("tone.formal") as string}>💼 {t("tone.formal")}</option>
             <option value={t("tone.angry") as string}>🤬 {t("tone.angry")}</option>

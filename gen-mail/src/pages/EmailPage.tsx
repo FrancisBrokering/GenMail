@@ -13,25 +13,25 @@ const EmailPage = () => {
     const [language, setLanguage] = useState("ja");
     const { t, i18n } = useTranslation()
     return (
-        <Grid templateColumns={'repeat(5, 1fr)'} >
+        <Grid templateColumns={'repeat(5, 1fr)'}>
             <GridItem colSpan={3}>
                 <Box margin='20px 20px 0px 20px' >
                     <Tabs variant='enclosed' >
-                        <TabList>
-                            <Tab onClick={(e) => setGenerateOption('New')}>
-                                <Text color={generateOption === 'New' ? 'black' : 'grey'}>✉️ {t("email.newEmail.option")}</Text>
+                        <TabList >
+                            <Tab bg={generateOption === 'New' ? 'white' : 'transparent'} onClick={(e) => setGenerateOption('New')}>
+                                <Text color={generateOption === 'New' ? 'black' : 'gray.600'}>✉️ {t("email.newEmail.option")}</Text>
                             </Tab>
-                            <Tab onClick={(e) => setGenerateOption('Reply')}>
-                                <Text color={generateOption === 'Reply' ? 'black' : 'grey'}>📩 {t("email.replyEmail.option")}</Text>
+                            <Tab bg={generateOption === 'Reply' ? 'white' : 'transparent'} onClick={(e) => setGenerateOption('Reply')}>
+                                <Text color={generateOption === 'Reply' ? 'black' : 'gray.600'}>📩 {t("email.replyEmail.option")}</Text>
                             </Tab>
-                            <Tab onClick={(e) => setGenerateOption('Edit')}>
-                                <Text color={generateOption === 'Edit' ? 'black' : 'grey'}>📧 {t("email.editEmail.option")}</Text>
+                            <Tab bg={generateOption === 'Edit' ? 'white' : 'transparent'} onClick={(e) => setGenerateOption('Edit')}>
+                                <Text color={generateOption === 'Edit' ? 'black' : 'gray.600'}>📧 {t("email.editEmail.option")}</Text>
                             </Tab>
-                            <Tab onClick={(e) => setGenerateOption('Review')}>
-                                <Text color={generateOption === 'Review' ? 'black' : 'grey'}>📨 {t("email.reviewEmail.option")}</Text>
+                            <Tab bg={generateOption === 'Review' ? 'white' : 'transparent'} onClick={(e) => setGenerateOption('Review')}>
+                                <Text color={generateOption === 'Review' ? 'black' : 'gray.600'}>📨 {t("email.reviewEmail.option")}</Text>
                             </Tab>
                         </TabList>
-                        <TabPanels>
+                        <TabPanels bg='white'>
                             <TabPanel border='1px solid' borderColor='#e2e8f0'>
                                 <LanguageInputOutput pageTitle={t("email.newEmail.pageTitle") as string} setLanguage={setLanguage} />
                                 <NewEmail lang={language} />

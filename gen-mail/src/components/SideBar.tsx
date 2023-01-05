@@ -16,7 +16,7 @@ export default function Sidebar({ children, setUserLanguage }: SidebarProps) {
     return (
         <Box minH="100vh" bg='white'>
             <SidebarContent
-                bg={useColorModeValue('gray.100', 'gray.900')}
+                bg={useColorModeValue('gray.200', 'gray.900')}
                 onClose={() => onClose}
                 display={{ base: 'none', md: 'block' }}
                 setUserLanguage={setUserLanguage}
@@ -35,7 +35,7 @@ export default function Sidebar({ children, setUserLanguage }: SidebarProps) {
             </Drawer>
             {/* mobilenav */}
             <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-            <Box ml={{ base: 0, md: 60 }} p="4">
+            <Box ml={{ base: 0, md: 60 }} minH="100vh" bgGradient='linear(to-r, gray.50, gray.50)'>
                 {children}
             </Box>
         </Box>

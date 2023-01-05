@@ -27,14 +27,14 @@ const SnsPage = () => {
                 <Box margin='20px 20px 0px 20px'>
                     <Tabs variant='enclosed'>
                         <TabList>
-                            <Tab onClick={(e) => setGenerateOption('New')}>
-                                <Text color={generateOption === 'New' ? 'black' : 'grey'}>{t("sns.newSns.option")}</Text>
+                            <Tab bg={generateOption === 'New' ? 'white' : 'transparent'} onClick={(e) => setGenerateOption('New')}>
+                                <Text color={generateOption === 'New' ? 'black' : 'gray.600'}>{t("sns.newSns.option")}</Text>
                             </Tab>
                             {/* <Tab onClick={(e) => setGenerateOption('Review')}>
                                 <Text color={generateOption === 'Review' ? 'black' : 'grey'}>📝 {t("sns.reviewSns.option")}</Text>
                             </Tab> */}
                         </TabList>
-                        <TabPanels>
+                        <TabPanels bg='white'>
                             <TabPanel border='1px solid' borderColor='#e2e8f0'>
                                 <LanguageInputOutput pageTitle={GenerateOptionTitle()} setLanguage={setLanguage} />
                                 <NewSns lang={language} />
