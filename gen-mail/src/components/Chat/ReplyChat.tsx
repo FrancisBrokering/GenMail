@@ -23,7 +23,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
             details = ' including the details ' + emailDescription + ' '
         }
         const data = {
-            email: 'In a' + tone + ' tone, write an reply to the following email ' + details + ': ' + reply,
+            email: 'In a' + tone + ' tone, write an reply to the following message ' + details + ': ' + reply,
         };
         console.log("data is: ", data)
         const response = await fetch("http://localhost:8080", {
@@ -44,16 +44,16 @@ const ReplyEmail = (props: ReplyEmailProps) => {
 
     return (
         <Box position={'relative'} >
-            <Text textAlign='center' mb='100px' fontWeight="bold" fontSize='30px' >{t("email.replyEmail.pageTitle")}</Text>
+            <Text textAlign='center' mb='100px' fontWeight="bold" fontSize='30px' >{t("chat.replyChat.pageTitle")}</Text>
             <form onSubmit={handleSubmit}>
                 <FormControl >
-                    <FormLabel fontWeight="bold" >{t("email.replyEmail.paste")}</FormLabel>
+                    <FormLabel fontWeight="bold" >{t("chat.replyChat.paste")}</FormLabel>
                     <Textarea mb='15px' minH='200px' name="reply" value={reply}
                         onChange={(e) => setReply(e.target.value)} />
-                    <FormLabel fontWeight="bold" >{t("email.replyEmail.what")}</FormLabel>
+                    <FormLabel fontWeight="bold" >{t("chat.replyChat.what")}</FormLabel>
                     <Input mb='15px' type='text' name="description" value={emailDescription}
-                        onChange={(e) => setEmailDescription(e.target.value)} placeholder={t("email.replyEmail.examples.what") as string} />
-                    <FormLabel fontWeight="bold" >{t("email.replyEmail.tone")}</FormLabel>
+                        onChange={(e) => setEmailDescription(e.target.value)} placeholder={t("chat.replyChat.examples.what") as string} />
+                    <FormLabel fontWeight="bold" >{t("chat.replyChat.tone")}</FormLabel>
                     <Select mb='15px' placeholder={t("tone.button") as string} onChange={(e) => setTone(e.target.value)}>
                         <option value={"friendly"}>😊 {t("tone.friendly")}</option>
                         <option value={"formal"}>💼 {t("tone.formal")}</option>
