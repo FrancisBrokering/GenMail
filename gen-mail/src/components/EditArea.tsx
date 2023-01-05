@@ -1,31 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Flex, Spacer, Text, Textarea, Button, useClipboard } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import { setEmitFlags } from 'typescript';
-import GetEditerLogo from '../data/GetEditerLogo';
+// import GetEditerLogo from '../data/GetEditerLogo';
+import Editor from './editor/Editor';
 
 const countWords = (str : string) => {
   const arr = str.split(' ');
   return arr.filter(word => word !== '').length;
 }
 
-const Logos: string[] = ['BoldText', 'ItalicText', 'UnderlineText']
-
 const EditArea = () => {
   const { onCopy, value, setValue, hasCopied } = useClipboard("");
 
   return (
-    <Box position={'sticky'} >
+    <Box position={'sticky'} borderLeft={'1px solid gray'}>
       <Text fontWeight={'bold'} width={'100%'}>Paste your email</Text>
-      <StyledLogos>
-        {Logos.map((logo, index) => {
-          return (
-            <li key={index}>
-              {GetEditerLogo(logo)}
-            </li>
-          )
-        })}
-      </StyledLogos>
+      <Editor></Editor>
       <Textarea 
       bg='white'
         height={'90vh'} 
@@ -49,6 +39,13 @@ const StyledLogos = styled('ul')`
   list-style-type: none;
   margin: 10px 5px;
 
+  li {
+    margin: 0px 7px;
+  }
+`
+
+const editorStyleObject = styled('div')`
+  border: 1px solid gray;
 `
 
 export default EditArea;
