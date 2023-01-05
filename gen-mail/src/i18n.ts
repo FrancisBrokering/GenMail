@@ -92,6 +92,19 @@ i18n
               button: "Generate Post",
             },
           },
+          chat: {
+            replyChat: {
+              examples: {
+                what: "e.g. available at 2pm on Tuesday",
+              },
+              option: "Generate Reply",
+              pageTitle: "Generate Chat Reply",
+              button: "Generate Reply",
+              paste: "Paste the message you received",
+              what: "(optional) What do you want to say?",
+              tone: "Chose a tone",
+            },
+          },
         }
       },
       ja: {
@@ -136,7 +149,7 @@ i18n
               pageTitle: "返信の生成",
               button: "生成",
               paste: "送られてきたEメールを貼り付けてください（英語）",
-              what: "（オプショナル）返信の内容を入力してください",
+              what: "（オプショナル）返信したい内容を入力してください",
               tone: "口調を選択してください",
             },
             editEmail: {
@@ -174,6 +187,19 @@ i18n
               option: "投稿の生成",
               pageTitle: "SNSの投稿を生成",
               button: "生成",
+            },
+          },
+          chat: {
+            replyChat: {
+              examples: {
+                what: "（例）火曜日の午後2時が好都合",
+              },
+              option: "返信の生成",
+              pageTitle: "チャットの返信を生成",
+              button: "生成",
+              paste: "送られてきたチャットを貼り付けてください（英語）",
+              what: "（オプショナル）返信したい内容を入力してください",
+              tone: "口調を選択してください",
             },
           },
         }
