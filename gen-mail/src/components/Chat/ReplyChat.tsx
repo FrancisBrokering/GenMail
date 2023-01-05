@@ -44,24 +44,23 @@ const ReplyEmail = (props: ReplyEmailProps) => {
 
     return (
         <Box position={'relative'} >
-            <Text textAlign='center' mb='100px' fontWeight="bold" fontSize='30px' >{t("chat.replyChat.pageTitle")}</Text>
             <form onSubmit={handleSubmit}>
                 <FormControl >
-                    <FormLabel fontWeight="bold" >{t("chat.replyChat.paste")}</FormLabel>
-                    <Textarea mb='15px' minH='200px' name="reply" value={reply}
+                    <FormLabel>②{t("chat.replyChat.paste")}</FormLabel>
+                    <Textarea mb='20px' minH='200px' name="reply" value={reply}
                         onChange={(e) => setReply(e.target.value)} />
-                    <FormLabel fontWeight="bold" >{t("chat.replyChat.what")}</FormLabel>
-                    <Input mb='15px' type='text' name="description" value={emailDescription}
+                    <FormLabel>③{t("chat.replyChat.what")}</FormLabel>
+                    <Input mb='20px' type='text' name="description" value={emailDescription}
                         onChange={(e) => setEmailDescription(e.target.value)} placeholder={t("chat.replyChat.examples.what") as string} />
-                    <FormLabel fontWeight="bold" >{t("chat.replyChat.tone")}</FormLabel>
-                    <Select mb='15px' placeholder={t("tone.button") as string} onChange={(e) => setTone(e.target.value)}>
+                    <FormLabel>④{t("chat.replyChat.tone")}</FormLabel>
+                    <Select placeholder={t("tone.button") as string} onChange={(e) => setTone(e.target.value)}>
                         <option value={"friendly"}>😊 {t("tone.friendly")}</option>
                         <option value={"formal"}>💼 {t("tone.formal")}</option>
                         <option value={"angry"}>🤬 {t("tone.angry")}</option>
                         <option value={"casual"}>😌 {t("tone.casual")}</option>
                         <option value={"professional"}>👔 {t("tone.professional")}</option>
                     </Select>
-                    {isGenerating ? <Button mt='20px' isLoading loadingText='Generating' /> : <Button mt='20px' colorScheme='blue' bg='#0dc5ea' _hover={{ bg: "#7dc5ea" }} variant='solid' type="submit" >{t("email.replyEmail.button") as string}</Button>}
+                    {isGenerating ? <Button mt='20px' isLoading loadingText={t("generating") as string} /> : <Button mt='20px' colorScheme='blue' bg='cyan.400' _hover={{ bg: "#7dc5ea" }} variant='solid' type="submit" >{t("email.replyEmail.button") as string}</Button>}
                 </FormControl>
             </form>
             <Box maxW='100%' whiteSpace='pre-wrap' pb='200px' >

@@ -41,13 +41,12 @@ const ReviewEmail = (props: ReviewEmailProps) => {
 
     return (
         <Box position={'relative'} >
-            <Text textAlign='center' mb='100px' fontWeight="bold" fontSize='30px' >{t("email.reviewEmail.pageTitle")}</Text>
             <form onSubmit={handleSubmit}>
                 <FormControl >
-                    <FormLabel fontWeight="bold" >{t("email.reviewEmail.paste")}</FormLabel>
-                    <Textarea mb='15px' minH='200px' name="oldEmail" value={oldEmail}
+                    <FormLabel>②{t("email.reviewEmail.paste")}</FormLabel>
+                    <Textarea mb='20px' minH='200px' name="oldEmail" value={oldEmail}
                         onChange={(e) => setOldEmail(e.target.value)} />
-                    {isGenerating ? <Button mt='20px' isLoading loadingText='Generating' /> : <Button mt='20px' colorScheme='blue' bg='#0dc5ea' _hover={{ bg: "#7dc5ea" }} variant='solid' type="submit" >{t("email.reviewEmail.button")}</Button>}
+                    {isGenerating ? <Button mt='20px' isLoading loadingText={t("generating") as string} /> : <Button mt='20px' colorScheme='blue' bg='cyan.400' _hover={{ bg: "#7dc5ea" }} variant='solid' type="submit" >{t("email.reviewEmail.button")}</Button>}
                 </FormControl>
             </form>
             <Box maxW='100%' whiteSpace='pre-wrap' pb='200px' >

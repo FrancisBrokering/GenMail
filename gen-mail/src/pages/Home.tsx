@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import Sidebar from '../components/SideBar';
 
 const Home = () => {
   return (
-    <Sidebar>
       <StyledHome >
         This is the home page
       </StyledHome>
-    </Sidebar>
   )
 }
 

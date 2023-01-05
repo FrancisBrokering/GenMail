@@ -22,7 +22,7 @@ const EditArea = () => {
         onChange={(e) => setValue(e.target.value)}
       />
       <Flex>
-        <Button onClick={onCopy} mt={2} bg='#0dc5ea' _hover={{ bg: "#7dc5ea" }} color={'white'}>{hasCopied ? 'Copied' : 'Copy'}</Button>
+        <Button onClick={onCopy} mt={2} bg='cyan.400' _hover={{ bg: "#7dc5ea" }} color={'white'}>{hasCopied ? 'Copied' : 'Copy'}</Button>
         <Spacer />
         <Text mr={2} >Words: {countWords(value)}</Text>
       </Flex>

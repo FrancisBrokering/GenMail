@@ -1,15 +1,17 @@
-import React, { ReactNode } from 'react';
-import { IconButton, Box, CloseButton, Flex, Icon, useColorModeValue, Link, Drawer, DrawerContent, Text, useDisclosure, BoxProps, FlexProps, } from '@chakra-ui/react';
+import React, { ReactNode, useEffect, useState } from 'react';
+import { IconButton, Box, CloseButton, Flex, Icon, useColorModeValue, Link, Drawer, DrawerContent, Text, useDisclosure, BoxProps, FlexProps, Select, Center, } from '@chakra-ui/react';
 import { FiHome, FiTrendingUp, FiStar, FiSettings, FiMenu, FiMail, FiTwitter, FiSend } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import { useTranslation } from 'react-i18next'
+import { ReactComponent as GenPrateLogo } from '../assets/icons/GenPrateLogo.svg'
 
 type SidebarProps = {
     children?: JSX.Element | JSX.Element[];
+    setUserLanguage: (lang: string) => void;
 }
 
-export default function Sidebar({ children }: SidebarProps) {
+export default function Sidebar({ children, setUserLanguage }: SidebarProps) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
         <Box minH="100vh" bg='white'>
@@ -17,6 +19,7 @@ export default function Sidebar({ children }: SidebarProps) {
                 bg={useColorModeValue('gray.100', 'gray.900')}
                 onClose={() => onClose}
                 display={{ base: 'none', md: 'block' }}
+                setUserLanguage={setUserLanguage}
             />
             <Drawer
                 autoFocus={false}
@@ -27,7 +30,7 @@ export default function Sidebar({ children }: SidebarProps) {
                 onOverlayClick={onClose}
                 size="full">
                 <DrawerContent>
-                    <SidebarContent onClose={onClose} />
+                    <SidebarContent onClose={onClose} setUserLanguage={setUserLanguage} />
                 </DrawerContent>
             </Drawer>
             {/* mobilenav */}
@@ -41,11 +44,12 @@ export default function Sidebar({ children }: SidebarProps) {
 
 interface SidebarContentProps extends BoxProps {
     onClose: () => void;
+    setUserLanguage: (lang: string) => void;
 }
 
-const SidebarContent = ({ onClose, ...rest }: SidebarContentProps) => {
+const SidebarContent = ({ onClose, setUserLanguage, ...rest }: SidebarContentProps) => {
     const { t, i18n } = useTranslation()
-    
+
     interface LinkItemProps {
         name: string;
         link: string;
@@ -69,10 +73,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarContentProps) => {
             pos="fixed"
             h="full"
             {...rest}>
-            <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-                <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-                    {t("logo")}
-                </Text>
+            <Flex h="20" alignItems="center" mx="8" justifyContent="space-between" mb='30px' mt='40px'>
+                <GenPrateLogo height='140px' width='140px' />
                 <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
             </Flex>
             {LinkItems.map((link) => (
@@ -80,6 +82,10 @@ const SidebarContent = ({ onClose, ...rest }: SidebarContentProps) => {
                     {link.name}
                 </NavItem>
             ))}
+            <Select mt='10px' ml='25px' onChange={(e) => setUserLanguage(e.target.value)} w='100px'>
+                <option value="ja">JP 🇯🇵</option>
+                <option value="en">EN 🇺🇸</option>
+            </Select>
         </Box>
     );
 };

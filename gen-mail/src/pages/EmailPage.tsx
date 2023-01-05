@@ -1,59 +1,61 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import NewEmail from '../components/Email/NewEmail';
-import { Box, Select, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Select, Grid, GridItem, Text, Flex, Center, Button, Tabs, TabList, Tab, TabPanel, TabPanels } from '@chakra-ui/react';
 import ReplyEmail from '../components/Email/ReplyEmail';
 import ReviewEmail from '../components/Email/ReviewEmail';
 import EditEmail from '../components/Email/EditEmail';
 import { useTranslation } from "react-i18next";
 import EditArea from '../components/EditArea';
-import Sidebar from '../components/SideBar';
+import LanguageInputOutput from '../components/common/LanguageInputOutput';
 
 const EmailPage = () => {
     const [generateOption, setGenerateOption] = useState("New");
     const [language, setLanguage] = useState("ja");
     const { t, i18n } = useTranslation()
-
-    useEffect(() => {
-        i18n.changeLanguage(language)
-    }, [language])
-
-    function GenerateOption() {
-        switch (generateOption) {
-            case "New":
-                return (<NewEmail lang={language} />)
-            case "Reply":
-                return (<ReplyEmail lang={language} />)
-            case "Edit":
-                return (<EditEmail lang={language} />)
-            case "Review":
-                return (<ReviewEmail lang={language} />)
-            default:
-                return (<NewEmail lang={language} />);
-        }
-    }
     return (
-        <Sidebar >
-            <Grid templateColumns={'repeat(5, 1fr)'}>
-                <GridItem colSpan={3}>
-                    <Box margin='100px 20px 0px 20px'>
-                        <Select mb='15px' onChange={(e) => setLanguage(e.target.value)} w='300px'>
-                            <option value="ja">JP 🇯🇵</option>
-                            <option value="en">EN 🇺🇸</option>
-                        </Select>
-                        <Select mb='15px' onChange={(e) => setGenerateOption(e.target.value)} w='300px'>
-                            <option value='New'>✉️ {t("email.newEmail.option")}</option>
-                            <option value='Reply'>📩 {t("email.replyEmail.option")}</option>
-                            <option value='Edit'>📧 {t("email.editEmail.option")}</option>
-                            <option value='Review'>📨 {t("email.reviewEmail.option")}</option>
-                        </Select>
-                        {GenerateOption()}
-                    </Box>
-                </GridItem>
-                <GridItem colSpan={2}>
-                    <EditArea></EditArea>
-                </GridItem>
-            </Grid>
-        </Sidebar>
+        <Grid templateColumns={'repeat(5, 1fr)'} >
+            <GridItem colSpan={3}>
+                <Box margin='20px 20px 0px 20px' >
+                    <Tabs variant='enclosed' >
+                        <TabList>
+                            <Tab onClick={(e) => setGenerateOption('New')}>
+                                <Text color={generateOption === 'New' ? 'black' : 'grey'}>✉️ {t("email.newEmail.option")}</Text>
+                            </Tab>
+                            <Tab onClick={(e) => setGenerateOption('Reply')}>
+                                <Text color={generateOption === 'Reply' ? 'black' : 'grey'}>📩 {t("email.replyEmail.option")}</Text>
+                            </Tab>
+                            <Tab onClick={(e) => setGenerateOption('Edit')}>
+                                <Text color={generateOption === 'Edit' ? 'black' : 'grey'}>📧 {t("email.editEmail.option")}</Text>
+                            </Tab>
+                            <Tab onClick={(e) => setGenerateOption('Review')}>
+                                <Text color={generateOption === 'Review' ? 'black' : 'grey'}>📨 {t("email.reviewEmail.option")}</Text>
+                            </Tab>
+                        </TabList>
+                        <TabPanels>
+                            <TabPanel border='1px solid' borderColor='#e2e8f0'>
+                                <LanguageInputOutput pageTitle={t("email.newEmail.pageTitle") as string} setLanguage={setLanguage} />
+                                <NewEmail lang={language} />
+                            </TabPanel>
+                            <TabPanel border='1px solid' borderColor='#e2e8f0'>
+                                <LanguageInputOutput pageTitle={t("email.replyEmail.pageTitle") as string} setLanguage={setLanguage} />
+                                <ReplyEmail lang={language} />
+                            </TabPanel>
+                            <TabPanel border='1px solid' borderColor='#e2e8f0'>
+                                <LanguageInputOutput pageTitle={t("email.editEmail.pageTitle") as string} setLanguage={setLanguage} />
+                                <EditEmail lang={language} />
+                            </TabPanel>
+                            <TabPanel border='1px solid' borderColor='#e2e8f0'>
+                                <LanguageInputOutput pageTitle={t("email.reviewEmail.pageTitle") as string} setLanguage={setLanguage} />
+                                <ReviewEmail lang={language} />
+                            </TabPanel>
+                        </TabPanels>
+                    </Tabs>
+                </Box>
+            </GridItem>
+            <GridItem colSpan={2}>
+                <EditArea></EditArea>
+            </GridItem>
+        </Grid>
     )
 }
 

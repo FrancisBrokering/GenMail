@@ -22,6 +22,7 @@ i18n
             favorite: "Favorites",
             settings: "Settings",
           },
+          generating: "Generating",
           tone: {
             button: "Select a Tone",
             friendly: "Friendly",
@@ -119,6 +120,7 @@ i18n
             favorite: "お気に入り",
             settings: "設定",
           },
+          generating: "生成中",
           tone: {
             button: "- 選択 -",
             friendly: "フレンドリー",
