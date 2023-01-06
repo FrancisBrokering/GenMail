@@ -36,7 +36,9 @@ const Home = () => {
 
 return (
   <>
-    <Sidebar >
+    <Sidebar setUserLanguage={function (lang: string): void {
+      throw new Error('Function not implemented.');
+    } } >
       <StyledHome>
         <Grid templateColumns={'repeat(5, 1fr)'}>
           <GridItem colSpan={isLargerThan1025 ? 3 : 5}>
@@ -61,8 +63,7 @@ return (
       </StyledHome>
     </Sidebar>
   </>
-
-)
+  )
 }
 
 const StyledHome = styled('div')`

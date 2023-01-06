@@ -23,7 +23,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
             details = ' including the details ' + emailDescription + ' '
         }
         const data = {
-            email: 'In a' + tone + ' tone, write an reply to the following email ' + details + ': ' + reply,
+            email: 'In a' + tone + ' tone, write an reply to the following message ' + details + ': ' + reply,
         };
         console.log("data is: ", data)
         const response = await fetch("http://localhost:8080", {
@@ -46,13 +46,13 @@ const ReplyEmail = (props: ReplyEmailProps) => {
         <Box position={'relative'} >
             <form onSubmit={handleSubmit}>
                 <FormControl >
-                    <FormLabel>②{t("email.replyEmail.paste")}</FormLabel>
+                    <FormLabel>②{t("chat.replyChat.paste")}</FormLabel>
                     <Textarea mb='20px' minH='200px' name="reply" value={reply}
                         onChange={(e) => setReply(e.target.value)} />
-                    <FormLabel>③{t("email.replyEmail.what")}</FormLabel>
+                    <FormLabel>③{t("chat.replyChat.what")}</FormLabel>
                     <Input mb='20px' type='text' name="description" value={emailDescription}
-                        onChange={(e) => setEmailDescription(e.target.value)} placeholder={t("email.replyEmail.examples.what") as string} />
-                    <FormLabel>④{t("email.replyEmail.tone")}</FormLabel>
+                        onChange={(e) => setEmailDescription(e.target.value)} placeholder={t("chat.replyChat.examples.what") as string} />
+                    <FormLabel>④{t("chat.replyChat.tone")}</FormLabel>
                     <Select placeholder={t("tone.button") as string} onChange={(e) => setTone(e.target.value)}>
                         <option value={"friendly"}>😊 {t("tone.friendly")}</option>
                         <option value={"formal"}>💼 {t("tone.formal")}</option>

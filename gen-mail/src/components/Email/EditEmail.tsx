@@ -39,16 +39,15 @@ const EditEmail = (props: EditEmailProps) => {
 
     return (
         <Box position={'relative'} >
-            <Text textAlign='center' mb='100px' fontWeight="bold" fontSize='30px' >{t("email.editEmail.pageTitle")}</Text>
             <form onSubmit={handleSubmit}>
                 <FormControl >
-                    <FormLabel fontWeight="bold" >{t("email.editEmail.paste")}</FormLabel>
-                    <Textarea mb='15px' minH='200px' name="oldEmail" value={oldEmail}
+                    <FormLabel>②{t("email.editEmail.paste")}</FormLabel>
+                    <Textarea mb='20px' minH='200px' name="oldEmail" value={oldEmail}
                         onChange={(e) => setOldEmail(e.target.value)} />
-                    <FormLabel fontWeight="bold" >{t("email.editEmail.how")}</FormLabel>
-                    <Input mb='15px' type='text' name="description" value={editDescription}
+                    <FormLabel>③{t("email.editEmail.how")}</FormLabel>
+                    <Input mb='20px' type='text' name="description" value={editDescription}
                         onChange={(e) => setEditDescription(e.target.value)} placeholder={t("email.editEmail.examples.how") as string} />
-                    {isGenerating ? <Button mt='20px' isLoading loadingText='Generating' /> : <Button mt='20px' colorScheme='blue' bg='#0dc5ea' _hover={{ bg: "#7dc5ea" }} variant='solid' type="submit" >{t("email.editEmail.button")}</Button>}
+                    {isGenerating ? <Button mt='20px' isLoading loadingText={t("generating") as string} /> : <Button mt='20px' colorScheme='blue' bg='cyan.400' _hover={{ bg: "#7dc5ea" }} variant='solid' type="submit" >{t("email.editEmail.button")}</Button>}
                 </FormControl>
             </form>
             <Box maxW='100%' whiteSpace='pre-wrap' pb='200px' >
