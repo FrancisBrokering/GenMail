@@ -42,7 +42,7 @@ const NewEmail = (props: NewEmailProps) => {
             receiver +
             "に" +
             emailDescription +
-            "ことについてのメールを書け。",
+            "ことについてのメールを英語で書け。",
     };
     const response = await fetch("http://localhost:8080", {
       method: "POST",
