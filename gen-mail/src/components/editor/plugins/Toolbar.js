@@ -1,6 +1,5 @@
+/* eslint-disable */
 import React from "react";
-import type {LexicalEditor, NodeKey} from 'lexical';
-
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -57,11 +56,9 @@ const supportedBlockTypes = new Set([
 
 const blockTypeToBlockName = {
   code: "Code Block",
-  h1: "Large Heading",
   h2: "Small Heading",
   h3: "Heading",
   h4: "Heading",
-  h5: "Heading",
   ol: "Numbered List",
   paragraph: "Normal",
   quote: "Quote",
@@ -72,10 +69,7 @@ function Divider() {
   return <div className="divider" />;
 }
 
-function positionEditorElement(
-  editor: never,
-  rect: { top: string, height: string, left: string, width: string } | null
-) {
+function positionEditorElement(editor, rect) {
   if (rect === null) {
     editor.style.opacity = "0";
     editor.style.top = "-1000px";
@@ -89,7 +83,6 @@ function positionEditorElement(
   }
 }
 
-// eslint-disable-next-line react/prop-types
 function FloatingLinkEditor({ editor }) {
   const editorRef = useRef(null);
   const inputRef = useRef(null);
@@ -428,9 +421,7 @@ export default function ToolbarPlugin() {
   const [canUndo, setCanUndo] = useState(false);
   const [canRedo, setCanRedo] = useState(false);
   const [blockType, setBlockType] = useState("paragraph");
-  const [selectedElementKey, setSelectedElementKey] = useState<NodeKey | null>( 
-    null, 
-  );
+  const [selectedElementKey, setSelectedElementKey] = useState(null);
   const [showBlockOptionsDropDown, setShowBlockOptionsDropDown] =
     useState(false);
   const [codeLanguage, setCodeLanguage] = useState("");
@@ -549,7 +540,7 @@ export default function ToolbarPlugin() {
       <button
         disabled={!canUndo}
         onClick={() => {
-          editor.dispatchCommand(UNDO_COMMAND, undefined);
+          editor.dispatchCommand(UNDO_COMMAND);
         }}
         className="toolbar-item spaced"
         aria-label="Undo"
@@ -559,7 +550,7 @@ export default function ToolbarPlugin() {
       <button
         disabled={!canRedo}
         onClick={() => {
-          editor.dispatchCommand(REDO_COMMAND, undefined);
+          editor.dispatchCommand(REDO_COMMAND);
         }}
         className="toolbar-item"
         aria-label="Redo"
@@ -662,7 +653,7 @@ export default function ToolbarPlugin() {
           {isLink &&
             createPortal(<FloatingLinkEditor editor={editor} />, document.body)}
           <Divider />
-          <button
+          {/* <button
             onClick={() => {
               editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "left");
             }}
@@ -697,7 +688,7 @@ export default function ToolbarPlugin() {
             aria-label="Justify Align"
           >
             <i className="format justify-align" />
-          </button>{" "}
+          </button>{" "} */}
         </>
       )}
     </div>
