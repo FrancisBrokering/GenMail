@@ -11,18 +11,18 @@
   width: 0%;
   height: 100%;
   position: absolute;
-  background-color: rgb(234, 13, 201) ;
+  background-color: rgb(234, 13, 201);
   left: 0;
   top: 0;
   z-index: -1;
   transition: 0.3s ease-in-out;
 }
 .sns-platform-button:hover {
-color: #ffffff;
+  color: #ffffff;
 }
 .sns-platform-button:hover::before {
-content: "";
-width: 100%;
-height: 100%;
-position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }

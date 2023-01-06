@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Sidebar from './components/SideBar';
-import Home from './pages/Home';
-import EmailPage from './pages/EmailPage';
-import SnsPage from './pages/SnsPage';
-import ChatPage from './pages/ChatPage';
+import Sidebar from "./components/SideBar";
+import Home from "./pages/Home";
+import EmailPage from "./pages/EmailPage";
+import SnsPage from "./pages/SnsPage";
+import ChatPage from "./pages/ChatPage";
 import { useTranslation } from "react-i18next";
-import './App.css';
+import "./App.css";
 
 function App() {
   const [language, setLanguage] = useState(`ja`);
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation();
 
   // useEffect(() => {
   //   const userLang = window.localStorage.getItem('USER_LANGUAGE');
@@ -19,19 +19,19 @@ function App() {
   // }, [])
 
   useEffect(() => {
-    i18n.changeLanguage(language)
+    i18n.changeLanguage(language);
     // window.localStorage.setItem('USER_LANGUAGE', JSON.stringify(language));
-  }, [language])
+  }, [language]);
 
   return (
     <BrowserRouter>
-      <Sidebar setUserLanguage={setLanguage} >
+      <Sidebar setUserLanguage={setLanguage}>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/email' element={<EmailPage />} />
-          <Route path='/sns' element={<SnsPage />} />
-          <Route path='/chat' element={<ChatPage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/email" element={<EmailPage />} />
+          <Route path="/sns" element={<SnsPage />} />
+          <Route path="/chat" element={<ChatPage />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>

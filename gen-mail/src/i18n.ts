@@ -1,14 +1,14 @@
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import Backend from 'i18next-http-backend'
-import LanguageDetector from 'i18next-browser-languagedetector'
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import Backend from "i18next-http-backend";
+import LanguageDetector from "i18next-browser-languagedetector";
 
 i18n
   .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    lng: 'ja',
+    lng: "ja",
     resources: {
       en: {
         translation: {
@@ -106,7 +106,7 @@ i18n
               tone: "Chose a tone",
             },
           },
-        }
+        },
       },
       ja: {
         translation: {
@@ -204,14 +204,14 @@ i18n
               tone: "口調を選択してください",
             },
           },
-        }
+        },
       },
     },
     debug: process.env.NODE_ENV === "development",
-    fallbackLng: 'en',
+    fallbackLng: "en",
     interpolation: {
       escapeValue: false,
     },
-  })
+  });
 
-export default i18n
+export default i18n;
