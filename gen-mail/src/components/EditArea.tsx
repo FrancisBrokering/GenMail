@@ -13,21 +13,21 @@ const EditArea = () => {
   const { onCopy, value, setValue, hasCopied } = useClipboard("");
 
   return (
-    <Box position={'sticky'} borderLeft={'1px solid gray'}>
-      <Text fontWeight={'bold'} width={'100%'}>Paste your email</Text>
+    <Box borderLeft={'1px solid gray'} borderBottom={'1px solid gray'} borderRight={'1px solid gray'}>
+      {/* <Text fontWeight={'bold'} width={'100%'}>Paste your email</Text> */}
       <Editor></Editor>
-      <Textarea 
+      {/* <Textarea 
         height={'90vh'} 
         width={'100%'} 
         border={'1px solid black'} 
         borderRadius={'10px'} 
         value={value}
         onChange={(e) => setValue(e.target.value)}
-      />
-      <Flex>
+      /> */}
+      <Flex margin={'10px'} >
         <Button onClick={onCopy} mt={2} bg='#0dc5ea' _hover={{ bg: "#7dc5ea" }} color={'white'}>{hasCopied ? 'Copied' : 'Copy'}</Button>
         <Spacer />
-        <Text mr={2} >Words: {countWords(value)}</Text>
+        <Text mr={2} verticalAlign='center'>Words: {countWords(value)}</Text>
       </Flex>
     </Box>
   )
@@ -41,10 +41,6 @@ const StyledLogos = styled('ul')`
   li {
     margin: 0px 7px;
   }
-`
-
-const editorStyleObject = styled('div')`
-  border: 1px solid gray;
 `
 
 export default EditArea;
