@@ -1,81 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-import Sidebar from "../components/SideBar";
-import NewEmail from "../components/Email/NewEmail";
-import {
-  Box,
-  Center,
-  Select,
-  Grid,
-  GridItem,
-  useMediaQuery,
-} from "@chakra-ui/react";
-import ReplyEmail from "../components/Email/ReplyEmail";
-import ReviewEmail from "../components/Email/ReviewEmail";
-import EditEmail from "../components/Email/EditEmail";
-import { useTranslation } from "react-i18next";
-import EditArea from "../components/EditArea";
+import { Text, Box } from "@chakra-ui/react";
 
 const Home = () => {
-  const [generateOption, setGenerateOption] = useState("New");
-  const [language, setLanguage] = useState("ja");
-  const { t, i18n } = useTranslation();
-  const [isLargerThan1025] = useMediaQuery("(min-width: 1025px)");
-
-  function GenerateOption() {
-    switch (generateOption) {
-      case "New":
-        return <NewEmail lang={language} />;
-      case "Reply":
-        return <ReplyEmail lang={language} />;
-      case "Edit":
-        return <EditEmail lang={language} />;
-      case "Review":
-        return <ReviewEmail lang={language} />;
-      default:
-        return <NewEmail lang={language} />;
-    }
-  }
-
-  useEffect(() => {
-    i18n.changeLanguage(language);
-  }, [language]);
-
   return (
-    <>
-      <StyledHome>
-        <Grid templateColumns={"repeat(5, 1fr)"}>
-          <GridItem colSpan={isLargerThan1025 ? 3 : 5}>
-            <Box margin="100px 20px 0px 20px">
-              <Select
-                mb="15px"
-                onChange={(e) => setLanguage(e.target.value)}
-                w="300px"
-              >
-                <option value="ja">JP 🇯🇵</option>
-                <option value="en">EN 🇺🇸</option>
-              </Select>
-              <Select
-                mb="15px"
-                onChange={(e) => setGenerateOption(e.target.value)}
-                w="300px"
-              >
-                <option value="New">✉️ {t("email.newEmail.option")}</option>
-                <option value="Reply">📩 {t("email.replyEmail.option")}</option>
-                <option value="Edit">📧 {t("email.editEmail.option")}</option>
-                <option value="Review">
-                  📨 {t("email.reviewEmail.option")}
-                </option>
-              </Select>
-              {GenerateOption()}
-            </Box>
-          </GridItem>
-          <GridItem colSpan={isLargerThan1025 ? 2 : 0}>
-            <EditArea></EditArea>
-          </GridItem>
-        </Grid>
-      </StyledHome>
-    </>
+    <Box padding="30px 100px 0px 100px">
+      <Text fontWeight="600" fontSize="50px">
+        AI の力を使って誰よりも早く正しい英文を作成。
+      </Text>
+      <Text fontWeight="300" fontSize="1.25rem" color="#6c757d">
+        英語を使ったEメールの返信、SNSの投稿、メッセージのやり取りで困ったことはありませんか。GenPrateを使えばどんな難しい英文でも自分の用途に合わせてほんの数分で作成できてしまいます。
+      </Text>
+      <Text>自分の用件を入力するだけでAIが英文を自動生成します。</Text>
+    </Box>
   );
 };
 

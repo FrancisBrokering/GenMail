@@ -28,15 +28,13 @@ app.post("/", (req, res) => {
       n: 3,
     })
     .then((completion) => {
-      res
-        .status(200)
-        .json({
-          result: [
-            completion.data.choices[0].text,
-            completion.data.choices[1].text,
-            completion.data.choices[2].text,
-          ],
-        });
+      res.status(200).json({
+        result: [
+          completion.data.choices[0].text,
+          completion.data.choices[1].text,
+          completion.data.choices[2].text,
+        ],
+      });
     })
     .catch((error) => {
       console.log(error);

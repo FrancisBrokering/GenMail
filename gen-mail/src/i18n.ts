@@ -133,7 +133,7 @@ i18n
             option: "オプション",
             newEmail: {
               examples: {
-                about: "（例）明日仕事をを休む",
+                about: "（例）明日仕事を休む",
                 who: "（例）上司",
               },
               option: "新規",
