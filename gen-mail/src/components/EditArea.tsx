@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Box,
   Flex,
@@ -8,8 +8,6 @@ import {
   Button,
   useClipboard,
 } from "@chakra-ui/react";
-import styled from "@emotion/styled";
-// import GetEditerLogo from '../data/GetEditerLogo';
 import Editor from "./editor/Editor";
 
 const countWords = (str: string) => {
@@ -26,17 +24,7 @@ const EditArea = () => {
       borderBottom={"1px solid gray"}
       borderRight={"1px solid gray"}
     >
-      {/* <Text fontWeight={'bold'} width={'100%'}>Paste your email</Text> */}
       <Editor></Editor>
-      {/* <Textarea 
-        bg='white'
-        height={'90vh'} 
-        width={'100%'} 
-        border={'1px solid black'} 
-        borderRadius={'10px'} 
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />  */}
       <Flex margin={"10px"}>
         <Button
           onClick={onCopy}
@@ -48,22 +36,12 @@ const EditArea = () => {
           {hasCopied ? "Copied" : "Copy"}
         </Button>
         <Spacer />
-        <Text mr={2} verticalAlign="center">
+        <Text>
           Words: {countWords(value)}
         </Text>
       </Flex>
     </Box>
   );
 };
-
-const StyledLogos = styled("ul")`
-  display: flex;
-  list-style-type: none;
-  margin: 10px 5px;
-
-  li {
-    margin: 0px 7px;
-  }
-`;
 
 export default EditArea;

@@ -16,6 +16,9 @@ import { ReactComponent as Instagram } from "../../assets/icons/Instagram.svg";
 import { ReactComponent as Twitter } from "../../assets/icons/Twitter.svg";
 import { ReactComponent as Facebook } from "../../assets/icons/Facebook.svg";
 import { ReactComponent as Linkedin } from "../../assets/icons/Linkedin.svg";
+import GetPlatformLogo from "../../data/GetEditerLogo";
+
+const Platforms = ['Instagram', 'Facebook', 'Twitter', 'Linkedin']
 
 type NewEmailProps = {
   lang: string;
@@ -25,7 +28,7 @@ const NewSns = (props: NewEmailProps) => {
   const { t } = useTranslation();
   const [postDescription, setPostDescription] = useState("");
   const [tone, setTone] = useState("formal");
-  const [platform, setPlatform] = useState("");
+  const [platform, setPlatform] = useState("Instagram");
   const [isGenerating, setIsGenerating] = useState(false);
   const [results, setResult] = useState(["", "", ""]);
 
@@ -70,50 +73,23 @@ const NewSns = (props: NewEmailProps) => {
                         <option value={t("sns.platform.youtube") as string}>{t("sns.platform.youtube")}</option>
                     </Select> */}
           <Flex mb="20px">
-            <Button
-              variant="outline"
-              onClick={(e) => setPlatform("instagram")}
-              bg={platform === "instagram" ? "cyan.400" : "white"}
-              _hover={{ bg: "#7dc5ea" }}
-            >
-              <Instagram width="20px" height="20px" />
-              <Text color={platform === "instagram" ? "white" : "gray.700"}>
-                Instagram
-              </Text>
-            </Button>
-            <Button
-              variant="outline"
-              onClick={(e) => setPlatform("facebook")}
-              bg={platform === "facebook" ? "cyan.400" : "white"}
-              _hover={{ bg: "#7dc5ea" }}
-            >
-              <Facebook width="20px" height="20px" />
-              <Text color={platform === "facebook" ? "white" : "gray.700"}>
-                Facebook
-              </Text>
-            </Button>
-            <Button
-              variant="outline"
-              onClick={(e) => setPlatform("twitter")}
-              bg={platform === "twitter" ? "cyan.400" : "white"}
-              _hover={{ bg: "#7dc5ea" }}
-            >
-              <Twitter width="20px" height="20px" />
-              <Text color={platform === "twitter" ? "white" : "gray.700"}>
-                Twitter
-              </Text>
-            </Button>
-            <Button
-              variant="outline"
-              onClick={(e) => setPlatform("linkedin")}
-              bg={platform === "linkedin" ? "cyan.400" : "white"}
-              _hover={{ bg: "#7dc5ea" }}
-            >
-              <Linkedin width="20px" height="20px" />
-              <Text color={platform === "linkedin" ? "white" : "gray.700"}>
-                Linkedin
-              </Text>
-            </Button>
+            {Platforms.map((p) => {
+              return (
+                <Button
+                  key={p}
+                  variant={'outline'}
+                  onClick={() => setPlatform(p)}
+                  bg={platform === p ? "cyan.400" : "white"}
+                  _hover={{ bg: "#7dc5ea" }}
+                  mr="5px"
+                >
+                  {GetPlatformLogo(p, '25px', '25px')}
+                  <Text color={"gray.700"} fontSize='14px'>
+                    Instagram
+                  </Text>
+                </Button>
+              )
+            })}
             {/* <Button variant='outline' onClick={(e) => setPlatform('other')} bg={platform === 'other' ? 'black' : 'white'} _hover={{ bg: 'grey' }}>
                             <Text color={platform === 'other' ? 'white' : 'black'}>その他</Text>
                         </Button> */}
@@ -134,11 +110,13 @@ const NewSns = (props: NewEmailProps) => {
             value={postDescription}
             onChange={(e) => setPostDescription(e.target.value)}
             placeholder={t("sns.newSns.examples.about") as string}
+            required
           />
           <FormLabel>④{t("email.newEmail.tone")}</FormLabel>
           <Select
             placeholder={t("tone.button") as string}
             onChange={(e) => setTone(e.target.value)}
+            required
           >
             <option value={t("tone.friendly") as string}>
               😊 {t("tone.friendly")}
@@ -156,24 +134,18 @@ const NewSns = (props: NewEmailProps) => {
               👔 {t("tone.professional")}
             </option>
           </Select>
-          {isGenerating ? (
-            <Button
-              mt="20px"
-              isLoading
-              loadingText={t("generating") as string}
-            />
-          ) : (
-            <Button
-              mt="20px"
-              colorScheme="blue"
-              bg="cyan.400"
-              _hover={{ bg: "#7dc5ea" }}
-              variant="solid"
-              type="submit"
-            >
-              {t("sns.newSns.button")}
-            </Button>
-          )}
+          <Button
+            mt="20px"
+            colorScheme="blue"
+            bg="cyan.400"
+            _hover={{ bg: "#7dc5ea" }}
+            variant="solid"
+            type="submit"
+            isLoading={isGenerating}
+            loadingText={isGenerating ? t("generating") as string : ''}
+          >
+            {t("sns.newSns.button")}
+          </Button>
         </FormControl>
       </form>
       <Box maxW="100%" whiteSpace="pre-wrap" pb="200px">

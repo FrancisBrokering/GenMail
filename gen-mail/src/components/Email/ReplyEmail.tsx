@@ -69,6 +69,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
             name="reply"
             value={reply}
             onChange={(e) => setReply(e.target.value)}
+            required
           />
           <FormLabel>③{t("email.replyEmail.what")}</FormLabel>
           <Input
@@ -83,6 +84,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
           <Select
             placeholder={t("tone.button") as string}
             onChange={(e) => setTone(e.target.value)}
+            required
           >
             <option value={"friendly"}>😊 {t("tone.friendly")}</option>
             <option value={"formal"}>💼 {t("tone.formal")}</option>
@@ -90,24 +92,18 @@ const ReplyEmail = (props: ReplyEmailProps) => {
             <option value={"casual"}>😌 {t("tone.casual")}</option>
             <option value={"professional"}>👔 {t("tone.professional")}</option>
           </Select>
-          {isGenerating ? (
-            <Button
-              mt="20px"
-              isLoading
-              loadingText={t("generating") as string}
-            />
-          ) : (
-            <Button
-              mt="20px"
-              colorScheme="blue"
-              bg="cyan.400"
-              _hover={{ bg: "#7dc5ea" }}
-              variant="solid"
-              type="submit"
-            >
-              {t("email.replyEmail.button") as string}
-            </Button>
-          )}
+          <Button
+            mt="20px"
+            colorScheme="blue"
+            bg="cyan.400"
+            _hover={{ bg: "#7dc5ea" }}
+            variant="solid"
+            type="submit"
+            isLoading={isGenerating}
+            loadingText={isGenerating ? t("generating") as string : ''}
+          >
+            {t("email.replyEmail.button")}
+          </Button>
         </FormControl>
       </form>
       <Box maxW="100%" whiteSpace="pre-wrap" pb="200px">

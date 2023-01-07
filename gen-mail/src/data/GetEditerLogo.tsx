@@ -1,16 +1,14 @@
 import React from "react";
-import { ReactComponent as BoldText } from "../logos/BoldTextLogo.svg";
-import { ReactComponent as ItalicText } from "../logos/ItalicTextLogo.svg";
-import { ReactComponent as UnderlineText } from "../logos/UnderlineTextLogo.svg";
-import { ReactComponent as BulletList } from "../logos/BulletListLogo.svg";
-import { ReactComponent as LinkLogo } from "../logos/LinkLogo.svg";
+import { ReactComponent as Instagram } from "../assets/icons/Instagram.svg";
+import { ReactComponent as Twitter } from "../assets/icons/Twitter.svg";
+import { ReactComponent as Facebook } from "../assets/icons/Facebook.svg";
+import { ReactComponent as Linkedin } from "../assets/icons/Linkedin.svg";
 
-const GetEditerLogo = (name: string) => {
-  if (name === "BoldText") return <BoldText />;
-  if (name === "ItalicText") return <ItalicText />;
-  if (name === "UnderlineText") return <UnderlineText />;
-  if (name === "BulletList") return <BulletList />;
-  if (name === "LinkLogo") return <LinkLogo />;
+const GetPlatformLogo = ( name: string, w: string, h: string ) => {
+  if (name === "Instagram") return <Instagram width={w} height={h} />;
+  if (name === "Twitter") return <Twitter width={w} height={h} />;
+  if (name === "Facebook") return <Facebook width={w} height={h} />;
+  if (name === "Linkedin") return <Linkedin  width={w} height={h} />;
 };
 
-export default GetEditerLogo;
+export default GetPlatformLogo;

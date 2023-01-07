@@ -62,25 +62,20 @@ const ReviewEmail = (props: ReviewEmailProps) => {
             name="oldEmail"
             value={oldEmail}
             onChange={(e) => setOldEmail(e.target.value)}
+            required
           />
-          {isGenerating ? (
-            <Button
-              mt="20px"
-              isLoading
-              loadingText={t("generating") as string}
-            />
-          ) : (
-            <Button
-              mt="20px"
-              colorScheme="blue"
-              bg="cyan.400"
-              _hover={{ bg: "#7dc5ea" }}
-              variant="solid"
-              type="submit"
-            >
-              {t("email.reviewEmail.button")}
-            </Button>
-          )}
+          <Button
+            mt="20px"
+            colorScheme="blue"
+            bg="cyan.400"
+            _hover={{ bg: "#7dc5ea" }}
+            variant="solid"
+            type="submit"
+            isLoading={isGenerating}
+            loadingText={isGenerating ? t("generating") as string : ''}
+          >
+            {t("email.reviewEmail.button")}
+          </Button>
         </FormControl>
       </form>
       <Box maxW="100%" whiteSpace="pre-wrap" pb="200px">

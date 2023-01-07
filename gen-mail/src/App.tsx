@@ -8,13 +8,15 @@ import ChatPage from "./pages/ChatPage";
 import { useTranslation } from "react-i18next";
 import "./App.css";
 
+const LOCAL_STORAGE_KEY = "USER_LANGUAGE"
+
 function App() {
-  const [language, setLanguage] = useState(`ja`);
+  const [language, setLanguage] = useState("");
   const { t, i18n } = useTranslation();
 
   // useEffect(() => {
   //   const userLang = window.localStorage.getItem('USER_LANGUAGE');
-  //   if (userLang !== null) setLanguage(JSON.parse(userLang));
+  //   if (userLang) setLanguage(JSON.parse(userLang));
   //   console.log("language is", language)
   // }, [])
 

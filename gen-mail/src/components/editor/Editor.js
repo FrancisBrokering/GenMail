@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ExampleTheme from "./themes/ExampleTheme";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
@@ -13,6 +13,7 @@ import { ListItemNode, ListNode } from "@lexical/list";
 import { CodeHighlightNode, CodeNode } from "@lexical/code";
 import { AutoLinkNode, LinkNode } from "@lexical/link";
 import { LinkPlugin } from "@lexical/react/LexicalLinkPlugin";
+
 import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { MarkdownShortcutPlugin } from "@lexical/react/LexicalMarkdownShortcutPlugin";
 import { TRANSFORMERS } from "@lexical/markdown";
@@ -22,12 +23,8 @@ import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import "./style.css";
-import Toolbar from "./plugins/Toolbar";
-// import ToolbarPlugin from "./plugins/ToolbarPlugins";
-
-// import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
-// import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
-// import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
+import ToolbarPlugin from "./plugins/ToolbarPlugin";
+import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 
 function Placeholder() {
   return <div className="editor-placeholder">Paste your text here...</div>;
@@ -56,41 +53,16 @@ const editorConfig = {
   ],
 };
 
-// const theme = {
-//   // Theme styling goes here
-//   // ...
-// };
-
-// function onChange(editorState: { read: (arg0: () => void) => void }) {
-//   editorState.read(() => {
-//     // Read the contents of the EditorState here.
-//     const root = $getRoot();
-//     const selection = $getSelection();
-
-//     console.log(root, selection);
-//   });
-// }
-
-// function MyCustomAutoFocusPlugin() {
-//   const [editor] = useLexicalComposerContext();
-
-//   useEffect(() => {
-//     // Focus the editor when the effect fires!
-//     editor.focus();
-//   }, [editor]);
-
-//   return null;
-// }
-
-// function onError(error: any) {
-//   console.error(error);
-// }
-
 export default function Editor() {
+  // const onChange = (e) => {
+  //   const words = countWords(e.target.value);
+  //   console.log(words);
+  // };
+
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
-        <Toolbar />
+        <ToolbarPlugin />
         <div className="editor-inner">
           <RichTextPlugin
             contentEditable={<ContentEditable className="editor-input" />}
@@ -99,10 +71,10 @@ export default function Editor() {
           />
           {/* <OnChangePlugin onChange={onChange} /> */}
           <HistoryPlugin />
-          {/* <MyCustomAutoFocusPlugin /> */}
           {/* <AutoFocusPlugin /> */}
-          {/* <ListPlugin />
-          <LinkPlugin /> */}
+          <ListPlugin />
+          <LinkPlugin />
+          <AutoLinkPlugin />
         </div>
       </div>
     </LexicalComposer>
