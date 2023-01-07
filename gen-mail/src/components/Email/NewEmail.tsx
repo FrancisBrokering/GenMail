@@ -73,6 +73,7 @@ const NewEmail = (props: NewEmailProps) => {
             value={emailDescription}
             onChange={(e) => setEmailDescription(e.target.value)}
             placeholder={t("email.newEmail.examples.about") as string}
+            required
           />
           <FormLabel>③{t("email.newEmail.who")}</FormLabel>
           <Input
@@ -83,12 +84,14 @@ const NewEmail = (props: NewEmailProps) => {
             value={receiver}
             onChange={(e) => setReceiver(e.target.value)}
             placeholder={t("email.newEmail.examples.who") as string}
+            required
           />
           <FormLabel>④{t("email.newEmail.tone")}</FormLabel>
           <Select
             bg="white"
             placeholder={t("tone.button") as string}
             onChange={(e) => setTone(e.target.value)}
+            required
           >
             <option value={t("tone.friendly") as string}>
               😊 {t("tone.friendly")}
@@ -106,13 +109,6 @@ const NewEmail = (props: NewEmailProps) => {
               👔 {t("tone.professional")}
             </option>
           </Select>
-          {isGenerating ? (
-            <Button
-              mt="20px"
-              isLoading
-              loadingText={t("generating") as string}
-            />
-          ) : (
             <Button
               mt="20px"
               colorScheme="blue"
@@ -120,10 +116,11 @@ const NewEmail = (props: NewEmailProps) => {
               _hover={{ bg: "#7dc5ea" }}
               variant="solid"
               type="submit"
+              isLoading={isGenerating}
+              loadingText={isGenerating ? t("generating") as string : ''}
             >
               {t("email.newEmail.button")}
             </Button>
-          )}
         </FormControl>
       </form>
       <Box maxW="100%" whiteSpace="pre-wrap" pb="200px">

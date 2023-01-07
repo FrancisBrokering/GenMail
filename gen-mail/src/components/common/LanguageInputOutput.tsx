@@ -18,7 +18,7 @@ type LanguageInputOutputProps = {
 };
 
 const LanguageInputOutput = (props: LanguageInputOutputProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <Box mb="20px">
       <Text textAlign="center" mb="50px" fontWeight="bold" fontSize="20px">

@@ -22,50 +22,37 @@ import { useTranslation } from "react-i18next";
 import EditArea from "../components/EditArea";
 import LanguageInputOutput from "../components/common/LanguageInputOutput";
 
+
 const EmailPage = () => {
   const [generateOption, setGenerateOption] = useState("New");
   const [language, setLanguage] = useState("ja");
   const { t, i18n } = useTranslation();
+  const tabs = [
+    { option: "New", emoji: "✉️", i18message: t("email.newEmail.option") },
+    { option: "Reply", emoji: "📩", i18message: t("email.replyEmail.option") },
+    { option: "Edit", emoji: "📧", i18message: t("email.editEmail.option") },
+    { option: "Review", emoji: "📨", i18message: t("email.reviewEmail.option") },
+  ]
+
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
       <GridItem colSpan={3}>
         <Box margin="20px 20px 0px 20px">
           <Tabs variant="enclosed">
             <TabList>
-              <Tab
-                bg={generateOption === "New" ? "white" : "transparent"}
-                onClick={(e) => setGenerateOption("New")}
-              >
-                <Text color={generateOption === "New" ? "black" : "gray.600"}>
-                  ✉️ {t("email.newEmail.option")}
-                </Text>
-              </Tab>
-              <Tab
-                bg={generateOption === "Reply" ? "white" : "transparent"}
-                onClick={(e) => setGenerateOption("Reply")}
-              >
-                <Text color={generateOption === "Reply" ? "black" : "gray.600"}>
-                  📩 {t("email.replyEmail.option")}
-                </Text>
-              </Tab>
-              <Tab
-                bg={generateOption === "Edit" ? "white" : "transparent"}
-                onClick={(e) => setGenerateOption("Edit")}
-              >
-                <Text color={generateOption === "Edit" ? "black" : "gray.600"}>
-                  📧 {t("email.editEmail.option")}
-                </Text>
-              </Tab>
-              <Tab
-                bg={generateOption === "Review" ? "white" : "transparent"}
-                onClick={(e) => setGenerateOption("Review")}
-              >
-                <Text
-                  color={generateOption === "Review" ? "black" : "gray.600"}
-                >
-                  📨 {t("email.reviewEmail.option")}
-                </Text>
-              </Tab>
+              {tabs.map((tab) => {
+                return (
+                  <Tab 
+                    key={tab.option}
+                    bg={generateOption === tab.option ? "white" : "transparent"}
+                    onClick={() => setGenerateOption(tab.option)}
+                  >
+                    <Text color={generateOption === tab.option ? "black" : "gray.600"}>
+                      {tab.emoji} {tab.i18message}
+                    </Text>
+                  </Tab>
+                )
+              })}
             </TabList>
             <TabPanels bg="white">
               <TabPanel border="1px solid" borderColor="#e2e8f0">

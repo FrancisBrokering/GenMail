@@ -129,6 +129,7 @@ const SidebarContent = ({
         ml="25px"
         onChange={(e) => setUserLanguage(e.target.value)}
         w="100px"
+        // value={userLanguage ? userLanguage : "ja"}
       >
         <option value="ja">JP 🇯🇵</option>
         <option value="en">EN 🇺🇸</option>
