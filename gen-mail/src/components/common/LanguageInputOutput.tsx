@@ -20,18 +20,16 @@ type LanguageInputOutputProps = {
 const LanguageInputOutput = (props: LanguageInputOutputProps) => {
   const { t, i18n } = useTranslation();
   return (
-    <Box mb="20px">
+    <Box>
       <Text textAlign="center" mb="50px" fontWeight="bold" fontSize="20px">
         {props.pageTitle}
       </Text>
-      <FormLabel>①入力言語を選択してください</FormLabel>
-      <Flex mb="20px">
-        <Flex direction="column">
-          <Select onChange={(e) => props.setLanguage(e.target.value)} w="300px">
-            <option value="ja">JP 🇯🇵</option>
-            <option value="en">EN 🇺🇸</option>
-          </Select>
-        </Flex>
+      <FormLabel>①{t("selectLang")}</FormLabel>
+      <Flex>
+        <Select onChange={(e) => props.setLanguage(e.target.value)} w="300px">
+          <option value="ja">JP 🇯🇵</option>
+          <option value="en">EN 🇺🇸</option>
+        </Select>
         <Center pl="20px" pr="20px">
           <ArrowRightIcon w={6} h={6} color="cyan.400" />
         </Center>

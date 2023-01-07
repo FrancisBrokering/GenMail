@@ -7,13 +7,16 @@ import {
   Divider,
   Select,
   Textarea,
+  VStack,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import GeneratedText from "../common/GeneratedText";
+import LanguageInputOutput from "../common/LanguageInputOutput"
 
 type ReviewEmailProps = {
   lang: string;
+  setLanguage: (lang: string) => void;
 };
 
 const ReviewEmail = (props: ReviewEmailProps) => {
@@ -55,30 +58,39 @@ const ReviewEmail = (props: ReviewEmailProps) => {
     <Box position={"relative"}>
       <form onSubmit={handleSubmit}>
         <FormControl>
-          <FormLabel>②{t("email.reviewEmail.paste")}</FormLabel>
-          <Textarea
-            mb="20px"
-            minH="200px"
-            name="oldEmail"
-            value={oldEmail}
-            onChange={(e) => setOldEmail(e.target.value)}
-            required
-          />
-          <Button
-            mt="20px"
-            colorScheme="blue"
-            bg="cyan.400"
-            _hover={{ bg: "#7dc5ea" }}
-            variant="solid"
-            type="submit"
-            isLoading={isGenerating}
-            loadingText={isGenerating ? t("generating") as string : ''}
-          >
-            {t("email.reviewEmail.button")}
-          </Button>
+          <VStack alignItems={'left'} spacing={'40px'}>
+            <LanguageInputOutput
+              pageTitle={t("email.reviewEmail.pageTitle") as string}
+              setLanguage={props.setLanguage}
+            />
+            <Box>
+            <FormLabel>②{t("email.reviewEmail.paste")}</FormLabel>
+            <Textarea
+              minH="200px"
+              name="oldEmail"
+              value={oldEmail}
+              onChange={(e) => setOldEmail(e.target.value)}
+              required
+            />
+            </Box>
+            <Box>
+            <Button
+              colorScheme="blue"
+              bg="cyan.400"
+              width={'100px'}
+              _hover={{ bg: "#7dc5ea" }}
+              variant="solid"
+              type="submit"
+              isLoading={isGenerating}
+              loadingText={isGenerating ? t("generating") as string : ''}
+            >
+              {t("email.reviewEmail.button")}
+            </Button>
+            </Box>
+          </VStack>
         </FormControl>
       </form>
-      <Box maxW="100%" whiteSpace="pre-wrap" pb="200px">
+      <Box maxW="100%" whiteSpace="pre-wrap" pb="100px">
         {results[0] === "" ? (
           <></>
         ) : (

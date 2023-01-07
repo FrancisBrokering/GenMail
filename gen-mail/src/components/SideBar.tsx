@@ -33,17 +33,19 @@ import { ReactComponent as GenPrateLogo } from "../assets/icons/GenPrateLogo.svg
 
 type SidebarProps = {
   children?: JSX.Element | JSX.Element[];
+  userLanguage: string;
   setUserLanguage: (lang: string) => void;
 };
 
-export default function Sidebar({ children, setUserLanguage }: SidebarProps) {
+export default function Sidebar({ children, userLanguage, setUserLanguage }: SidebarProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg="white">
+    <Box minH="100vh">
       <SidebarContent
         bg={useColorModeValue("gray.200", "gray.900")}
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
+        userLanguage={userLanguage}
         setUserLanguage={setUserLanguage}
       />
       <Drawer
@@ -56,7 +58,7 @@ export default function Sidebar({ children, setUserLanguage }: SidebarProps) {
         size="full"
       >
         <DrawerContent>
-          <SidebarContent onClose={onClose} setUserLanguage={setUserLanguage} />
+          <SidebarContent onClose={onClose} userLanguage={userLanguage} setUserLanguage={setUserLanguage} />
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
@@ -74,11 +76,13 @@ export default function Sidebar({ children, setUserLanguage }: SidebarProps) {
 
 interface SidebarContentProps extends BoxProps {
   onClose: () => void;
+  userLanguage: string;
   setUserLanguage: (lang: string) => void;
 }
 
 const SidebarContent = ({
   onClose,
+  userLanguage,
   setUserLanguage,
   ...rest
 }: SidebarContentProps) => {
@@ -129,7 +133,7 @@ const SidebarContent = ({
         ml="25px"
         onChange={(e) => setUserLanguage(e.target.value)}
         w="100px"
-        // value={userLanguage ? userLanguage : "ja"}
+        value={userLanguage ? userLanguage : "ja"}
       >
         <option value="ja">JP 🇯🇵</option>
         <option value="en">EN 🇺🇸</option>

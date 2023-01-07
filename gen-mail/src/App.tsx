@@ -14,20 +14,21 @@ function App() {
   const [language, setLanguage] = useState("");
   const { t, i18n } = useTranslation();
 
-  // useEffect(() => {
-  //   const userLang = window.localStorage.getItem('USER_LANGUAGE');
-  //   if (userLang) setLanguage(JSON.parse(userLang));
-  //   console.log("language is", language)
-  // }, [])
+  useEffect(() => {
+    const storedUserLang = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "")
+    if (storedUserLang) {
+      setLanguage(storedUserLang);
+    }
+  }, [])
 
   useEffect(() => {
     i18n.changeLanguage(language);
-    // window.localStorage.setItem('USER_LANGUAGE', JSON.stringify(language));
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(language))
   }, [language]);
 
   return (
     <BrowserRouter>
-      <Sidebar setUserLanguage={setLanguage}>
+      <Sidebar userLanguage={language} setUserLanguage={setLanguage}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
