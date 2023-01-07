@@ -37,7 +37,7 @@ const EmailPage = () => {
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
       <GridItem colSpan={3}>
-        <Box margin="20px 20px 0px 20px">
+        <Box margin="10px 20px 0px 20px">
           <Tabs variant="enclosed">
             <TabList>
               {tabs.map((tab) => {
@@ -56,39 +56,25 @@ const EmailPage = () => {
             </TabList>
             <TabPanels bg="white">
               <TabPanel border="1px solid" borderColor="#e2e8f0">
-                <LanguageInputOutput
-                  pageTitle={t("email.newEmail.pageTitle") as string}
-                  setLanguage={setLanguage}
-                />
-                <NewEmail lang={language} />
+                <NewEmail lang={language} setLanguage={setLanguage} />
               </TabPanel>
               <TabPanel border="1px solid" borderColor="#e2e8f0">
-                <LanguageInputOutput
-                  pageTitle={t("email.replyEmail.pageTitle") as string}
-                  setLanguage={setLanguage}
-                />
-                <ReplyEmail lang={language} />
+                <ReplyEmail lang={language} setLanguage={setLanguage} />
               </TabPanel>
               <TabPanel border="1px solid" borderColor="#e2e8f0">
-                <LanguageInputOutput
-                  pageTitle={t("email.editEmail.pageTitle") as string}
-                  setLanguage={setLanguage}
-                />
-                <EditEmail lang={language} />
+                <EditEmail lang={language} setLanguage={setLanguage} />
               </TabPanel>
               <TabPanel border="1px solid" borderColor="#e2e8f0">
-                <LanguageInputOutput
-                  pageTitle={t("email.reviewEmail.pageTitle") as string}
-                  setLanguage={setLanguage}
-                />
-                <ReviewEmail lang={language} />
+                <ReviewEmail lang={language} setLanguage={setLanguage} />
               </TabPanel>
             </TabPanels>
           </Tabs>
         </Box>
       </GridItem>
       <GridItem colSpan={2}>
-        <EditArea></EditArea>
+        <Box margin="10px 20px 0px 0px">
+          <EditArea></EditArea>
+        </Box>
       </GridItem>
     </Grid>
   );

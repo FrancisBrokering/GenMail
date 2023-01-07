@@ -8,20 +8,19 @@ import {
   Divider,
   Select,
   Flex,
+  VStack,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import GeneratedText from "../common/GeneratedText";
-import { ReactComponent as Instagram } from "../../assets/icons/Instagram.svg";
-import { ReactComponent as Twitter } from "../../assets/icons/Twitter.svg";
-import { ReactComponent as Facebook } from "../../assets/icons/Facebook.svg";
-import { ReactComponent as Linkedin } from "../../assets/icons/Linkedin.svg";
 import GetPlatformLogo from "../../data/GetEditerLogo";
+import LanguageInputOutput from "../common/LanguageInputOutput"
 
 const Platforms = ['Instagram', 'Facebook', 'Twitter', 'Linkedin']
 
 type NewEmailProps = {
   lang: string;
+  setLanguage: (lang: string) => void;
 };
 
 const NewSns = (props: NewEmailProps) => {
@@ -65,90 +64,93 @@ const NewSns = (props: NewEmailProps) => {
     <Box position={"relative"}>
       <form onSubmit={handleSubmit}>
         <FormControl>
-          <FormLabel>②{t("sns.newSns.platform")}</FormLabel>
-          {/* <Select mb='20px' placeholder={t("sns.platform.button") as string} onChange={(e) => setPlatform(e.target.value)}>
-                        <option value={t("sns.platform.instagram") as string}>{t("sns.platform.instagram")}</option>
-                        <option value={t("sns.platform.twitter") as string}>{t("sns.platform.facebook")}</option>
-                        <option value={t("sns.platform.twitter") as string}>{t("sns.platform.twitter")}</option>
-                        <option value={t("sns.platform.youtube") as string}>{t("sns.platform.youtube")}</option>
-                    </Select> */}
-          <Flex mb="20px">
-            {Platforms.map((p) => {
-              return (
-                <Button
-                  key={p}
-                  variant={'outline'}
-                  onClick={() => setPlatform(p)}
-                  bg={platform === p ? "cyan.400" : "white"}
-                  _hover={{ bg: "#7dc5ea" }}
-                  mr="5px"
-                >
-                  {GetPlatformLogo(p, '25px', '25px')}
-                  <Text color={"gray.700"} fontSize='14px'>
-                    Instagram
-                  </Text>
-                </Button>
-              )
-            })}
-            {/* <Button variant='outline' onClick={(e) => setPlatform('other')} bg={platform === 'other' ? 'black' : 'white'} _hover={{ bg: 'grey' }}>
-                            <Text color={platform === 'other' ? 'white' : 'black'}>その他</Text>
-                        </Button> */}
-            <Box>
-              <Input
-                type="text"
-                name="platform"
-                onChange={(e) => setPlatform(e.target.value)}
-                placeholder="その他"
-              ></Input>
-            </Box>
-          </Flex>
-          <FormLabel>③{t("sns.newSns.about")}</FormLabel>
-          <Input
-            mb="20px"
-            type="text"
-            name="description"
-            value={postDescription}
-            onChange={(e) => setPostDescription(e.target.value)}
-            placeholder={t("sns.newSns.examples.about") as string}
-            required
-          />
-          <FormLabel>④{t("email.newEmail.tone")}</FormLabel>
-          <Select
-            placeholder={t("tone.button") as string}
-            onChange={(e) => setTone(e.target.value)}
-            required
-          >
-            <option value={t("tone.friendly") as string}>
-              😊 {t("tone.friendly")}
-            </option>
-            <option value={t("tone.formal") as string}>
-              💼 {t("tone.formal")}
-            </option>
-            <option value={t("tone.angry") as string}>
-              🤬 {t("tone.angry")}
-            </option>
-            <option value={t("tone.casual") as string}>
-              😌 {t("tone.casual")}
-            </option>
-            <option value={t("tone.professional") as string}>
-              👔 {t("tone.professional")}
-            </option>
-          </Select>
-          <Button
-            mt="20px"
-            colorScheme="blue"
-            bg="cyan.400"
-            _hover={{ bg: "#7dc5ea" }}
-            variant="solid"
-            type="submit"
-            isLoading={isGenerating}
-            loadingText={isGenerating ? t("generating") as string : ''}
-          >
-            {t("sns.newSns.button")}
-          </Button>
+          <VStack alignItems={'left'}>
+            <LanguageInputOutput
+              pageTitle={t("sns.newSns.pageTitle")}
+              setLanguage={props.setLanguage}
+            />
+            <FormLabel>②{t("sns.newSns.platform")}</FormLabel>
+            {/* <Select mb='20px' placeholder={t("sns.platform.button") as string} onChange={(e) => setPlatform(e.target.value)}>
+                          <option value={t("sns.platform.instagram") as string}>{t("sns.platform.instagram")}</option>
+                          <option value={t("sns.platform.twitter") as string}>{t("sns.platform.facebook")}</option>
+                          <option value={t("sns.platform.twitter") as string}>{t("sns.platform.twitter")}</option>
+                          <option value={t("sns.platform.youtube") as string}>{t("sns.platform.youtube")}</option>
+                      </Select> */}
+            <Flex mb="20px">
+              {Platforms.map((p) => {
+                return (
+                  <Button
+                    key={p}
+                    variant={'outline'}
+                    onClick={() => setPlatform(p)}
+                    bg={platform === p ? "cyan.400" : "white"}
+                    _hover={{ bg: "#7dc5ea" }}
+                    mr="5px"
+                  >
+                    {GetPlatformLogo(p, '25px', '25px')}
+                    <Text color={"gray.700"} fontSize='14px'>
+                      Instagram
+                    </Text>
+                  </Button>
+                )
+              })}
+              <Box>
+                <Input
+                  type="text"
+                  name="platform"
+                  onChange={(e) => setPlatform(e.target.value)}
+                  placeholder="その他"
+                ></Input>
+              </Box>
+            </Flex>
+            <FormLabel>③{t("sns.newSns.about")}</FormLabel>
+            <Input
+              mb="20px"
+              type="text"
+              name="description"
+              value={postDescription}
+              onChange={(e) => setPostDescription(e.target.value)}
+              placeholder={t("sns.newSns.examples.about") as string}
+              required
+            />
+            <FormLabel>④{t("email.newEmail.tone")}</FormLabel>
+            <Select
+              placeholder={t("tone.button") as string}
+              onChange={(e) => setTone(e.target.value)}
+              required
+            >
+              <option value={t("tone.friendly") as string}>
+                😊 {t("tone.friendly")}
+              </option>
+              <option value={t("tone.formal") as string}>
+                💼 {t("tone.formal")}
+              </option>
+              <option value={t("tone.angry") as string}>
+                🤬 {t("tone.angry")}
+              </option>
+              <option value={t("tone.casual") as string}>
+                😌 {t("tone.casual")}
+              </option>
+              <option value={t("tone.professional") as string}>
+                👔 {t("tone.professional")}
+              </option>
+            </Select>
+            <Button
+              mt="20px"
+              colorScheme="blue"
+              bg="cyan.400"
+              _hover={{ bg: "#7dc5ea" }}
+              variant="solid"
+              type="submit"
+              isLoading={isGenerating}
+              loadingText={isGenerating ? t("generating") as string : ''}
+            >
+              {t("sns.newSns.button")}
+            </Button>
+          </VStack>
         </FormControl>
       </form>
-      <Box maxW="100%" whiteSpace="pre-wrap" pb="200px">
+      <Box maxW="100%" whiteSpace="pre-wrap" pb="100px">
         {results[0] === "" ? (
           <></>
         ) : (

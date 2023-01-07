@@ -37,12 +37,12 @@ const SnsPage = () => {
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
       <GridItem colSpan={3}>
-        <Box margin="20px 20px 0px 20px">
+        <Box margin="10px 20px 0px 20px">
           <Tabs variant="enclosed">
             <TabList>
               <Tab
                 bg={generateOption === "New" ? "white" : "transparent"}
-                onClick={(e) => setGenerateOption("New")}
+                onClick={() => setGenerateOption("New")}
               >
                 <Text color={generateOption === "New" ? "black" : "gray.600"}>
                   {t("sns.newSns.option")}
@@ -54,11 +54,7 @@ const SnsPage = () => {
             </TabList>
             <TabPanels bg="white">
               <TabPanel border="1px solid" borderColor="#e2e8f0">
-                <LanguageInputOutput
-                  pageTitle={GenerateOptionTitle()}
-                  setLanguage={setLanguage}
-                />
-                <NewSns lang={language} />
+                <NewSns lang={language} setLanguage={setLanguage} />
               </TabPanel>
               {/* <TabPanel border='1px solid' borderColor='#e2e8f0'>
                                 <LanguageInputOutput pageTitle={GenerateOptionTitle()} setLanguage={setLanguage} />
@@ -69,7 +65,9 @@ const SnsPage = () => {
         </Box>
       </GridItem>
       <GridItem colSpan={2}>
-        <EditArea></EditArea>
+        <Box margin="10px 20px 0px 0px">
+          <EditArea></EditArea>
+        </Box>
       </GridItem>
     </Grid>
   );

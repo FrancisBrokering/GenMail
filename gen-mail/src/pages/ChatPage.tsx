@@ -44,7 +44,7 @@ const ChatPage = () => {
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
       <GridItem colSpan={3}>
-        <Box margin="20px 20px 0px 20px">
+        <Box margin="10px 20px 0px 20px">
           {/* <Select mb='20px' onChange={(e) => setGenerateOption(e.target.value)} w='300px'>
                         <option value='Reply'>💬 {t("chat.replyChat.option")}</option>
                     </Select> */}
@@ -61,18 +61,16 @@ const ChatPage = () => {
             </TabList>
             <TabPanels bg="white">
               <TabPanel border="1px solid" borderColor="#e2e8f0">
-                <LanguageInputOutput
-                  pageTitle={GenerateOptionTitle()}
-                  setLanguage={setLanguage}
-                />
-                <ReplyChat lang={language} />
+                <ReplyChat lang={language} setLanguage={setLanguage} />
               </TabPanel>
             </TabPanels>
           </Tabs>
         </Box>
       </GridItem>
       <GridItem colSpan={2}>
-        <EditArea></EditArea>
+        <Box margin="10px 20px 0px 0px">
+          <EditArea></EditArea>
+        </Box>
       </GridItem>
     </Grid>
   );

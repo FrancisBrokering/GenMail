@@ -8,13 +8,17 @@ import {
   Divider,
   Select,
   Textarea,
+  VStack,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import GeneratedText from "../common/GeneratedText";
+import LanguageInputOutput from "../common/LanguageInputOutput"
+
 
 type EditEmailProps = {
   lang: string;
+  setLanguage: (lang: string) => void;
 };
 
 const EditEmail = (props: EditEmailProps) => {
@@ -58,40 +62,50 @@ const EditEmail = (props: EditEmailProps) => {
     <Box position={"relative"}>
       <form onSubmit={handleSubmit}>
         <FormControl>
-          <FormLabel>②{t("email.editEmail.paste")}</FormLabel>
-          <Textarea
-            mb="20px"
-            minH="200px"
-            name="oldEmail"
-            value={oldEmail}
-            onChange={(e) => setOldEmail(e.target.value)}
-            required
-          />
-          <FormLabel>③{t("email.editEmail.how")}</FormLabel>
-          <Input
-            mb="20px"
-            type="text"
-            name="description"
-            value={editDescription}
-            onChange={(e) => setEditDescription(e.target.value)}
-            placeholder={t("email.editEmail.examples.how") as string}
-            required
-          />
-          <Button
-            mt="20px"
-            colorScheme="blue"
-            bg="cyan.400"
-            _hover={{ bg: "#7dc5ea" }}
-            variant="solid"
-            type="submit"
-            isLoading={isGenerating}
-            loadingText={isGenerating ? t("generating") as string : ''}
-          >
-            {t("email.editEmail.button")}
-          </Button>
+          <VStack alignItems={'left'} spacing={'40px'}>
+            <LanguageInputOutput
+              pageTitle={t("email.editEmail.pageTitle") as string}
+              setLanguage={props.setLanguage}
+            />
+            <Box>
+              <FormLabel>②{t("email.editEmail.paste")}</FormLabel>
+              <Textarea
+                minH="200px"
+                name="oldEmail"
+                value={oldEmail}
+                onChange={(e) => setOldEmail(e.target.value)}
+                required
+              />
+            </Box>
+            <Box>
+              <FormLabel>③{t("email.editEmail.how")}</FormLabel>
+              <Input
+                type="text"
+                name="description"
+                value={editDescription}
+                onChange={(e) => setEditDescription(e.target.value)}
+                placeholder={t("email.editEmail.examples.how") as string}
+                required
+              />
+            </Box>
+            <Box>
+            <Button
+              colorScheme="blue"
+              bg="cyan.400"
+              width={'100px'}
+              _hover={{ bg: "#7dc5ea" }}
+              variant="solid"
+              type="submit"
+              isLoading={isGenerating}
+              loadingText={isGenerating ? t("generating") as string : ''}
+            >
+              {t("email.editEmail.button")}
+            </Button>
+            </Box>
+          </VStack>
         </FormControl>
       </form>
-      <Box maxW="100%" whiteSpace="pre-wrap" pb="200px">
+      <Box maxW="100%" whiteSpace="pre-wrap" pb="100px">
         {results[0] === "" ? (
           <></>
         ) : (

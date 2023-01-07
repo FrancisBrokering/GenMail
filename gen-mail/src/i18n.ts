@@ -22,6 +22,7 @@ i18n
             favorite: "Favorites",
             settings: "Settings",
           },
+          selectLang: "Select a language",
           generating: "Generating",
           tone: {
             button: "Select a Tone",
@@ -120,6 +121,7 @@ i18n
             favorite: "お気に入り",
             settings: "設定",
           },
+          selectLang: "入力言語を選択してください",
           generating: "生成中",
           tone: {
             button: "- 選択 -",

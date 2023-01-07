@@ -20,16 +20,20 @@ const EditArea = () => {
 
   return (
     <Box
-      borderLeft={"1px solid gray"}
-      borderBottom={"1px solid gray"}
-      borderRight={"1px solid gray"}
+      borderLeft={"1px solid #e2e8f0"}
+      borderBottom={"1px solid #e2e8f0"}
+      borderRight={"1px solid #e2e8f0"}
+      bg={'white'}
+      borderRadius='10px'
+      pb={'50px'}
     >
       <Editor></Editor>
-      <Flex margin={"10px"}>
+      <Flex margin={"5px"}>
         <Button
           onClick={onCopy}
           mt={2}
           bg="#0dc5ea"
+          width={'100px'}
           _hover={{ bg: "#7dc5ea" }}
           color={"white"}
         >
