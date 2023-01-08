@@ -8,7 +8,7 @@ const EMAIL_MAtCHER =
   /(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
 
 const MATCHERS = [
-  (text) => {
+  (text: string) => {
     const match = URL_MATCHER.exec(text);
     if (match === null) {
       return null;
@@ -22,7 +22,7 @@ const MATCHERS = [
       // attributes: { rel: 'noopener', target: '_blank' }, // Optional link attributes
     };
   },
-  (text) => {
+  (text: string) => {
     const match = EMAIL_MAtCHER.exec(text);
     if (match == null) {
       return null;
@@ -37,6 +37,6 @@ const MATCHERS = [
   },
 ];
 
-export default function AutoLink() {
+export default function AutoLink(): JSX.Element {
   return <AutoLinkPlugin matchers={MATCHERS} />;
 }
