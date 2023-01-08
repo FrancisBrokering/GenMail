@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ColorModeScript } from "@chakra-ui/react";
+import { ChakraUIProvider } from "./chakra-ui/chakra-ui.provider";
+import { chakraCustomTheme as theme } from "./chakra-ui/chakra-ui.custom-theme";
 import i18n from "./i18n";
 import { I18nextProvider } from "react-i18next";
 
@@ -10,13 +12,14 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <ChakraProvider>
-    <I18nextProvider i18n={i18n}>
-      <React.StrictMode>
+  <I18nextProvider i18n={i18n}>
+    <React.StrictMode>
+      <ChakraUIProvider>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode}></ColorModeScript>
         <App />
-      </React.StrictMode>
-    </I18nextProvider>
-  </ChakraProvider>
+      </ChakraUIProvider>
+    </React.StrictMode>
+  </I18nextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

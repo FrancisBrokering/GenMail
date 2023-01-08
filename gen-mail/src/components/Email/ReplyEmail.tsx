@@ -9,6 +9,7 @@ import {
   Select,
   Textarea,
   VStack,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -61,6 +62,8 @@ const ReplyEmail = (props: ReplyEmailProps) => {
     setEmailDescription("");
   }
 
+  const Placeholder_Color = useColorModeValue("gray.700", "gray.200")
+
   return (
     <Box position={"relative"}>
       <form onSubmit={handleSubmit}>
@@ -88,12 +91,14 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               value={emailDescription}
               onChange={(e) => setEmailDescription(e.target.value)}
               placeholder={t("email.replyEmail.examples.what") as string}
+              _placeholder={{ color: Placeholder_Color }}
             />
             </Box>
             <Box>
             <FormLabel>④{t("email.replyEmail.tone")}</FormLabel>
             <Select
               placeholder={t("tone.button") as string}
+              _placeholder={{ color: Placeholder_Color }}
               onChange={(e) => setTone(e.target.value)}
               required
             >

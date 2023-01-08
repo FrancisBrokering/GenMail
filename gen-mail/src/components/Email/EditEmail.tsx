@@ -9,6 +9,7 @@ import {
   Select,
   Textarea,
   VStack,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -58,6 +59,8 @@ const EditEmail = (props: EditEmailProps) => {
     setEditDescription("");
   }
 
+  const Placeholder_Color = useColorModeValue("gray.700", "gray.200")
+
   return (
     <Box position={"relative"}>
       <form onSubmit={handleSubmit}>
@@ -85,6 +88,7 @@ const EditEmail = (props: EditEmailProps) => {
                 value={editDescription}
                 onChange={(e) => setEditDescription(e.target.value)}
                 placeholder={t("email.editEmail.examples.how") as string}
+                _placeholder={{ color: Placeholder_Color }}
                 required
               />
             </Box>

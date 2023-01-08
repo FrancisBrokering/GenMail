@@ -12,6 +12,7 @@ import {
   Tab,
   TabPanels,
   TabPanel,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import EditArea from "../components/EditArea";
@@ -34,6 +35,11 @@ const SnsPage = () => {
     }
   }
 
+  const Tab_Bg = useColorModeValue("white", "gray.700")
+  const Tab_Color = useColorModeValue("black", "white")
+  const TabPanel_Bg = useColorModeValue("white", "gray.700")
+  const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600")
+
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
       <GridItem colSpan={3}>
@@ -41,10 +47,10 @@ const SnsPage = () => {
           <Tabs variant="enclosed">
             <TabList>
               <Tab
-                bg={generateOption === "New" ? "white" : "transparent"}
+                bg={generateOption === "New" ? Tab_Bg : "transparent"}
                 onClick={() => setGenerateOption("New")}
               >
-                <Text color={generateOption === "New" ? "black" : "gray.600"}>
+                <Text color={generateOption === "New" ? Tab_Color : "gray.600"}>
                   {t("sns.newSns.option")}
                 </Text>
               </Tab>
@@ -52,8 +58,8 @@ const SnsPage = () => {
                                 <Text color={generateOption === 'Review' ? 'black' : 'grey'}>📝 {t("sns.reviewSns.option")}</Text>
                             </Tab> */}
             </TabList>
-            <TabPanels bg="white">
-              <TabPanel border="1px solid" borderColor="#e2e8f0">
+            <TabPanels bg={TabPanel_Bg}>
+              <TabPanel border="1px solid" borderColor={TabPanel_Border}>
                 <NewSns lang={language} setLanguage={setLanguage} />
               </TabPanel>
               {/* <TabPanel border='1px solid' borderColor='#e2e8f0'>

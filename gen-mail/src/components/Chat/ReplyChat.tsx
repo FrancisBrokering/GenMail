@@ -9,6 +9,7 @@ import {
   Select,
   Textarea,
   VStack,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -61,15 +62,18 @@ const ReplyEmail = (props: ReplyEmailProps) => {
     setEmailDescription("");
   }
 
+  const Placeholder_Color = useColorModeValue("gray.700", "gray.200")
+
   return (
     <Box position={"relative"}>
       <form onSubmit={handleSubmit}>
         <FormControl>
-          <VStack alignItems={'left'}>
+          <VStack alignItems={'left'} spacing={'40px'}>
             <LanguageInputOutput
               pageTitle={t("chat.replyChat.pageTitle")}
               setLanguage={props.setLanguage}
             />
+            <Box>
             <FormLabel>②{t("chat.replyChat.paste")}</FormLabel>
             <Textarea
               mb="20px"
@@ -79,6 +83,8 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               onChange={(e) => setReply(e.target.value)}
               required
             />
+            </Box>
+            <Box>
             <FormLabel>③{t("chat.replyChat.what")}</FormLabel>
             <Input
               mb="20px"
@@ -87,10 +93,14 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               value={emailDescription}
               onChange={(e) => setEmailDescription(e.target.value)}
               placeholder={t("chat.replyChat.examples.what") as string}
+              _placeholder={{ color: Placeholder_Color }}
             />
+            </Box>
+            <Box>
             <FormLabel>④{t("chat.replyChat.tone")}</FormLabel>
             <Select
               placeholder={t("tone.button") as string}
+              _placeholder={{ color: Placeholder_Color }}
               onChange={(e) => setTone(e.target.value)}
               required
             >
@@ -100,10 +110,12 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               <option value={"casual"}>😌 {t("tone.casual")}</option>
               <option value={"professional"}>👔 {t("tone.professional")}</option>
             </Select>
+            </Box>
+            <Box>
             <Button
-              mt="20px"
               colorScheme="blue"
               bg="cyan.400"
+              width={"100px"}
               _hover={{ bg: "#7dc5ea" }}
               variant="solid"
               type="submit"
@@ -112,6 +124,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
             >
               {t("chat.replyChat.button")}
             </Button>
+            </Box>
           </VStack>
         </FormControl>
       </form>
