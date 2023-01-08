@@ -33,7 +33,7 @@ import {
 import { IconType } from "react-icons";
 import { ReactText } from "react";
 import { useTranslation } from "react-i18next";
-import { ReactComponent as GenPrateLogo } from "../assets/icons/GenPrateLogo.svg";
+import { ReactComponent as GenPlateLogo } from "../assets/icons/GenPrateLogo.svg";
 import ChangeThemeColor from "./ChangeThemeColor";
 
 type SidebarProps = {
@@ -134,7 +134,7 @@ const SidebarContent = ({
         mb="30px"
         mt="40px"
       >
-        <GenPrateLogo height="140px" width="140px" />
+        <GenPlateLogo height="140px" width="140px" />
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (

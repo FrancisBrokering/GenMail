@@ -21,6 +21,7 @@ import ReviewEmail from "../components/Email/ReviewEmail";
 import EditEmail from "../components/Email/EditEmail";
 import { useTranslation } from "react-i18next";
 import EditArea from "../components/EditArea";
+import LanguageInputOutput from "../components/common/LanguageInputOutput";
 
 
 const EmailPage = () => {
@@ -62,6 +63,10 @@ const EmailPage = () => {
             <TabPanels bg={TabPanel_Bg}>
               <TabPanel border="1px solid" borderColor={TabPanel_Border}>
                 <NewEmail lang={language} setLanguage={setLanguage} />
+                <LanguageInputOutput
+                  pageTitle={t("email.newEmail.pageTitle") as string}
+                  setLanguage={setLanguage}
+                />
               </TabPanel>
               <TabPanel border="1px solid" borderColor={TabPanel_Border}>
                 <ReplyEmail lang={language} setLanguage={setLanguage} />
