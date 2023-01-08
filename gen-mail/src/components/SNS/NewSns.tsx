@@ -91,9 +91,9 @@ const NewSns = (props: NewEmailProps) => {
                       _hover={{ bg: "#7dc5ea" }}
                       mr="5px"
                     >
-                      {GetPlatformLogo(p, '25px', '25px')}
+                      {GetPlatformLogo(p, '22px', '22px')}
                       <Text color={"gray.700"} fontSize='14px'>
-                        Instagram
+                        {p}
                       </Text>
                     </Button>
                   )
