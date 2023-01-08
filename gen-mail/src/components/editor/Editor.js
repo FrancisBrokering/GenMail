@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "@emotion/styled";
 import { useColorMode } from "@chakra-ui/react";
 import ExampleTheme from "./themes/ExampleTheme";
+import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
@@ -20,6 +21,7 @@ import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import StyledEditor from "./StyleEditor";
 import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
+import CountWordPlugin from "./plugins/CountWord";
 
 import { useTranslation } from "react-i18next";
 
@@ -28,34 +30,44 @@ function Placeholder() {
   return <div className="editor-placeholder">{t("editor.placeHolder")}</div>;
 }
 
-const editorConfig = {
-  // The editor theme
-  theme: ExampleTheme,
-  // Handling of errors during update
-  // onError(error: any) {
-  //   throw error;
-  // },
-  // Any custom nodes go here
-  nodes: [
-    HeadingNode,
-    ListNode,
-    ListItemNode,
-    QuoteNode,
-    CodeNode,
-    CodeHighlightNode,
-    TableNode,
-    TableCellNode,
-    TableRowNode,
-    AutoLinkNode,
-    LinkNode,
-  ],
-};
+// const loadContent = async () => {
+//   // 'empty' editor
+//   const value =
+//     '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}';
+
+//   return value;
+// };
+
+// const initialEditorState = await loadContent();
 
 export default function Editor() {
-  // const onChange = (e) => {
-  //   const words = countWords(e.target.value);
-  //   console.log(words);
-  // };
+  const editorStateRef = useRef();
+  const editorConfig = {
+    editorState:
+      '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}',
+    theme: ExampleTheme,
+    namespace: "Playground",
+    onError: (error) => {
+      throw error;
+    },
+    nodes: [
+      HeadingNode,
+      ListNode,
+      ListItemNode,
+      QuoteNode,
+      CodeNode,
+      CodeHighlightNode,
+      TableNode,
+      TableCellNode,
+      TableRowNode,
+      AutoLinkNode,
+      LinkNode,
+    ],
+  };
+
+  useEffect(() => {
+    console.log("hello");
+  }, editorStateRef);
 
   const { colorMode } = useColorMode();
 
@@ -70,7 +82,9 @@ export default function Editor() {
               placeholder={<Placeholder />}
               ErrorBoundary={LexicalErrorBoundary}
             />
-            {/* <OnChangePlugin onChange={onChange} /> */}
+            <OnChangePlugin
+              onChange={(editorState) => (editorStateRef.current = editorState)}
+            />
             <HistoryPlugin />
             {/* <AutoFocusPlugin /> */}
             <ListPlugin />
