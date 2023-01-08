@@ -13,6 +13,7 @@ import {
   Tab,
   TabPanels,
   TabPanel,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import ReviewEmail from "../components/Email/ReviewEmail";
 import { useTranslation } from "react-i18next";
@@ -41,6 +42,11 @@ const ChatPage = () => {
     }
   }
 
+  const Tab_Bg = useColorModeValue("white", "gray.700")
+  const Tab_Color = useColorModeValue("black", "white")
+  const TabPanel_Bg = useColorModeValue("white", "gray.700")
+  const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600")
+
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
       <GridItem colSpan={3}>
@@ -51,16 +57,16 @@ const ChatPage = () => {
           <Tabs variant="enclosed">
             <TabList>
               <Tab
-                bg={generateOption === "Reply" ? "white" : "transparent"}
+                bg={generateOption === "Reply" ? Tab_Bg : "transparent"}
                 onClick={(e) => setGenerateOption("Reply")}
               >
-                <Text color={generateOption === "Reply" ? "black" : "gray.600"}>
+                <Text color={generateOption === "Reply" ? Tab_Color : "gray.600"}>
                   {t("chat.replyChat.option")}
                 </Text>
               </Tab>
             </TabList>
-            <TabPanels bg="white">
-              <TabPanel border="1px solid" borderColor="#e2e8f0">
+            <TabPanels bg={TabPanel_Bg}>
+              <TabPanel border="1px solid" borderColor={TabPanel_Border}>
                 <ReplyChat lang={language} setLanguage={setLanguage} />
               </TabPanel>
             </TabPanels>

@@ -9,6 +9,7 @@ import {
   Select,
   VStack,
   StackDivider,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -64,6 +65,8 @@ const NewEmail = (props: NewEmailProps) => {
     setEmailDescription("");
   }
 
+  const Placeholder_Color = useColorModeValue("gray.700", "gray.200")
+
   return (
     <Box position={"relative"}>
       <form onSubmit={handleSubmit}>
@@ -73,32 +76,32 @@ const NewEmail = (props: NewEmailProps) => {
             <Box>
               <FormLabel>②{t("email.newEmail.about")}</FormLabel>
               <Input
-                bg="white"
                 type="text"
                 name="description"
                 value={emailDescription}
                 onChange={(e) => setEmailDescription(e.target.value)}
                 placeholder={t("email.newEmail.examples.about") as string}
+                _placeholder={{ color: Placeholder_Color }}
                 required
               />
             </Box>
             <Box>
               <FormLabel>③{t("email.newEmail.who")}</FormLabel>
               <Input
-                bg="white"
                 type="text"
                 name="receiver"
                 value={receiver}
                 onChange={(e) => setReceiver(e.target.value)}
                 placeholder={t("email.newEmail.examples.who") as string}
+                _placeholder={{ color: Placeholder_Color }}
                 required
               />
             </Box>
             <Box>
               <FormLabel>④{t("email.newEmail.tone")}</FormLabel>
               <Select
-                bg="white"
                 placeholder={t("tone.button") as string}
+                _placeholder={{ color: Placeholder_Color }}
                 onChange={(e) => setTone(e.target.value)}
                 required
               >

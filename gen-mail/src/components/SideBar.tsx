@@ -15,6 +15,10 @@ import {
   FlexProps,
   Select,
   Center,
+  Switch,
+  FormLabel,
+  FormControl,
+  useColorMode,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -30,6 +34,7 @@ import { IconType } from "react-icons";
 import { ReactText } from "react";
 import { useTranslation } from "react-i18next";
 import { ReactComponent as GenPrateLogo } from "../assets/icons/GenPrateLogo.svg";
+import ChangeThemeColor from "./ChangeThemeColor";
 
 type SidebarProps = {
   children?: JSX.Element | JSX.Element[];
@@ -38,11 +43,16 @@ type SidebarProps = {
 };
 
 export default function Sidebar({ children, userLanguage, setUserLanguage }: SidebarProps) {
+  // const [ theme, setTheme ] = useState("")
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const Sidebar_Content_Bg = useColorModeValue("gray.200", "gray.900");
+  const Sidebar_Body_Bg = useColorModeValue("gray.50", "gray.800")
+
   return (
     <Box minH="100vh">
       <SidebarContent
-        bg={useColorModeValue("gray.200", "gray.900")}
+        bg={Sidebar_Content_Bg}
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
         userLanguage={userLanguage}
@@ -66,7 +76,8 @@ export default function Sidebar({ children, userLanguage, setUserLanguage }: Sid
       <Box
         ml={{ base: 0, md: 60 }}
         minH="100vh"
-        bgGradient="linear(to-r, gray.50, gray.50)"
+        // bgGradient="linear(to-r, gray.50, gray.50)"
+        bg={Sidebar_Body_Bg}
       >
         {children}
       </Box>
@@ -102,11 +113,14 @@ const SidebarContent = ({
     // { name: t("sidebar.favorite"), icon: FiStar },
     // { name: t("sidebar.settings"), icon: FiSettings },
   ];
+
+  const Sidebar_Border = useColorModeValue("gray.200", "gray.700");
+  const SelectLang_Border = useColorModeValue("gray.400", "gray.600");
+
   return (
     <Box
-      bg={useColorModeValue("white", "gray.900")}
       borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
+      borderRightColor={Sidebar_Border}
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
@@ -134,10 +148,12 @@ const SidebarContent = ({
         onChange={(e) => setUserLanguage(e.target.value)}
         w="100px"
         value={userLanguage ? userLanguage : "ja"}
+        borderColor={SelectLang_Border}
       >
         <option value="ja">JP 🇯🇵</option>
         <option value="en">EN 🇺🇸</option>
       </Select>
+      <ChangeThemeColor />
     </Box>
   );
 };
@@ -148,6 +164,8 @@ interface NavItemProps extends FlexProps {
   children: ReactText;
 }
 const NavItem = ({ icon, children, link, ...rest }: NavItemProps) => {
+  const NavItem_Bg = useColorModeValue("cyan.400", "cyan.600");
+
   return (
     <Link
       href={link}
@@ -162,7 +180,7 @@ const NavItem = ({ icon, children, link, ...rest }: NavItemProps) => {
         role="group"
         cursor="pointer"
         _hover={{
-          bg: "cyan.400",
+          bg: NavItem_Bg,
           color: "white",
         }}
         {...rest}
