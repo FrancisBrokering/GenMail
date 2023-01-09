@@ -18,14 +18,14 @@ app.use(express.json());
 app.use(cors());
 
 app.post("/", (req, res) => {
-  console.log(generatePrompt(req.body.email));
+  console.log(generatePrompt(req.body.dataToSendToGPT3));
   openai
     .createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(req.body.email),
+      prompt: generatePrompt(req.body.dataToSendToGPT3),
       temperature: 0.6,
       max_tokens: 2000,
-      n: 3,
+      n: 5,
     })
     .then((completion) => {
       res.status(200).json({
@@ -33,6 +33,8 @@ app.post("/", (req, res) => {
           completion.data.choices[0].text,
           completion.data.choices[1].text,
           completion.data.choices[2].text,
+          completion.data.choices[3].text,
+          completion.data.choices[4].text,
         ],
       });
     })
@@ -45,6 +47,6 @@ app.listen(8080, () => {
   console.log("Server listening on port 8080");
 });
 
-function generatePrompt(email) {
-  return email;
+function generatePrompt(dataToSendToGPT3) {
+  return dataToSendToGPT3;
 }

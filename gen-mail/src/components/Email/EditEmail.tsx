@@ -27,20 +27,17 @@ const EditEmail = (props: EditEmailProps) => {
   const [editDescription, setEditDescription] = useState("");
   const [oldEmail, setOldEmail] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [results, setResult] = useState(["", "", ""]);
+  const [results, setResult] = useState(["", "", "", "", ""]);
 
   async function handleSubmit(event: React.FormEvent) {
     setIsGenerating(true);
     event.preventDefault();
     const data = {
-      email:
-        props.lang === "en"
-          ? oldEmail +
-            ": Edit this email using the following instruction: " +
-            editDescription
-          : oldEmail +
-            ": このEメールを以下の指示を使って編集しろ: " +
-            editDescription,
+      dataToSendToGPT3:
+        oldEmail +
+        ": \n\nEdit this email using the following instruction: " +
+        editDescription 
+
     };
     console.log("data is: ", data);
     const response = await fetch("http://localhost:8080", {
@@ -93,18 +90,18 @@ const EditEmail = (props: EditEmailProps) => {
               />
             </Box>
             <Box>
-            <Button
-              colorScheme="blue"
-              bg="cyan.400"
-              width={'100px'}
-              _hover={{ bg: "#7dc5ea" }}
-              variant="solid"
-              type="submit"
-              isLoading={isGenerating}
-              loadingText={isGenerating ? t("generating") as string : ''}
-            >
-              {t("email.editEmail.button")}
-            </Button>
+              <Button
+                colorScheme="blue"
+                bg="cyan.400"
+                width={'100px'}
+                _hover={{ bg: "#7dc5ea" }}
+                variant="solid"
+                type="submit"
+                isLoading={isGenerating}
+                loadingText={isGenerating ? t("generating") as string : ''}
+              >
+                {t("email.editEmail.button")}
+              </Button>
             </Box>
           </VStack>
         </FormControl>

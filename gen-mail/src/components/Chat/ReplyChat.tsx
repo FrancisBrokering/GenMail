@@ -27,7 +27,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
   const [tone, setTone] = useState("formal");
   const [reply, setReply] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [results, setResult] = useState(["", "", ""]);
+  const [results, setResult] = useState(["", "", "", "", ""]);
 
   async function handleSubmit(event: React.FormEvent) {
     setIsGenerating(true);
@@ -37,13 +37,15 @@ const ReplyEmail = (props: ReplyEmailProps) => {
       details = " including the details " + emailDescription + " ";
     }
     const data = {
-      email:
-        "In a" +
-        tone +
-        " tone, write an reply to the following message " +
+      dataToSendToGPT3:
+        reply +
+        "\n\n" +
+        "Create a reply to to the above message using the following message: \n\n" +
+        "1 About: " +
         details +
-        ": " +
-        reply,
+        "\n" +
+        "2 Tone: " +
+        tone
     };
     console.log("data is: ", data);
     const response = await fetch("http://localhost:8080", {
@@ -74,56 +76,55 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               setLanguage={props.setLanguage}
             />
             <Box>
-            <FormLabel>②{t("chat.replyChat.paste")}</FormLabel>
-            <Textarea
-              mb="20px"
-              minH="200px"
-              name="reply"
-              value={reply}
-              onChange={(e) => setReply(e.target.value)}
-              required
-            />
+              <FormLabel>②{t("chat.replyChat.paste")}</FormLabel>
+              <Textarea
+                mb="20px"
+                minH="200px"
+                name="reply"
+                value={reply}
+                onChange={(e) => setReply(e.target.value)}
+                required
+              />
             </Box>
             <Box>
-            <FormLabel>③{t("chat.replyChat.what")}</FormLabel>
-            <Input
-              mb="20px"
-              type="text"
-              name="description"
-              value={emailDescription}
-              onChange={(e) => setEmailDescription(e.target.value)}
-              placeholder={t("chat.replyChat.examples.what") as string}
-              _placeholder={{ color: Placeholder_Color }}
-            />
+              <FormLabel>③{t("chat.replyChat.what")}</FormLabel>
+              <Textarea
+                mb="20px"
+                name="description"
+                value={emailDescription}
+                onChange={(e) => setEmailDescription(e.target.value)}
+                placeholder={t("chat.replyChat.examples.what") as string}
+                _placeholder={{ color: Placeholder_Color }}
+              />
             </Box>
             <Box>
-            <FormLabel>④{t("chat.replyChat.tone")}</FormLabel>
-            <Select
-              placeholder={t("tone.button") as string}
-              _placeholder={{ color: Placeholder_Color }}
-              onChange={(e) => setTone(e.target.value)}
-              required
-            >
-              <option value={"friendly"}>😊 {t("tone.friendly")}</option>
-              <option value={"formal"}>💼 {t("tone.formal")}</option>
-              <option value={"angry"}>🤬 {t("tone.angry")}</option>
-              <option value={"casual"}>😌 {t("tone.casual")}</option>
-              <option value={"professional"}>👔 {t("tone.professional")}</option>
-            </Select>
+              <FormLabel>④{t("chat.replyChat.tone")}</FormLabel>
+              <Select
+                placeholder={t("tone.button") as string}
+                _placeholder={{ color: Placeholder_Color }}
+                onChange={(e) => setTone(e.target.value)}
+                required
+              >
+                <option value={"friendly"}>😊 {t("tone.friendly")}</option>
+                <option value={"formal"}>💼 {t("tone.formal")}</option>
+                <option value={"angry"}>🤬 {t("tone.angry")}</option>
+                <option value={"casual"}>😌 {t("tone.casual")}</option>
+                <option value={"professional"}>👔 {t("tone.professional")}</option>
+              </Select>
             </Box>
             <Box>
-            <Button
-              colorScheme="blue"
-              bg="cyan.400"
-              width={"100px"}
-              _hover={{ bg: "#7dc5ea" }}
-              variant="solid"
-              type="submit"
-              isLoading={isGenerating}
-              loadingText={isGenerating ? t("generating") as string : ''}
-            >
-              {t("chat.replyChat.button")}
-            </Button>
+              <Button
+                colorScheme="blue"
+                bg="cyan.400"
+                width={"100px"}
+                _hover={{ bg: "#7dc5ea" }}
+                variant="solid"
+                type="submit"
+                isLoading={isGenerating}
+                loadingText={isGenerating ? t("generating") as string : ''}
+              >
+                {t("chat.replyChat.button")}
+              </Button>
             </Box>
           </VStack>
         </FormControl>

@@ -10,6 +10,7 @@ import {
   VStack,
   StackDivider,
   useColorModeValue,
+  Textarea,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -27,27 +28,22 @@ const NewEmail = (props: NewEmailProps) => {
   const [tone, setTone] = useState("formal");
   const [receiver, setReceiver] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [results, setResult] = useState(["", "", ""]);
+  const [results, setResult] = useState(["", "", "", "", ""]);
 
   async function handleSubmit(event: React.FormEvent) {
     setIsGenerating(true);
     event.preventDefault();
     const data = {
-      email:
-        props.lang === "en"
-          ? "write a " +
-            tone +
-            " email to " +
-            receiver +
-            " about " +
-            emailDescription +
-            "."
-          : tone +
-            "な口調で" +
-            receiver +
-            "に" +
-            emailDescription +
-            "ことについてのメールを英語で書け。",
+      dataToSendToGPT3:
+          "write a an email in English using the following information: \n\n" +
+          "1 About: " +
+          emailDescription +
+          "\n" +
+          "2 To: " +
+          receiver +
+          "\n" +
+          "3 Tone: " +
+          tone
     };
     const response = await fetch("http://localhost:8080", {
       method: "POST",
@@ -75,8 +71,7 @@ const NewEmail = (props: NewEmailProps) => {
             <LanguageInputOutput pageTitle={t("email.newEmail.pageTitle") as string} setLanguage={props.setLanguage} />
             <Box>
               <FormLabel>②{t("email.newEmail.about")}</FormLabel>
-              <Input
-                type="text"
+              <Textarea
                 name="description"
                 value={emailDescription}
                 onChange={(e) => setEmailDescription(e.target.value)}
