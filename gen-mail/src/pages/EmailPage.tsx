@@ -21,6 +21,7 @@ import ReviewEmail from "../components/Email/ReviewEmail";
 import EditEmail from "../components/Email/EditEmail";
 import { useTranslation } from "react-i18next";
 import EditArea from "../components/EditArea";
+import LanguageInputOutput from "../components/common/LanguageInputOutput";
 
 
 const EmailPage = () => {
