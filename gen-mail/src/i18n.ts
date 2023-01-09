@@ -41,7 +41,7 @@ i18n
               },
               option: "New",
               pageTitle: "Generate Your Email",
-              button: "Generate Email",
+              button: "Generate",
               about: "What is this Email about?",
               who: "Who is this Email for?",
               tone: "Chose a tone",
@@ -52,7 +52,7 @@ i18n
               },
               option: "Reply",
               pageTitle: "Generate Email Reply",
-              button: "Generate Reply",
+              button: "Generate",
               paste: "Paste the Email you received",
               what: "(optional) What do you want to say?",
               tone: "Chose a tone",
@@ -63,14 +63,14 @@ i18n
               },
               option: "Edit",
               pageTitle: "Edit Your Email",
-              button: "Edit Email",
+              button: "Edit",
               paste: "Paste the Email you want to edit",
               how: "How do you want to edit?",
             },
             reviewEmail: {
               option: "Review",
               pageTitle: "Review Your Email",
-              button: "Cleanup Email",
+              button: "Cleanup",
               paste: "Paste the Email you want to review",
             },
           },
@@ -91,7 +91,7 @@ i18n
               platform: "Select a Platform",
               option: "Generate Post",
               pageTitle: "Generate SNS Post",
-              button: "Generate Post",
+              button: "Generate",
             },
           },
           chat: {
@@ -101,7 +101,7 @@ i18n
               },
               option: "Generate Reply",
               pageTitle: "Generate Chat Reply",
-              button: "Generate Reply",
+              button: "Generate",
               paste: "Paste the message you received",
               what: "(optional) What do you want to say?",
               tone: "Chose a tone",
@@ -135,7 +135,7 @@ i18n
             option: "オプション",
             newEmail: {
               examples: {
-                about: "（例）明日仕事を休む",
+                about: "（例) 体調不良のため、明日のバイトを休む。ケビンがシフトの代わりを引き受ける。来週の火曜日には戻る予定。",
                 who: "（例）上司",
               },
               option: "新規",
@@ -147,7 +147,7 @@ i18n
             },
             replyEmail: {
               examples: {
-                what: "（例）火曜日の午後2時が好都合",
+                what: "（例）今週の水曜日の午後2時が好都合。来週でも大丈夫なら月曜日と火曜日の午前中が可能。",
               },
               option: "返信",
               pageTitle: "Eメールの返信を生成",
@@ -184,7 +184,7 @@ i18n
             },
             newSns: {
               examples: {
-                about: "（例）ハワイ旅行に行って海亀を見た",
+                about: "（例）ハワイ旅行に行って海亀を見た。ホテルからの景色は最高だった。また来年も行きたい。",
               },
               about: "SNSの投稿の内容を入力してください",
               platform: "プラットフォームを選択してください",
@@ -196,7 +196,7 @@ i18n
           chat: {
             replyChat: {
               examples: {
-                what: "（例）火曜日の午後2時が好都合",
+                what: "（例）火曜日の午後2時が好都合。貸していた本もその時返してほしい。",
               },
               option: "返信の生成",
               pageTitle: "チャットの返信を生成",

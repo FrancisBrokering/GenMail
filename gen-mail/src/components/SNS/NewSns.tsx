@@ -10,6 +10,7 @@ import {
   Flex,
   VStack,
   useColorModeValue,
+  Textarea,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -30,21 +31,22 @@ const NewSns = (props: NewEmailProps) => {
   const [tone, setTone] = useState("formal");
   const [platform, setPlatform] = useState("Instagram");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [results, setResult] = useState(["", "", ""]);
+  const [results, setResult] = useState(["", "", "", "", ""]);
 
   async function handleSubmit(event: React.FormEvent) {
     setIsGenerating(true);
     event.preventDefault();
     const data = {
-      email:
-        props.lang === "en"
-          ? "Create a " + platform + " post about " + postDescription + "."
-          : tone +
-            "な口調で" +
-            postDescription +
-            "ことについての" +
-            platform +
-            "の投稿を英語で作って。",
+      dataToSendToGPT3:
+        "Create an English post about using the following information" +
+        "1 Platform: " +
+        platform +
+        ".\n" +
+        "2 About: " +
+        postDescription +
+        ".\n" +
+        "3 Tone: " +
+        tone
     };
     const response = await fetch("http://localhost:8080", {
       method: "POST",
@@ -111,9 +113,8 @@ const NewSns = (props: NewEmailProps) => {
             </Box>
             <Box>
               <FormLabel>③{t("sns.newSns.about")}</FormLabel>
-              <Input
+              <Textarea
                 mb="20px"
-                type="text"
                 name="description"
                 value={postDescription}
                 onChange={(e) => setPostDescription(e.target.value)}
