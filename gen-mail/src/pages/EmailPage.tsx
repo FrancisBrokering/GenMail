@@ -63,10 +63,6 @@ const EmailPage = () => {
             <TabPanels bg={TabPanel_Bg}>
               <TabPanel border="1px solid" borderColor={TabPanel_Border}>
                 <NewEmail lang={language} setLanguage={setLanguage} />
-                <LanguageInputOutput
-                  pageTitle={t("email.newEmail.pageTitle") as string}
-                  setLanguage={setLanguage}
-                />
               </TabPanel>
               <TabPanel border="1px solid" borderColor={TabPanel_Border}>
                 <ReplyEmail lang={language} setLanguage={setLanguage} />

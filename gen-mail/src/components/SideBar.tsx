@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useState } from "react";
+import {Link as ReactRouterLink} from "react-router-dom"
 import {
   IconButton,
   Box,
@@ -33,7 +34,7 @@ import {
 import { IconType } from "react-icons";
 import { ReactText } from "react";
 import { useTranslation } from "react-i18next";
-import { ReactComponent as GenPlateLogo } from "../assets/icons/GenPrateLogo.svg";
+import { ReactComponent as GenPlateLogo } from "../assets/icons/GenPlateLogo.svg";
 import ChangeThemeColor from "./ChangeThemeColor";
 
 type SidebarProps = {
@@ -168,7 +169,8 @@ const NavItem = ({ icon, children, link, ...rest }: NavItemProps) => {
 
   return (
     <Link
-      href={link}
+      as={ReactRouterLink}
+      to={link}
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
