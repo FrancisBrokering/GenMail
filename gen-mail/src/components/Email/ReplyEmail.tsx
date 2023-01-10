@@ -64,7 +64,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
     setEmailDescription("");
   }
 
-  const Placeholder_Color = useColorModeValue("gray.700", "gray.200")
+  const Placeholder_Color = useColorModeValue("gray.500", "gray.200")
 
   return (
     <Box position={"relative"}>

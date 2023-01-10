@@ -13,6 +13,12 @@ i18n
       en: {
         translation: {
           logo: "GenMail",
+          copy: "Copy",
+          copied: "Copied!",
+          darkTheme: "Dark Mode",
+          lightTheme: "Light Mode",
+          japanese: "Japanese",
+          english: "English",
           sidebar: {
             home: "Home",
             email: "Email",
@@ -112,6 +118,12 @@ i18n
       ja: {
         translation: {
           logo: "ジェネメール",
+          copy: "コピー",
+          copied: "コピー完了",
+          darkMode: "ダークモード",
+          lightMode: "ライトモード",
+          japanese: "日本語",
+          english: "英語",
           sidebar: {
             home: "ホーム",
             email: "Eメール",

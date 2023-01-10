@@ -63,7 +63,7 @@ const NewSns = (props: NewEmailProps) => {
     setPostDescription("");
   }
 
-  const Placeholder_Color = useColorModeValue("gray.700", "gray.200")
+  const Placeholder_Color = useColorModeValue("gray.500", "gray.200")
 
   return (
     <Box position={"relative"}>
@@ -94,7 +94,7 @@ const NewSns = (props: NewEmailProps) => {
                       mr="5px"
                     >
                       {GetPlatformLogo(p, '22px', '22px')}
-                      <Text color={"gray.700"} fontSize='14px'>
+                      <Text color={platform === p ? "white" : "gray.700"} fontSize='14px'>
                         {p}
                       </Text>
                     </Button>

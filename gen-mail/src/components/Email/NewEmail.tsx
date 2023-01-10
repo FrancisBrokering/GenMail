@@ -35,7 +35,7 @@ const NewEmail = (props: NewEmailProps) => {
     event.preventDefault();
     const data = {
       dataToSendToGPT3:
-          "write a an email in English using the following information: \n\n" +
+          "write an email in English using the following information: \n\n" +
           "1 About: " +
           emailDescription +
           "\n" +
@@ -61,7 +61,7 @@ const NewEmail = (props: NewEmailProps) => {
     setEmailDescription("");
   }
 
-  const Placeholder_Color = useColorModeValue("gray.700", "gray.200")
+  const Placeholder_Color = useColorModeValue("gray.500", "gray.200")
 
   return (
     <Box position={"relative"}>
