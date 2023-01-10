@@ -38,7 +38,8 @@ const EmailPage = () => {
   ]
 
   const Tab_Bg = useColorModeValue("white", "gray.700")
-  const Tab_Color = useColorModeValue("black", "white")
+  const SelectedTab_Color = useColorModeValue("black", "white")
+  const Tab_Color = useColorModeValue("gray.600", "gray.400")
   const TabPanel_Bg = useColorModeValue("white", "gray.700")
   const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600")
 
@@ -63,7 +64,7 @@ const EmailPage = () => {
                     bg={generateOption === tab.option ? Tab_Bg : "transparent"}
                     onClick={() => setGenerateOption(tab.option)}
                   >
-                    <Text color={generateOption === tab.option ? Tab_Color : "gray.600"}>
+                    <Text color={generateOption === tab.option ? SelectedTab_Color : Tab_Color}>
                       {tab.emoji} {tab.i18message}
                     </Text>
                   </Tab>
