@@ -11,6 +11,7 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { ArrowRightIcon, ChevronDownIcon } from "@chakra-ui/icons";
@@ -29,6 +30,9 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
   const { t, i18n } = useTranslation();
   const [userInputLanguageLocalVer, setUserInputLanguageLocalVer] = useState("ja");
   const [userOutputLanguageLocalVer, setUserOutputLanguageLocalVer] = useState("en");
+
+  const Menu_Border = useColorModeValue("gray.200", "gray.600");
+
   return (
     <Box>
       <Text textAlign="center" mb="50px" fontWeight="bold" fontSize="20px">
@@ -42,7 +46,7 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
             leftIcon={userInputLanguageLocalVer === "ja" ? <JapanFlag margin-right='12px' width='22px' height='22px' /> : <UsaFlag margin-right='12px' width='22px' height='22px' />}
             rightIcon={<ChevronDownIcon />}
             variant='outline'
-            borderColor='gray.300'
+            borderColor={Menu_Border}
           >
             <Text fontWeight='500'>{userInputLanguageLocalVer === "ja" ? t("japanese") : t("english")}</Text>
           </MenuButton>
@@ -65,7 +69,7 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
             leftIcon={userOutputLanguageLocalVer === "ja" ? <JapanFlag margin-right='12px' width='22px' height='22px' /> : <UsaFlag margin-right='12px' width='22px' height='22px' />}
             rightIcon={<ChevronDownIcon />}
             variant='outline'
-            borderColor='gray.300'
+            borderColor={Menu_Border}
           >
             <Text fontWeight='500'>{userOutputLanguageLocalVer === "ja" ? t("japanese") : t("english")}</Text>
           </MenuButton>

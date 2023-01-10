@@ -75,6 +75,8 @@ const NewSns = (props: NewEmailProps) => {
   }
 
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
+  const Platform_Color = useColorModeValue("gray.700", "gray.200");
+  const Menu_Border = useColorModeValue("gray.200", "gray.600");
 
   return (
     <Box position={"relative"}>
@@ -87,14 +89,14 @@ const NewSns = (props: NewEmailProps) => {
             />
             <Box>
               <FormLabel>②{t("sns.newSns.platform")}</FormLabel>
-              <Flex mb="20px">
+              <Flex>
                 <Menu>
                   <MenuButton
                     as={Button}
                     leftIcon={GetPlatformLogo(platform, "22px", "22px")}
                     rightIcon={<ChevronDownIcon />}
                     variant="outline"
-                    borderColor="gray.300"
+                    borderColor={Menu_Border}
                   >
                     <Text fontWeight="500">{platform}</Text>
                   </MenuButton>
@@ -104,13 +106,13 @@ const NewSns = (props: NewEmailProps) => {
                         <MenuItem
                           key={p}
                           minH="48px"
-                          onClick={(e) => {
+                          onClick={() => {
                             setPlatform(p);
                             setPlatformOther("");
                           }}
                           icon={GetPlatformLogo(p, "22px", "22px")}
                         >
-                          <Text color={"gray.700"} fontSize="14px">
+                          <Text color={Platform_Color} fontSize="14px">
                             {p}
                           </Text>
                         </MenuItem>
