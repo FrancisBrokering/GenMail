@@ -14,11 +14,6 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
-  Select,
-  Center,
-  Switch,
-  FormLabel,
-  FormControl,
   useColorMode,
   Menu,
   MenuButton,
@@ -26,6 +21,7 @@ import {
   MenuItem,
   Button,
   Spacer,
+  Divider,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -123,7 +119,8 @@ const SidebarContent = ({
   ];
 
   const Sidebar_Border = useColorModeValue("gray.200", "gray.700");
-  const SelectLang_Border = useColorModeValue("gray.400", "gray.600");
+  const SelectLang_Border = useColorModeValue("gray.400", "gray.300");
+  const Divider_Color = useColorModeValue("gray.400", "gray.600")
   const { colorMode } = useColorMode()
 
   return (
@@ -146,33 +143,40 @@ const SidebarContent = ({
         {colorMode === "dark" ? <GenPlateLogoDarkMode height="140px" width="140px" /> : <GenPlateLogo height="140px" width="140px" />}
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} link={link.link} icon={link.icon}>
-          {link.name}
-        </NavItem>
-      ))}
-      <Spacer />
-      <Box mt="10px" ml="25px">
-        <Menu>
-          <MenuButton as={Button}
-            leftIcon={userLanguage === "ja" ? <JapanFlag margin-right='12px' width='22px' height='22px' /> : <UsaFlag margin-right='12px' width='22px' height='22px' />}
-            rightIcon={<ChevronDownIcon />}
-            variant='outline'
-            borderColor='gray.300'
-          >
-            <Text fontWeight='500'>{userLanguage === "ja" ? t("japanese") : t("english")}</Text>
-          </MenuButton>
-          <MenuList>
-            <MenuItem minH='48px' onClick={(e) => setUserLanguage("ja")} icon={<JapanFlag margin-right='12px' width='22px' height='22px' />}>
-              <Text >{t("japanese")}</Text>
-            </MenuItem>
-            <MenuItem minH='40px' onClick={(e) => setUserLanguage("en")} icon={<UsaFlag margin-right='12px' width='22px' height='22px' />}>
-              <Text >{t("english")}</Text>
-            </MenuItem>
-          </MenuList>
-        </Menu>
-      </Box>
-      <ChangeThemeColor />
+      <Flex flexDirection={"column"} height="70%">
+        <Box>
+          {LinkItems.map((link) => (
+            <NavItem key={link.name} link={link.link} icon={link.icon}>
+              {link.name}
+            </NavItem>
+          ))}
+        </Box>
+        <Spacer />
+        <Box margin={"20px 15px"}>
+          <Divider borderColor={Divider_Color}/>
+        </Box>
+        <Box mt="10px" ml="25px">
+          <Menu>
+            <MenuButton as={Button}
+              leftIcon={userLanguage === "ja" ? <JapanFlag margin-right='12px' width='22px' height='22px' /> : <UsaFlag margin-right='12px' width='22px' height='22px' />}
+              rightIcon={<ChevronDownIcon />}
+              variant='outline'
+              borderColor={SelectLang_Border}
+            >
+              <Text fontWeight='500'>{userLanguage === "ja" ? t("japanese") : t("english")}</Text>
+            </MenuButton>
+            <MenuList>
+              <MenuItem minH='48px' onClick={(e) => setUserLanguage("ja")} icon={<JapanFlag margin-right='12px' width='22px' height='22px' />}>
+                <Text >{t("japanese")}</Text>
+              </MenuItem>
+              <MenuItem minH='40px' onClick={(e) => setUserLanguage("en")} icon={<UsaFlag margin-right='12px' width='22px' height='22px' />}>
+                <Text >{t("english")}</Text>
+              </MenuItem>
+            </MenuList>
+          </Menu>
+          <ChangeThemeColor />
+        </Box>
+      </Flex>
     </Box>
   );
 };

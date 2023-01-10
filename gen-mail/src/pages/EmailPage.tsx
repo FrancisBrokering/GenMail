@@ -54,12 +54,13 @@ const EmailPage = () => {
       <GridItem colSpan={3}>
         <Box margin="10px 20px 10px 20px">
           <Tabs variant="enclosed">
-            <TabList>
+            <TabList borderBottom={"0px"} pb={"1px"}>
               {tabs.map((tab) => {
                 return (
                   <Tab
-                    height={"46px"}
+                    height={"47px"}
                     key={tab.option}
+                    // borderBottom={"0px"}
                     bg={generateOption === tab.option ? Tab_Bg : "transparent"}
                     onClick={() => setGenerateOption(tab.option)}
                   >
@@ -70,16 +71,17 @@ const EmailPage = () => {
                 )
               })}
             </TabList>
-            <TabPanels bg={TabPanel_Bg}>
+            <TabPanels 
+              bg={TabPanel_Bg} 
+              border="1px solid" 
+              borderColor={TabPanel_Border}
+              borderTopLeftRadius={generateOption === "New" ? "0px" : "10px"}
+              borderTopRightRadius={"10px"}
+              borderBottomRadius={"10px"}
+            >
               {EmailPages.map((page) => {
                 return (
-                  <TabPanel
-                    key={page}
-                    border="1px solid" 
-                    // borderRight="0px" 
-                    borderColor={TabPanel_Border} 
-                    // minHeight="95vh"
-                  >
+                  <TabPanel key={page}>
                     {getEmailPage(page)}
                   </TabPanel>
                 )

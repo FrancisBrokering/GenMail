@@ -11,7 +11,7 @@ const ChangeThemeColor = () => {
 
   console.log(colorMode)
   return (
-    <Box ml={"25px"} mt="20px">
+    <Box mt="20px">
       <Button
         bg={"transparent"}
         _hover={{ bg: ThemeButton_Bg}}
