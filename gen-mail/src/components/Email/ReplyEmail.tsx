@@ -111,20 +111,17 @@ const ReplyEmail = (props: ReplyEmailProps) => {
                 <option value={"professional"}>👔 {t("tone.professional")}</option>
               </Select>
             </Box>
-            <Box>
-              <Button
-                colorScheme="blue"
-                bg="cyan.400"
-                width={'100px'}
-                _hover={{ bg: "#7dc5ea" }}
-                variant="solid"
-                type="submit"
-                isLoading={isGenerating}
-                loadingText={isGenerating ? t("generating") as string : ''}
-              >
-                {t("email.replyEmail.button")}
-              </Button>
-            </Box>
+            <Button
+              colorScheme="blue"
+              bg="cyan.400"
+              _hover={{ bg: "#7dc5ea" }}
+              variant="solid"
+              type="submit"
+              isLoading={isGenerating}
+              loadingText={isGenerating ? t("generating") as string : ''}
+            >
+              {t("email.replyEmail.button")}
+            </Button>
           </VStack>
         </FormControl>
       </form>

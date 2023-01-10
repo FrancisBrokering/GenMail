@@ -15,10 +15,11 @@ i18n
           logo: "GenMail",
           copy: "Copy",
           copied: "Copied!",
-          darkTheme: "Dark Mode",
-          lightTheme: "Light Mode",
+          darkMode: "Dark Mode",
+          lightMode: "Light Mode",
           japanese: "Japanese",
           english: "English",
+          other: "Other",
           sidebar: {
             home: "Home",
             email: "Email",
@@ -124,6 +125,7 @@ i18n
           lightMode: "ライトモード",
           japanese: "日本語",
           english: "英語",
+          other: "その他",
           sidebar: {
             home: "ホーム",
             email: "Eメール",
