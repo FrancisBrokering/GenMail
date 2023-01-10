@@ -1,4 +1,6 @@
 import React from "react";
+import styled from "@emotion/styled";
+import { useColorMode } from "@chakra-ui/react";
 import ExampleTheme from "./themes/ExampleTheme";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
@@ -15,7 +17,7 @@ import { AutoLinkNode, LinkNode } from "@lexical/link";
 import { LinkPlugin } from "@lexical/react/LexicalLinkPlugin";
 
 import { ListPlugin } from "@lexical/react/LexicalListPlugin";
-import "./style.css";
+import StyledEditor from "./StyleEditor";
 import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 
@@ -52,25 +54,29 @@ export default function Editor() {
   //   console.log(words);
   // };
 
+  const { colorMode } = useColorMode();
+
   return (
-    <LexicalComposer initialConfig={editorConfig}>
-      <div className="editor-container">
-        <ToolbarPlugin />
-        <div className="editor-inner">
-          <RichTextPlugin
-            contentEditable={<ContentEditable className="editor-input" />}
-            placeholder={<Placeholder />}
-            ErrorBoundary={LexicalErrorBoundary}
-          />
-          {/* <OnChangePlugin onChange={onChange} /> */}
-          <HistoryPlugin />
-          {/* <AutoFocusPlugin /> */}
-          <ListPlugin />
-          <LinkPlugin />
-          <AutoLinkPlugin />
+    <StyledEditor theme={colorMode}>
+      <LexicalComposer initialConfig={editorConfig}>
+        <div className="editor-container">
+          <ToolbarPlugin />
+          <div className="editor-inner">
+            <RichTextPlugin
+              contentEditable={<ContentEditable className="editor-input" />}
+              placeholder={<Placeholder />}
+              ErrorBoundary={LexicalErrorBoundary}
+            />
+            {/* <OnChangePlugin onChange={onChange} /> */}
+            <HistoryPlugin />
+            {/* <AutoFocusPlugin /> */}
+            <ListPlugin />
+            <LinkPlugin />
+            <AutoLinkPlugin />
+          </div>
         </div>
-      </div>
-    </LexicalComposer>
+      </LexicalComposer>
+    </StyledEditor>
     // <LexicalComposer initialConfig={initialConfig}>
     //   <div className="editor-container">
     //     {/* <ToolbarPlugin /> */}
@@ -94,3 +100,28 @@ export default function Editor() {
     // </LexicalComposer>
   );
 }
+
+const StyledEditorContainer = styled("div")`
+  margin: 0px auto 0px auto;
+  /* border-radius: 2px; */
+  max-width: 500px;
+  color: #000;
+  position: relative;
+  line-height: 20px;
+  font-weight: 400;
+  text-align: left;
+  /* border-top-left-radius: 10px; */
+  /* border-top-right-radius: 10px; */
+  /* border-top: 1px solid #e2e8f0; */
+  /* border-right: 1px solid gray; */
+  /* border-bottom: 1px solid #e2e8f0; */
+`;
+
+const StyledEditorInner = styled("div")`
+  background: #fff;
+  position: relative;
+  /* border-right: 1px solid gray; */
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  min-height: 75vh;
+`;

@@ -42,7 +42,7 @@ const EmailPage = () => {
 
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
-      <GridItem colSpan={3} borderRight="1px solid" borderRightColor={TabPanel_Border}>
+      <GridItem colSpan={3}>
         <Box margin="0px 0px 0px 0px">
           <Tabs variant="enclosed">
             <TabList>
