@@ -22,12 +22,13 @@ const EditArea = () => {
 
   return (
     <Box
-      borderLeft={"1px solid #e2e8f0"}
+      // borderLeft={"1px solid #e2e8f0"}
+      // borderTop={"1px solid #e2e8f0"}
+      // borderLeft={"1px solid #e2e8f0"}
       borderBottom={"1px solid #e2e8f0"}
       borderRight={"1px solid #e2e8f0"}
       bg={'white'}
-      borderRadius='10px'
-      pb={'50px'}
+      minHeight="100vh"
     >
       <Editor></Editor>
       <Flex margin={"5px"}>

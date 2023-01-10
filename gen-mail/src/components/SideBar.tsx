@@ -29,9 +29,6 @@ import {
 } from "@chakra-ui/react";
 import {
   FiHome,
-  FiTrendingUp,
-  FiStar,
-  FiSettings,
   FiMenu,
   FiMail,
   FiTwitter,

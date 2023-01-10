@@ -42,13 +42,14 @@ const EmailPage = () => {
 
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
-      <GridItem colSpan={3}>
-        <Box margin="10px 20px 0px 20px" >
+      <GridItem colSpan={3} borderRight="1px solid" borderRightColor={TabPanel_Border}>
+        <Box margin="0px 0px 0px 0px">
           <Tabs variant="enclosed">
             <TabList>
               {tabs.map((tab) => {
                 return (
-                  <Tab 
+                  <Tab
+                    height={"46px"}
                     key={tab.option}
                     bg={generateOption === tab.option ? Tab_Bg : "transparent"}
                     onClick={() => setGenerateOption(tab.option)}
@@ -61,16 +62,16 @@ const EmailPage = () => {
               })}
             </TabList>
             <TabPanels bg={TabPanel_Bg}>
-              <TabPanel border="1px solid" borderColor={TabPanel_Border}>
+              <TabPanel border="1px solid" borderRight="0px" borderColor={TabPanel_Border} minHeight="95vh">
                 <NewEmail lang={language} setLanguage={setLanguage} />
               </TabPanel>
-              <TabPanel border="1px solid" borderColor={TabPanel_Border}>
+              <TabPanel border="1px solid" borderColor={TabPanel_Border} minHeight="95vh">
                 <ReplyEmail lang={language} setLanguage={setLanguage} />
               </TabPanel>
-              <TabPanel border="1px solid" borderColor={TabPanel_Border}>
+              <TabPanel border="1px solid" borderColor={TabPanel_Border} minHeight="95vh" >
                 <EditEmail lang={language} setLanguage={setLanguage} />
               </TabPanel>
-              <TabPanel border="1px solid" borderColor={TabPanel_Border}>
+              <TabPanel border="1px solid" borderColor={TabPanel_Border} minHeight="95vh">
                 <ReviewEmail lang={language} setLanguage={setLanguage} />
               </TabPanel>
             </TabPanels>
@@ -78,7 +79,7 @@ const EmailPage = () => {
         </Box>
       </GridItem>
       <GridItem colSpan={2}>
-        <Box margin="10px 20px 0px 0px">
+        <Box margin="0px 0px 0px 0px">
           <EditArea></EditArea>
         </Box>
       </GridItem>

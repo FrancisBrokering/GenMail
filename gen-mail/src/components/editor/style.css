@@ -45,18 +45,19 @@ h1 {
 }
 
 .editor-container {
-  margin: 20px auto 20px auto;
-  border-radius: 2px;
+  margin: 0px auto 0px auto;
+  /* border-radius: 2px; */
   max-width: 500px;
   color: #000;
   position: relative;
   line-height: 20px;
   font-weight: 400;
   text-align: left;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-top: 1px solid #e2e8f0;
+  /* border-top-left-radius: 10px; */
+  /* border-top-right-radius: 10px; */
+  /* border-top: 1px solid #e2e8f0; */
   /* border-right: 1px solid gray; */
+  /* border-bottom: 1px solid #e2e8f0; */
 }
 
 .editor-inner {
@@ -351,6 +352,7 @@ background-image: url(./images/emoji/1F642.png);
 
 .toolbar {
   display: flex;
+  height: 44px;
   margin-bottom: 1px;
   background: #fff;
   padding: 4px;
