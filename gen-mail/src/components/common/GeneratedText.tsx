@@ -39,7 +39,7 @@ const GeneratedText = (props: GeneratedTextProps) => {
             w="90px"
             onClick={onCopy}
           >
-            {hasCopied ? "Copied!" : "Copy"}
+            {hasCopied ? t("copied") : t("copy") }
           </Button>
         </Flex>
         <Box rounded="5px" _hover={{ bg: "gray.100" }} key={props.index}>

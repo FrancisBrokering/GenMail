@@ -27,14 +27,14 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
       <FormLabel>①{t("selectLang")}</FormLabel>
       <Flex>
         <Select onChange={(e) => props.setLanguage(e.target.value)} w="300px">
-          <option value="ja">JP 🇯🇵</option>
-          <option value="en">EN 🇺🇸</option>
+          <option value="ja">{t("japanese")} 🇯🇵</option>
+          <option value="en">{t("english")} 🇺🇸</option>
         </Select>
         <Center pl="20px" pr="20px">
           <ArrowRightIcon w={6} h={6} color="cyan.400" />
         </Center>
         <Select w="300px">
-          <option value="en">EN 🇺🇸</option>
+          <option value="en">{t("english")} 🇺🇸</option>
         </Select>
       </Flex>
     </Box>

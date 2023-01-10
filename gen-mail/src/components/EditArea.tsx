@@ -9,6 +9,7 @@ import {
   useClipboard,
 } from "@chakra-ui/react";
 import Editor from "./editor/Editor";
+import { useTranslation } from "react-i18next";
 
 const countWords = (str: string) => {
   const arr = str.split(" ");
@@ -17,6 +18,7 @@ const countWords = (str: string) => {
 
 const EditArea = () => {
   const { onCopy, value, setValue, hasCopied } = useClipboard("");
+  const { t } = useTranslation();
 
   return (
     <Box
@@ -37,7 +39,7 @@ const EditArea = () => {
           _hover={{ bg: "#7dc5ea" }}
           color={"white"}
         >
-          {hasCopied ? "Copied" : "Copy"}
+          {hasCopied ? t("copied") : t("copy")}
         </Button>
         <Spacer />
         <Text>

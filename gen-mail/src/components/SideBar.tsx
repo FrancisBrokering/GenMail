@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import {Link as ReactRouterLink} from "react-router-dom"
+import { Link as ReactRouterLink } from "react-router-dom"
 import {
   IconButton,
   Box,
@@ -20,6 +20,12 @@ import {
   FormLabel,
   FormControl,
   useColorMode,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Button,
+  Spacer,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -35,7 +41,12 @@ import { IconType } from "react-icons";
 import { ReactText } from "react";
 import { useTranslation } from "react-i18next";
 import { ReactComponent as GenPlateLogo } from "../assets/icons/GenPlateLogo.svg";
+import { ReactComponent as GenPlateLogoDarkMode } from "../assets/icons/GenPlateLogoDarkMode.svg";
 import ChangeThemeColor from "./ChangeThemeColor";
+import { ReactComponent as JapanFlag } from "../assets/icons/Japan.svg";
+import { ReactComponent as UsaFlag } from "../assets/icons/USA.svg";
+import { ChevronDownIcon } from "@chakra-ui/icons";
+//Use this link for flag SVGs https://uxwing.com/usa-flag-round-circle-icon/
 
 type SidebarProps = {
   children?: JSX.Element | JSX.Element[];
@@ -46,7 +57,6 @@ type SidebarProps = {
 export default function Sidebar({ children, userLanguage, setUserLanguage }: SidebarProps) {
   // const [ theme, setTheme ] = useState("")
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const Sidebar_Content_Bg = useColorModeValue("gray.200", "gray.900");
   const Sidebar_Body_Bg = useColorModeValue("gray.50", "gray.800")
 
@@ -117,6 +127,7 @@ const SidebarContent = ({
 
   const Sidebar_Border = useColorModeValue("gray.200", "gray.700");
   const SelectLang_Border = useColorModeValue("gray.400", "gray.600");
+  const { colorMode } = useColorMode()
 
   return (
     <Box
@@ -135,7 +146,7 @@ const SidebarContent = ({
         mb="30px"
         mt="40px"
       >
-        <GenPlateLogo height="140px" width="140px" />
+        {colorMode === "dark" ? <GenPlateLogoDarkMode height="140px" width="140px" /> : <GenPlateLogo height="140px" width="140px" />}
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -143,17 +154,27 @@ const SidebarContent = ({
           {link.name}
         </NavItem>
       ))}
-      <Select
-        mt="10px"
-        ml="25px"
-        onChange={(e) => setUserLanguage(e.target.value)}
-        w="100px"
-        value={userLanguage ? userLanguage : "ja"}
-        borderColor={SelectLang_Border}
-      >
-        <option value="ja">JP 🇯🇵</option>
-        <option value="en">EN 🇺🇸</option>
-      </Select>
+      <Spacer />
+      <Box mt="10px" ml="25px">
+        <Menu>
+          <MenuButton as={Button}
+            leftIcon={userLanguage === "ja" ? <JapanFlag margin-right='12px' width='30px' height='30px' /> : <UsaFlag margin-right='12px' width='30px' height='30px' />}
+            rightIcon={<ChevronDownIcon />}
+            variant='outline'
+            borderColor='gray.300'
+          >
+            <Text fontWeight='500'>{userLanguage === "ja" ? t("japanese") : t("english")}</Text>
+          </MenuButton>
+          <MenuList>
+            <MenuItem minH='48px' onClick={(e) => setUserLanguage("ja")} icon={<JapanFlag margin-right='12px' width='30px' height='30px' />}>
+              <Text fontWeight='500'>{t("japanese")}</Text>
+            </MenuItem>
+            <MenuItem minH='40px' onClick={(e) => setUserLanguage("en")} icon={<UsaFlag margin-right='12px' width='30px' height='30px' />}>
+              <Text fontWeight='500'>{t("english")}</Text>
+            </MenuItem>
+          </MenuList>
+        </Menu>
+      </Box>
       <ChangeThemeColor />
     </Box>
   );
