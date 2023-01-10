@@ -96,7 +96,7 @@ i18n
               },
               about: "What should this post be about?",
               platform: "Select a Platform",
-              option: "Generate Post",
+              option: "New Post",
               pageTitle: "Generate SNS Post",
               button: "Generate",
             },
@@ -106,7 +106,7 @@ i18n
               examples: {
                 what: "e.g. available at 2pm on Tuesday",
               },
-              option: "Generate Reply",
+              option: "Reply",
               pageTitle: "Generate Chat Reply",
               button: "Generate",
               paste: "Paste the message you received",
@@ -212,7 +212,7 @@ i18n
               examples: {
                 what: "（例）火曜日の午後2時が好都合。貸していた本もその時返してほしい。",
               },
-              option: "返信の生成",
+              option: "返信",
               pageTitle: "チャットの返信を生成",
               button: "生成",
               paste: "送られてきたチャットを貼り付けてください（英語）",
