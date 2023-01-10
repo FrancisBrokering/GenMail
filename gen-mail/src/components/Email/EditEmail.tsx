@@ -36,7 +36,7 @@ const EditEmail = (props: EditEmailProps) => {
       dataToSendToGPT3:
         oldEmail +
         ": \n\nEdit this email using the following instruction: " +
-        editDescription 
+        editDescription
 
     };
     console.log("data is: ", data);
@@ -89,20 +89,17 @@ const EditEmail = (props: EditEmailProps) => {
                 required
               />
             </Box>
-            <Box>
-              <Button
-                colorScheme="blue"
-                bg="cyan.400"
-                width={'100px'}
-                _hover={{ bg: "#7dc5ea" }}
-                variant="solid"
-                type="submit"
-                isLoading={isGenerating}
-                loadingText={isGenerating ? t("generating") as string : ''}
-              >
-                {t("email.editEmail.button")}
-              </Button>
-            </Box>
+            <Button
+              colorScheme="blue"
+              bg="cyan.400"
+              _hover={{ bg: "#7dc5ea" }}
+              variant="solid"
+              type="submit"
+              isLoading={isGenerating}
+              loadingText={isGenerating ? t("generating") as string : ''}
+            >
+              {t("email.editEmail.button")}
+            </Button>
           </VStack>
         </FormControl>
       </form>

@@ -35,15 +35,15 @@ const NewEmail = (props: NewEmailProps) => {
     event.preventDefault();
     const data = {
       dataToSendToGPT3:
-          "write an email in English using the following information: \n\n" +
-          "1 About: " +
-          emailDescription +
-          "\n" +
-          "2 To: " +
-          receiver +
-          "\n" +
-          "3 Tone: " +
-          tone
+        "write an email in English using the following information: \n\n" +
+        "1 About: " +
+        emailDescription +
+        "\n" +
+        "2 To: " +
+        receiver +
+        "\n" +
+        "3 Tone: " +
+        tone
     };
     const response = await fetch("http://localhost:8080", {
       method: "POST",
@@ -117,20 +117,17 @@ const NewEmail = (props: NewEmailProps) => {
                 </option>
               </Select>
             </Box>
-            <Box>
-              <Button
-                colorScheme="blue"
-                bg="cyan.400"
-                width="100px"
-                _hover={{ bg: "#7dc5ea" }}
-                variant="solid"
-                type="submit"
-                isLoading={isGenerating}
-                loadingText={isGenerating ? t("generating") as string : ''}
-              >
-                {t("email.newEmail.button")}
-              </Button>
-            </Box>
+            <Button
+              colorScheme="blue"
+              bg="cyan.400"
+              _hover={{ bg: "#7dc5ea" }}
+              variant="solid"
+              type="submit"
+              isLoading={isGenerating}
+              loadingText={isGenerating ? t("generating") as string : ''}
+            >
+              {t("email.newEmail.button")}
+            </Button>
           </VStack>
         </FormControl>
       </form>

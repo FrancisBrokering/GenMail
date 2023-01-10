@@ -158,7 +158,7 @@ const SidebarContent = ({
       <Box mt="10px" ml="25px">
         <Menu>
           <MenuButton as={Button}
-            leftIcon={userLanguage === "ja" ? <JapanFlag margin-right='12px' width='30px' height='30px' /> : <UsaFlag margin-right='12px' width='30px' height='30px' />}
+            leftIcon={userLanguage === "ja" ? <JapanFlag margin-right='12px' width='22px' height='22px' /> : <UsaFlag margin-right='12px' width='22px' height='22px' />}
             rightIcon={<ChevronDownIcon />}
             variant='outline'
             borderColor='gray.300'
@@ -166,11 +166,11 @@ const SidebarContent = ({
             <Text fontWeight='500'>{userLanguage === "ja" ? t("japanese") : t("english")}</Text>
           </MenuButton>
           <MenuList>
-            <MenuItem minH='48px' onClick={(e) => setUserLanguage("ja")} icon={<JapanFlag margin-right='12px' width='30px' height='30px' />}>
-              <Text fontWeight='500'>{t("japanese")}</Text>
+            <MenuItem minH='48px' onClick={(e) => setUserLanguage("ja")} icon={<JapanFlag margin-right='12px' width='22px' height='22px' />}>
+              <Text >{t("japanese")}</Text>
             </MenuItem>
-            <MenuItem minH='40px' onClick={(e) => setUserLanguage("en")} icon={<UsaFlag margin-right='12px' width='30px' height='30px' />}>
-              <Text fontWeight='500'>{t("english")}</Text>
+            <MenuItem minH='40px' onClick={(e) => setUserLanguage("en")} icon={<UsaFlag margin-right='12px' width='22px' height='22px' />}>
+              <Text >{t("english")}</Text>
             </MenuItem>
           </MenuList>
         </Menu>

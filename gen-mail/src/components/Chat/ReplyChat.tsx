@@ -78,7 +78,6 @@ const ReplyEmail = (props: ReplyEmailProps) => {
             <Box>
               <FormLabel>②{t("chat.replyChat.paste")}</FormLabel>
               <Textarea
-                mb="20px"
                 minH="200px"
                 name="reply"
                 value={reply}
@@ -89,7 +88,6 @@ const ReplyEmail = (props: ReplyEmailProps) => {
             <Box>
               <FormLabel>③{t("chat.replyChat.what")}</FormLabel>
               <Textarea
-                mb="20px"
                 name="description"
                 value={emailDescription}
                 onChange={(e) => setEmailDescription(e.target.value)}
@@ -112,20 +110,17 @@ const ReplyEmail = (props: ReplyEmailProps) => {
                 <option value={"professional"}>👔 {t("tone.professional")}</option>
               </Select>
             </Box>
-            <Box>
-              <Button
-                colorScheme="blue"
-                bg="cyan.400"
-                width={"100px"}
-                _hover={{ bg: "#7dc5ea" }}
-                variant="solid"
-                type="submit"
-                isLoading={isGenerating}
-                loadingText={isGenerating ? t("generating") as string : ''}
-              >
-                {t("chat.replyChat.button")}
-              </Button>
-            </Box>
+            <Button
+              colorScheme="blue"
+              bg="cyan.400"
+              _hover={{ bg: "#7dc5ea" }}
+              variant="solid"
+              type="submit"
+              isLoading={isGenerating}
+              loadingText={isGenerating ? t("generating") as string : ''}
+            >
+              {t("chat.replyChat.button")}
+            </Button>
           </VStack>
         </FormControl>
       </form>

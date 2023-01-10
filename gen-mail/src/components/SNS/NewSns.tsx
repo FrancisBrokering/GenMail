@@ -11,14 +11,19 @@ import {
   VStack,
   useColorModeValue,
   Textarea,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import GeneratedText from "../common/GeneratedText";
 import GetPlatformLogo from "../../data/GetEditerLogo";
 import LanguageInputOutput from "../common/LanguageInputOutput"
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
-const Platforms = ['Instagram', 'Facebook', 'Twitter', 'Linkedin']
+
 
 type NewEmailProps = {
   lang: string;
@@ -30,21 +35,24 @@ const NewSns = (props: NewEmailProps) => {
   const [postDescription, setPostDescription] = useState("");
   const [tone, setTone] = useState("formal");
   const [platform, setPlatform] = useState("Instagram");
+  const [platformOther, setPlatformOther] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [results, setResult] = useState(["", "", "", "", ""]);
+  const Platforms = ['Instagram', 'Facebook', 'Twitter', 'Linkedin', t("other")]
 
   async function handleSubmit(event: React.FormEvent) {
     setIsGenerating(true);
     event.preventDefault();
+    const platformToUse = platformOther != "" ? platformOther : platform
     const data = {
       dataToSendToGPT3:
-        "Create an English post about using the following information" +
+        "Create an English post about using the following information\n\n" +
         "1 Platform: " +
-        platform +
-        ".\n" +
+        platformToUse +
+        "\n" +
         "2 About: " +
         postDescription +
-        ".\n" +
+        "\n" +
         "3 Tone: " +
         tone
     };
@@ -76,45 +84,45 @@ const NewSns = (props: NewEmailProps) => {
             />
             <Box>
               <FormLabel>②{t("sns.newSns.platform")}</FormLabel>
-              {/* <Select mb='20px' placeholder={t("sns.platform.button") as string} onChange={(e) => setPlatform(e.target.value)}>
-                            <option value={t("sns.platform.instagram") as string}>{t("sns.platform.instagram")}</option>
-                            <option value={t("sns.platform.twitter") as string}>{t("sns.platform.facebook")}</option>
-                            <option value={t("sns.platform.twitter") as string}>{t("sns.platform.twitter")}</option>
-                            <option value={t("sns.platform.youtube") as string}>{t("sns.platform.youtube")}</option>
-                        </Select> */}
               <Flex mb="20px">
-                {Platforms.map((p) => {
-                  return (
-                    <Button
-                      key={p}
-                      variant={'outline'}
-                      onClick={() => setPlatform(p)}
-                      bg={platform === p ? "cyan.400" : "white"}
-                      _hover={{ bg: "#7dc5ea" }}
-                      mr="5px"
-                    >
-                      {GetPlatformLogo(p, '22px', '22px')}
-                      <Text color={platform === p ? "white" : "gray.700"} fontSize='14px'>
-                        {p}
-                      </Text>
-                    </Button>
-                  )
-                })}
+                <Menu>
+                  <MenuButton as={Button}
+                    leftIcon={GetPlatformLogo(platform, '22px', '22px')}
+                    rightIcon={<ChevronDownIcon />}
+                    variant='outline'
+                    borderColor='gray.300'
+                  >
+                    <Text fontWeight='500'>{platform}</Text>
+                  </MenuButton>
+                  <MenuList>
+                    {Platforms.map((p) => {
+                      return (
+                        <MenuItem key={p} minH='48px' onClick={(e) => {setPlatform(p); setPlatformOther("")}} icon={GetPlatformLogo(p, '22px', '22px')}>
+                          <Text color={"gray.700"} fontSize='14px'>
+                            {p}
+                          </Text>
+                        </MenuItem>
+                      )
+                    })}
+                  </MenuList>
+                </Menu>
                 <Box>
-                  <Input
-                    type="text"
-                    name="platform"
-                    onChange={(e) => setPlatform(e.target.value)}
-                    placeholder="その他"
-                    _placeholder={{ color: Placeholder_Color }}
-                  ></Input>
+                  {
+                    platform === t('other') && <Input
+                      ml='20px'
+                      type="text"
+                      name="platform"
+                      onChange={(e) => setPlatformOther(e.target.value)}
+                      placeholder={t("other") as string}
+                      _placeholder={{ color: Placeholder_Color }}
+                    />
+                  }
                 </Box>
               </Flex>
             </Box>
             <Box>
               <FormLabel>③{t("sns.newSns.about")}</FormLabel>
               <Textarea
-                mb="20px"
                 name="description"
                 value={postDescription}
                 onChange={(e) => setPostDescription(e.target.value)}
@@ -148,20 +156,17 @@ const NewSns = (props: NewEmailProps) => {
                 </option>
               </Select>
             </Box>
-            <Box>
-              <Button
-                colorScheme="blue"
-                bg="cyan.400"
-                width={"100px"}
-                _hover={{ bg: "#7dc5ea" }}
-                variant="solid"
-                type="submit"
-                isLoading={isGenerating}
-                loadingText={isGenerating ? t("generating") as string : ''}
-              >
-                {t("sns.newSns.button")}
-              </Button>
-            </Box>
+            <Button
+              colorScheme="blue"
+              bg="cyan.400"
+              _hover={{ bg: "#7dc5ea" }}
+              variant="solid"
+              type="submit"
+              isLoading={isGenerating}
+              loadingText={isGenerating ? t("generating") as string : ''}
+            >
+              {t("sns.newSns.button")}
+            </Button>
           </VStack>
         </FormControl>
       </form>
