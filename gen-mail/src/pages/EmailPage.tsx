@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import NewEmail from "../components/Email/NewEmail";
 import {
   Box,
   Select,
@@ -16,12 +15,15 @@ import {
   TabPanels,
   useColorModeValue,
 } from "@chakra-ui/react";
+import NewEmail from "../components/Email/NewEmail";
 import ReplyEmail from "../components/Email/ReplyEmail";
 import ReviewEmail from "../components/Email/ReviewEmail";
 import EditEmail from "../components/Email/EditEmail";
 import { useTranslation } from "react-i18next";
 import EditArea from "../components/EditArea";
 import LanguageInputOutput from "../components/common/LanguageInputOutput";
+
+const EmailPages = ["New", "Reply", "Edit", "Review"]
 
 
 const EmailPage = () => {
@@ -40,15 +42,23 @@ const EmailPage = () => {
   const TabPanel_Bg = useColorModeValue("white", "gray.700")
   const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600")
 
+  const getEmailPage = (name: string) => {
+    if (name === "New") return (<NewEmail lang={language} setLanguage={setLanguage} />)
+    if (name === "Reply") return (<ReplyEmail lang={language} setLanguage={setLanguage} />)
+    if (name === "Edit") return (<EditEmail lang={language} setLanguage={setLanguage} />)
+    if (name === "Review") return (<ReviewEmail lang={language} setLanguage={setLanguage} />)
+  }
+
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
       <GridItem colSpan={3}>
-        <Box margin="10px 20px 0px 20px" >
+        <Box margin="10px 20px 10px 20px">
           <Tabs variant="enclosed">
             <TabList>
               {tabs.map((tab) => {
                 return (
-                  <Tab 
+                  <Tab
+                    height={"46px"}
                     key={tab.option}
                     bg={generateOption === tab.option ? Tab_Bg : "transparent"}
                     onClick={() => setGenerateOption(tab.option)}
@@ -61,24 +71,25 @@ const EmailPage = () => {
               })}
             </TabList>
             <TabPanels bg={TabPanel_Bg}>
-              <TabPanel border="1px solid" borderColor={TabPanel_Border}>
-                <NewEmail lang={language} setLanguage={setLanguage} />
-              </TabPanel>
-              <TabPanel border="1px solid" borderColor={TabPanel_Border}>
-                <ReplyEmail lang={language} setLanguage={setLanguage} />
-              </TabPanel>
-              <TabPanel border="1px solid" borderColor={TabPanel_Border}>
-                <EditEmail lang={language} setLanguage={setLanguage} />
-              </TabPanel>
-              <TabPanel border="1px solid" borderColor={TabPanel_Border}>
-                <ReviewEmail lang={language} setLanguage={setLanguage} />
-              </TabPanel>
+              {EmailPages.map((page) => {
+                return (
+                  <TabPanel
+                    key={page}
+                    border="1px solid" 
+                    // borderRight="0px" 
+                    borderColor={TabPanel_Border} 
+                    // minHeight="95vh"
+                  >
+                    {getEmailPage(page)}
+                  </TabPanel>
+                )
+              })}
             </TabPanels>
           </Tabs>
         </Box>
       </GridItem>
       <GridItem colSpan={2}>
-        <Box margin="10px 20px 0px 0px">
+        <Box margin="10px 20px 10px 0px">
           <EditArea></EditArea>
         </Box>
       </GridItem>

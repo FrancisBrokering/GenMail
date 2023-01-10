@@ -7,6 +7,7 @@ import {
   Textarea,
   Button,
   useClipboard,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import Editor from "./editor/Editor";
 import { useTranslation } from "react-i18next";
@@ -19,18 +20,25 @@ const countWords = (str: string) => {
 const EditArea = () => {
   const { onCopy, value, setValue, hasCopied } = useClipboard("");
   const { t } = useTranslation();
+  const Editor_BorderColor = useColorModeValue("#e2e8f0", "gray.600");
+  const Editor_Bg = useColorModeValue("white", "gray.700")
 
   return (
     <Box
+      // borderLeft={"1px solid #e2e8f0"}
+      borderTop={"1px solid #e2e8f0"}
       borderLeft={"1px solid #e2e8f0"}
       borderBottom={"1px solid #e2e8f0"}
       borderRight={"1px solid #e2e8f0"}
-      bg={'white'}
-      borderRadius='10px'
-      pb={'50px'}
+      borderColor={Editor_BorderColor}
+      borderRadius="10px"
+      // borderTopLeftRadius="10px"
+      // borderTopRightRadius="10px"
+      bg={Editor_Bg}
+      // minHeight="85vh"
     >
       <Editor></Editor>
-      <Flex margin={"5px"}>
+      <Flex margin={"40px 20px"}>
         <Button
           onClick={onCopy}
           mt={2}

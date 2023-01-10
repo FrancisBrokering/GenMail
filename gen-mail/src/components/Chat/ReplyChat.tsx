@@ -76,24 +76,25 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               setLanguage={props.setLanguage}
             />
             <Box>
-              <FormLabel>②{t("chat.replyChat.paste")}</FormLabel>
-              <Textarea
-                minH="200px"
-                name="reply"
-                value={reply}
-                onChange={(e) => setReply(e.target.value)}
-                required
-              />
+            <FormLabel>②{t("chat.replyChat.paste")}</FormLabel>
+            <Textarea
+              minH="200px"
+              name="reply"
+              value={reply}
+              onChange={(e) => setReply(e.target.value)}
+              required
+            />
             </Box>
             <Box>
-              <FormLabel>③{t("chat.replyChat.what")}</FormLabel>
-              <Textarea
-                name="description"
-                value={emailDescription}
-                onChange={(e) => setEmailDescription(e.target.value)}
-                placeholder={t("chat.replyChat.examples.what") as string}
-                _placeholder={{ color: Placeholder_Color }}
-              />
+            <FormLabel>③{t("chat.replyChat.what")}</FormLabel>
+            <Input
+              type="text"
+              name="description"
+              value={emailDescription}
+              onChange={(e) => setEmailDescription(e.target.value)}
+              placeholder={t("chat.replyChat.examples.what") as string}
+              _placeholder={{ color: Placeholder_Color }}
+            />
             </Box>
             <Box>
               <FormLabel>④{t("chat.replyChat.tone")}</FormLabel>

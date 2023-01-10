@@ -50,18 +50,19 @@ const ChatPage = () => {
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
       <GridItem colSpan={3}>
-        <Box margin="10px 20px 0px 20px">
+        <Box margin="10px 20px 10px 20px">
           {/* <Select mb='20px' onChange={(e) => setGenerateOption(e.target.value)} w='300px'>
                         <option value='Reply'>💬 {t("chat.replyChat.option")}</option>
                     </Select> */}
           <Tabs variant="enclosed">
             <TabList>
               <Tab
+                height={"46px"}
                 bg={generateOption === "Reply" ? Tab_Bg : "transparent"}
-                onClick={(e) => setGenerateOption("Reply")}
+                onClick={() => setGenerateOption("Reply")}
               >
                 <Text color={generateOption === "Reply" ? Tab_Color : "gray.600"}>
-                  {t("chat.replyChat.option")}
+                  💬 {t("chat.replyChat.option")}
                 </Text>
               </Tab>
             </TabList>
@@ -74,7 +75,7 @@ const ChatPage = () => {
         </Box>
       </GridItem>
       <GridItem colSpan={2}>
-        <Box margin="10px 20px 0px 0px">
+        <Box margin="10px 20px 10px 0px">
           <EditArea></EditArea>
         </Box>
       </GridItem>

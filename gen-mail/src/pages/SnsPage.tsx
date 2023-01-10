@@ -43,15 +43,16 @@ const SnsPage = () => {
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
       <GridItem colSpan={3}>
-        <Box margin="10px 20px 0px 20px">
+        <Box margin="10px 20px 10px 20px">
           <Tabs variant="enclosed">
             <TabList>
               <Tab
+                height={"46px"}
                 bg={generateOption === "New" ? Tab_Bg : "transparent"}
                 onClick={() => setGenerateOption("New")}
               >
                 <Text color={generateOption === "New" ? Tab_Color : "gray.600"}>
-                  {t("sns.newSns.option")}
+                  📝 {t("sns.newSns.option")}
                 </Text>
               </Tab>
               {/* <Tab onClick={(e) => setGenerateOption('Review')}>
@@ -71,7 +72,7 @@ const SnsPage = () => {
         </Box>
       </GridItem>
       <GridItem colSpan={2}>
-        <Box margin="10px 20px 0px 0px">
+        <Box margin="10px 20px 10px 0px">
           <EditArea></EditArea>
         </Box>
       </GridItem>
