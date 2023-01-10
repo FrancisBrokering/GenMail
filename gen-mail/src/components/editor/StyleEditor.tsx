@@ -105,7 +105,7 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     tab-size: 1;
     outline: 0;
     padding: 15px 10px;
-    caret-color: #444;
+    caret-color: ${(props) => props.theme === "dark" ? "#a9a9a9" : "#444"};
   }
 
   .editor-placeholder {
@@ -142,19 +142,19 @@ const StyledEditor = styled("div")<StyledEditorProps>`
   }
 
   .editor-text-code {
-    /* background-color: rgb(240, 242, 245); */
+    background-color: ${(props) => props.theme === "dark" ? "rgb(39, 39, 39)" : "rgb(240, 242, 245)"};
     padding: 1px 0.25rem;
     font-family: Menlo, Consolas, Monaco, monospace;
     font-size: 94%;
   }
 
   .editor-link {
-    color: rgb(33, 111, 219);
+    color: ${(props) => props.theme === "dark" ? "rgb(65, 135, 232)" : "rgb(33, 111, 219)"};
     text-decoration: none;
   }
 
   .editor-code {
-    background-color: rgb(240, 242, 245);
+    background-color: ${(props) => props.theme === "dark" ?"rgb(48, 48, 48)" : "rgb(240, 242, 245)"};
     font-family: Menlo, Consolas, Monaco, monospace;
     display: block;
     padding: 8px 8px 8px 52px;
