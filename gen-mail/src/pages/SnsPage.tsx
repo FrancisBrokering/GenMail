@@ -45,9 +45,10 @@ const SnsPage = () => {
       <GridItem colSpan={3}>
         <Box margin="10px 20px 10px 20px">
           <Tabs variant="enclosed">
-            <TabList>
+            <TabList borderBottom={"0px"} pb={"1px"}>
               <Tab
                 height={"46px"}
+                // borderBottom={"0px"}
                 bg={generateOption === "New" ? Tab_Bg : "transparent"}
                 onClick={() => setGenerateOption("New")}
               >
@@ -59,8 +60,14 @@ const SnsPage = () => {
                                 <Text color={generateOption === 'Review' ? 'black' : 'grey'}>📝 {t("sns.reviewSns.option")}</Text>
                             </Tab> */}
             </TabList>
-            <TabPanels bg={TabPanel_Bg}>
-              <TabPanel border="1px solid" borderColor={TabPanel_Border}>
+            <TabPanels 
+              bg={TabPanel_Bg}
+              border="1px solid" 
+              borderColor={TabPanel_Border}
+              borderTopRightRadius={"10px"}
+              borderBottomRadius={"10px"}
+            >
+              <TabPanel>
                 <NewSns lang={language} setLanguage={setLanguage} />
               </TabPanel>
               {/* <TabPanel border='1px solid' borderColor='#e2e8f0'>
