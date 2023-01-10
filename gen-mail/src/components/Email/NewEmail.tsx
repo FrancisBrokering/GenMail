@@ -131,7 +131,7 @@ const NewEmail = (props: NewEmailProps) => {
           </VStack>
         </FormControl>
       </form>
-      <Box maxW="100%" whiteSpace="pre-wrap" pb="100px">
+      <Box maxW="100%" whiteSpace="pre-wrap" pb="70px">
         {results[0] === "" ? (
           <></>
         ) : (

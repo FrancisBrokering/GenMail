@@ -31,13 +31,14 @@ const EditArea = () => {
       borderBottom={"1px solid #e2e8f0"}
       borderRight={"1px solid #e2e8f0"}
       borderColor={Editor_BorderColor}
-      borderTopLeftRadius="10px"
-      borderTopRightRadius="10px"
+      borderRadius="10px"
+      // borderTopLeftRadius="10px"
+      // borderTopRightRadius="10px"
       bg={Editor_Bg}
-      minHeight="100vh"
+      // minHeight="85vh"
     >
       <Editor></Editor>
-      <Flex margin={"5px"}>
+      <Flex margin={"40px 20px"}>
         <Button
           onClick={onCopy}
           mt={2}

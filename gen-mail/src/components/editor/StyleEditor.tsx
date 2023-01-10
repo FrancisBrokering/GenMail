@@ -9,8 +9,6 @@
 } */
 // import { useColorModeValue } from "@chakra-ui/react";
 import styled from "@emotion/styled";
-import css from "@emotion/react";
-import { propNames } from "@chakra-ui/react";
 
 import arrow_counterclockwise from "./logos/arrow-counterclockwise.svg";
 import arrow_clockwise from "./logos/arrow-clockwise.svg";
@@ -416,12 +414,12 @@ const StyledEditor = styled("div")<StyledEditorProps>`
   }
 
   .toolbar .toolbar-item:hover:not([disabled]) {
-    background-color: #eee;
+    background-color: ${(props) => props.theme === "dark" ? "#525252" : "#eee"};
   }
 
   .toolbar .divider {
     width: 1px;
-    background-color: #eee;
+    background-color: ${(props) => props.theme === "dark" ? "#4A5568" : "#eee"};
     margin: 0 4px;
   }
 
