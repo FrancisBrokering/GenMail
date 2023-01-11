@@ -20,6 +20,7 @@ import GetPlatformLogo from "../../data/GetEditerLogo";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import SelectTone from "../common/SelectTone";
+import { FetchDavinci } from "../../utility/CommonMethods";
 
 type NewEmailProps = {
   lang: string;
@@ -43,34 +44,19 @@ const NewSns = (props: NewEmailProps) => {
   ];
 
   async function handleSubmit(event: React.FormEvent) {
-    setIsGenerating(true);
-    event.preventDefault();
     const platformToUse = platformOther != "" ? platformOther : platform;
-    const data = {
-      dataToSendToGPT3:
-        "Create an English post about using the following information\n\n" +
-        "1 Platform: " +
-        platformToUse +
-        "\n" +
-        "2 About: " +
-        postDescription +
-        "\n" +
-        "3 Tone: " +
-        tone,
-    };
-    const response = await fetch("http://localhost:8080", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    const json = await response.json();
-    console.log("result is: ", json);
-    setIsGenerating(false);
-    setResult(json.result);
-    setPostDescription("");
+    const instruction =
+      "Create an English post using the following information\n\n" +
+      "1 Platform: " +
+      platformToUse +
+      "\n" +
+      "2 About: " +
+      postDescription +
+      "\n" +
+      "3 Tone: " +
+      tone
+      
+      FetchDavinci(setIsGenerating, setResult, instruction, event)
   }
 
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200");

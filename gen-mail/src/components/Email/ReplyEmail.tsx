@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { FetchDavinci } from "../../utility/CommonMethods";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 import SelectTone from "../common/SelectTone";
@@ -28,38 +29,19 @@ const ReplyEmail = (props: ReplyEmailProps) => {
   const [results, setResult] = useState(["", "", ""]);
 
   async function handleSubmit(event: React.FormEvent) {
-    setIsGenerating(true);
-    event.preventDefault();
     let details = emailDescription;
     if (emailDescription != "") {
-      details = " including the details " + emailDescription + " ";
+      details = "2 About: " + emailDescription + " ";
     }
-    const data = {
-      dataToSendToGPT3:
-        reply +
-        "\n\n" +
-        "Write a reply to the above email in English using the following information: \n\n" +
-        "1 About: " +
-        details +
-        "\n" +
-        "2 Tone: " +
-        tone
-    };
-    console.log("data is: ", data);
-    const response = await fetch("http://localhost:8080", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const instruction =
+      reply +
+      "\n\n" +
+      "Write a reply to the above email in English using the following information: \n\n" +
+      "1 Tone: " +
+      tone +
+      details
 
-    const json = await response.json();
-    console.log("result is: ", json);
-    setIsGenerating(false);
-    setResult(json.result);
-    setReply("");
-    setEmailDescription("");
+    FetchDavinci(setIsGenerating, setResult, instruction, event)
   }
 
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200")

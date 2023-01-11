@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput"
 import SelectTone from "../common/SelectTone";
+import { FetchDavinci } from "../../utility/CommonMethods";
 
 type NewEmailProps = {
   lang: string;
@@ -26,37 +27,21 @@ const NewEmail = (props: NewEmailProps) => {
   const [receiver, setReceiver] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [results, setResult] = useState(["", "", ""]);
-
+  
   async function handleSubmit(event: React.FormEvent) {
-    setIsGenerating(true);
-    event.preventDefault();
-    const data = {
-      dataToSendToGPT3:
-        "write an email in English using the following information: \n\n" +
-        "1 About: " +
-        emailDescription +
-        "\n" +
-        "2 To: " +
-        receiver +
-        "\n" +
-        "3 Tone: " +
-        tone
-    };
-    const response = await fetch("http://localhost:8080", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    const json = await response.json();
-    console.log("result is: ", json);
-    setIsGenerating(false);
-    setResult(json.result);
-    setReceiver("");
-    setEmailDescription("");
+    const instruction =
+      "write an email in English using the following information: \n\n" +
+      "1 About: " +
+      emailDescription +
+      "\n" +
+      "2 To: " +
+      receiver +
+      "\n" +
+      "3 Tone: " +
+      tone
+    FetchDavinci(setIsGenerating, setResult, instruction, event)
   }
+
 
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200")
 

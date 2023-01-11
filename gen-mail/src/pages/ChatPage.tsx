@@ -55,7 +55,6 @@ const ChatPage = () => {
             <TabList borderBottom={"0px"} pb={"1px"}>
               <Tab
                 height={"46px"}
-                // borderBottom={"0px"}
                 bg={generateOption === "Reply" ? Tab_Bg : "transparent"}
                 onClick={() => setGenerateOption("Reply")}
               >
