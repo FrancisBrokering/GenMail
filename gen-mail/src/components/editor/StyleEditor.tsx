@@ -23,7 +23,7 @@ import type_bold from "./logos/type-bold.svg";
 import type_italic from "./logos/type-italic.svg";
 import type_underline from "./logos/type-underline.svg";
 import type_strikethrough from "./logos/type-strikethrough.svg";
-import link from "./logos/link.svg"
+import link from "./logos/link.svg";
 import pencil_fill from "./logos/pencil-fill.svg";
 import chevron_down from "./logos/chevron-down.svg";
 
@@ -31,7 +31,7 @@ import chevron_down from "./logos/chevron-down.svg";
 
 type StyledEditorProps = {
   theme: string;
-}
+};
 
 const StyledEditor = styled("div")<StyledEditorProps>`
   .other h2 {
@@ -74,7 +74,7 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     margin: 0px auto 0px auto;
     /* border-radius: 2px; */
     max-width: 500px;
-    color: ${(props) => props.theme === "dark" ? "#fff" : "#000"};
+    color: ${(props) => (props.theme === "dark" ? "#fff" : "#000")};
     position: relative;
     line-height: 20px;
     font-weight: 400;
@@ -87,12 +87,15 @@ const StyledEditor = styled("div")<StyledEditorProps>`
   }
 
   .editor-inner {
-    background: ${(props) => props.theme === "dark" ? "#2D3748" : "#fff"};
+    background: ${(props) => (props.theme === "dark" ? "#2D3748" : "#fff")};
     position: relative;
     /* border-right: 1px solid gray; */
-    /* border-color: ${(props) => props.theme === "dark" ? "#4A5568": "#e2e8f0"}; */
-    border-top: 1px solid ${(props) => props.theme === "dark" ? "#4A5568": "#e2e8f0"};
-    border-bottom: 1px solid ${(props) => props.theme === "dark" ? "#4A5568": "#e2e8f0"};
+    /* border-color: ${(props) =>
+      props.theme === "dark" ? "#4A5568" : "#e2e8f0"}; */
+    border-top: 1px solid
+      ${(props) => (props.theme === "dark" ? "#4A5568" : "#e2e8f0")};
+    border-bottom: 1px solid
+      ${(props) => (props.theme === "dark" ? "#4A5568" : "#e2e8f0")};
     min-height: 75vh;
   }
 
@@ -105,7 +108,7 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     tab-size: 1;
     outline: 0;
     padding: 15px 10px;
-    caret-color: ${(props) => props.theme === "dark" ? "#a9a9a9" : "#444"};
+    caret-color: ${(props) => (props.theme === "dark" ? "#a9a9a9" : "#444")};
   }
 
   .editor-placeholder {
@@ -142,19 +145,22 @@ const StyledEditor = styled("div")<StyledEditorProps>`
   }
 
   .editor-text-code {
-    background-color: ${(props) => props.theme === "dark" ? "rgb(39, 39, 39)" : "rgb(240, 242, 245)"};
+    background-color: ${(props) =>
+      props.theme === "dark" ? "rgb(39, 39, 39)" : "rgb(240, 242, 245)"};
     padding: 1px 0.25rem;
     font-family: Menlo, Consolas, Monaco, monospace;
     font-size: 94%;
   }
 
   .editor-link {
-    color: ${(props) => props.theme === "dark" ? "rgb(65, 135, 232)" : "rgb(33, 111, 219)"};
+    color: ${(props) =>
+      props.theme === "dark" ? "rgb(65, 135, 232)" : "rgb(33, 111, 219)"};
     text-decoration: none;
   }
 
   .editor-code {
-    background-color: ${(props) => props.theme === "dark" ?"rgb(48, 48, 48)" : "rgb(240, 242, 245)"};
+    background-color: ${(props) =>
+      props.theme === "dark" ? "rgb(48, 48, 48)" : "rgb(240, 242, 245)"};
     font-family: Menlo, Consolas, Monaco, monospace;
     display: block;
     padding: 8px 8px 8px 52px;
@@ -365,7 +371,7 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     display: flex;
     height: 44px;
     padding-bottom: 1px;
-    background: ${(props) => props.theme === "dark" ? "#2D3748" : "#fff"};
+    background: ${(props) => (props.theme === "dark" ? "#2D3748" : "#fff")};
     padding: 4px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -414,12 +420,14 @@ const StyledEditor = styled("div")<StyledEditorProps>`
   }
 
   .toolbar .toolbar-item:hover:not([disabled]) {
-    background-color: ${(props) => props.theme === "dark" ? "#525252" : "#eee"};
+    background-color: ${(props) =>
+      props.theme === "dark" ? "#525252" : "#eee"};
   }
 
   .toolbar .divider {
     width: 1px;
-    background-color: ${(props) => props.theme === "dark" ? "#4A5568" : "#eee"};
+    background-color: ${(props) =>
+      props.theme === "dark" ? "#4A5568" : "#eee"};
     margin: 0 4px;
   }
 
@@ -492,7 +500,7 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     height: 8px;
     width: 8px;
     background-image: url(${chevron_down});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   #block-controls button:hover {
@@ -513,37 +521,37 @@ const StyledEditor = styled("div")<StyledEditorProps>`
 
   #block-controls span.block-type.paragraph {
     background-image: url(${text_paragraph});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   #block-controls span.block-type.h1 {
     background-image: url(${type_h1});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   #block-controls span.block-type.h2 {
     background-image: url(${type_h2});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   #block-controls span.block-type.quote {
     background-image: url(${chat_square_quote});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   #block-controls span.block-type.ul {
     background-image: url(${list_ul});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   #block-controls span.block-type.ol {
     background-image: url(${list_ol});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   #block-controls span.block-type.code {
     background-image: url(${code});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   .dropdown {
@@ -645,7 +653,7 @@ const StyledEditor = styled("div")<StyledEditorProps>`
 
   .link-editor div.link-edit {
     background-image: url(${pencil_fill});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
     background-size: 16px;
     background-position: center;
     background-repeat: no-repeat;
@@ -700,82 +708,82 @@ const StyledEditor = styled("div")<StyledEditorProps>`
 
   i.undo {
     background-image: url(${arrow_counterclockwise});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   i.redo {
     background-image: url(${arrow_clockwise});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   .icon.paragraph {
     background-image: url(${text_paragraph});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   .icon.large-heading,
   .icon.h1 {
     background-image: url(${type_h1});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   .icon.small-heading,
   .icon.h2 {
     background-image: url(${type_h2});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   .icon.bullet-list,
   .icon.ul {
     background-image: url(${list_ul});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   .icon.numbered-list,
   .icon.ol {
     background-image: url(${list_ol});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   .icon.quote {
     background-image: url(${chat_square_quote});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   .icon.code {
     background-image: url(${code});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   i.bold {
     background-image: url(${type_bold});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   i.italic {
     background-image: url(${type_italic});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   i.underline {
     background-image: url(${type_underline});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   i.strikethrough {
     background-image: url(${type_strikethrough});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   i.code {
     background-image: url(${code});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
   i.link {
     background-image: url(${link});
-    filter: invert(${(props) => props.theme === "dark" ? 1: 0});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
-`
+`;
 
 export default StyledEditor;

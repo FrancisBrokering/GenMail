@@ -54,9 +54,9 @@ const NewSns = (props: NewEmailProps) => {
       postDescription +
       "\n" +
       "3 Tone: " +
-      tone
-      
-      FetchDavinci(setIsGenerating, setResult, instruction, event)
+      tone;
+
+    FetchDavinci(setIsGenerating, setResult, instruction, event);
   }
 
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200");

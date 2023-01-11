@@ -15,8 +15,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FetchDavinci } from "../../utility/CommonMethods";
 import GeneratedText from "../common/GeneratedText";
-import LanguageInputOutput from "../common/LanguageInputOutput"
-
+import LanguageInputOutput from "../common/LanguageInputOutput";
 
 type EditEmailProps = {
   lang: string;
@@ -34,17 +33,17 @@ const EditEmail = (props: EditEmailProps) => {
     const instruction =
       oldEmail +
       "\n\nEdit the above email using the following instruction: \n\n" +
-      editDescription
-    FetchDavinci(setIsGenerating, setResult, instruction, event)
+      editDescription;
+    FetchDavinci(setIsGenerating, setResult, instruction, event);
   }
 
-  const Placeholder_Color = useColorModeValue("gray.500", "gray.200")
+  const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
 
   return (
     <Box position={"relative"}>
       <form onSubmit={handleSubmit}>
         <FormControl>
-          <VStack alignItems={'left'} spacing={'40px'}>
+          <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
               pageTitle={t("email.editEmail.pageTitle") as string}
               setLanguage={props.setLanguage}
@@ -78,7 +77,7 @@ const EditEmail = (props: EditEmailProps) => {
               variant="solid"
               type="submit"
               isLoading={isGenerating}
-              loadingText={isGenerating ? t("generating") as string : ''}
+              loadingText={isGenerating ? (t("generating") as string) : ""}
             >
               {t("email.editEmail.button")}
             </Button>

@@ -42,10 +42,10 @@ const ChatPage = () => {
     }
   }
 
-  const Tab_Bg = useColorModeValue("white", "gray.700")
-  const Tab_Color = useColorModeValue("black", "white")
-  const TabPanel_Bg = useColorModeValue("white", "gray.700")
-  const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600")
+  const Tab_Bg = useColorModeValue("white", "gray.700");
+  const Tab_Color = useColorModeValue("black", "white");
+  const TabPanel_Bg = useColorModeValue("white", "gray.700");
+  const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600");
 
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
@@ -58,14 +58,16 @@ const ChatPage = () => {
                 bg={generateOption === "Reply" ? Tab_Bg : "transparent"}
                 onClick={() => setGenerateOption("Reply")}
               >
-                <Text color={generateOption === "Reply" ? Tab_Color : "gray.600"}>
+                <Text
+                  color={generateOption === "Reply" ? Tab_Color : "gray.600"}
+                >
                   💬 {t("chat.replyChat.option")}
                 </Text>
               </Tab>
             </TabList>
-            <TabPanels 
+            <TabPanels
               bg={TabPanel_Bg}
-              border="1px solid" 
+              border="1px solid"
               borderColor={TabPanel_Border}
               borderTopRightRadius={"10px"}
               borderBottomRadius={"10px"}

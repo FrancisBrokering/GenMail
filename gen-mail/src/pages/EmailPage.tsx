@@ -22,8 +22,7 @@ import EditEmail from "../components/Email/EditEmail";
 import { useTranslation } from "react-i18next";
 import EditArea from "../components/EditArea";
 
-const EmailPages = ["New", "Reply", "Edit", "Review"]
-
+const EmailPages = ["New", "Reply", "Edit", "Review"];
 
 const EmailPage = () => {
   const [generateOption, setGenerateOption] = useState("New");
@@ -33,21 +32,29 @@ const EmailPage = () => {
     { option: "New", emoji: "✉️", i18message: t("email.newEmail.option") },
     { option: "Reply", emoji: "📩", i18message: t("email.replyEmail.option") },
     { option: "Edit", emoji: "📧", i18message: t("email.editEmail.option") },
-    { option: "Review", emoji: "📨", i18message: t("email.reviewEmail.option") },
-  ]
+    {
+      option: "Review",
+      emoji: "📨",
+      i18message: t("email.reviewEmail.option"),
+    },
+  ];
 
-  const Tab_Bg = useColorModeValue("white", "gray.700")
-  const SelectedTab_Color = useColorModeValue("black", "white")
-  const Tab_Color = useColorModeValue("gray.600", "gray.400")
-  const TabPanel_Bg = useColorModeValue("white", "gray.700")
-  const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600")
+  const Tab_Bg = useColorModeValue("white", "gray.700");
+  const SelectedTab_Color = useColorModeValue("black", "white");
+  const Tab_Color = useColorModeValue("gray.600", "gray.400");
+  const TabPanel_Bg = useColorModeValue("white", "gray.700");
+  const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600");
 
   const getEmailPage = (name: string) => {
-    if (name === "New") return (<NewEmail lang={language} setLanguage={setLanguage} />)
-    if (name === "Reply") return (<ReplyEmail lang={language} setLanguage={setLanguage} />)
-    if (name === "Edit") return (<EditEmail lang={language} setLanguage={setLanguage} />)
-    if (name === "Review") return (<ReviewEmail lang={language} setLanguage={setLanguage} />)
-  }
+    if (name === "New")
+      return <NewEmail lang={language} setLanguage={setLanguage} />;
+    if (name === "Reply")
+      return <ReplyEmail lang={language} setLanguage={setLanguage} />;
+    if (name === "Edit")
+      return <EditEmail lang={language} setLanguage={setLanguage} />;
+    if (name === "Review")
+      return <ReviewEmail lang={language} setLanguage={setLanguage} />;
+  };
 
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
@@ -64,27 +71,29 @@ const EmailPage = () => {
                     bg={generateOption === tab.option ? Tab_Bg : "transparent"}
                     onClick={() => setGenerateOption(tab.option)}
                   >
-                    <Text color={generateOption === tab.option ? SelectedTab_Color : Tab_Color}>
+                    <Text
+                      color={
+                        generateOption === tab.option
+                          ? SelectedTab_Color
+                          : Tab_Color
+                      }
+                    >
                       {tab.emoji} {tab.i18message}
                     </Text>
                   </Tab>
-                )
+                );
               })}
             </TabList>
-            <TabPanels 
-              bg={TabPanel_Bg} 
-              border="1px solid" 
+            <TabPanels
+              bg={TabPanel_Bg}
+              border="1px solid"
               borderColor={TabPanel_Border}
               borderTopLeftRadius={generateOption === "New" ? "0px" : "10px"}
               borderTopRightRadius={"10px"}
               borderBottomRadius={"10px"}
             >
               {EmailPages.map((page) => {
-                return (
-                  <TabPanel key={page}>
-                    {getEmailPage(page)}
-                  </TabPanel>
-                )
+                return <TabPanel key={page}>{getEmailPage(page)}</TabPanel>;
               })}
             </TabPanels>
           </Tabs>

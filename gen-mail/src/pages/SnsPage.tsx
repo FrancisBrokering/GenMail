@@ -35,10 +35,10 @@ const SnsPage = () => {
     }
   }
 
-  const Tab_Bg = useColorModeValue("white", "gray.700")
-  const Tab_Color = useColorModeValue("black", "white")
-  const TabPanel_Bg = useColorModeValue("white", "gray.700")
-  const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600")
+  const Tab_Bg = useColorModeValue("white", "gray.700");
+  const Tab_Color = useColorModeValue("black", "white");
+  const TabPanel_Bg = useColorModeValue("white", "gray.700");
+  const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600");
 
   return (
     <Grid templateColumns={"repeat(5, 1fr)"}>
@@ -60,9 +60,9 @@ const SnsPage = () => {
                                 <Text color={generateOption === 'Review' ? 'black' : 'grey'}>📝 {t("sns.reviewSns.option")}</Text>
                             </Tab> */}
             </TabList>
-            <TabPanels 
+            <TabPanels
               bg={TabPanel_Bg}
-              border="1px solid" 
+              border="1px solid"
               borderColor={TabPanel_Border}
               borderTopRightRadius={"10px"}
               borderBottomRadius={"10px"}

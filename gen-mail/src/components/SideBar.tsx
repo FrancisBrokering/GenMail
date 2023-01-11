@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import { Link as ReactRouterLink } from "react-router-dom"
+import { Link as ReactRouterLink } from "react-router-dom";
 import {
   IconButton,
   Box,
@@ -23,13 +23,7 @@ import {
   Spacer,
   Divider,
 } from "@chakra-ui/react";
-import {
-  FiHome,
-  FiMenu,
-  FiMail,
-  FiTwitter,
-  FiSend,
-} from "react-icons/fi";
+import { FiHome, FiMenu, FiMail, FiTwitter, FiSend } from "react-icons/fi";
 import { IconType } from "react-icons";
 import { ReactText } from "react";
 import { useTranslation } from "react-i18next";
@@ -47,11 +41,15 @@ type SidebarProps = {
   setUserLanguage: (lang: string) => void;
 };
 
-export default function Sidebar({ children, userLanguage, setUserLanguage }: SidebarProps) {
+export default function Sidebar({
+  children,
+  userLanguage,
+  setUserLanguage,
+}: SidebarProps) {
   // const [ theme, setTheme ] = useState("")
   const { isOpen, onOpen, onClose } = useDisclosure();
   const Sidebar_Content_Bg = useColorModeValue("gray.200", "gray.900");
-  const Sidebar_Body_Bg = useColorModeValue("gray.50", "gray.800")
+  const Sidebar_Body_Bg = useColorModeValue("gray.50", "gray.800");
 
   return (
     <Box minH="100vh">
@@ -72,7 +70,11 @@ export default function Sidebar({ children, userLanguage, setUserLanguage }: Sid
         size="full"
       >
         <DrawerContent>
-          <SidebarContent onClose={onClose} userLanguage={userLanguage} setUserLanguage={setUserLanguage} />
+          <SidebarContent
+            onClose={onClose}
+            userLanguage={userLanguage}
+            setUserLanguage={setUserLanguage}
+          />
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
@@ -120,8 +122,8 @@ const SidebarContent = ({
 
   const Sidebar_Border = useColorModeValue("gray.200", "gray.700");
   const SelectLang_Border = useColorModeValue("gray.400", "gray.300");
-  const Divider_Color = useColorModeValue("gray.400", "gray.600")
-  const { colorMode } = useColorMode()
+  const Divider_Color = useColorModeValue("gray.400", "gray.600");
+  const { colorMode } = useColorMode();
 
   return (
     <Box
@@ -140,7 +142,11 @@ const SidebarContent = ({
         mb="30px"
         mt="40px"
       >
-        {colorMode === "dark" ? <GenPlateLogoDarkMode height="140px" width="140px" /> : <GenPlateLogo height="140px" width="140px" />}
+        {colorMode === "dark" ? (
+          <GenPlateLogoDarkMode height="140px" width="140px" />
+        ) : (
+          <GenPlateLogo height="140px" width="140px" />
+        )}
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       <Flex flexDirection={"column"} height="70%">
@@ -153,24 +159,45 @@ const SidebarContent = ({
         </Box>
         <Spacer />
         <Box margin={"20px 15px"}>
-          <Divider borderColor={Divider_Color}/>
+          <Divider borderColor={Divider_Color} />
         </Box>
         <Box mt="10px" ml="25px">
           <Menu>
-            <MenuButton as={Button}
-              leftIcon={userLanguage === "ja" ? <JapanFlag margin-right='12px' width='22px' height='22px' /> : <UsaFlag margin-right='12px' width='22px' height='22px' />}
+            <MenuButton
+              as={Button}
+              leftIcon={
+                userLanguage === "ja" ? (
+                  <JapanFlag margin-right="12px" width="22px" height="22px" />
+                ) : (
+                  <UsaFlag margin-right="12px" width="22px" height="22px" />
+                )
+              }
               rightIcon={<ChevronDownIcon />}
-              variant='outline'
+              variant="outline"
               borderColor={SelectLang_Border}
             >
-              <Text fontWeight='500'>{userLanguage === "ja" ? t("japanese") : t("english")}</Text>
+              <Text fontWeight="500">
+                {userLanguage === "ja" ? t("japanese") : t("english")}
+              </Text>
             </MenuButton>
             <MenuList>
-              <MenuItem minH='48px' onClick={(e) => setUserLanguage("ja")} icon={<JapanFlag margin-right='12px' width='22px' height='22px' />}>
-                <Text >{t("japanese")}</Text>
+              <MenuItem
+                minH="48px"
+                onClick={(e) => setUserLanguage("ja")}
+                icon={
+                  <JapanFlag margin-right="12px" width="22px" height="22px" />
+                }
+              >
+                <Text>{t("japanese")}</Text>
               </MenuItem>
-              <MenuItem minH='40px' onClick={(e) => setUserLanguage("en")} icon={<UsaFlag margin-right='12px' width='22px' height='22px' />}>
-                <Text >{t("english")}</Text>
+              <MenuItem
+                minH="40px"
+                onClick={(e) => setUserLanguage("en")}
+                icon={
+                  <UsaFlag margin-right="12px" width="22px" height="22px" />
+                }
+              >
+                <Text>{t("english")}</Text>
               </MenuItem>
             </MenuList>
           </Menu>

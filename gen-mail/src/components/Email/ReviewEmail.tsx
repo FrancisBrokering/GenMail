@@ -13,7 +13,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FetchDavinci } from "../../utility/CommonMethods";
 import GeneratedText from "../common/GeneratedText";
-import LanguageInputOutput from "../common/LanguageInputOutput"
+import LanguageInputOutput from "../common/LanguageInputOutput";
 
 type ReviewEmailProps = {
   lang: string;
@@ -31,15 +31,15 @@ const ReviewEmail = (props: ReviewEmailProps) => {
   }, [oldEmail]);
 
   async function handleSubmit(event: React.FormEvent) {
-    const instruction = "Make this email sound better:\n\n" + oldEmail
-    FetchDavinci(setIsGenerating, setResult, instruction, event)
+    const instruction = "Make this email sound better:\n\n" + oldEmail;
+    FetchDavinci(setIsGenerating, setResult, instruction, event);
   }
 
   return (
     <Box position={"relative"}>
       <form onSubmit={handleSubmit}>
         <FormControl>
-          <VStack alignItems={'left'} spacing={'40px'}>
+          <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
               pageTitle={t("email.reviewEmail.pageTitle") as string}
               setLanguage={props.setLanguage}
@@ -61,7 +61,7 @@ const ReviewEmail = (props: ReviewEmailProps) => {
               variant="solid"
               type="submit"
               isLoading={isGenerating}
-              loadingText={isGenerating ? t("generating") as string : ''}
+              loadingText={isGenerating ? (t("generating") as string) : ""}
             >
               {t("email.reviewEmail.button")}
             </Button>

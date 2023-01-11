@@ -12,7 +12,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FetchDavinci } from "../../utility/CommonMethods";
 import GeneratedText from "../common/GeneratedText";
-import LanguageInputOutput from "../common/LanguageInputOutput"
+import LanguageInputOutput from "../common/LanguageInputOutput";
 import SelectTone from "../common/SelectTone";
 
 type ReplyEmailProps = {
@@ -31,7 +31,11 @@ const ReplyEmail = (props: ReplyEmailProps) => {
   async function handleSubmit(event: React.FormEvent) {
     let details = messageDescription;
     if (messageDescription != "") {
-      details = "\n\n2 Reply:  including the details " + "'" + messageDescription + "' ";
+      details =
+        "\n\n2 Reply:  including the details " +
+        "'" +
+        messageDescription +
+        "' ";
     }
     const instruction =
       reply +
@@ -40,18 +44,18 @@ const ReplyEmail = (props: ReplyEmailProps) => {
       "" +
       "1 Tone: " +
       tone +
-      details
-    
-    FetchDavinci(setIsGenerating, setResult, instruction, event)
+      details;
+
+    FetchDavinci(setIsGenerating, setResult, instruction, event);
   }
 
-  const Placeholder_Color = useColorModeValue("gray.500", "gray.200")
+  const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
 
   return (
     <Box position={"relative"}>
       <form onSubmit={handleSubmit}>
         <FormControl>
-          <VStack alignItems={'left'} spacing={'40px'}>
+          <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
               pageTitle={t("chat.replyChat.pageTitle")}
               setLanguage={props.setLanguage}
@@ -85,7 +89,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               variant="solid"
               type="submit"
               isLoading={isGenerating}
-              loadingText={isGenerating ? t("generating") as string : ''}
+              loadingText={isGenerating ? (t("generating") as string) : ""}
             >
               {t("chat.replyChat.button")}
             </Button>

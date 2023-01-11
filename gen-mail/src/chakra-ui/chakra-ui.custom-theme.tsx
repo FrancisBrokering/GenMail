@@ -1,12 +1,12 @@
 import { extendTheme, ThemeConfig } from "@chakra-ui/react";
 
 const config: ThemeConfig = {
-    initialColorMode: "light",
-    useSystemColorMode: true,
+  initialColorMode: "light",
+  useSystemColorMode: true,
 };
 
 export const chakraCustomTheme = extendTheme({
-    config
+  config,
 });
 
 // export function deleteColorModeInLocalStorage() {
@@ -16,4 +16,3 @@ export const chakraCustomTheme = extendTheme({
 // }
 
 // setTimeout(deleteColorModeInLocalStorage, 3000);
-

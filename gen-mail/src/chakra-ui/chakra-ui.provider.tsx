@@ -3,7 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { chakraCustomTheme } from "./chakra-ui.custom-theme";
 
 export const ChakraUIProvider = ({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) => {

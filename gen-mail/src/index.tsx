@@ -15,7 +15,9 @@ root.render(
   <I18nextProvider i18n={i18n}>
     <React.StrictMode>
       <ChakraUIProvider>
-        <ColorModeScript initialColorMode={theme.config.initialColorMode}></ColorModeScript>
+        <ColorModeScript
+          initialColorMode={theme.config.initialColorMode}
+        ></ColorModeScript>
         <App />
       </ChakraUIProvider>
     </React.StrictMode>

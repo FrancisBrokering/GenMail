@@ -39,18 +39,18 @@ const ReplyEmail = (props: ReplyEmailProps) => {
       "Write a reply to the above email in English using the following information: \n\n" +
       "1 Tone: " +
       tone +
-      details
+      details;
 
-    FetchDavinci(setIsGenerating, setResult, instruction, event)
+    FetchDavinci(setIsGenerating, setResult, instruction, event);
   }
 
-  const Placeholder_Color = useColorModeValue("gray.500", "gray.200")
+  const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
 
   return (
     <Box position={"relative"}>
       <form onSubmit={handleSubmit}>
         <FormControl>
-          <VStack alignItems={'left'} spacing={'40px'}>
+          <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
               pageTitle={t("email.replyEmail.pageTitle") as string}
               setLanguage={props.setLanguage}
@@ -84,7 +84,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               variant="solid"
               type="submit"
               isLoading={isGenerating}
-              loadingText={isGenerating ? t("generating") as string : ''}
+              loadingText={isGenerating ? (t("generating") as string) : ""}
             >
               {t("email.replyEmail.button")}
             </Button>
