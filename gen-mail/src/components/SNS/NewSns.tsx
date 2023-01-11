@@ -5,11 +5,9 @@ import {
   FormControl,
   FormLabel,
   Button,
-  Select,
   Flex,
   VStack,
   useColorModeValue,
-  Textarea,
   Menu,
   MenuButton,
   MenuList,
@@ -21,6 +19,7 @@ import GeneratedText from "../common/GeneratedText";
 import GetPlatformLogo from "../../data/GetEditerLogo";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import SelectTone from "../common/SelectTone";
 
 type NewEmailProps = {
   lang: string;
@@ -146,31 +145,7 @@ const NewSns = (props: NewEmailProps) => {
                 required
               />
             </Box>
-            <Box>
-              <FormLabel>④{t("email.newEmail.tone")}</FormLabel>
-              <Select
-                placeholder={t("tone.button") as string}
-                _placeholder={{ color: Placeholder_Color }}
-                onChange={(e) => setTone(e.target.value)}
-                required
-              >
-                <option value={t("tone.friendly") as string}>
-                  😊 {t("tone.friendly")}
-                </option>
-                <option value={t("tone.formal") as string}>
-                  💼 {t("tone.formal")}
-                </option>
-                <option value={t("tone.angry") as string}>
-                  🤬 {t("tone.angry")}
-                </option>
-                <option value={t("tone.casual") as string}>
-                  😌 {t("tone.casual")}
-                </option>
-                <option value={t("tone.professional") as string}>
-                  👔 {t("tone.professional")}
-                </option>
-              </Select>
-            </Box>
+            <SelectTone setTone={setTone} />
             <Button
               colorScheme="blue"
               bg="cyan.400"

@@ -1,12 +1,9 @@
 import {
   Box,
-  Text,
   Input,
   FormControl,
   FormLabel,
   Button,
-  Divider,
-  Select,
   Textarea,
   VStack,
   useColorModeValue,
@@ -15,6 +12,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput";
+import SelectTone from "../common/SelectTone";
 
 type ReplyEmailProps = {
   lang: string;
@@ -96,21 +94,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
                 _placeholder={{ color: Placeholder_Color }}
               />
             </Box>
-            <Box>
-              <FormLabel>④{t("email.replyEmail.tone")}</FormLabel>
-              <Select
-                placeholder={t("tone.button") as string}
-                _placeholder={{ color: Placeholder_Color }}
-                onChange={(e) => setTone(e.target.value)}
-                required
-              >
-                <option value={"friendly"}>😊 {t("tone.friendly")}</option>
-                <option value={"formal"}>💼 {t("tone.formal")}</option>
-                <option value={"angry"}>🤬 {t("tone.angry")}</option>
-                <option value={"casual"}>😌 {t("tone.casual")}</option>
-                <option value={"professional"}>👔 {t("tone.professional")}</option>
-              </Select>
-            </Box>
+            <SelectTone setTone={setTone} />
             <Button
               colorScheme="blue"
               bg="cyan.400"
