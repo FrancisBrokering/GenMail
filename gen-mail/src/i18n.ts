@@ -32,11 +32,13 @@ i18n
           selectLang: "Select a language",
           generating: "Generating",
           tone: {
+            label: "Chose a tone",
             button: "Select a Tone",
             friendly: "Friendly",
             formal: "Formal",
             angry: "Angry",
             casual: "Casual",
+            sad: "Sad",
             professional: "Professional",
           },
           email: {
@@ -51,7 +53,6 @@ i18n
               button: "Generate",
               about: "What is this Email about?",
               who: "Who is this Email for?",
-              tone: "Chose a tone",
             },
             replyEmail: {
               examples: {
@@ -62,7 +63,6 @@ i18n
               button: "Generate",
               paste: "Paste the Email you received",
               what: "(optional) What do you want to say?",
-              tone: "Chose a tone",
             },
             editEmail: {
               examples: {
@@ -111,7 +111,6 @@ i18n
               button: "Generate",
               paste: "Paste the message you received",
               what: "(optional) What do you want to say?",
-              tone: "Chose a tone",
             },
           },
         },
@@ -138,11 +137,13 @@ i18n
           selectLang: "入力言語を選択してください",
           generating: "生成中",
           tone: {
+            label: "口調を選択してください",
             button: "- 選択 -",
             friendly: "フレンドリー",
             formal: "フォーマル",
             angry: "怒り",
             casual: "カジュアル",
+            sad: "悲しい",
             professional: "プロフェッショナル",
           },
           email: {
@@ -157,7 +158,6 @@ i18n
               button: "生成",
               about: "Eメールの内容を入力してください",
               who: "宛名との関係を入力してください",
-              tone: "口調を選択してください",
             },
             replyEmail: {
               examples: {
@@ -168,7 +168,6 @@ i18n
               button: "生成",
               paste: "送られてきたEメールを貼り付けてください（英語）",
               what: "（オプショナル）返信したい内容を入力してください",
-              tone: "口調を選択してください",
             },
             editEmail: {
               examples: {
@@ -217,7 +216,6 @@ i18n
               button: "生成",
               paste: "送られてきたチャットを貼り付けてください（英語）",
               what: "（オプショナル）返信したい内容を入力してください",
-              tone: "口調を選択してください",
             },
           },
         },
