@@ -16,8 +16,10 @@ import LanguageInputOutput from "../common/LanguageInputOutput";
 import SelectTone from "../common/SelectTone";
 
 type ReplyEmailProps = {
-  lang: string;
-  setLanguage: (lang: string) => void;
+  inputLanguage: string;
+  outputLanguage: string;
+  setInputLanguage: (lang: string) => void;
+  setOutputLanguage: (lang: string) => void;
 };
 
 const ReplyEmail = (props: ReplyEmailProps) => {
@@ -58,7 +60,10 @@ const ReplyEmail = (props: ReplyEmailProps) => {
           <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
               pageTitle={t("chat.replyChat.pageTitle")}
-              setLanguage={props.setLanguage}
+              setInputLanguage={props.setInputLanguage}
+              setOutputLanguage={props.setOutputLanguage}
+              inputLanguage={props.inputLanguage}
+              outputLanguage={props.outputLanguage}
             />
             <Box>
               <FormLabel>②{t("chat.replyChat.paste")}</FormLabel>

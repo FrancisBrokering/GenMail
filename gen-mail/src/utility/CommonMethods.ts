@@ -20,3 +20,22 @@ export async function FetchDavinci(
   setIsGenerating(false);
   setResult(json.result);
 }
+
+export const getLanguageInEnglish = (language: string) => {
+  switch (language) {
+    case "ja":
+      return "Japanese";
+    case "en":
+      return "English";
+    case "es":
+      return "Spanish";
+    case "fr":
+      return "French";
+    case "de":
+      return "German";
+    case "it":
+      return "Italian";
+    default:
+      return "English";
+  }
+};

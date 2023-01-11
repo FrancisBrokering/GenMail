@@ -10,14 +10,19 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FetchDavinci } from "../../utility/CommonMethods";
+import {
+  FetchDavinci,
+  getLanguageInEnglish,
+} from "../../utility/CommonMethods";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 import SelectTone from "../common/SelectTone";
 
 type ReplyEmailProps = {
-  lang: string;
-  setLanguage: (lang: string) => void;
+  inputLanguage: string;
+  outputLanguage: string;
+  setInputLanguage: (lang: string) => void;
+  setOutputLanguage: (lang: string) => void;
 };
 
 const ReplyEmail = (props: ReplyEmailProps) => {
@@ -36,7 +41,9 @@ const ReplyEmail = (props: ReplyEmailProps) => {
     const instruction =
       reply +
       "\n\n" +
-      "Write a reply to the above email in English using the following information: \n\n" +
+      "Write a reply to the above email in" +
+      getLanguageInEnglish(props.outputLanguage) +
+      "using the following information: \n\n" +
       "1 Tone: " +
       tone +
       details;
@@ -53,7 +60,10 @@ const ReplyEmail = (props: ReplyEmailProps) => {
           <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
               pageTitle={t("email.replyEmail.pageTitle") as string}
-              setLanguage={props.setLanguage}
+              setInputLanguage={props.setInputLanguage}
+              setOutputLanguage={props.setOutputLanguage}
+              inputLanguage={props.inputLanguage}
+              outputLanguage={props.outputLanguage}
             />
             <Box>
               <FormLabel>②{t("email.replyEmail.paste")}</FormLabel>

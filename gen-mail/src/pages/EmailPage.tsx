@@ -26,7 +26,8 @@ const EmailPages = ["New", "Reply", "Edit", "Review"];
 
 const EmailPage = () => {
   const [generateOption, setGenerateOption] = useState("New");
-  const [language, setLanguage] = useState("ja");
+  const [inputLanguage, setInputLanguage] = useState("ja");
+  const [outputLanguage, setOutputLanguage] = useState("en");
   const { t, i18n } = useTranslation();
   const tabs = [
     { option: "New", emoji: "✉️", i18message: t("email.newEmail.option") },
@@ -47,13 +48,41 @@ const EmailPage = () => {
 
   const getEmailPage = (name: string) => {
     if (name === "New")
-      return <NewEmail lang={language} setLanguage={setLanguage} />;
+      return (
+        <NewEmail
+          inputLanguage={inputLanguage}
+          outputLanguage={outputLanguage}
+          setInputLanguage={setInputLanguage}
+          setOutputLanguage={setOutputLanguage}
+        />
+      );
     if (name === "Reply")
-      return <ReplyEmail lang={language} setLanguage={setLanguage} />;
+      return (
+        <ReplyEmail
+          inputLanguage={inputLanguage}
+          outputLanguage={outputLanguage}
+          setInputLanguage={setInputLanguage}
+          setOutputLanguage={setOutputLanguage}
+        />
+      );
     if (name === "Edit")
-      return <EditEmail lang={language} setLanguage={setLanguage} />;
+      return (
+        <EditEmail
+          inputLanguage={inputLanguage}
+          outputLanguage={outputLanguage}
+          setInputLanguage={setInputLanguage}
+          setOutputLanguage={setOutputLanguage}
+        />
+      );
     if (name === "Review")
-      return <ReviewEmail lang={language} setLanguage={setLanguage} />;
+      return (
+        <ReviewEmail
+          inputLanguage={inputLanguage}
+          outputLanguage={outputLanguage}
+          setInputLanguage={setInputLanguage}
+          setOutputLanguage={setOutputLanguage}
+        />
+      );
   };
 
   return (

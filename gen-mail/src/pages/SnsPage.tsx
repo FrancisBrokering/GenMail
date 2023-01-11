@@ -21,7 +21,8 @@ import LanguageInputOutput from "../components/common/LanguageInputOutput";
 
 const SnsPage = () => {
   const [generateOption, setGenerateOption] = useState("New");
-  const [language, setLanguage] = useState("ja");
+  const [inputLanguage, setInputLanguage] = useState("ja");
+  const [outputLanguage, setOutputLanguage] = useState("en");
   const { t, i18n } = useTranslation();
 
   function GenerateOptionTitle() {
@@ -68,7 +69,12 @@ const SnsPage = () => {
               borderBottomRadius={"10px"}
             >
               <TabPanel>
-                <NewSns lang={language} setLanguage={setLanguage} />
+                <NewSns
+                  inputLanguage={inputLanguage}
+                  outputLanguage={outputLanguage}
+                  setInputLanguage={setInputLanguage}
+                  setOutputLanguage={setOutputLanguage}
+                />
               </TabPanel>
               {/* <TabPanel border='1px solid' borderColor='#e2e8f0'>
                                 <LanguageInputOutput pageTitle={GenerateOptionTitle()} setLanguage={setLanguage} />

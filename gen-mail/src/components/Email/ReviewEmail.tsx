@@ -16,8 +16,10 @@ import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 
 type ReviewEmailProps = {
-  lang: string;
-  setLanguage: (lang: string) => void;
+  inputLanguage: string;
+  outputLanguage: string;
+  setInputLanguage: (lang: string) => void;
+  setOutputLanguage: (lang: string) => void;
 };
 
 const ReviewEmail = (props: ReviewEmailProps) => {
@@ -40,12 +42,8 @@ const ReviewEmail = (props: ReviewEmailProps) => {
       <form onSubmit={handleSubmit}>
         <FormControl>
           <VStack alignItems={"left"} spacing={"40px"}>
-            <LanguageInputOutput
-              pageTitle={t("email.reviewEmail.pageTitle") as string}
-              setLanguage={props.setLanguage}
-            />
             <Box>
-              <FormLabel>②{t("email.reviewEmail.paste")}</FormLabel>
+              <FormLabel>①{t("email.reviewEmail.paste")}</FormLabel>
               <Textarea
                 minH="200px"
                 name="oldEmail"

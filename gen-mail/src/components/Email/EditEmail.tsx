@@ -13,13 +13,18 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FetchDavinci } from "../../utility/CommonMethods";
+import {
+  FetchDavinci,
+  getLanguageInEnglish,
+} from "../../utility/CommonMethods";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 
 type EditEmailProps = {
-  lang: string;
-  setLanguage: (lang: string) => void;
+  inputLanguage: string;
+  outputLanguage: string;
+  setInputLanguage: (lang: string) => void;
+  setOutputLanguage: (lang: string) => void;
 };
 
 const EditEmail = (props: EditEmailProps) => {
@@ -32,7 +37,9 @@ const EditEmail = (props: EditEmailProps) => {
   async function handleSubmit(event: React.FormEvent) {
     const instruction =
       oldEmail +
-      "\n\nEdit the above email using the following instruction: \n\n" +
+      "\n\nRewrite the above email in " +
+      getLanguageInEnglish(props.outputLanguage) +
+      " using the following instruction: \n\n" +
       editDescription;
     FetchDavinci(setIsGenerating, setResult, instruction, event);
   }
@@ -46,7 +53,10 @@ const EditEmail = (props: EditEmailProps) => {
           <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
               pageTitle={t("email.editEmail.pageTitle") as string}
-              setLanguage={props.setLanguage}
+              setInputLanguage={props.setInputLanguage}
+              setOutputLanguage={props.setOutputLanguage}
+              inputLanguage={props.inputLanguage}
+              outputLanguage={props.outputLanguage}
             />
             <Box>
               <FormLabel>②{t("email.editEmail.paste")}</FormLabel>
