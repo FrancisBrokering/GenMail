@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useRef, createRef } from "react";
 import {
   Box,
   Flex,
   Spacer,
   Text,
-  Textarea,
   Button,
   useClipboard,
   useColorModeValue,
@@ -18,10 +17,13 @@ const countWords = (str: string) => {
 };
 
 const EditArea = () => {
+  const copyButtonRef = createRef<HTMLButtonElement>();
   const { onCopy, value, setValue, hasCopied } = useClipboard("");
   const { t } = useTranslation();
   const Editor_BorderColor = useColorModeValue("#e2e8f0", "gray.600");
-  const Editor_Bg = useColorModeValue("white", "gray.700")
+  const Editor_Bg = useColorModeValue("white", "gray.700");
+
+  console.log(copyButtonRef);
 
   return (
     <Box
@@ -37,7 +39,7 @@ const EditArea = () => {
       bg={Editor_Bg}
       // minHeight="85vh"
     >
-      <Editor></Editor>
+      <Editor ref={copyButtonRef}></Editor>
       <Flex margin={"40px 20px"}>
         <Button
           onClick={onCopy}
@@ -46,6 +48,7 @@ const EditArea = () => {
           width={'100px'}
           _hover={{ bg: "#7dc5ea" }}
           color={"white"}
+          ref={copyButtonRef}
         >
           {hasCopied ? t("copied") : t("copy")}
         </Button>
