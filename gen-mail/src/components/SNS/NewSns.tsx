@@ -23,8 +23,10 @@ import SelectTone from "../common/SelectTone";
 import { FetchDavinci } from "../../utility/CommonMethods";
 
 type NewEmailProps = {
-  lang: string;
-  setLanguage: (lang: string) => void;
+  inputLanguage: string;
+  outputLanguage: string;
+  setInputLanguage: (lang: string) => void;
+  setOutputLanguage: (lang: string) => void;
 };
 
 const NewSns = (props: NewEmailProps) => {
@@ -70,7 +72,10 @@ const NewSns = (props: NewEmailProps) => {
           <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
               pageTitle={t("sns.newSns.pageTitle")}
-              setLanguage={props.setLanguage}
+              setInputLanguage={props.setInputLanguage}
+              setOutputLanguage={props.setOutputLanguage}
+              inputLanguage={props.inputLanguage}
+              outputLanguage={props.outputLanguage}
             />
             <Box>
               <FormLabel>②{t("sns.newSns.platform")}</FormLabel>

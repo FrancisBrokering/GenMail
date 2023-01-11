@@ -13,11 +13,16 @@ import { useTranslation } from "react-i18next";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 import SelectTone from "../common/SelectTone";
-import { FetchDavinci } from "../../utility/CommonMethods";
+import {
+  FetchDavinci,
+  getLanguageInEnglish,
+} from "../../utility/CommonMethods";
 
 type NewEmailProps = {
-  lang: string;
-  setLanguage: (lang: string) => void;
+  inputLanguage: string;
+  outputLanguage: string;
+  setInputLanguage: (lang: string) => void;
+  setOutputLanguage: (lang: string) => void;
 };
 
 const NewEmail = (props: NewEmailProps) => {
@@ -30,7 +35,9 @@ const NewEmail = (props: NewEmailProps) => {
 
   async function handleSubmit(event: React.FormEvent) {
     const instruction =
-      "write an email in English using the following information: \n\n" +
+      "write an email in " +
+      getLanguageInEnglish(props.outputLanguage) +
+      " using the following information: \n\n" +
       "1 About: " +
       emailDescription +
       "\n" +
@@ -51,7 +58,10 @@ const NewEmail = (props: NewEmailProps) => {
           <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
               pageTitle={t("email.newEmail.pageTitle") as string}
-              setLanguage={props.setLanguage}
+              setInputLanguage={props.setInputLanguage}
+              setOutputLanguage={props.setOutputLanguage}
+              inputLanguage={props.inputLanguage}
+              outputLanguage={props.outputLanguage}
             />
             <Box>
               <FormLabel>②{t("email.newEmail.about")}</FormLabel>

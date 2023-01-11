@@ -26,7 +26,8 @@ import LanguageInputOutput from "../components/common/LanguageInputOutput";
 
 const ChatPage = () => {
   const [generateOption, setGenerateOption] = useState("Reply");
-  const [language, setLanguage] = useState("ja");
+  const [inputLanguage, setInputLanguage] = useState("ja");
+  const [outputLanguage, setOutputLanguage] = useState("en");
   const { t, i18n } = useTranslation();
 
   function GenerateOptionTitle() {
@@ -73,7 +74,12 @@ const ChatPage = () => {
               borderBottomRadius={"10px"}
             >
               <TabPanel>
-                <ReplyChat lang={language} setLanguage={setLanguage} />
+                <ReplyChat
+                  inputLanguage={inputLanguage}
+                  outputLanguage={outputLanguage}
+                  setInputLanguage={setInputLanguage}
+                  setOutputLanguage={setOutputLanguage}
+                />
               </TabPanel>
             </TabPanels>
           </Tabs>

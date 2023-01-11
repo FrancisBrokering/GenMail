@@ -18,22 +18,64 @@ import { ArrowRightIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import React, { useEffect, useState } from "react";
 import { ReactComponent as JapanFlag } from "../../assets/icons/Japan.svg";
 import { ReactComponent as UsaFlag } from "../../assets/icons/USA.svg";
+import { ReactComponent as SpainFlag } from "../../assets/icons/Spain.svg";
+import { ReactComponent as FranceFlag } from "../../assets/icons/France.svg";
+import { ReactComponent as GermanyFlag } from "../../assets/icons/Germany.svg";
+import { ReactComponent as ItalyFlag } from "../../assets/icons/Italy.svg";
 //Use this link for flag SVGs https://uxwing.com/usa-flag-round-circle-icon/
 
 type LanguageInputOutputProps = {
   pageTitle: string;
-  setLanguage: (language: string) => void;
+  setInputLanguage: (language: string) => void;
+  setOutputLanguage: (language: string) => void;
+  inputLanguage: string;
+  outputLanguage: string;
 };
 
 //TODO: when adding more languages, need to change props to have setOutputLanguage() and setInputLanguage(). setLanguage is currently serving no purpose
 const LanguageInputOutput = (props: LanguageInputOutputProps) => {
   const { t, i18n } = useTranslation();
-  const [userInputLanguageLocalVer, setUserInputLanguageLocalVer] =
-    useState("ja");
-  const [userOutputLanguageLocalVer, setUserOutputLanguageLocalVer] =
-    useState("en");
-
   const Menu_Border = useColorModeValue("gray.200", "gray.600");
+  const inputLanguageOptions = ["ja", "en"];
+  const outputLanguageOptions = ["ja", "en", "es", "fr", "de", "it"];
+
+  const getFlag = (language: string) => {
+    switch (language) {
+      case "ja":
+        return <JapanFlag margin-right="12px" width="22px" height="22px" />;
+      case "en":
+        return <UsaFlag margin-right="12px" width="22px" height="22px" />;
+      case "es":
+        return <SpainFlag margin-right="12px" width="22px" height="22px" />;
+      case "fr":
+        return <FranceFlag margin-right="12px" width="22px" height="22px" />;
+      case "de":
+        return <GermanyFlag margin-right="12px" width="22px" height="22px" />;
+      case "it":
+        return <ItalyFlag margin-right="12px" width="22px" height="22px" />;
+      default:
+        return <UsaFlag margin-right="12px" width="22px" height="22px" />;
+    }
+  };
+
+  const getLanguage = (language: string) => {
+    switch (language) {
+      case "ja":
+        return t("japanese");
+      case "en":
+        return t("english");
+      case "es":
+        return t("spanish");
+      case "fr":
+        return t("french");
+      case "de":
+        return t("german");
+      case "it":
+        return t("italian");
+      default:
+        return t("english");
+    }
+  };
 
   return (
     <Box>
@@ -45,84 +87,74 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
         <Menu>
           <MenuButton
             as={Button}
-            leftIcon={
-              userInputLanguageLocalVer === "ja" ? (
-                <JapanFlag margin-right="12px" width="22px" height="22px" />
-              ) : (
-                <UsaFlag margin-right="12px" width="22px" height="22px" />
-              )
-            }
+            leftIcon={getFlag(props.inputLanguage)}
             rightIcon={<ChevronDownIcon />}
             variant="outline"
             borderColor={Menu_Border}
           >
-            <Text fontWeight="500">
-              {userInputLanguageLocalVer === "ja"
-                ? t("japanese")
-                : t("english")}
-            </Text>
+            <Text fontWeight="500">{getLanguage(props.inputLanguage)}</Text>
           </MenuButton>
           <MenuList>
-            <MenuItem
-              minH="48px"
-              onClick={(e) => {
-                props.setLanguage("ja");
-                setUserInputLanguageLocalVer("ja");
-              }}
-              icon={
-                <JapanFlag margin-right="12px" width="22px" height="22px" />
-              }
-            >
-              <Text>{t("japanese")}</Text>
-            </MenuItem>
-            <MenuItem
-              minH="40px"
-              onClick={(e) => {
-                props.setLanguage("en");
-                setUserInputLanguageLocalVer("en");
-              }}
-              icon={<UsaFlag margin-right="12px" width="22px" height="22px" />}
-            >
-              <Text>{t("english")}</Text>
-            </MenuItem>
+            {inputLanguageOptions.map((lang, index) => {
+              return (
+                <>
+                  <MenuItem
+                    key={index}
+                    minH="48px"
+                    onClick={(e) => {
+                      props.setInputLanguage(lang);
+                    }}
+                    icon={getFlag(lang)}
+                  >
+                    <Text>{getLanguage(lang)}</Text>
+                  </MenuItem>
+                </>
+              );
+            })}
           </MenuList>
         </Menu>
 
         <Center pl="20px" pr="20px">
           <ArrowRightIcon w={6} h={6} color="cyan.400" />
         </Center>
-
         <Menu>
           <MenuButton
             as={Button}
-            leftIcon={
-              userOutputLanguageLocalVer === "ja" ? (
-                <JapanFlag margin-right="12px" width="22px" height="22px" />
-              ) : (
-                <UsaFlag margin-right="12px" width="22px" height="22px" />
-              )
-            }
+            leftIcon={getFlag(props.outputLanguage)}
             rightIcon={<ChevronDownIcon />}
             variant="outline"
             borderColor={Menu_Border}
           >
-            <Text fontWeight="500">
-              {userOutputLanguageLocalVer === "ja"
-                ? t("japanese")
-                : t("english")}
-            </Text>
+            <Text fontWeight="500">{getLanguage(props.outputLanguage)}</Text>
           </MenuButton>
-          <MenuList>
+          {/* <MenuList>
             <MenuItem
               minH="40px"
               onClick={(e) => {
-                props.setLanguage("en");
-                setUserOutputLanguageLocalVer("en");
+                props.setOutputLanguage("en")
               }}
               icon={<UsaFlag margin-right="12px" width="22px" height="22px" />}
             >
               <Text>{t("english")}</Text>
             </MenuItem>
+          </MenuList> */}
+          <MenuList>
+            {outputLanguageOptions.map((lang, index) => {
+              return (
+                <>
+                  <MenuItem
+                    key={index}
+                    minH="48px"
+                    onClick={(e) => {
+                      props.setOutputLanguage(lang);
+                    }}
+                    icon={getFlag(lang)}
+                  >
+                    <Text>{getLanguage(lang)}</Text>
+                  </MenuItem>
+                </>
+              );
+            })}
           </MenuList>
         </Menu>
       </Flex>

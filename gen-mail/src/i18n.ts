@@ -19,6 +19,10 @@ i18n
           lightMode: "Light Mode",
           japanese: "Japanese",
           english: "English",
+          spanish: "Spanish",
+          french: "French",
+          german: "Germany",
+          italian: "Italian",
           other: "Other",
           sidebar: {
             home: "Home",
@@ -124,6 +128,10 @@ i18n
           lightMode: "ライトモード",
           japanese: "日本語",
           english: "英語",
+          spanish: "スペイン語",
+          french: "フランス語",
+          german: "ドイツ語",
+          italian: "イタリア語",
           other: "その他",
           sidebar: {
             home: "ホーム",
