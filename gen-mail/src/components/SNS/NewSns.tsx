@@ -34,7 +34,7 @@ const NewSns = (props: NewEmailProps) => {
   const [platform, setPlatform] = useState("Instagram");
   const [platformOther, setPlatformOther] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [results, setResult] = useState(["", "", "", "", ""]);
+  const [results, setResult] = useState(["", "", ""]);
   const Platforms = [
     "Instagram",
     "Facebook",

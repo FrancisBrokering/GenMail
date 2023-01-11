@@ -27,7 +27,7 @@ const EditEmail = (props: EditEmailProps) => {
   const [editDescription, setEditDescription] = useState("");
   const [oldEmail, setOldEmail] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [results, setResult] = useState(["", "", "", "", ""]);
+  const [results, setResult] = useState(["", "", ""]);
 
   async function handleSubmit(event: React.FormEvent) {
     setIsGenerating(true);
