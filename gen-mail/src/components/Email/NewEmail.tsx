@@ -28,7 +28,7 @@ const NewEmail = (props: NewEmailProps) => {
   const [tone, setTone] = useState("formal");
   const [receiver, setReceiver] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [results, setResult] = useState(["", "", "", "", ""]);
+  const [results, setResult] = useState(["", "", ""]);
 
   async function handleSubmit(event: React.FormEvent) {
     setIsGenerating(true);
@@ -131,7 +131,7 @@ const NewEmail = (props: NewEmailProps) => {
           </VStack>
         </FormControl>
       </form>
-      <Box maxW="100%" whiteSpace="pre-wrap" pb="70px">
+      <Box maxW="100%" whiteSpace="pre-wrap" pb="100px">
         {results[0] === "" ? (
           <></>
         ) : (

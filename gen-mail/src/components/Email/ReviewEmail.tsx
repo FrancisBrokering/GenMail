@@ -23,7 +23,7 @@ const ReviewEmail = (props: ReviewEmailProps) => {
   const { t } = useTranslation();
   const [oldEmail, setOldEmail] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [results, setResult] = useState(["", "", "", "", ""]);
+  const [results, setResult] = useState(["", "", ""]);
 
   useEffect(() => {
     console.log("results is: ", oldEmail);

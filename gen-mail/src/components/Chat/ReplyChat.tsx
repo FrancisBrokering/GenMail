@@ -27,7 +27,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
   const [tone, setTone] = useState("formal");
   const [reply, setReply] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [results, setResult] = useState(["", "", "", "", ""]);
+  const [results, setResult] = useState(["", "", ""]);
 
   async function handleSubmit(event: React.FormEvent) {
     setIsGenerating(true);

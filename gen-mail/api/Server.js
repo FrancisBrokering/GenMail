@@ -25,7 +25,7 @@ app.post("/", (req, res) => {
       prompt: generatePrompt(req.body.dataToSendToGPT3),
       temperature: 0.6,
       max_tokens: 2000,
-      n: 5,
+      n: 3,
     })
     .then((completion) => {
       res.status(200).json({
@@ -33,8 +33,6 @@ app.post("/", (req, res) => {
           completion.data.choices[0].text,
           completion.data.choices[1].text,
           completion.data.choices[2].text,
-          completion.data.choices[3].text,
-          completion.data.choices[4].text,
         ],
       });
     })
