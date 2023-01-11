@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { FetchDavinci } from "../../utility/CommonMethods";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput"
 
@@ -30,30 +31,11 @@ const EditEmail = (props: EditEmailProps) => {
   const [results, setResult] = useState(["", "", ""]);
 
   async function handleSubmit(event: React.FormEvent) {
-    setIsGenerating(true);
-    event.preventDefault();
-    const data = {
-      dataToSendToGPT3:
-        oldEmail +
-        ": \n\nEdit this email using the following instruction: " +
-        editDescription
-
-    };
-    console.log("data is: ", data);
-    const response = await fetch("http://localhost:8080", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    const json = await response.json();
-    console.log("result is: ", json);
-    setIsGenerating(false);
-    setResult(json.result);
-    setOldEmail("");
-    setEditDescription("");
+    const instruction =
+      oldEmail +
+      "\n\nEdit the above email using the following instruction: \n\n" +
+      editDescription
+    FetchDavinci(setIsGenerating, setResult, instruction, event)
   }
 
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200")
