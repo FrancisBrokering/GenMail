@@ -81,6 +81,7 @@ const EditEmail = (props: EditEmailProps) => {
               />
             </Box>
             <Button
+              color="white"
               colorScheme="blue"
               bg="cyan.400"
               _hover={{ bg: "#7dc5ea" }}

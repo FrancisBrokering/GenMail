@@ -88,6 +88,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
             </Box>
             <SelectTone setTone={setTone} />
             <Button
+              color="white"
               colorScheme="blue"
               bg="cyan.400"
               _hover={{ bg: "#7dc5ea" }}
