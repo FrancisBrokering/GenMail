@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import Editor from "./editor/Editor";
 import { useTranslation } from "react-i18next";
+import { EditorState } from "lexical";
 
 const countWords = (str: string) => {
   const arr = str.split(" ");
@@ -17,13 +18,13 @@ const countWords = (str: string) => {
 };
 
 const EditArea = () => {
-  const copyButtonRef = createRef<HTMLButtonElement>();
+  const editorStateRef = createRef<EditorState>();
   const { onCopy, value, setValue, hasCopied } = useClipboard("");
   const { t } = useTranslation();
   const Editor_BorderColor = useColorModeValue("#e2e8f0", "gray.600");
   const Editor_Bg = useColorModeValue("white", "gray.700");
 
-  console.log(copyButtonRef);
+  // console.log(copyButtonRef);
 
   return (
     <Box
@@ -39,7 +40,7 @@ const EditArea = () => {
       bg={Editor_Bg}
       // minHeight="85vh"
     >
-      <Editor ref={copyButtonRef}></Editor>
+      <Editor ref={editorStateRef}></Editor>
       <Flex margin={"40px 20px"}>
         <Button
           onClick={onCopy}
@@ -48,7 +49,6 @@ const EditArea = () => {
           width={'100px'}
           _hover={{ bg: "#7dc5ea" }}
           color={"white"}
-          ref={copyButtonRef}
         >
           {hasCopied ? t("copied") : t("copy")}
         </Button>

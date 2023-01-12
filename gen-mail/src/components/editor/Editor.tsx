@@ -20,17 +20,20 @@ import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import StyledEditor from "./StyleEditor";
 import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
+import TreeViewPlugin from "./plugins/TreeViewPlugin";
+import { EditorState } from "lexical";
 
 function Placeholder() {
   return <div className="editor-placeholder">Paste your text here...</div>;
 }
 
 // eslint-disable-next-line react/display-name
-const Editor = forwardRef<HTMLButtonElement>((ref) => {
-  const editorStateRef = useRef();
+const Editor = forwardRef<EditorState>((props, ref) => {
+  const { colorMode } = useColorMode();
+  const editorStateRef = useRef<EditorState>();
   const editorConfig = {
-    editorState:
-      '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}',
+    // editorState:
+    //   '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}',
     theme: ExampleTheme,
     namespace: "Playground",
     onError: (error: Error) => {
@@ -50,8 +53,8 @@ const Editor = forwardRef<HTMLButtonElement>((ref) => {
       LinkNode,
     ],
   };
-
-  const { colorMode } = useColorMode();
+  console.log(editorStateRef.current);
+  console.log(ref);
 
   return (
     <StyledEditor theme={colorMode}>
@@ -67,6 +70,7 @@ const Editor = forwardRef<HTMLButtonElement>((ref) => {
             <OnChangePlugin
               onChange={(editorState) => (editorStateRef.current = editorState)}
             />
+            <TreeViewPlugin />
             <HistoryPlugin />
             {/* <AutoFocusPlugin /> */}
             <ListPlugin />
