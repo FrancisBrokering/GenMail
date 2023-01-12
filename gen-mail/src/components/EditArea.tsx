@@ -1,4 +1,4 @@
-import React, { useRef, createRef } from "react";
+import React, { useRef } from "react";
 import {
   Box,
   Flex,
@@ -11,6 +11,7 @@ import {
 import Editor from "./editor/Editor";
 import { useTranslation } from "react-i18next";
 import { EditorState } from "lexical";
+import {$generateHtmlFromNodes} from '@lexical/html';
 
 const countWords = (str: string) => {
   const arr = str.split(" ");
@@ -18,13 +19,18 @@ const countWords = (str: string) => {
 };
 
 const EditArea = () => {
-  const editorStateRef = createRef<EditorState>();
+  const editorStateRef = useRef<EditorState>();
   const { onCopy, value, setValue, hasCopied } = useClipboard("");
   const { t } = useTranslation();
   const Editor_BorderColor = useColorModeValue("#e2e8f0", "gray.600");
   const Editor_Bg = useColorModeValue("white", "gray.700");
 
+
   // console.log(copyButtonRef);
+  console.log(editorStateRef.current);
+
+  // const htmlString = $generateHtmlFromNodes(editor, selection | null);
+
 
   return (
     <Box

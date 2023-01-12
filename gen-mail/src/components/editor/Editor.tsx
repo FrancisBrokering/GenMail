@@ -28,9 +28,9 @@ function Placeholder() {
 }
 
 // eslint-disable-next-line react/display-name
-const Editor = forwardRef<EditorState>((props, ref) => {
+const Editor = forwardRef<EditorState | undefined>((props, ref) => {
   const { colorMode } = useColorMode();
-  const editorStateRef = useRef<EditorState>();
+  // const editorStateRef = useRef<EditorState>();
   const editorConfig = {
     // editorState:
     //   '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}',
@@ -53,8 +53,8 @@ const Editor = forwardRef<EditorState>((props, ref) => {
       LinkNode,
     ],
   };
-  console.log(editorStateRef.current);
-  console.log(ref);
+
+  // console.log(editorStateRef.current, "hello");
 
   return (
     <StyledEditor theme={colorMode}>
@@ -68,7 +68,11 @@ const Editor = forwardRef<EditorState>((props, ref) => {
               ErrorBoundary={LexicalErrorBoundary}
             />
             <OnChangePlugin
-              onChange={(editorState) => (editorStateRef.current = editorState)}
+              onChange={(editorState) => {
+                if (ref && "current" in ref) {
+                  ref.current = editorState
+                }
+                }}
             />
             <TreeViewPlugin />
             <HistoryPlugin />

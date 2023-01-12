@@ -5,6 +5,7 @@ import {
   Divider,
   Button,
   Flex,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import React, { useEffect } from "react";
@@ -17,6 +18,7 @@ type GeneratedTextProps = {
 const GeneratedText = (props: GeneratedTextProps) => {
   const { t } = useTranslation();
   const { onCopy, setValue, hasCopied } = useClipboard("");
+  const result_bg = useColorModeValue("gray.100", "gray.600");
 
   useEffect(() => {
     setValue(props.result);
@@ -25,7 +27,7 @@ const GeneratedText = (props: GeneratedTextProps) => {
   return (
     <>
       <Divider mt="10px" orientation="horizontal" />
-      <Flex direction="column" mt="40px">
+      <Flex direction="column" mt="40px" bg={"transparent"}>
         <Flex justifyContent={"space-between"} mb="5px">
           <Text fontWeight="bold">
             {" "}
@@ -42,7 +44,7 @@ const GeneratedText = (props: GeneratedTextProps) => {
             {hasCopied ? t("copied") : t("copy") }
           </Button>
         </Flex>
-        <Box rounded="5px" _hover={{ bg: "gray.100" }} key={props.index}>
+        <Box rounded="5px" _hover={{bg: result_bg}} key={props.index}>
           <Text margin="5px 5px 5px 5px">
             {props.result.replace(/^\s+|\s+$/g, "")}
           </Text>

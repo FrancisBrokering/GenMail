@@ -89,6 +89,8 @@ const StyledEditor = styled("div")<StyledEditorProps>`
   .editor-inner {
     background: ${(props) => props.theme === "dark" ? "#2D3748" : "#fff"};
     position: relative;
+    
+    
     /* border-right: 1px solid gray; */
     /* border-color: ${(props) => props.theme === "dark" ? "#4A5568": "#e2e8f0"}; */
     border-top: 1px solid ${(props) => props.theme === "dark" ? "#4A5568": "#e2e8f0"};
