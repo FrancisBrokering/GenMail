@@ -36,7 +36,7 @@ const EditArea = () => {
       // borderTopRightRadius="10px"
       bg={Editor_Bg}
       // minHeight="85vh"
-      display={{ base: 'none', md: 'flex'}}
+      display={{ base: "none", md: "flex" }}
       flexDirection="column"
     >
       <Editor></Editor>
