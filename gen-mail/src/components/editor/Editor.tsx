@@ -22,10 +22,8 @@ import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import StyledEditor from "./StyleEditor";
 import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
-import TreeViewPlugin from "./plugins/TreeViewPlugin";
-import { $generateHtmlFromNodes } from "@lexical/html";
-
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+// import TreeViewPlugin from "./plugins/TreeViewPlugin";
+import CopyPlugin from "./plugins/CopyPlugin";
 
 import { useTranslation } from "react-i18next";
 
@@ -84,7 +82,7 @@ const Editor = forwardRef<EditorMethods>((_, ref) => {
               placeholder={<Placeholder />}
               ErrorBoundary={LexicalErrorBoundary}
             />
-            <TreeViewPlugin />
+            {/* <TreeViewPlugin /> */}
             <HistoryPlugin />
             {/* <AutoFocusPlugin /> */}
             <ListPlugin />
@@ -101,26 +99,3 @@ const Editor = forwardRef<EditorMethods>((_, ref) => {
 Editor.displayName = "Editor";
 
 export default Editor;
-
-type CopyPluginMethods = {
-  getHTML(cb: (html: string) => void): void;
-};
-
-const CopyPlugin = forwardRef<CopyPluginMethods, unknown>((_, ref) => {
-  const [editor] = useLexicalComposerContext();
-
-  const getHTML = (cb: (html: string) => void) => {
-    editor.getEditorState().read(() => {
-      const html = $generateHtmlFromNodes(editor, null);
-      cb(html);
-    });
-  };
-
-  useImperativeHandle(ref, () => ({
-    getHTML: getHTML,
-  }));
-
-  return null;
-});
-
-CopyPlugin.displayName = "CopyPlugin";

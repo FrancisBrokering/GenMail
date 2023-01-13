@@ -58,8 +58,8 @@ const EditArea = () => {
         >
           {hasCopied ? t("copied") : t("copy")}
         </Button>
-        <Spacer />
-        <Text>Words: {countWords(value)}</Text>
+        {/* <Spacer /> */}
+        {/* <Text>Words: {countWords(value)}</Text> */}
       </Flex>
     </Box>
   );
