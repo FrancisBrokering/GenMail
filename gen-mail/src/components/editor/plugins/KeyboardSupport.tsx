@@ -65,7 +65,7 @@ const StyledDiv = styled("div")`
   position: absolute;
   text-align: left;
   padding: 5px 3px;
-  left: 0;
+  margin-left: 5px;
   bottom: 0;
 `;
 
