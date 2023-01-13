@@ -58,6 +58,7 @@ const ChatPage = () => {
                 height={"46px"}
                 bg={generateOption === "Reply" ? Tab_Bg : "transparent"}
                 onClick={() => setGenerateOption("Reply")}
+                borderBottom={"0px"}
               >
                 <Text
                   color={generateOption === "Reply" ? Tab_Color : "gray.600"}
