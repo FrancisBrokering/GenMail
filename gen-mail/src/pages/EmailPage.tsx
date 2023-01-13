@@ -96,7 +96,7 @@ const EmailPage = () => {
                   <Tab
                     height={"47px"}
                     key={tab.option}
-                    // borderBottom={"0px"}
+                    borderBottom={"0px"}
                     bg={generateOption === tab.option ? Tab_Bg : "transparent"}
                     onClick={() => setGenerateOption(tab.option)}
                   >

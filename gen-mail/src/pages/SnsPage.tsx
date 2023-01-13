@@ -49,7 +49,7 @@ const SnsPage = () => {
             <TabList borderBottom={"0px"} pb={"1px"}>
               <Tab
                 height={"46px"}
-                // borderBottom={"0px"}
+                borderBottom={"0px"}
                 bg={generateOption === "New" ? Tab_Bg : "transparent"}
                 onClick={() => setGenerateOption("New")}
               >
