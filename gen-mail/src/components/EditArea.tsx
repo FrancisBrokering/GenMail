@@ -42,7 +42,7 @@ const EditArea = () => {
       flexDirection="column"
     >
       <Editor ref={editorRef}></Editor>
-      <Flex margin={"40px 20px"}>
+      <Flex margin={"40px 20px"} justifyContent="right">
         <Button
           onClick={() => {
             editorRef.current?.getHTML(function (html) {
