@@ -87,7 +87,7 @@ const ChatPage = () => {
         </Box>
       </GridItem>
       <GridItem colSpan={{ base: 0, md: 2 }}>
-        <Box margin="10px 20px 10px 0px">
+        <Box margin="10px 20px 10px 0px" position={"fixed"} width="32%">
           <EditArea></EditArea>
         </Box>
       </GridItem>
