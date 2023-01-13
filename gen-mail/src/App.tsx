@@ -8,22 +8,22 @@ import ChatPage from "./pages/ChatPage";
 import { useTranslation } from "react-i18next";
 import "./App.css";
 
-const LOCAL_STORAGE_KEY = "USER_LANGUAGE"
+const LOCAL_STORAGE_KEY = "USER_LANGUAGE";
 
 function App() {
   const [language, setLanguage] = useState("");
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    const storedUserLang = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "")
+    const storedUserLang = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (storedUserLang) {
       setLanguage(storedUserLang);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     i18n.changeLanguage(language);
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(language))
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(language));
   }, [language]);
 
   return (

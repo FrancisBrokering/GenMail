@@ -1,14 +1,16 @@
-import React, { useRef, useEffect, forwardRef } from "react";
+import React, {
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  ElementRef,
+} from "react";
 import { useColorMode } from "@chakra-ui/react";
 import ExampleTheme from "./themes/ExampleTheme";
-import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
-import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
-// import TreeViewPlugin from "./plugins/TreeViewPlugin";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
 import { ListItemNode, ListNode } from "@lexical/list";
@@ -21,19 +23,21 @@ import StyledEditor from "./StyleEditor";
 import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 import TreeViewPlugin from "./plugins/TreeViewPlugin";
-import { EditorState } from "lexical";
+import { $generateHtmlFromNodes } from "@lexical/html";
+
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
 function Placeholder() {
   return <div className="editor-placeholder">Paste your text here...</div>;
 }
 
-// eslint-disable-next-line react/display-name
-const Editor = forwardRef<EditorState | undefined>((props, ref) => {
+type EditorMethods = {
+  getHTML(): Promise<string>;
+};
+
+const Editor = forwardRef<EditorMethods>((_, ref) => {
   const { colorMode } = useColorMode();
-  // const editorStateRef = useRef<EditorState>();
   const editorConfig = {
-    // editorState:
-    //   '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}',
     theme: ExampleTheme,
     namespace: "Playground",
     onError: (error: Error) => {
@@ -54,6 +58,16 @@ const Editor = forwardRef<EditorState | undefined>((props, ref) => {
     ],
   };
 
+  const copyPluginRef = useRef<ElementRef<typeof CopyPlugin>>(null);
+  useImperativeHandle(ref, () => ({
+    getHTML: () => {
+      if (copyPluginRef.current) {
+        return copyPluginRef.current.getHTML();
+      }
+      return Promise.reject();
+    },
+  }));
+
   // console.log(editorStateRef.current, "hello");
 
   return (
@@ -67,19 +81,13 @@ const Editor = forwardRef<EditorState | undefined>((props, ref) => {
               placeholder={<Placeholder />}
               ErrorBoundary={LexicalErrorBoundary}
             />
-            <OnChangePlugin
-              onChange={(editorState) => {
-                if (ref && "current" in ref) {
-                  ref.current = editorState
-                }
-                }}
-            />
             <TreeViewPlugin />
             <HistoryPlugin />
             {/* <AutoFocusPlugin /> */}
             <ListPlugin />
             <LinkPlugin />
             <AutoLinkPlugin />
+            <CopyPlugin ref={copyPluginRef} />
           </div>
         </div>
       </LexicalComposer>
@@ -87,4 +95,31 @@ const Editor = forwardRef<EditorState | undefined>((props, ref) => {
   );
 });
 
+Editor.displayName = "Editor";
+
 export default Editor;
+
+type CopyPluginMethods = {
+  getHTML(): Promise<string>;
+};
+
+const CopyPlugin = forwardRef<CopyPluginMethods, unknown>((_, ref) => {
+  const [editor] = useLexicalComposerContext();
+
+  const getHTML = () => {
+    return new Promise<string>((resolve) => {
+      editor.getEditorState().read(() => {
+        const html = $generateHtmlFromNodes(editor, null);
+        resolve(html);
+      });
+    });
+  };
+
+  useImperativeHandle(ref, () => ({
+    getHTML: getHTML,
+  }));
+
+  return null;
+});
+
+CopyPlugin.displayName = "CopyPlugin";
