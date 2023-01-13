@@ -24,6 +24,7 @@ import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 // import TreeViewPlugin from "./plugins/TreeViewPlugin";
 import CopyPlugin from "./plugins/CopyPlugin";
+import KeyboardSupportPlugin from "./plugins/KeyboardSupport";
 
 import { useTranslation } from "react-i18next";
 
@@ -89,6 +90,7 @@ const Editor = forwardRef<EditorMethods>((_, ref) => {
             <LinkPlugin />
             <AutoLinkPlugin />
             <CopyPlugin ref={copyPluginRef} />
+            <KeyboardSupportPlugin />
           </div>
         </div>
       </LexicalComposer>

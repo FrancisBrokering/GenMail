@@ -42,7 +42,12 @@ const ReviewEmail = (props: ReviewEmailProps) => {
       <form onSubmit={handleSubmit}>
         <FormControl>
           <Box>
-            <Text textAlign="center" mb="50px" fontWeight="bold" fontSize="20px">
+            <Text
+              textAlign="center"
+              mb="50px"
+              fontWeight="bold"
+              fontSize="20px"
+            >
               {t("email.newEmail.pageTitle") as string}
             </Text>
           </Box>

@@ -49,7 +49,7 @@ const ChatPage = () => {
   const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600");
 
   return (
-    <Grid templateColumns={{base: "repeat(3, 1fr)", md: "repeat(5, 1fr)"}}>
+    <Grid templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}>
       <GridItem colSpan={3}>
         <Box margin="10px 20px 10px 20px">
           <Tabs variant="enclosed">
@@ -86,7 +86,7 @@ const ChatPage = () => {
           </Tabs>
         </Box>
       </GridItem>
-      <GridItem colSpan={{base: 0, md: 2}}>
+      <GridItem colSpan={{ base: 0, md: 2 }}>
         <Box margin="10px 20px 10px 0px">
           <EditArea></EditArea>
         </Box>

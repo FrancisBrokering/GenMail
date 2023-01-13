@@ -38,11 +38,11 @@ const EditArea = () => {
       // borderTopRightRadius="10px"
       bg={Editor_Bg}
       // minHeight="85vh"
-      display={{ base: 'none', md: 'flex'}}
+      display={{ base: "none", md: "flex" }}
       flexDirection="column"
     >
       <Editor ref={editorRef}></Editor>
-      <Flex margin={"40px 20px"}>
+      <Flex margin={"40px 20px"} justifyContent="right">
         <Button
           onClick={() => {
             editorRef.current?.getHTML(function (html) {

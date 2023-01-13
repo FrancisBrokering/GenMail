@@ -89,8 +89,7 @@ const StyledEditor = styled("div")<StyledEditorProps>`
   .editor-inner {
     background: ${(props) => (props.theme === "dark" ? "#2D3748" : "#fff")};
     position: relative;
-    
-    
+
     /* border-right: 1px solid gray; */
     /* border-color: ${(props) =>
       props.theme === "dark" ? "#4A5568" : "#e2e8f0"}; */
@@ -114,7 +113,7 @@ const StyledEditor = styled("div")<StyledEditorProps>`
   }
 
   .editor-placeholder {
-    color: ${(props) => props.theme === "dark" ? "#CBD5E0" : "#999"};
+    color: ${(props) => (props.theme === "dark" ? "#CBD5E0" : "#999")};
     overflow: hidden;
     position: absolute;
     text-overflow: ellipsis;
@@ -459,7 +458,7 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     width: 200px;
     vertical-align: middle;
     font-size: 14px;
-    color: ${(props) => props.theme === "dark" ? "#E2E8F0" : "#777"};
+    color: ${(props) => (props.theme === "dark" ? "#E2E8F0" : "#777")};
     text-overflow: ellipsis;
     width: 70px;
     overflow: hidden;
@@ -564,20 +563,21 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     z-index: 20;
     display: block;
     position: absolute;
-    box-shadow: ${(props) => props.theme === "dark" 
-      ? "0 12px 28px 0 rgba(255, 255, 255, 0.2), 0 2px 4px 0 rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(45, 55, 72, 0.5)" 
-      : "0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.5)"
-    };
+    box-shadow: ${(props) =>
+      props.theme === "dark"
+        ? "0 12px 28px 0 rgba(255, 255, 255, 0.2), 0 2px 4px 0 rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(45, 55, 72, 0.5)"
+        : "0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.5)"};
     border-radius: 8px;
     min-width: 100px;
     min-height: 40px;
-    background-color: ${(props) => props.theme === "dark" ? "#2D3748" : "#fff"};
+    background-color: ${(props) =>
+      props.theme === "dark" ? "#2D3748" : "#fff"};
   }
 
   .dropdown .item {
     margin: 0 8px 0 8px;
     padding: 8px;
-    color: ${(props) => props.theme === "dark" ? "#E2E8F0" : "#050505"};
+    color: ${(props) => (props.theme === "dark" ? "#E2E8F0" : "#050505")};
     cursor: pointer;
     line-height: 16px;
     font-size: 15px;
@@ -586,7 +586,8 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     flex-direction: row;
     flex-shrink: 0;
     justify-content: space-between;
-    background-color: ${(props) => props.theme === "dark" ? "#2D3748" : "#fff"};
+    background-color: ${(props) =>
+      props.theme === "dark" ? "#2D3748" : "#fff"};
     border-radius: 8px;
     border: 0;
     min-width: 268px;
@@ -608,7 +609,8 @@ const StyledEditor = styled("div")<StyledEditorProps>`
   }
 
   .dropdown .item:hover {
-    background-color: ${(props) => props.theme === "dark" ? "#4A5568" : "#eee"};
+    background-color: ${(props) =>
+      props.theme === "dark" ? "#4A5568" : "#eee"};
   }
 
   .dropdown .item .text {

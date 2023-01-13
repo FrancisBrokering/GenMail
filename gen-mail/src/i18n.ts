@@ -26,6 +26,7 @@ i18n
           other: "Other",
           editor: {
             placeHolder: "Paste your text here...",
+            plainText: "Paste as plain text",
           },
           sidebar: {
             home: "Home",
@@ -138,6 +139,7 @@ i18n
           other: "その他",
           editor: {
             placeHolder: "テキストを貼り付けてください...",
+            plainText: "プレーンテキストを貼り付け",
           },
           sidebar: {
             home: "ホーム",
