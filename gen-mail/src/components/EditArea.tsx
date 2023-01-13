@@ -1,17 +1,15 @@
-import React, { useRef } from "react";
 import {
   Box,
+  Button,
   Flex,
   Spacer,
   Text,
-  Button,
   useClipboard,
   useColorModeValue,
 } from "@chakra-ui/react";
-import Editor from "./editor/Editor";
+import React, { ElementRef, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { EditorState } from "lexical";
-import {$generateHtmlFromNodes} from '@lexical/html';
+import Editor from "./editor/Editor";
 
 const countWords = (str: string) => {
   const arr = str.split(" ");
@@ -19,8 +17,10 @@ const countWords = (str: string) => {
 };
 
 const EditArea = () => {
-  const editorStateRef = useRef<EditorState>();
-  const { onCopy, value, setValue, hasCopied } = useClipboard("");
+  const editorRef = useRef<ElementRef<typeof Editor>>(null);
+  const { onCopy, value, setValue, hasCopied } = useClipboard("", {
+    format: "text/html",
+  });
   const { t } = useTranslation();
   const Editor_BorderColor = useColorModeValue("#e2e8f0", "gray.600");
   const Editor_Bg = useColorModeValue("white", "gray.700");
@@ -39,10 +39,17 @@ const EditArea = () => {
       bg={Editor_Bg}
       // minHeight="85vh"
     >
-      <Editor ref={editorStateRef}></Editor>
+      <Editor ref={editorRef}></Editor>
       <Flex margin={"40px 20px"}>
         <Button
-          onClick={onCopy}
+          onClick={() => {
+            editorRef.current?.getHTML().then((html) => {
+              setValue(html);
+              setTimeout(() => {
+                onCopy();
+              }, 0);
+            });
+          }}
           mt={2}
           bg="#0dc5ea"
           width={"100px"}
