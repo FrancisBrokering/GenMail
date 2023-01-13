@@ -18,6 +18,7 @@ type GeneratedTextProps = {
 const GeneratedText = (props: GeneratedTextProps) => {
   const { t } = useTranslation();
   const { onCopy, setValue, hasCopied } = useClipboard("");
+
   const Hover_Color = useColorModeValue("gray.100", "gray.600");
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const GeneratedText = (props: GeneratedTextProps) => {
   return (
     <>
       <Divider mt="10px" orientation="horizontal" />
-      <Flex direction="column" mt="40px">
+      <Flex direction="column" mt="40px" bg={"transparent"}>
         <Flex justifyContent={"space-between"} mb="5px">
           <Text fontWeight="bold">
             {" "}
@@ -44,7 +45,6 @@ const GeneratedText = (props: GeneratedTextProps) => {
           >
             {hasCopied ? t("copied") : t("copy")}
           </Button>
-        </Flex>
         <Box rounded="5px" _hover={{ bg: Hover_Color }} key={props.index}>
           <Text margin="5px 5px 5px 5px">
             {props.result.replace(/^\s+|\s+$/g, "")}

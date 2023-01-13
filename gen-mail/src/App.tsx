@@ -15,9 +15,7 @@ function App() {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    const storedUserLang = JSON.parse(
-      localStorage.getItem(LOCAL_STORAGE_KEY) || ""
-    );
+    const storedUserLang = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (storedUserLang) {
       setLanguage(storedUserLang);
     }

@@ -261,17 +261,6 @@ function BlockOptionsDropdownList({
   const dropDownRef = useRef(null);
 
   useEffect(() => {
-    const toolbar = toolbarRef.current;
-    const dropDown = dropDownRef.current;
-
-    if (toolbar !== null && dropDown !== null) {
-      const { top, left } = toolbar.getBoundingClientRect();
-      dropDown.style.top = `${top + 40}px`;
-      dropDown.style.left = `${left}px`;
-    }
-  }, [dropDownRef, toolbarRef]);
-
-  useEffect(() => {
     const dropDown = dropDownRef.current;
     const toolbar = toolbarRef.current;
 
@@ -374,6 +363,8 @@ function BlockOptionsDropdownList({
     setShowBlockOptionsDropDown(false);
   };
 
+  console.log("this is dropdown menu");
+
   return (
     <div className="dropdown" ref={dropDownRef}>
       <button className="item" onClick={formatParagraph}>
@@ -432,6 +423,10 @@ export default function ToolbarPlugin() {
   const [isUnderline, setIsUnderline] = useState(false);
   const [isStrikethrough, setIsStrikethrough] = useState(false);
   const [isCode, setIsCode] = useState(false);
+
+  // useEffect(() => {
+  //   console.log(showBlockOptionsDropDown);
+  // }, [showBlockOptionsDropDown]);
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -559,7 +554,7 @@ export default function ToolbarPlugin() {
       </button>
       <Divider />
       {supportedBlockTypes.has(blockType) && (
-        <>
+        <div className="blockdown-list">
           <button
             className="toolbar-item block-controls"
             onClick={() =>
@@ -571,18 +566,21 @@ export default function ToolbarPlugin() {
             <span className="text">{blockTypeToBlockName[blockType]}</span>
             <i className="chevron-down" />
           </button>
-          {showBlockOptionsDropDown &&
-            createPortal(
+          {/* {showBlockOptionsDropDown
+            ? console.log("dropdown true")
+            : console.log("dropdown false")} */}
+          {showBlockOptionsDropDown && (
+            <>
               <BlockOptionsDropdownList
                 editor={editor}
                 blockType={blockType}
                 toolbarRef={toolbarRef}
                 setShowBlockOptionsDropDown={setShowBlockOptionsDropDown}
-              />,
-              document.body
-            )}
+              />
+            </>
+          )}
           <Divider />
-        </>
+        </div>
       )}
       {blockType === "code" ? (
         <>
