@@ -1,5 +1,6 @@
 import {
   Box,
+  Text,
   Input,
   FormControl,
   FormLabel,
@@ -8,7 +9,7 @@ import {
   VStack,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   FetchDavinci,
@@ -32,6 +33,10 @@ const ReplyEmail = (props: ReplyEmailProps) => {
   const [reply, setReply] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [results, setResult] = useState(["", "", ""]);
+  const [numChars, setNumChars] = useState(0);
+  const maxChars = 1500;
+  const Countword_color = useColorModeValue("gray.400", "gray.400");
+  const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
 
   async function handleSubmit(event: React.FormEvent) {
     let details = emailDescription;
@@ -51,7 +56,9 @@ const ReplyEmail = (props: ReplyEmailProps) => {
     FetchDavinci(setIsGenerating, setResult, instruction, event);
   }
 
-  const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
+  useEffect(() => {
+    setNumChars(reply.length);
+  }, [reply]);
 
   return (
     <Box position={"relative"}>
@@ -66,17 +73,26 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               outputLanguage={props.outputLanguage}
             />
             <Box>
-              <FormLabel>②{t("email.replyEmail.paste")}</FormLabel>
+              <FormLabel>② {t("email.replyEmail.paste")}</FormLabel>
               <Textarea
                 minH="200px"
                 name="reply"
                 value={reply}
                 onChange={(e) => setReply(e.target.value)}
+                maxLength={maxChars}
                 required
               />
+              <Text
+                position={"absolute"}
+                right={"2px"}
+                fontSize="sm"
+                color={Countword_color}
+              >
+                {numChars} / {maxChars}
+              </Text>
             </Box>
             <Box>
-              <FormLabel>③{t("email.replyEmail.what")}</FormLabel>
+              <FormLabel>③ {t("email.replyEmail.what")}</FormLabel>
               <Input
                 type="text"
                 name="description"

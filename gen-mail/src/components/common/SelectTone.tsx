@@ -12,7 +12,7 @@ const SelectTone = (props: SelectToneProps) => {
 
   return (
     <Box>
-      <FormLabel>④{t("tone.label")}</FormLabel>
+      <FormLabel>④ {t("tone.label")}</FormLabel>
       <Select
         placeholder={t("tone.button") as string}
         _placeholder={{ color: Placeholder_Color }}

@@ -17,7 +17,6 @@ import {
 import { useTranslation } from "react-i18next";
 import EditArea from "../components/EditArea";
 import NewSns from "../components/SNS/NewSns";
-import LanguageInputOutput from "../components/common/LanguageInputOutput";
 
 const SnsPage = () => {
   const [generateOption, setGenerateOption] = useState("New");
@@ -85,7 +84,7 @@ const SnsPage = () => {
         </Box>
       </GridItem>
       <GridItem colSpan={{ base: 0, md: 2 }}>
-        <Box margin="10px 20px 10px 0px">
+        <Box margin="10px 20px 10px 0px" position={"fixed"} width="32%">
           <EditArea></EditArea>
         </Box>
       </GridItem>

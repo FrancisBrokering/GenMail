@@ -11,7 +11,7 @@ import {
   VStack,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
   FetchDavinci,
@@ -33,6 +33,10 @@ const EditEmail = (props: EditEmailProps) => {
   const [oldEmail, setOldEmail] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [results, setResult] = useState(["", "", ""]);
+  const [numChars, setNumChars] = useState(0);
+  const maxChars = 1500;
+  const Countword_color = useColorModeValue("gray.400", "gray.400");
+  const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
 
   async function handleSubmit(event: React.FormEvent) {
     const instruction =
@@ -44,7 +48,9 @@ const EditEmail = (props: EditEmailProps) => {
     FetchDavinci(setIsGenerating, setResult, instruction, event);
   }
 
-  const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
+  useEffect(() => {
+    setNumChars(oldEmail.length);
+  }, [oldEmail]);
 
   return (
     <Box position={"relative"}>
@@ -59,17 +65,26 @@ const EditEmail = (props: EditEmailProps) => {
               outputLanguage={props.outputLanguage}
             />
             <Box>
-              <FormLabel>②{t("email.editEmail.paste")}</FormLabel>
+              <FormLabel>② {t("email.editEmail.paste")}</FormLabel>
               <Textarea
                 minH="200px"
                 name="oldEmail"
                 value={oldEmail}
                 onChange={(e) => setOldEmail(e.target.value)}
+                maxLength={maxChars}
                 required
               />
+              <Text
+                position={"absolute"}
+                right={"2px"}
+                fontSize="sm"
+                color={Countword_color}
+              >
+                {numChars} / {maxChars}
+              </Text>
             </Box>
             <Box>
-              <FormLabel>③{t("email.editEmail.how")}</FormLabel>
+              <FormLabel>③ {t("email.editEmail.how")}</FormLabel>
               <Input
                 type="text"
                 name="description"

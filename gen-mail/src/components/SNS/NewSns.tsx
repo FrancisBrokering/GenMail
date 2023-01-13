@@ -14,7 +14,7 @@ import {
   MenuItem,
   Textarea,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import GeneratedText from "../common/GeneratedText";
 import GetPlatformLogo from "../../data/GetEditerLogo";
@@ -38,6 +38,12 @@ const NewSns = (props: NewEmailProps) => {
   const [platformOther, setPlatformOther] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [results, setResult] = useState(["", "", ""]);
+  const [numChars, setNumChars] = useState(0);
+  const maxChars = 1500;
+  const Countword_color = useColorModeValue("gray.400", "gray.400");
+  const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
+  const Platform_Color = useColorModeValue("gray.700", "gray.200");
+  const Menu_Border = useColorModeValue("gray.200", "gray.600");
   const Platforms = [
     "Instagram",
     "Facebook",
@@ -62,9 +68,9 @@ const NewSns = (props: NewEmailProps) => {
     FetchDavinci(setIsGenerating, setResult, instruction, event);
   }
 
-  const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
-  const Platform_Color = useColorModeValue("gray.700", "gray.200");
-  const Menu_Border = useColorModeValue("gray.200", "gray.600");
+  useEffect(() => {
+    setNumChars(postDescription.length);
+  }, [postDescription]);
 
   return (
     <Box position={"relative"}>
@@ -79,7 +85,7 @@ const NewSns = (props: NewEmailProps) => {
               outputLanguage={props.outputLanguage}
             />
             <Box>
-              <FormLabel>②{t("sns.newSns.platform")}</FormLabel>
+              <FormLabel>② {t("sns.newSns.platform")}</FormLabel>
               <Flex>
                 <Menu>
                   <MenuButton
@@ -126,15 +132,25 @@ const NewSns = (props: NewEmailProps) => {
               </Flex>
             </Box>
             <Box>
-              <FormLabel>③{t("sns.newSns.about")}</FormLabel>
+              <FormLabel>③ {t("sns.newSns.about")}</FormLabel>
               <Textarea
                 name="description"
+                minH="200px"
                 value={postDescription}
                 onChange={(e) => setPostDescription(e.target.value)}
                 placeholder={t("sns.newSns.examples.about") as string}
                 _placeholder={{ color: Placeholder_Color }}
+                maxLength={maxChars}
                 required
               />
+              <Text
+                position={"absolute"}
+                right={"2px"}
+                fontSize="sm"
+                color={Countword_color}
+              >
+                {numChars} / {maxChars}
+              </Text>
             </Box>
             <SelectTone setTone={setTone} />
             <Button

@@ -7,8 +7,9 @@ import {
   VStack,
   useColorModeValue,
   Textarea,
+  Text,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput";
@@ -32,6 +33,10 @@ const NewEmail = (props: NewEmailProps) => {
   const [receiver, setReceiver] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [results, setResult] = useState(["", "", ""]);
+  const [numChars, setNumChars] = useState(0);
+  const maxChars = 1500;
+  const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
+  const Countword_color = useColorModeValue("gray.400", "gray.400");
 
   async function handleSubmit(event: React.FormEvent) {
     const instruction =
@@ -49,7 +54,9 @@ const NewEmail = (props: NewEmailProps) => {
     FetchDavinci(setIsGenerating, setResult, instruction, event);
   }
 
-  const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
+  useEffect(() => {
+    setNumChars(emailDescription.length);
+  }, [emailDescription]);
 
   return (
     <Box position={"relative"}>
@@ -64,18 +71,28 @@ const NewEmail = (props: NewEmailProps) => {
               outputLanguage={props.outputLanguage}
             />
             <Box>
-              <FormLabel>②{t("email.newEmail.about")}</FormLabel>
+              <FormLabel>② {t("email.newEmail.about")}</FormLabel>
               <Textarea
                 name="description"
+                minH="200px"
                 value={emailDescription}
                 onChange={(e) => setEmailDescription(e.target.value)}
                 placeholder={t("email.newEmail.examples.about") as string}
                 _placeholder={{ color: Placeholder_Color }}
+                maxLength={maxChars}
                 required
               />
+              <Text
+                position={"absolute"}
+                right={"2px"}
+                fontSize="sm"
+                color={Countword_color}
+              >
+                {numChars} / {maxChars}
+              </Text>
             </Box>
             <Box>
-              <FormLabel>③{t("email.newEmail.who")}</FormLabel>
+              <FormLabel>③ {t("email.newEmail.who")}</FormLabel>
               <Input
                 type="text"
                 name="receiver"

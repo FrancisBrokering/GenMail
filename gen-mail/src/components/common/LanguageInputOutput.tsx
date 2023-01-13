@@ -82,7 +82,7 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
       <Text textAlign="center" mb="50px" fontWeight="bold" fontSize="20px">
         {props.pageTitle}
       </Text>
-      <FormLabel>①{t("selectLang")}</FormLabel>
+      <FormLabel>① {t("selectLang")}</FormLabel>
       <Flex>
         <Menu>
           <MenuButton
