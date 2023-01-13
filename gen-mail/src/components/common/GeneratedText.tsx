@@ -45,6 +45,7 @@ const GeneratedText = (props: GeneratedTextProps) => {
           >
             {hasCopied ? t("copied") : t("copy")}
           </Button>
+        </Flex>
         <Box rounded="5px" _hover={{ bg: Hover_Color }} key={props.index}>
           <Text margin="5px 5px 5px 5px">
             {props.result.replace(/^\s+|\s+$/g, "")}
