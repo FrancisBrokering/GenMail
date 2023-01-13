@@ -12,6 +12,7 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Textarea,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -126,8 +127,7 @@ const NewSns = (props: NewEmailProps) => {
             </Box>
             <Box>
               <FormLabel>③{t("sns.newSns.about")}</FormLabel>
-              <Input
-                type="text"
+              <Textarea
                 name="description"
                 value={postDescription}
                 onChange={(e) => setPostDescription(e.target.value)}
