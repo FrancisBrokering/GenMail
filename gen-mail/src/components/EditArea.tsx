@@ -38,6 +38,8 @@ const EditArea = () => {
       // borderTopRightRadius="10px"
       bg={Editor_Bg}
       // minHeight="85vh"
+      display={{ base: 'none', md: 'flex'}}
+      flexDirection="column"
     >
       <Editor ref={editorRef}></Editor>
       <Flex margin={"40px 20px"}>

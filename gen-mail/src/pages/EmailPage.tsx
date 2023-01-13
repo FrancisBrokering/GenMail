@@ -86,7 +86,7 @@ const EmailPage = () => {
   };
 
   return (
-    <Grid templateColumns={"repeat(5, 1fr)"}>
+    <Grid templateColumns={{base: "repeat(3, 1fr)", md: "repeat(5, 1fr)"}}>
       <GridItem colSpan={3}>
         <Box margin="10px 20px 10px 20px">
           <Tabs variant="enclosed">
@@ -128,7 +128,7 @@ const EmailPage = () => {
           </Tabs>
         </Box>
       </GridItem>
-      <GridItem colSpan={2}>
+      <GridItem colSpan={{base: 0, md: 2}}>
         <Box margin="10px 20px 10px 0px">
           <EditArea></EditArea>
         </Box>

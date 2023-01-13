@@ -24,6 +24,7 @@ import {
   Select,
   Center,
   Divider,
+  Image,
 } from "@chakra-ui/react";
 import { FiHome, FiMenu, FiMail, FiTwitter, FiSend } from "react-icons/fi";
 import { IconType } from "react-icons";
@@ -31,6 +32,10 @@ import { ReactText } from "react";
 import { useTranslation } from "react-i18next";
 import { ReactComponent as GenPlateLogo } from "../assets/icons/GenPlateLogo.svg";
 import { ReactComponent as GenPlateLogoDarkMode } from "../assets/icons/GenPlateLogoDarkMode.svg";
+import GenPlateLogoPNG from "../assets/icons/GenPlateLogo.png";
+import GenPlateLogoDarkModePNG from "../assets/icons/GenPlateLogoDarkMode.png";
+import GenPlateMobileLogoPNG from "../assets/icons/GenPlateMobileLogo.png";
+import GenPlateMobileLogoDarkModePNG from "../assets/icons/GenPlateMobileLogoDarkMode.png";
 import ChangeThemeColor from "./ChangeThemeColor";
 import { ReactComponent as JapanFlag } from "../assets/icons/Japan.svg";
 import { ReactComponent as UsaFlag } from "../assets/icons/USA.svg";
@@ -65,11 +70,11 @@ export default function Sidebar({
       <Drawer
         autoFocus={false}
         isOpen={isOpen}
-        placement="left"
+        placement="right"
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full"
+        // size="full"
       >
         <DrawerContent>
           <SidebarContent
@@ -145,16 +150,16 @@ const SidebarContent = ({
         mt="40px"
       >
         {colorMode === "dark" ? (
-          <GenPlateLogoDarkMode height="140px" width="140px" />
+          <Image src={GenPlateLogoDarkModePNG} height={{base: "100%", md: "100px"}} />
         ) : (
-          <GenPlateLogo height="140px" width="140px" />
+          <Image src={GenPlateLogoPNG} height={{base: "100%", md: "100px"}} />
         )}
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       <Flex flexDirection={"column"} height="70%">
         <Box>
           {LinkItems.map((link) => (
-            <NavItem key={link.name} link={link.link} icon={link.icon}>
+            <NavItem key={link.name} link={link.link} icon={link.icon} onClick={onClose}>
               {link.name}
             </NavItem>
           ))}
@@ -258,6 +263,7 @@ interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+  const { colorMode } = useColorMode();
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -267,19 +273,22 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      justifyContent="flex-start"
+      justifyContent="space-between"
       {...rest}
     >
+      <Box pl="30px" pt="5px" height="40px" >
+        {colorMode === "dark" ? (
+          <Image src={GenPlateMobileLogoDarkModePNG} height="100%" />
+        ) : (
+          <Image src={GenPlateMobileLogoPNG} height="100%" />
+        )}
+      </Box>
       <IconButton
         variant="outline"
         onClick={onOpen}
         aria-label="open menu"
         icon={<FiMenu />}
       />
-
-      <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
-      </Text>
     </Flex>
   );
 };
