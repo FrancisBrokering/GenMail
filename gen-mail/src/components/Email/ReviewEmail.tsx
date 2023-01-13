@@ -41,6 +41,11 @@ const ReviewEmail = (props: ReviewEmailProps) => {
     <Box position={"relative"}>
       <form onSubmit={handleSubmit}>
         <FormControl>
+          <Box>
+            <Text textAlign="center" mb="50px" fontWeight="bold" fontSize="20px">
+              {t("email.newEmail.pageTitle") as string}
+            </Text>
+          </Box>
           <VStack alignItems={"left"} spacing={"40px"}>
             <Box>
               <FormLabel>①{t("email.reviewEmail.paste")}</FormLabel>
