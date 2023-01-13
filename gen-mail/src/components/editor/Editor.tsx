@@ -32,7 +32,7 @@ function Placeholder() {
 }
 
 type EditorMethods = {
-  getHTML(): Promise<string>;
+  getHTML(cb: (html: string) => void): void;
 };
 
 const Editor = forwardRef<EditorMethods>((_, ref) => {
@@ -60,9 +60,9 @@ const Editor = forwardRef<EditorMethods>((_, ref) => {
 
   const copyPluginRef = useRef<ElementRef<typeof CopyPlugin>>(null);
   useImperativeHandle(ref, () => ({
-    getHTML: () => {
+    getHTML: (cb: (html: string) => void) => {
       if (copyPluginRef.current) {
-        return copyPluginRef.current.getHTML();
+        return copyPluginRef.current.getHTML(cb);
       }
       return Promise.reject();
     },
@@ -100,18 +100,16 @@ Editor.displayName = "Editor";
 export default Editor;
 
 type CopyPluginMethods = {
-  getHTML(): Promise<string>;
+  getHTML(cb: (html: string) => void): void;
 };
 
 const CopyPlugin = forwardRef<CopyPluginMethods, unknown>((_, ref) => {
   const [editor] = useLexicalComposerContext();
 
-  const getHTML = () => {
-    return new Promise<string>((resolve) => {
-      editor.getEditorState().read(() => {
-        const html = $generateHtmlFromNodes(editor, null);
-        resolve(html);
-      });
+  const getHTML = (cb: (html: string) => void) => {
+    editor.getEditorState().read(() => {
+      const html = $generateHtmlFromNodes(editor, null);
+      cb(html);
     });
   };
 

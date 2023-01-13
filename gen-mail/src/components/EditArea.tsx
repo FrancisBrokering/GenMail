@@ -43,7 +43,7 @@ const EditArea = () => {
       <Flex margin={"40px 20px"}>
         <Button
           onClick={() => {
-            editorRef.current?.getHTML().then((html) => {
+            editorRef.current?.getHTML(function (html) {
               setValue(html);
               setTimeout(() => {
                 onCopy();
