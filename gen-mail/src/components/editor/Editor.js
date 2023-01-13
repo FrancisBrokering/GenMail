@@ -21,8 +21,11 @@ import StyledEditor from "./StyleEditor";
 import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 
+import { useTranslation } from "react-i18next";
+
 function Placeholder() {
-  return <div className="editor-placeholder">Paste your text here...</div>;
+  const { t, i18n } = useTranslation();
+  return <div className="editor-placeholder">{t("editor.placeHolder")}</div>;
 }
 
 const editorConfig = {

@@ -24,6 +24,9 @@ i18n
           german: "Germany",
           italian: "Italian",
           other: "Other",
+          editor: {
+            placeHolder: "Paste your text here...",
+          },
           sidebar: {
             home: "Home",
             email: "Email",
@@ -133,6 +136,9 @@ i18n
           german: "ドイツ語",
           italian: "イタリア語",
           other: "その他",
+          editor: {
+            placeHolder: "テキストを貼り付けてください...",
+          },
           sidebar: {
             home: "ホーム",
             email: "Eメール",
