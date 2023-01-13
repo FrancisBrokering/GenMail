@@ -150,16 +150,24 @@ const SidebarContent = ({
         mt="40px"
       >
         {colorMode === "dark" ? (
-          <Image src={GenPlateLogoDarkModePNG} height={{base: "100%", md: "100px"}} />
+          <Image
+            src={GenPlateLogoDarkModePNG}
+            height={{ base: "100%", md: "100px" }}
+          />
         ) : (
-          <Image src={GenPlateLogoPNG} height={{base: "100%", md: "100px"}} />
+          <Image src={GenPlateLogoPNG} height={{ base: "100%", md: "100px" }} />
         )}
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       <Flex flexDirection={"column"} height="70%">
         <Box>
           {LinkItems.map((link) => (
-            <NavItem key={link.name} link={link.link} icon={link.icon} onClick={onClose}>
+            <NavItem
+              key={link.name}
+              link={link.link}
+              icon={link.icon}
+              onClick={onClose}
+            >
               {link.name}
             </NavItem>
           ))}
@@ -276,7 +284,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       justifyContent="space-between"
       {...rest}
     >
-      <Box pl="30px" pt="5px" height="40px" >
+      <Box pl="30px" pt="5px" height="40px">
         {colorMode === "dark" ? (
           <Image src={GenPlateMobileLogoDarkModePNG} height="100%" />
         ) : (
