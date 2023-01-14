@@ -56,9 +56,8 @@ const supportedBlockTypes = new Set([
 
 const blockTypeToBlockName = {
   code: "Code Block",
+  h1: "Large Heading",
   h2: "Small Heading",
-  h3: "Heading",
-  h4: "Heading",
   ol: "Numbered List",
   paragraph: "Normal",
   quote: "Quote",
