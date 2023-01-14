@@ -129,7 +129,7 @@ const EmailPage = () => {
         </Box>
       </GridItem>
       <GridItem colSpan={{ base: 0, md: 2 }}>
-        <Box margin="10px 20px 10px 0px" position={"fixed"} width="32%">
+        <Box margin="10px 20px 10px 0px" position={"sticky"} top="10px">
           <EditArea></EditArea>
         </Box>
       </GridItem>

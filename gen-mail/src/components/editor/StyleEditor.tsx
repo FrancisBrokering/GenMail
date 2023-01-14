@@ -98,6 +98,7 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     border-bottom: 1px solid
       ${(props) => (props.theme === "dark" ? "#4A5568" : "#e2e8f0")};
     min-height: 75vh;
+    padding-bottom: 30px;
   }
 
   .editor-input {
@@ -244,7 +245,7 @@ const StyledEditor = styled("div")<StyledEditorProps>`
 
   .editor-heading-h1 {
     font-size: 24px;
-    color: rgb(5, 5, 5);
+    color: ${(props) => props.theme === "dark" ? "rgb(250, 250, 250)" : "rgb(5, 5, 5)"};
     font-weight: 400;
     margin: 0;
     margin-bottom: 12px;
@@ -253,7 +254,7 @@ const StyledEditor = styled("div")<StyledEditorProps>`
 
   .editor-heading-h2 {
     font-size: 15px;
-    color: rgb(101, 103, 107);
+    color: ${(props) => props.theme === "dark" ? "rgb(211, 215, 225)" : "rgb(101, 103, 107)"};
     font-weight: 700;
     margin: 0;
     margin-top: 10px;
@@ -265,8 +266,8 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     margin: 0;
     margin-left: 20px;
     font-size: 15px;
-    color: rgb(101, 103, 107);
-    border-left-color: rgb(206, 208, 212);
+    color: ${(props) => props.theme === "dark" ? "rgb(203, 213, 224)" : "rgb(101, 103, 107)"};
+    border-left-color: ${(props) => props.theme === "dark" ? "rgb(138, 140, 144)" : "rgb(206, 208, 212)"};
     border-left-width: 4px;
     border-left-style: solid;
     padding-left: 16px;
@@ -301,32 +302,32 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     background: #999;
   }
 
-  .debug-timetravel-panel {
+  /* .debug-timetravel-panel {
     overflow: hidden;
     padding: 0 0 10px 0;
     margin: auto;
     display: flex;
-  }
+  } */
 
-  .debug-timetravel-panel-slider {
+  /* .debug-timetravel-panel-slider {
     padding: 0;
     flex: 8;
-  }
+  } */
 
-  .debug-timetravel-panel-button {
+  /* .debug-timetravel-panel-button {
     padding: 0;
     border: 0;
     background: none;
     flex: 1;
     color: #fff;
     font-size: 12px;
-  }
+  } */
 
-  .debug-timetravel-panel-button:hover {
+  /* .debug-timetravel-panel-button:hover {
     text-decoration: underline;
-  }
+  } */
 
-  .debug-timetravel-button {
+  /* .debug-timetravel-button {
     border: 0;
     padding: 0;
     font-size: 12px;
@@ -335,34 +336,34 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     position: absolute;
     background: none;
     color: #fff;
-  }
+  } */
 
-  .debug-timetravel-button:hover {
+  /* .debug-timetravel-button:hover {
     text-decoration: underline;
-  }
+  } */
 
-  .emoji {
+  /* .emoji {
     color: transparent;
     background-size: 16px 16px;
     background-position: center;
     background-repeat: no-repeat;
     vertical-align: middle;
     margin: 0 -1px;
-  }
+  } */
 
-  .emoji-inner {
+  /* .emoji-inner {
     padding: 0 0.15em;
-  }
+  } */
 
-  .emoji-inner::selection {
+  /* .emoji-inner::selection {
     color: transparent;
     background-color: rgba(150, 150, 150, 0.4);
-  }
+  } */
 
-  .emoji-inner::moz-selection {
+  /* .emoji-inner::moz-selection {
     color: transparent;
     background-color: rgba(150, 150, 150, 0.4);
-  }
+  } */
 
   /* .emoji.happysmile {
   background-image: url(./images/emoji/1F642.png);
