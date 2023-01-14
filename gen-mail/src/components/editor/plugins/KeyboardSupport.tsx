@@ -43,7 +43,7 @@ const KeyboardSupportPlugin = () => {
     if (OS === "Windows")
       return (
         <>
-          <Kbd>Cmd</Kbd>+<Kbd>Shift</Kbd>+<Kbd>V</Kbd>
+          <Kbd>Ctrl</Kbd>+<Kbd>Shift</Kbd>+<Kbd>V</Kbd>
         </>
       );
     if (OS === "Android") return <></>;
