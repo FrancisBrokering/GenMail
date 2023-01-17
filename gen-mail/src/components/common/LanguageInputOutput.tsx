@@ -37,7 +37,7 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
   const { t, i18n } = useTranslation();
   const Menu_Border = useColorModeValue("gray.200", "gray.600");
   const inputLanguageOptions = ["ja", "en"];
-  const outputLanguageOptions = ["ja", "en", "es", "fr", "de", "it"];
+  const outputLanguageOptions = ["en", "es", "fr", "de", "it"];
 
   const getFlag = (language: string) => {
     switch (language) {
@@ -84,7 +84,7 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
       </Text>
       <FormLabel>① {t("selectLang")}</FormLabel>
       <Flex>
-        <Menu>
+        {/* <Menu>
           <MenuButton
             as={Button}
             leftIcon={getFlag(props.inputLanguage)}
@@ -112,11 +112,11 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
               );
             })}
           </MenuList>
-        </Menu>
+        </Menu> */}
 
-        <Center pl="20px" pr="20px">
+        {/* <Center pl="20px" pr="20px">
           <ArrowRightIcon w={6} h={6} color="cyan.400" />
-        </Center>
+        </Center> */}
         <Menu>
           <MenuButton
             as={Button}
