@@ -21,7 +21,7 @@ i18n
           english: "English",
           spanish: "Spanish",
           french: "French",
-          german: "Germany",
+          german: "German",
           italian: "Italian",
           other: "Other",
           editor: {
@@ -37,7 +37,7 @@ i18n
             favorite: "Favorites",
             settings: "Settings",
           },
-          selectLang: "Select a language",
+          selectLang: "Select output language",
           generating: "Generating",
           tone: {
             label: "Chose a tone",
@@ -150,7 +150,7 @@ i18n
             favorite: "お気に入り",
             settings: "設定",
           },
-          selectLang: "入力言語を選択してください",
+          selectLang: "出力言語を選択してください",
           generating: "生成中",
           tone: {
             label: "口調を選択してください",
