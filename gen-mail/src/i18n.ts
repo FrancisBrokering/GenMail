@@ -53,8 +53,8 @@ i18n
             option: "Option",
             newEmail: {
               examples: {
-                about: "e.g. not going to work tomorrow",
-                who: "e.g. my boss",
+                about: "e.g. Not going to work tomorrow. Kevin will be covering my shift. I plan to be back by Tuesday.",
+                who: "e.g. My boss",
               },
               option: "New",
               pageTitle: "Generate Your Email",
@@ -64,7 +64,7 @@ i18n
             },
             replyEmail: {
               examples: {
-                what: "e.g. available at 2pm on Tuesday",
+                what: "e.g. I am available at 2pm on Tuesday",
               },
               option: "Reply",
               pageTitle: "Generate Email Reply",
@@ -74,7 +74,7 @@ i18n
             },
             editEmail: {
               examples: {
-                how: "e.g. Inform the receiver that I am very busy tomorrow",
+                how: "e.g. Inform the receiver that I am very busy tomorrow.",
               },
               option: "Edit",
               pageTitle: "Edit Your Email",
