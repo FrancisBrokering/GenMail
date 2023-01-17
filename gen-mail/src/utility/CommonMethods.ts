@@ -7,7 +7,8 @@ export async function FetchDavinci(
   setIsGenerating(true);
   event.preventDefault();
   const data = { dataToSendToGPT3: Gpt3Instruction };
-  const response = await fetch("http://localhost:8080", {
+  console.log("data is: ", JSON.stringify(data));
+  const response = await fetch("https://i9jzvt02ng.execute-api.us-west-2.amazonaws.com/Test1/test123", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

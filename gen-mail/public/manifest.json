@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "GenPlate",
+  "name": "Generate Email, Messages, and Social Media Templates in Seconds",
   "icons": [
     {
       "src": "favicon.ico",

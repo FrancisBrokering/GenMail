@@ -11,7 +11,7 @@ import "./App.css";
 const LOCAL_STORAGE_KEY = "USER_LANGUAGE";
 
 function App() {
-  const [language, setLanguage] = useState("");
+  const [language, setLanguage] = useState("ja");
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
