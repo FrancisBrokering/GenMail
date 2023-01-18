@@ -100,15 +100,27 @@ const EmailPage = () => {
                     bg={generateOption === tab.option ? Tab_Bg : "transparent"}
                     onClick={() => setGenerateOption(tab.option)}
                   >
-                    <Text
-                      color={
-                        generateOption === tab.option
-                          ? SelectedTab_Color
-                          : Tab_Color
-                      }
-                    >
-                      {tab.emoji} {tab.i18message}
-                    </Text>
+                    <Flex direction={{ base: "column", md: "row" }}>
+                      <Text
+                        color={
+                          generateOption === tab.option
+                            ? SelectedTab_Color
+                            : Tab_Color
+                        }
+                      >
+                        {tab.emoji}
+                      </Text>
+                      <Text
+                        ml={{ base: "0px", md: "5px" }}
+                        color={
+                          generateOption === tab.option
+                            ? SelectedTab_Color
+                            : Tab_Color
+                        }
+                      >
+                        {tab.i18message}
+                      </Text>
+                    </Flex>
                   </Tab>
                 );
               })}

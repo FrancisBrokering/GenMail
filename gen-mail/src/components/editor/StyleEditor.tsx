@@ -245,7 +245,8 @@ const StyledEditor = styled("div")<StyledEditorProps>`
 
   .editor-heading-h1 {
     font-size: 24px;
-    color: ${(props) => props.theme === "dark" ? "rgb(250, 250, 250)" : "rgb(5, 5, 5)"};
+    color: ${(props) =>
+      props.theme === "dark" ? "rgb(250, 250, 250)" : "rgb(5, 5, 5)"};
     font-weight: 400;
     margin: 0;
     margin-bottom: 12px;
@@ -254,7 +255,8 @@ const StyledEditor = styled("div")<StyledEditorProps>`
 
   .editor-heading-h2 {
     font-size: 15px;
-    color: ${(props) => props.theme === "dark" ? "rgb(211, 215, 225)" : "rgb(101, 103, 107)"};
+    color: ${(props) =>
+      props.theme === "dark" ? "rgb(211, 215, 225)" : "rgb(101, 103, 107)"};
     font-weight: 700;
     margin: 0;
     margin-top: 10px;
@@ -266,8 +268,10 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     margin: 0;
     margin-left: 20px;
     font-size: 15px;
-    color: ${(props) => props.theme === "dark" ? "rgb(203, 213, 224)" : "rgb(101, 103, 107)"};
-    border-left-color: ${(props) => props.theme === "dark" ? "rgb(138, 140, 144)" : "rgb(206, 208, 212)"};
+    color: ${(props) =>
+      props.theme === "dark" ? "rgb(203, 213, 224)" : "rgb(101, 103, 107)"};
+    border-left-color: ${(props) =>
+      props.theme === "dark" ? "rgb(138, 140, 144)" : "rgb(206, 208, 212)"};
     border-left-width: 4px;
     border-left-style: solid;
     padding-left: 16px;

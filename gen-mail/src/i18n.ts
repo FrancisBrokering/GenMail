@@ -53,7 +53,8 @@ i18n
             option: "Option",
             newEmail: {
               examples: {
-                about: "e.g. Not going to work tomorrow. Kevin will be covering my shift. I plan to be back by Tuesday.",
+                about:
+                  "e.g. Not going to work tomorrow. Kevin will be covering my shift. I plan to be back by Tuesday.",
                 who: "e.g. My boss",
               },
               option: "New",
