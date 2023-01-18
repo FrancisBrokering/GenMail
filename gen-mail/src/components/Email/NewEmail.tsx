@@ -73,6 +73,7 @@ const NewEmail = (props: NewEmailProps) => {
             <Box>
               <FormLabel>② {t("email.newEmail.about")}</FormLabel>
               <Textarea
+                className="second-step"
                 name="description"
                 minH="200px"
                 value={emailDescription}
@@ -94,6 +95,7 @@ const NewEmail = (props: NewEmailProps) => {
             <Box>
               <FormLabel>③ {t("email.newEmail.who")}</FormLabel>
               <Input
+                className="third-step"
                 type="text"
                 name="receiver"
                 value={receiver}

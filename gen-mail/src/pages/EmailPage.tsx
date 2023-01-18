@@ -25,10 +25,15 @@ import EditArea from "../components/EditArea";
 const EmailPages = ["New", "Reply", "Edit"];
 
 const EmailPage = () => {
+  const { t, i18n } = useTranslation();
   const [generateOption, setGenerateOption] = useState("New");
   const [inputLanguage, setInputLanguage] = useState("ja");
   const [outputLanguage, setOutputLanguage] = useState("en");
-  const { t, i18n } = useTranslation();
+  const Tab_Bg = useColorModeValue("white", "gray.700");
+  const SelectedTab_Color = useColorModeValue("black", "white");
+  const Tab_Color = useColorModeValue("gray.600", "gray.400");
+  const TabPanel_Bg = useColorModeValue("white", "gray.700");
+  const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600");
   const tabs = [
     { option: "New", emoji: "✉️", i18message: t("email.newEmail.option") },
     { option: "Reply", emoji: "📩", i18message: t("email.replyEmail.option") },
@@ -40,11 +45,9 @@ const EmailPage = () => {
     // },
   ];
 
-  const Tab_Bg = useColorModeValue("white", "gray.700");
-  const SelectedTab_Color = useColorModeValue("black", "white");
-  const Tab_Color = useColorModeValue("gray.600", "gray.400");
-  const TabPanel_Bg = useColorModeValue("white", "gray.700");
-  const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600");
+  
+
+  
 
   const getEmailPage = (name: string) => {
     if (name === "New")
