@@ -1,2 +1,29 @@
-.sns-platform-button{color:#000;font-size:18px;font-weight:700;transition:.3s ease-in-out}.sns-platform-button span{z-index:1}.sns-platform-button:before{background-color:#ea0dc9;height:100%;left:0;position:absolute;top:0;transition:.3s ease-in-out;width:0;z-index:-1}.sns-platform-button:hover{color:#fff}.sns-platform-button:hover:before{content:"";height:100%;position:absolute;width:100%}
+.sns-platform-button {
+  color: #000;
+  font-size: 18px;
+  font-weight: 700;
+  transition: 0.3s ease-in-out;
+}
+.sns-platform-button span {
+  z-index: 1;
+}
+.sns-platform-button:before {
+  background-color: #ea0dc9;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: 0.3s ease-in-out;
+  width: 0;
+  z-index: -1;
+}
+.sns-platform-button:hover {
+  color: #fff;
+}
+.sns-platform-button:hover:before {
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
 /*# sourceMappingURL=main.ee1618e4.css.map*/
