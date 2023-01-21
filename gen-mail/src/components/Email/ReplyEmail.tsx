@@ -93,8 +93,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
             </Box>
             <Box>
               <FormLabel>③ {t("email.replyEmail.what")}</FormLabel>
-              <Input
-                type="text"
+              <Textarea
                 name="description"
                 value={emailDescription}
                 onChange={(e) => setEmailDescription(e.target.value)}

@@ -17,12 +17,12 @@ import {
 } from "@chakra-ui/react";
 import NewEmail from "../components/Email/NewEmail";
 import ReplyEmail from "../components/Email/ReplyEmail";
-import ReviewEmail from "../components/Email/ReviewEmail";
+// import ReviewEmail from "../components/Email/ReviewEmail";
 import EditEmail from "../components/Email/EditEmail";
 import { useTranslation } from "react-i18next";
 import EditArea from "../components/EditArea";
 
-const EmailPages = ["New", "Reply", "Edit", "Review"];
+const EmailPages = ["New", "Reply", "Edit"];
 
 const EmailPage = () => {
   const [generateOption, setGenerateOption] = useState("New");
@@ -33,11 +33,11 @@ const EmailPage = () => {
     { option: "New", emoji: "✉️", i18message: t("email.newEmail.option") },
     { option: "Reply", emoji: "📩", i18message: t("email.replyEmail.option") },
     { option: "Edit", emoji: "📧", i18message: t("email.editEmail.option") },
-    {
-      option: "Review",
-      emoji: "📨",
-      i18message: t("email.reviewEmail.option"),
-    },
+    // {
+    //   option: "Review",
+    //   emoji: "📨",
+    //   i18message: t("email.reviewEmail.option"),
+    // },
   ];
 
   const Tab_Bg = useColorModeValue("white", "gray.700");
@@ -74,15 +74,15 @@ const EmailPage = () => {
           setOutputLanguage={setOutputLanguage}
         />
       );
-    if (name === "Review")
-      return (
-        <ReviewEmail
-          inputLanguage={inputLanguage}
-          outputLanguage={outputLanguage}
-          setInputLanguage={setInputLanguage}
-          setOutputLanguage={setOutputLanguage}
-        />
-      );
+    // if (name === "Review")
+    //   return (
+    //     <ReviewEmail
+    //       inputLanguage={inputLanguage}
+    //       outputLanguage={outputLanguage}
+    //       setInputLanguage={setInputLanguage}
+    //       setOutputLanguage={setOutputLanguage}
+    //     />
+    //   );
   };
 
   return (
