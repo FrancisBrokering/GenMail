@@ -41,8 +41,8 @@ const EditEmail = (props: EditEmailProps) => {
   async function handleSubmit(event: React.FormEvent) {
     const instruction =
       oldEmail +
-      "\n\nRewrite the above email in " +
-      getLanguageInEnglish(props.outputLanguage) +
+      "\n\nRewrite the above email " +
+      // getLanguageInEnglish(props.outputLanguage) +
       " using the following instruction: \n\n" +
       editDescription;
     FetchDavinci(setIsGenerating, setResult, instruction, event);
@@ -57,15 +57,15 @@ const EditEmail = (props: EditEmailProps) => {
       <form onSubmit={handleSubmit}>
         <FormControl>
           <VStack alignItems={"left"} spacing={"40px"}>
-            <LanguageInputOutput
+            {/* <LanguageInputOutput
               pageTitle={t("email.editEmail.pageTitle") as string}
               setInputLanguage={props.setInputLanguage}
               setOutputLanguage={props.setOutputLanguage}
               inputLanguage={props.inputLanguage}
               outputLanguage={props.outputLanguage}
-            />
+            /> */}
             <Box>
-              <FormLabel>② {t("email.editEmail.paste")}</FormLabel>
+              <FormLabel>① {t("email.editEmail.paste")}</FormLabel>
               <Textarea
                 minH="200px"
                 name="oldEmail"
@@ -84,7 +84,7 @@ const EditEmail = (props: EditEmailProps) => {
               </Text>
             </Box>
             <Box>
-              <FormLabel>③ {t("email.editEmail.how")}</FormLabel>
+              <FormLabel>② {t("email.editEmail.how")}</FormLabel>
               <Input
                 type="text"
                 name="description"

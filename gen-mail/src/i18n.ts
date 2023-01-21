@@ -75,7 +75,7 @@ i18n
             },
             editEmail: {
               examples: {
-                how: "e.g. Inform the receiver that I am very busy tomorrow.",
+                how: "e.g. Correct spelling mistakes\n e.g. Change the tone to formal \n e.g. Add a more paragraphs",
               },
               option: "Edit",
               pageTitle: "Edit Your Email",
@@ -179,7 +179,7 @@ i18n
             },
             replyEmail: {
               examples: {
-                what: "（例）今週の水曜日の午後2時が好都合。来週でも大丈夫なら月曜日と火曜日の午前中が可能。",
+                what: "（例）今週の水曜日の午後2時が好都合。来週まで待てるなら月曜日と火曜日の午前中が可能。",
               },
               option: "返信",
               pageTitle: "Eメールの返信を生成",
@@ -189,7 +189,7 @@ i18n
             },
             editEmail: {
               examples: {
-                how: "（例）送り先に明日忙しいと伝える",
+                how: "（例）文法を直して\n （例）もっと丁寧な言葉を使って\n （例）文章を長くして",
               },
               option: "編集",
               pageTitle: "Eメールの編集",
