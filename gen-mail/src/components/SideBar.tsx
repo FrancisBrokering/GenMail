@@ -121,7 +121,7 @@ const SidebarContent = ({
     // { name: t("sidebar.home"), link: "home", icon: FiHome },
     { name: t("sidebar.email"), link: "email", icon: FiMail },
     { name: t("sidebar.sns"), link: "sns", icon: FiTwitter },
-    { name: t("sidebar.chat"), link: "chat", icon: FiSend },
+    // { name: t("sidebar.chat"), link: "chat", icon: FiSend },
     // { name: t("sidebar.trend"), icon: FiTrendingUp },
     // { name: t("sidebar.favorite"), icon: FiStar },
     // { name: t("sidebar.settings"), icon: FiSettings },
