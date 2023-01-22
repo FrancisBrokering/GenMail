@@ -23,14 +23,14 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import SelectTone from "../common/SelectTone";
 import { FetchDavinci } from "../../utility/CommonMethods";
 
-type NewEmailProps = {
+type SnsPostProps = {
   inputLanguage: string;
   outputLanguage: string;
   setInputLanguage: (lang: string) => void;
   setOutputLanguage: (lang: string) => void;
 };
 
-const NewSns = (props: NewEmailProps) => {
+const SnsPost = (props: SnsPostProps) => {
   const { t } = useTranslation();
   const [postDescription, setPostDescription] = useState("");
   const [tone, setTone] = useState("formal");
@@ -78,14 +78,14 @@ const NewSns = (props: NewEmailProps) => {
         <FormControl>
           <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
-              pageTitle={t("sns.newSns.pageTitle")}
+              pageTitle={t("sns.SnsPost.pageTitle")}
               setInputLanguage={props.setInputLanguage}
               setOutputLanguage={props.setOutputLanguage}
               inputLanguage={props.inputLanguage}
               outputLanguage={props.outputLanguage}
             />
             <Box>
-              <FormLabel>② {t("sns.newSns.platform")}</FormLabel>
+              <FormLabel>② {t("sns.SnsPost.platform")}</FormLabel>
               <Flex>
                 <Menu>
                   <MenuButton
@@ -132,13 +132,13 @@ const NewSns = (props: NewEmailProps) => {
               </Flex>
             </Box>
             <Box>
-              <FormLabel>③ {t("sns.newSns.about")}</FormLabel>
+              <FormLabel>③ {t("sns.SnsPost.about")}</FormLabel>
               <Textarea
                 name="description"
                 minH="200px"
                 value={postDescription}
                 onChange={(e) => setPostDescription(e.target.value)}
-                placeholder={t("sns.newSns.examples.about") as string}
+                placeholder={t("sns.SnsPost.examples.about") as string}
                 _placeholder={{ color: Placeholder_Color }}
                 maxLength={maxChars}
                 required
@@ -163,7 +163,7 @@ const NewSns = (props: NewEmailProps) => {
               isLoading={isGenerating}
               loadingText={isGenerating ? (t("generating") as string) : ""}
             >
-              {t("sns.newSns.button")}
+              {t("sns.SnsPost.button")}
             </Button>
           </VStack>
         </FormControl>
@@ -181,4 +181,4 @@ const NewSns = (props: NewEmailProps) => {
   );
 };
 
-export default NewSns;
+export default SnsPost;

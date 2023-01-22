@@ -4,7 +4,6 @@ import Sidebar from "./components/SideBar";
 import Home from "./pages/Home";
 import EmailPage from "./pages/EmailPage";
 import SnsPage from "./pages/SnsPage";
-import ChatPage from "./pages/ChatPage";
 import { useTranslation } from "react-i18next";
 import "./App.css";
 
@@ -34,7 +33,7 @@ function App() {
           {/* <Route path="/home" element={<Home />} /> */}
           <Route path="/email" element={<EmailPage />} />
           <Route path="/sns" element={<SnsPage />} />
-          <Route path="/chat" element={<ChatPage />} />
+          {/* <Route path="/chat" element={<ChatPage />} /> */}
         </Routes>
       </Sidebar>
     </BrowserRouter>

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ee1618e4.css",
-    "main.js": "/static/js/main.aaa4bae5.js",
+    "main.js": "/static/js/main.9e8c8dcf.js",
     "static/js/787.aa34b94c.chunk.js": "/static/js/787.aa34b94c.chunk.js",
     "static/media/Spain.svg": "/static/media/Spain.fa4ff5f2ca2ecc53713354d8e721217d.svg",
     "static/media/GenPlateMobileLogoDarkMode.png": "/static/media/GenPlateMobileLogoDarkMode.cc734c1ceaa2adaa7732.png",
@@ -38,8 +38,11 @@
     "static/media/type-h1.svg": "/static/media/type-h1.4c6eb94d40e1ad820dda1d155f5231e3.svg",
     "static/media/DarkMoon.svg": "/static/media/DarkMoon.84ed5b34ece188f0e4f5644bd1b501d1.svg",
     "main.ee1618e4.css.map": "/static/css/main.ee1618e4.css.map",
-    "main.aaa4bae5.js.map": "/static/js/main.aaa4bae5.js.map",
+    "main.9e8c8dcf.js.map": "/static/js/main.9e8c8dcf.js.map",
     "787.aa34b94c.chunk.js.map": "/static/js/787.aa34b94c.chunk.js.map"
   },
-  "entrypoints": ["static/css/main.ee1618e4.css", "static/js/main.aaa4bae5.js"]
+  "entrypoints": [
+    "static/css/main.ee1618e4.css",
+    "static/js/main.9e8c8dcf.js"
+  ]
 }

@@ -57,6 +57,7 @@ const EditEmail = (props: EditEmailProps) => {
       <form onSubmit={handleSubmit}>
         <FormControl>
           <VStack alignItems={"left"} spacing={"40px"}>
+          <Text textAlign="center" mb="10px" fontWeight="bold" fontSize="20px">{t("email.editEmail.pageTitle")}</Text>
             {/* <LanguageInputOutput
               pageTitle={t("email.editEmail.pageTitle") as string}
               setInputLanguage={props.setInputLanguage}

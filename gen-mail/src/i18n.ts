@@ -99,7 +99,7 @@ i18n
               youtube: "YouTube",
               linkedin: "LinkedIn",
             },
-            newSns: {
+            SnsPost: {
               examples: {
                 about: "e.g. I went to Hawaii",
               },
@@ -109,13 +109,11 @@ i18n
               pageTitle: "Generate SNS Post",
               button: "Generate",
             },
-          },
-          chat: {
-            replyChat: {
+            SnsChat: {
               examples: {
                 what: "e.g. available at 2pm on Tuesday",
               },
-              option: "Reply",
+              option: "Chat",
               pageTitle: "Generate Chat Reply",
               button: "Generate",
               paste: "Paste the message you received",
@@ -213,7 +211,7 @@ i18n
               youtube: "YouTube",
               linkedin: "LinkedIn",
             },
-            newSns: {
+            SnsPost: {
               examples: {
                 about:
                   "（例）ハワイ旅行に行って海亀を見た。ホテルからの景色は最高だった。また来年も行きたい。",
@@ -224,16 +222,14 @@ i18n
               pageTitle: "SNSの投稿を生成",
               button: "生成",
             },
-          },
-          chat: {
-            replyChat: {
+            SnsChat: {
               examples: {
-                what: "（例）火曜日の午後2時が好都合。貸していた本もその時返してほしい。",
+                what: " （例）火曜日の午後2時が好都合。貸していた本もその時返してほしい。",
               },
-              option: "返信",
+              option: "チャット",
               pageTitle: "チャットの返信を生成",
               button: "生成",
-              paste: "送られてきたチャットを貼り付けてください（英語）",
+              paste: "送られてきたチャットを貼り付けてください",
               what: "(オプショナル) 返信したい内容を入力してください",
             },
           },

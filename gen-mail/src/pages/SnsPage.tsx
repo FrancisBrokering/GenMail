@@ -16,22 +16,36 @@ import {
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import EditArea from "../components/EditArea";
-import NewSns from "../components/SNS/NewSns";
+import SnsPost from "../components/SNS/SnsPost";
+import SnsChat from "../components/SNS/SnsChat";
 
 const SnsPage = () => {
-  const [generateOption, setGenerateOption] = useState("New");
+  const [generateOption, setGenerateOption] = useState("Post");
   const [inputLanguage, setInputLanguage] = useState("ja");
   const [outputLanguage, setOutputLanguage] = useState("en");
   const { t, i18n } = useTranslation();
 
-  function GenerateOptionTitle() {
-    switch (generateOption) {
-      case "New":
-        return t("sns.newSns.pageTitle");
-      case "Review":
-        return t("sns.newSns.pageTitle");
-      default:
-        return t("sns.newSns.pageTitle");
+  const SnsPages = ["Post", "Chat"];
+
+  const getSnsPage = (name: string) => {
+    if (name === "Post")
+      return (
+        <SnsPost
+          inputLanguage={inputLanguage}
+          outputLanguage={outputLanguage}
+          setInputLanguage={setInputLanguage}
+          setOutputLanguage={setOutputLanguage}
+        />
+      );
+    if (name === "Chat") {
+      return (
+        <SnsChat
+          inputLanguage={inputLanguage}
+          outputLanguage={outputLanguage}
+          setInputLanguage={setInputLanguage}
+          setOutputLanguage={setOutputLanguage}
+        />
+      );
     }
   }
 
@@ -49,36 +63,35 @@ const SnsPage = () => {
               <Tab
                 height={"46px"}
                 borderBottom={"0px"}
-                bg={generateOption === "New" ? Tab_Bg : "transparent"}
-                onClick={() => setGenerateOption("New")}
+                bg={generateOption === "Post" ? Tab_Bg : "transparent"}
+                onClick={() => setGenerateOption("Post")}
               >
-                <Text color={generateOption === "New" ? Tab_Color : "gray.600"}>
-                  📝 {t("sns.newSns.option")}
+                <Text color={generateOption === "Post" ? Tab_Color : "gray.600"}>
+                  📝 {t("sns.SnsPost.option")}
                 </Text>
               </Tab>
-              {/* <Tab onClick={(e) => setGenerateOption('Review')}>
-                                <Text color={generateOption === 'Review' ? 'black' : 'grey'}>📝 {t("sns.reviewSns.option")}</Text>
-                            </Tab> */}
+              <Tab
+                height={"46px"}
+                borderBottom={"0px"}
+                bg={generateOption === "Chat" ? Tab_Bg : "transparent"}
+                onClick={() => setGenerateOption("Chat")}
+              >
+                <Text color={generateOption === 'Chat' ? Tab_Color : 'gray.600'}>
+                  💬 {t("sns.SnsChat.option")}
+                </Text>
+              </Tab>
             </TabList>
             <TabPanels
               bg={TabPanel_Bg}
               border="1px solid"
               borderColor={TabPanel_Border}
+              borderTopLeftRadius={generateOption === "Post" ? "0px" : "10px"}
               borderTopRightRadius={"10px"}
               borderBottomRadius={"10px"}
             >
-              <TabPanel>
-                <NewSns
-                  inputLanguage={inputLanguage}
-                  outputLanguage={outputLanguage}
-                  setInputLanguage={setInputLanguage}
-                  setOutputLanguage={setOutputLanguage}
-                />
-              </TabPanel>
-              {/* <TabPanel border='1px solid' borderColor='#e2e8f0'>
-                                <LanguageInputOutput pageTitle={GenerateOptionTitle()} setLanguage={setLanguage} />
-                                <ReviewEmail lang={language} />
-                            </TabPanel> */}
+              {SnsPages.map((page) => {
+                return <TabPanel key={page}>{getSnsPage(page)}</TabPanel>;
+              })}
             </TabPanels>
           </Tabs>
         </Box>
