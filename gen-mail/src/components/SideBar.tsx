@@ -74,7 +74,6 @@ export default function Sidebar({
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        // size="full"
       >
         <DrawerContent>
           <SidebarContent
@@ -92,6 +91,9 @@ export default function Sidebar({
         // bgGradient="linear(to-r, gray.50, gray.50)"
         bg={Sidebar_Body_Bg}
       >
+        {/* <Box position="absolute" top="50%" left="50%">
+          This is test
+        </Box> */}
         {children}
       </Box>
     </Box>

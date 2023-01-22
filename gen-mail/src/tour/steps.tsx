@@ -1,37 +1,40 @@
-import React from 'react';
-import styled from "@emotion/styled"
+import React from "react";
+import { Box, Text, } from "@chakra-ui/react";
+// import { useTranslation } from "react-i18next";
+
+// const { t, i18n } = useTranslation();
 
 export const steps = [
-    {
-        selector: '.intro-step',
-        content: () => (
-            <StyledIntro>
-                Welcome to GenPlate.
-            </StyledIntro>
-        )
+  {
+    selector: ".first-step",
+    content: () => {
+      <Text>
+        Select Output Language.
+      </Text>
     },
-    {
-        selector: '.first-step',
-        content: "This is the first step.",
+  },
+  {
+    selector: ".second-step",
+    content: () => {
+      <Text>
+        This is the second step.
+      </Text>
     }, 
-    {
-        selector: '.second-step',
-        content: "This is the second step.",
-    },
-    {
-        selector: '.third-step',
-        content: "This is the third step.",
-    },
-    {
-        selector: '.fourth-step',
-        content: "This is the fourth step.",
-    },
-    {
-        selector: '.fifth-step',
-        content: "This is the fifth step.",
-    }
-]
-
-const StyledIntro = styled("div")`
-    /* margin: 200px 200px; */
-`
+  },
+  {
+    selector: ".third-step",
+    content: () => {
+      <Text>
+        This is the third step.
+      </Text>
+    }, 
+  },
+  {
+    selector: ".fourth-step",
+    content: () => {
+      <Text>
+        This is the fourth step.
+      </Text>
+    }, 
+  },
+];

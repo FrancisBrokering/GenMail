@@ -29,6 +29,7 @@ type LanguageInputOutputProps = {
   setOutputLanguage: (language: string) => void;
   inputLanguage: string;
   outputLanguage: string;
+  className: string;
 };
 
 //TODO: when adding more languages, need to change props to have setOutputLanguage() and setInputLanguage(). setLanguage is currently serving no purpose
@@ -125,6 +126,7 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
             rightIcon={<ChevronDownIcon />}
             variant="outline"
             borderColor={Menu_Border}
+            className={props.className}
           >
             <Text fontWeight="500">{getLanguage(props.outputLanguage)}</Text>
           </MenuButton>

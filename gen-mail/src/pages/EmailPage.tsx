@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Select,
@@ -15,12 +15,13 @@ import {
   TabPanels,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
+
 import NewEmail from "../components/Email/NewEmail";
 import ReplyEmail from "../components/Email/ReplyEmail";
-// import ReviewEmail from "../components/Email/ReviewEmail";
 import EditEmail from "../components/Email/EditEmail";
-import { useTranslation } from "react-i18next";
 import EditArea from "../components/EditArea";
+import TourModal from "../components/TourModal";
 
 const EmailPages = ["New", "Reply", "Edit"];
 
@@ -44,10 +45,6 @@ const EmailPage = () => {
     //   i18message: t("email.reviewEmail.option"),
     // },
   ];
-
-  
-
-  
 
   const getEmailPage = (name: string) => {
     if (name === "New")
@@ -77,78 +74,74 @@ const EmailPage = () => {
           setOutputLanguage={setOutputLanguage}
         />
       );
-    // if (name === "Review")
-    //   return (
-    //     <ReviewEmail
-    //       inputLanguage={inputLanguage}
-    //       outputLanguage={outputLanguage}
-    //       setInputLanguage={setInputLanguage}
-    //       setOutputLanguage={setOutputLanguage}
-    //     />
-    //   );
   };
 
   return (
-    <Grid templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}>
-      <GridItem colSpan={3}>
-        <Box margin="10px 20px 10px 20px">
-          <Tabs variant="enclosed">
-            <TabList borderBottom={"0px"} pb={"1px"}>
-              {tabs.map((tab) => {
-                return (
-                  <Tab
-                    height={"47px"}
-                    key={tab.option}
-                    borderBottom={"0px"}
-                    bg={generateOption === tab.option ? Tab_Bg : "transparent"}
-                    onClick={() => setGenerateOption(tab.option)}
-                  >
-                    <Flex direction={{ base: "column", md: "row" }}>
-                      <Text
-                        color={
-                          generateOption === tab.option
-                            ? SelectedTab_Color
-                            : Tab_Color
-                        }
-                      >
-                        {tab.emoji}
-                      </Text>
-                      <Text
-                        ml={{ base: "0px", md: "5px" }}
-                        color={
-                          generateOption === tab.option
-                            ? SelectedTab_Color
-                            : Tab_Color
-                        }
-                      >
-                        {tab.i18message}
-                      </Text>
-                    </Flex>
-                  </Tab>
-                );
-              })}
-            </TabList>
-            <TabPanels
-              bg={TabPanel_Bg}
-              border="1px solid"
-              borderColor={TabPanel_Border}
-              borderTopLeftRadius={generateOption === "New" ? "0px" : "10px"}
-              borderTopRightRadius={"10px"}
-              borderBottomRadius={"10px"}
-            >
-              {EmailPages.map((page) => {
-                return <TabPanel key={page}>{getEmailPage(page)}</TabPanel>;
-              })}
-            </TabPanels>
-          </Tabs>
-        </Box>
-      </GridItem>
-      <GridItem colSpan={{ base: 0, md: 2 }}>
-        <Box margin="10px 20px 10px 0px" position={"sticky"} top="10px">
-          <EditArea></EditArea>
-        </Box>
-      </GridItem>
-    </Grid>
+    <>
+      <TourModal />
+      <Grid templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}>
+        <GridItem colSpan={3}>
+          <Box margin="10px 20px 10px 20px">
+            <Tabs variant="enclosed">
+              <TabList borderBottom={"0px"} pb={"1px"}>
+                {tabs.map((tab) => {
+                  return (
+                    <Tab
+                      height={"47px"}
+                      key={tab.option}
+                      borderBottom={"0px"}
+                      bg={
+                        generateOption === tab.option ? Tab_Bg : "transparent"
+                      }
+                      onClick={() => setGenerateOption(tab.option)}
+                    >
+                      <Flex direction={{ base: "column", md: "row" }}>
+                        <Text
+                          color={
+                            generateOption === tab.option
+                              ? SelectedTab_Color
+                              : Tab_Color
+                          }
+                        >
+                          {tab.emoji}
+                        </Text>
+                        <Text
+                          ml={{ base: "0px", md: "5px" }}
+                          color={
+                            generateOption === tab.option
+                              ? SelectedTab_Color
+                              : Tab_Color
+                          }
+                        >
+                          {tab.i18message}
+                        </Text>
+                      </Flex>
+                    </Tab>
+                  );
+                })}
+              </TabList>
+              <TabPanels
+                bg={TabPanel_Bg}
+                border="1px solid"
+                borderColor={TabPanel_Border}
+                borderTopLeftRadius={generateOption === "New" ? "0px" : "10px"}
+                borderTopRightRadius={"10px"}
+                borderBottomRadius={"10px"}
+              >
+                {EmailPages.map((page) => {
+                  return <TabPanel key={page}>{getEmailPage(page)}</TabPanel>;
+                })}
+              </TabPanels>
+            </Tabs>
+          </Box>
+        </GridItem>
+        <GridItem colSpan={{ base: 0, md: 2 }}>
+          <Box margin="10px 20px 10px 0px" position={"sticky"} top="10px">
+            <EditArea></EditArea>
+          </Box>
+        </GridItem>
+      </Grid>
+    </>
   );
 };
 

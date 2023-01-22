@@ -6,7 +6,7 @@ import SnsPage from "./pages/SnsPage";
 import { useTranslation } from "react-i18next";
 import "./App.css";
 
-import { TourProvider } from '@reactour/tour';
+import { TourProvider } from "@reactour/tour";
 import { steps } from "./tour/steps";
 
 const LOCAL_STORAGE_KEY = "USER_LANGUAGE";
@@ -27,24 +27,26 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(language));
   }, [language]);
 
-  const radius=10
+  const radius = 10;
 
   return (
     <BrowserRouter>
-      <TourProvider 
+      <TourProvider
         steps={steps}
-        badgeContent={({ totalSteps, currentStep }) => currentStep + 1 + "/" + totalSteps}
+        badgeContent={({ totalSteps, currentStep }) =>
+          currentStep + 1 + "/" + totalSteps
+        }
         styles={{
           popover: (base) => ({
             ...base,
-            '--reactour-accent': '#ef5a3d',
+            "--reactour-accent": "#ef5a3d",
             borderRadius: radius,
           }),
           maskArea: (base) => ({ ...base, rx: radius }),
           // maskWrapper: (base) => ({ ...base, color: '#ef5a3d' }),
-          badge: (base) => ({ ...base, left: 'auto', right: '-0.8125em' }),
+          badge: (base) => ({ ...base, left: "auto", right: "-0.8125em" }),
           controls: (base) => ({ ...base, marginTop: 100 }),
-          close: (base) => ({ ...base, right: 'auto', left: 8, top: 8 }),
+          close: (base) => ({ ...base, right: "auto", left: 8, top: 8 }),
         }}
       >
         <Sidebar userLanguage={language} setUserLanguage={setLanguage}>

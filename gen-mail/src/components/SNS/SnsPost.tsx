@@ -83,6 +83,7 @@ const SnsPost = (props: SnsPostProps) => {
               setOutputLanguage={props.setOutputLanguage}
               inputLanguage={props.inputLanguage}
               outputLanguage={props.outputLanguage}
+              className={"first-step"}
             />
             <Box>
               <FormLabel>② {t("sns.SnsPost.platform")}</FormLabel>
