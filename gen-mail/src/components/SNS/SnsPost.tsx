@@ -21,7 +21,7 @@ import GetPlatformLogo from "../../data/GetEditerLogo";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import SelectTone from "../common/SelectTone";
-import { FetchDavinci } from "../../utility/CommonMethods";
+import { FetchGpt3 } from "../../utility/CommonMethods";
 
 type SnsPostProps = {
   inputLanguage: string;
@@ -65,7 +65,13 @@ const SnsPost = (props: SnsPostProps) => {
       "3 Tone: " +
       tone;
 
-    FetchDavinci(setIsGenerating, setResult, instruction, event);
+    FetchGpt3(
+      setIsGenerating,
+      setResult,
+      instruction,
+      event,
+      "text-davinci-003"
+    );
   }
 
   useEffect(() => {

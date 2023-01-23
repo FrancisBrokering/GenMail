@@ -11,10 +11,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  FetchDavinci,
-  getLanguageInEnglish,
-} from "../../utility/CommonMethods";
+import { FetchGpt3, getLanguageInEnglish } from "../../utility/CommonMethods";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 import SelectTone from "../common/SelectTone";
@@ -53,7 +50,13 @@ const ReplyEmail = (props: ReplyEmailProps) => {
       tone +
       details;
 
-    FetchDavinci(setIsGenerating, setResult, instruction, event);
+    FetchGpt3(
+      setIsGenerating,
+      setResult,
+      instruction,
+      event,
+      "text-davinci-003"
+    );
   }
 
   useEffect(() => {

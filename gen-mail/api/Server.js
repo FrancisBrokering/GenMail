@@ -19,9 +19,10 @@ app.use(cors());
 
 app.post("/", (req, res) => {
   console.log(generatePrompt(req.body.dataToSendToGPT3));
+  console.log(req.body.modelToUse);
   openai
     .createCompletion({
-      model: "text-davinci-003",
+      model: req.body.dataToSendToGPT3.modelToUse,
       prompt: generatePrompt(req.body.dataToSendToGPT3),
       temperature: 0.6,
       max_tokens: 2000,

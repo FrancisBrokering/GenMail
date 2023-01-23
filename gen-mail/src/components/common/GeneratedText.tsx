@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import React, { useEffect, useState } from "react";
+import { FetchGpt3 } from "../../utility/CommonMethods";
 
 type GeneratedTextProps = {
   result: string;
@@ -21,6 +22,11 @@ const GeneratedText = (props: GeneratedTextProps) => {
   const { onCopy, setValue, hasCopied } = useClipboard("");
   const [lines, setlines] = useState(0);
   const [maxLineLength, setMaxLineLength] = useState(0);
+  const [textToTranslate, setTextToTranslate] = useState("");
+  const [translatedText, setTranslatedText] = useState([""]);
+  const [displayTranslatedText, setDisplayTranslatedText] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [textareaValue, setTextareaValue] = useState("");
 
   const Hover_Color = useColorModeValue("gray.100", "gray.600");
 
@@ -34,12 +40,26 @@ const GeneratedText = (props: GeneratedTextProps) => {
     );
   }, []);
 
-  // useEffect(() => {
-  //   lines = props.result.split("\n").length;
-  //   maxLineLength = props.result.split("\n").reduce(function(a, b) {
-  //     return Math.max(a, b.length);
-  //   }, 0);
-  // }, [props.result]);
+  async function handleTranslate(event: React.MouseEvent<HTMLElement>) {
+    if (translatedText[0] != "") {
+      return;
+    }
+    const instruction =
+      "translate the following sentence to Japanese: \n" + props.result;
+    console.log("instruction!!!!!!!!!: ", instruction);
+    FetchGpt3(
+      setIsGenerating,
+      setTranslatedText,
+      instruction,
+      event,
+      "text-davinci-003"
+    );
+  }
+
+  useEffect(() => {
+    console.log("passed: ", translatedText);
+    setTextareaValue(props.result.replace(/^\s+|\s+$/g, ""));
+  }, [translatedText]);
 
   return (
     <>
@@ -50,28 +70,50 @@ const GeneratedText = (props: GeneratedTextProps) => {
             {" "}
             {t("email.option")} {props.index + 1}
           </Text>
-          <Button
-            colorScheme="blue"
-            bg="cyan.400"
-            _hover={{ bg: "#7dc5ea" }}
-            variant="solid"
-            w="90px"
-            color="white"
-            onClick={onCopy}
-          >
-            {hasCopied ? t("copied") : t("copy")}
-          </Button>
+          <Box>
+            <Button
+              colorScheme="blue"
+              bg="cyan.400"
+              _hover={{ bg: "#7dc5ea" }}
+              variant="solid"
+              color="white"
+              onClick={(event) => {
+                handleTranslate(event);
+                setDisplayTranslatedText(!displayTranslatedText);
+              }}
+              mr="10px"
+              isLoading={isGenerating}
+              loadingText={isGenerating ? (t("translating") as string) : ""}
+            >
+              {displayTranslatedText ? t("original") : t("translate")}
+            </Button>
+            <Button
+              colorScheme="blue"
+              bg="cyan.400"
+              _hover={{ bg: "#7dc5ea" }}
+              variant="solid"
+              w="90px"
+              color="white"
+              onClick={onCopy}
+            >
+              {hasCopied ? t("copied") : t("copy")}
+            </Button>
+          </Box>
         </Flex>
         <Box rounded="5px" _hover={{ bg: Hover_Color }} key={props.index}>
           <Textarea
+            onChange={(event) => {
+              setTextareaValue(event.target.value);
+            }}
+            isReadOnly={displayTranslatedText ? true : false}
             cols={maxLineLength}
             rows={lines + 3}
-            value={props.result.replace(/^\s+|\s+$/g, "")}
-          >
-            {/* <Text>
-              {props.result.replace(/^\s+|\s+$/g, "")}
-            </Text> */}
-          </Textarea>
+            value={
+              displayTranslatedText && !isGenerating
+                ? translatedText[0].replace(/^\s+|\s+$/g, "")
+                : textareaValue
+            }
+          />
         </Box>
       </Flex>
     </>

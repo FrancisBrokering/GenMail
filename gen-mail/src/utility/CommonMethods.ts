@@ -1,15 +1,17 @@
-export async function FetchDavinci(
+export async function FetchGpt3(
   setIsGenerating: (generating: boolean) => void,
-  setResult: (result: [string, string, string]) => void,
+  setResult: (result: [string, string, string] | [string]) => void,
   Gpt3Instruction: string,
-  event: React.FormEvent
+  event: React.FormEvent,
+  Gpt3Model: string
 ) {
   setIsGenerating(true);
   event.preventDefault();
-  const data = { dataToSendToGPT3: Gpt3Instruction };
+  const data = { dataToSendToGPT3: Gpt3Instruction, modelToUse: Gpt3Model };
   console.log("data is: ", JSON.stringify(data));
   const response = await fetch(
     "https://i9jzvt02ng.execute-api.us-west-2.amazonaws.com/Test1/test123",
+    // "http://localhost:8080",
     {
       method: "POST",
       headers: {

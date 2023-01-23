@@ -8,12 +8,12 @@ const config: ThemeConfig = {
 export const chakraCustomTheme = extendTheme({
   config,
   breakpoints: {
-    sm: '30em',
-    md: '53em',  //default: 48em
-    lg: '62em',
-    xl: '80em',
-    '2xl': '96em',
-  }
+    sm: "30em",
+    md: "53em", //default: 48em
+    lg: "62em",
+    xl: "80em",
+    "2xl": "96em",
+  },
 });
 
 // export function deleteColorModeInLocalStorage() {

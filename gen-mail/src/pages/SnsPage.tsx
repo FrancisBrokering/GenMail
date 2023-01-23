@@ -47,7 +47,7 @@ const SnsPage = () => {
         />
       );
     }
-  }
+  };
 
   const Tab_Bg = useColorModeValue("white", "gray.700");
   const Tab_Color = useColorModeValue("black", "white");
@@ -90,20 +90,47 @@ const SnsPage = () => {
                 borderTopRightRadius={"10px"}
                 borderBottomRadius={"10px"}
               >
-                {SnsPages.map((page) => {
-                  return <TabPanel key={page}>{getSnsPage(page)}</TabPanel>;
-                })}
-              </TabPanels>
-            </Tabs>
-          </Box>
-        </GridItem>
-        <GridItem colSpan={{ base: 0, md: 2 }}>
-          <Box margin="10px 20px 10px 0px" position={"sticky"} top="10px">
-            <EditArea></EditArea>
-          </Box>
-        </GridItem>
-      </Grid>
-    </>
+                <Text
+                  color={generateOption === "Post" ? Tab_Color : "gray.600"}
+                >
+                  📝 {t("sns.SnsPost.option")}
+                </Text>
+              </Tab>
+              <Tab
+                height={"46px"}
+                borderBottom={"0px"}
+                bg={generateOption === "Chat" ? Tab_Bg : "transparent"}
+                onClick={() => setGenerateOption("Chat")}
+              >
+                <Text
+                  color={generateOption === "Chat" ? Tab_Color : "gray.600"}
+                >
+                  💬 {t("sns.SnsChat.option")}
+                </Text>
+              </Tab>
+            </TabList>
+            <TabPanels
+              bg={TabPanel_Bg}
+              border="1px solid"
+              borderColor={TabPanel_Border}
+              borderTopLeftRadius={generateOption === "Post" ? "0px" : "10px"}
+              borderTopRightRadius={"10px"}
+              borderBottomRadius={"10px"}
+            >
+              {SnsPages.map((page) => {
+                return <TabPanel key={page}>{getSnsPage(page)}</TabPanel>;
+              })}
+            </TabPanels>
+          </Tabs>
+        </Box>
+      </GridItem>
+      <GridItem colSpan={{ base: 0, md: 2 }}>
+        <Box margin="10px 20px 10px 0px" position={"sticky"} top="10px">
+          <EditArea></EditArea>
+        </Box>
+      </GridItem>
+    </Grid>
+   </>
   );
 };
 
