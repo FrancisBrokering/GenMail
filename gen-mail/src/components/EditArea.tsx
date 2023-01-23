@@ -27,17 +27,13 @@ const EditArea = () => {
 
   return (
     <Box
-      // borderLeft={"1px solid #e2e8f0"}
       borderTop={"1px solid #e2e8f0"}
       borderLeft={"1px solid #e2e8f0"}
       borderBottom={"1px solid #e2e8f0"}
       borderRight={"1px solid #e2e8f0"}
       borderColor={Editor_BorderColor}
       borderRadius="10px"
-      // borderTopLeftRadius="10px"
-      // borderTopRightRadius="10px"
       bg={Editor_Bg}
-      // minHeight="85vh"
       display={{ base: "none", md: "flex" }}
       flexDirection="column"
     >

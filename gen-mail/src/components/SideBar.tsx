@@ -10,6 +10,7 @@ import {
   Link,
   Drawer,
   DrawerContent,
+  DrawerOverlay,
   Text,
   useDisclosure,
   BoxProps,
@@ -25,6 +26,7 @@ import {
   Center,
   Divider,
   Image,
+  DarkMode,
 } from "@chakra-ui/react";
 import { FiHome, FiMenu, FiMail, FiTwitter, FiSend } from "react-icons/fi";
 import { IconType } from "react-icons";
@@ -54,14 +56,14 @@ export default function Sidebar({
 }: SidebarProps) {
   // const [ theme, setTheme ] = useState("")
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const Sidebar_Content_Bg = useColorModeValue("gray.200", "gray.900");
-  const Sidebar_Body_Bg = useColorModeValue("gray.50", "gray.800");
+  const Sidebar_Content_Bg = useColorModeValue("gray.900", "gray.900");
+  const Sidebar_Body_Bg = useColorModeValue("gray.100", "gray.800");
 
   return (
     <Box minH="100vh">
       <SidebarContent
         bg={Sidebar_Content_Bg}
-        onClose={() => onClose}
+        onClose={onClose}
         display={{ base: "none", md: "block" }}
         userLanguage={userLanguage}
         setUserLanguage={setUserLanguage}
@@ -74,8 +76,10 @@ export default function Sidebar({
         returnFocusOnClose={false}
         onOverlayClick={onClose}
       >
+        <DrawerOverlay />
         <DrawerContent>
           <SidebarContent
+            bg={Sidebar_Content_Bg}
             onClose={onClose}
             userLanguage={userLanguage}
             setUserLanguage={setUserLanguage}
@@ -87,12 +91,8 @@ export default function Sidebar({
       <Box
         ml={{ base: 0, md: 60 }}
         minH="100vh"
-        // bgGradient="linear(to-r, gray.50, gray.50)"
         bg={Sidebar_Body_Bg}
       >
-        {/* <Box position="absolute" top="50%" left="50%">
-          This is test
-        </Box> */}
         {children}
       </Box>
     </Box>
@@ -122,15 +122,11 @@ const SidebarContent = ({
     // { name: t("sidebar.home"), link: "home", icon: FiHome },
     { name: t("sidebar.email"), link: "email", icon: FiMail },
     { name: t("sidebar.sns"), link: "sns", icon: FiTwitter },
-    // { name: t("sidebar.chat"), link: "chat", icon: FiSend },
-    // { name: t("sidebar.trend"), icon: FiTrendingUp },
-    // { name: t("sidebar.favorite"), icon: FiStar },
-    // { name: t("sidebar.settings"), icon: FiSettings },
   ];
 
   const Sidebar_Border = useColorModeValue("gray.200", "gray.700");
-  const SelectLang_Border = useColorModeValue("gray.400", "gray.300");
-  const Divider_Color = useColorModeValue("gray.400", "gray.600");
+  const SelectLang_Border = useColorModeValue("gray.300", "gray.300");
+  const Divider_Color = useColorModeValue("gray.600", "gray.600");
   const { colorMode } = useColorMode();
 
   return (
@@ -150,18 +146,11 @@ const SidebarContent = ({
         mb="30px"
         mt="40px"
       >
-        {colorMode === "dark" ? (
-          <Image
-            src={GenPlateLogoDarkModePNG}
-            height={{ base: "100%", md: "100px" }}
-          />
-        ) : (
-          <Image src={GenPlateLogoPNG} height={{ base: "100%", md: "100px" }} />
-        )}
-        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
+        <Image src={GenPlateLogoDarkModePNG} height={{ base: "100%", md: "100px" }} /> 
+        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} color="gray.100"/>
       </Flex>
       <Flex flexDirection={"column"} height="70%">
-        <Box className="fifth-step">
+        <Box className="fifth-step" color={"gray.100"}>
           {LinkItems.map((link) => (
             <NavItem
               key={link.name}
@@ -179,27 +168,29 @@ const SidebarContent = ({
         </Box>
         <Box mt="10px" ml="25px">
           <Menu>
-            <MenuButton
-              as={Button}
-              leftIcon={
-                userLanguage === "ja" ? (
-                  <JapanFlag margin-right="12px" width="22px" height="22px" />
-                ) : (
-                  <UsaFlag margin-right="12px" width="22px" height="22px" />
-                )
-              }
-              rightIcon={<ChevronDownIcon />}
-              variant="outline"
-              borderColor={SelectLang_Border}
-            >
-              <Text fontWeight="500">
-                {userLanguage === "ja" ? t("japanese") : t("english")}
-              </Text>
-            </MenuButton>
+            <DarkMode>
+              <MenuButton
+                as={Button}
+                leftIcon={
+                  userLanguage === "ja" ? (
+                    <JapanFlag margin-right="12px" width="22px" height="22px" />
+                  ) : (
+                    <UsaFlag margin-right="12px" width="22px" height="22px" />
+                  )
+                }
+                rightIcon={<ChevronDownIcon />}
+                variant="outline"
+                borderColor={SelectLang_Border}
+              >
+                <Text fontWeight="500">
+                  {userLanguage === "ja" ? t("japanese") : t("english")}
+                </Text>
+              </MenuButton>
+            </DarkMode>
             <MenuList>
               <MenuItem
                 minH="48px"
-                onClick={(e) => setUserLanguage("ja")}
+                onClick={() => setUserLanguage("ja")}
                 icon={
                   <JapanFlag margin-right="12px" width="22px" height="22px" />
                 }
@@ -208,7 +199,7 @@ const SidebarContent = ({
               </MenuItem>
               <MenuItem
                 minH="40px"
-                onClick={(e) => setUserLanguage("en")}
+                onClick={() => setUserLanguage("en")}
                 icon={
                   <UsaFlag margin-right="12px" width="22px" height="22px" />
                 }
@@ -230,7 +221,7 @@ interface NavItemProps extends FlexProps {
   children: ReactText;
 }
 const NavItem = ({ icon, children, link, ...rest }: NavItemProps) => {
-  const NavItem_Bg = useColorModeValue("cyan.400", "cyan.600");
+  const NavItem_Bg = useColorModeValue("cyan.600", "cyan.600");
 
   return (
     <Link
@@ -272,32 +263,29 @@ interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
-  const { colorMode } = useColorMode();
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 24 }}
-      height="20"
+      height="60px"
       alignItems="center"
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue("gray.800", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent="space-between"
       {...rest}
     >
       <Box pl="30px" pt="5px" height="40px">
-        {colorMode === "dark" ? (
-          <Image src={GenPlateMobileLogoDarkModePNG} height="100%" />
-        ) : (
-          <Image src={GenPlateMobileLogoPNG} height="100%" />
-        )}
+        <Image src={GenPlateMobileLogoDarkModePNG} height="100%" />
       </Box>
-      <IconButton
-        variant="outline"
-        onClick={onOpen}
-        aria-label="open menu"
-        icon={<FiMenu />}
-      />
+      <DarkMode>
+        <IconButton
+          variant="outline"
+          onClick={onOpen}
+          aria-label="open menu"
+          icon={<FiMenu />}
+        />
+      </DarkMode>
     </Flex>
   );
 };
