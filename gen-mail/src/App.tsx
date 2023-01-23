@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Sidebar from "./components/SideBar";
+import Sidebar from "./components/sidebar/SideBar";
 import EmailPage from "./pages/EmailPage";
 import SnsPage from "./pages/SnsPage";
 import { useTranslation } from "react-i18next";

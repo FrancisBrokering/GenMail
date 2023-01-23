@@ -32,15 +32,15 @@ import { FiHome, FiMenu, FiMail, FiTwitter, FiSend } from "react-icons/fi";
 import { IconType } from "react-icons";
 import { ReactText } from "react";
 import { useTranslation } from "react-i18next";
-import { ReactComponent as GenPlateLogo } from "../assets/icons/GenPlateLogo.svg";
-import { ReactComponent as GenPlateLogoDarkMode } from "../assets/icons/GenPlateLogoDarkMode.svg";
-import GenPlateLogoPNG from "../assets/icons/GenPlateLogo.png";
-import GenPlateLogoDarkModePNG from "../assets/icons/GenPlateLogoDarkMode.png";
-import GenPlateMobileLogoPNG from "../assets/icons/GenPlateMobileLogo.png";
-import GenPlateMobileLogoDarkModePNG from "../assets/icons/GenPlateMobileLogoDarkMode.png";
-import ChangeThemeColor from "./ChangeThemeColor";
-import { ReactComponent as JapanFlag } from "../assets/icons/Japan.svg";
-import { ReactComponent as UsaFlag } from "../assets/icons/USA.svg";
+import { ReactComponent as GenPlateLogo } from "../../assets/icons/GenPlateLogo.svg";
+import { ReactComponent as GenPlateLogoDarkMode } from "../../assets/icons/GenPlateLogoDarkMode.svg";
+import GenPlateLogoPNG from "../../assets/icons/GenPlateLogo.png";
+import GenPlateLogoDarkModePNG from "../../assets/icons/GenPlateLogoDarkMode.png";
+import GenPlateMobileLogoPNG from "../../assets/icons/GenPlateMobileLogo.png";
+import GenPlateMobileLogoDarkModePNG from "../../assets/icons/GenPlateMobileLogoDarkMode.png";
+import ChangeThemeColor from "../ChangeThemeColor";
+import { ReactComponent as JapanFlag } from "../../assets/icons/Japan.svg";
+import { ReactComponent as UsaFlag } from "../../assets/icons/USA.svg";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 type SidebarProps = {
