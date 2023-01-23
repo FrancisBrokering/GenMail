@@ -40,7 +40,6 @@ import ChangeThemeColor from "./ChangeThemeColor";
 import { ReactComponent as JapanFlag } from "../assets/icons/Japan.svg";
 import { ReactComponent as UsaFlag } from "../assets/icons/USA.svg";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { useTour } from "@reactour/tour";
 
 type SidebarProps = {
   children?: JSX.Element | JSX.Element[];
@@ -134,8 +133,6 @@ const SidebarContent = ({
   const Divider_Color = useColorModeValue("gray.400", "gray.600");
   const { colorMode } = useColorMode();
 
-  const { setIsOpen } = useTour();
-
   return (
     <Box
       borderRight="1px"
@@ -164,7 +161,7 @@ const SidebarContent = ({
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       <Flex flexDirection={"column"} height="70%">
-        <Box>
+        <Box className="fifth-step">
           {LinkItems.map((link) => (
             <NavItem
               key={link.name}
@@ -176,7 +173,6 @@ const SidebarContent = ({
             </NavItem>
           ))}
         </Box>
-        <Button onClick={() => setIsOpen(true)}>Open Tour</Button>
         <Spacer />
         <Box margin={"20px 15px"}>
           <Divider borderColor={Divider_Color} />

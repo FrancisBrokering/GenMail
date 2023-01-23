@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import {
   Text,
   Box,
+  Image,
   Button,
   Flex,
   Spacer,
@@ -16,7 +17,9 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { useTour } from "@reactour/tour";
+import  { useTranslation } from "react-i18next";
 import GetIcon from "../data/GetIcon";
+import GenPlateHome from "../assets/images/GenPlateHome.png";
 
 const LOCAL_STORAGE_KEY = "FIRST_TIME_ENTER";
 
@@ -24,6 +27,7 @@ const TourModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode } = useColorMode();
   const { setIsOpen } = useTour();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const storedFirsttimeEnter = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -49,7 +53,7 @@ const TourModal = () => {
     <>
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent maxWidth={"650px"}>
           <ModalHeader>
             <Flex alignItems={"center"}>
               {colorMode == "dark"
@@ -63,30 +67,30 @@ const TourModal = () => {
           <ModalCloseButton />
           <ModalBody>
             <Text fontWeight={"bold"} fontSize={"30px"}>
-              Welcome to GenPlate!
+              {t("tour.modal.title")}
             </Text>
             <Text mt={"10px"}>
-              GenPlate stands for Generate Templates.
-            </Text>
-            <Text mt={"10px"}>
-                GenPlate is a revolutionary new app that automatically generates E-mail and SNS message templates in various languages. 
-                With GenPlate, you&#39;ll never have to struggle with language barriers again. And the best part? It&#39;s completely free! 
+                {t("tour.modal.about")}
             </Text>
             <Text mt={"10px"} mb={"20px"}>
-                We&#39;re still in the process of developing and improving GenPlate, so if you like it, please leave a review to let us 
-                know how we&#39;re doing.
+                {t("tour.modal.support")}
             </Text>
-            <input type="checkbox" name="ShowAgain" onChange={handleChange}></input>
-            <label htmlFor="ShowAgain"> Don&#39;t show this again.</label>
+            <Box margin={"25px 70px"}>
+              <Image src={GenPlateHome} alt="GenPlate" borderRadius={"10px"}></Image>
+            </Box>
+            <Box mb={"20px"}>
+              <input type="checkbox" name="ShowAgain" onChange={handleChange}></input>
+              <label htmlFor="ShowAgain"> {t("tour.modal.show")}</label>
+            </Box>
           </ModalBody>
         
           <ModalFooter>
             <Flex width={"100%"}>
               <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Skip
+                {t("tour.modal.skip")}
               </Button>
               <Spacer />
-              <Button onClick={() => handleTourClick()}>Open Tour</Button>
+              <Button onClick={() => handleTourClick()}>{t("tour.modal.openTour")}</Button>
             </Flex>
           </ModalFooter>
         </ModalContent>

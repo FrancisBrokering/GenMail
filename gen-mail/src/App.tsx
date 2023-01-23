@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import "./App.css";
 
 import { TourProvider } from "@reactour/tour";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { steps } from "./tour/steps";
 
 const LOCAL_STORAGE_KEY = "USER_LANGUAGE";
@@ -28,11 +29,15 @@ function App() {
   }, [language]);
 
   const radius = 10;
+  const disableBody = (target: any) => disableBodyScroll(target);
+  const enableBody = (target: any) => enableBodyScroll(target);
 
   return (
     <BrowserRouter>
       <TourProvider
         steps={steps}
+        afterOpen={disableBody}
+        beforeClose={enableBody}
         badgeContent={({ totalSteps, currentStep }) =>
           currentStep + 1 + "/" + totalSteps
         }
@@ -45,7 +50,7 @@ function App() {
           maskArea: (base) => ({ ...base, rx: radius }),
           // maskWrapper: (base) => ({ ...base, color: '#ef5a3d' }),
           badge: (base) => ({ ...base, left: "auto", right: "-0.8125em" }),
-          controls: (base) => ({ ...base, marginTop: 100 }),
+          controls: (base) => ({ ...base, marginTop: 30 }),
           close: (base) => ({ ...base, right: "auto", left: 8, top: 8 }),
         }}
       >
@@ -55,7 +60,6 @@ function App() {
             {/* <Route path="/home" element={<Home />} /> */}
             <Route path="/email" element={<EmailPage />} />
             <Route path="/sns" element={<SnsPage />} />
-            <Route path="/chat" element={<ChatPage />} />
           </Routes>
         </Sidebar>
       </TourProvider>

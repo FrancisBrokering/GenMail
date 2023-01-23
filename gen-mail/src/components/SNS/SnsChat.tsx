@@ -71,6 +71,7 @@ import {
                 setOutputLanguage={props.setOutputLanguage}
                 inputLanguage={props.inputLanguage}
                 outputLanguage={props.outputLanguage}
+                className="first-step"
               />
               <Box>
                 <FormLabel>② {t("sns.SnsChat.paste")}</FormLabel>
