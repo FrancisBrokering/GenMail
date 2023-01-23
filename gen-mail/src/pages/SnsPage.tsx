@@ -47,7 +47,7 @@ const SnsPage = () => {
         />
       );
     }
-  }
+  };
 
   const Tab_Bg = useColorModeValue("white", "gray.700");
   const Tab_Color = useColorModeValue("black", "white");
@@ -66,7 +66,9 @@ const SnsPage = () => {
                 bg={generateOption === "Post" ? Tab_Bg : "transparent"}
                 onClick={() => setGenerateOption("Post")}
               >
-                <Text color={generateOption === "Post" ? Tab_Color : "gray.600"}>
+                <Text
+                  color={generateOption === "Post" ? Tab_Color : "gray.600"}
+                >
                   📝 {t("sns.SnsPost.option")}
                 </Text>
               </Tab>
@@ -76,7 +78,9 @@ const SnsPage = () => {
                 bg={generateOption === "Chat" ? Tab_Bg : "transparent"}
                 onClick={() => setGenerateOption("Chat")}
               >
-                <Text color={generateOption === 'Chat' ? Tab_Color : 'gray.600'}>
+                <Text
+                  color={generateOption === "Chat" ? Tab_Color : "gray.600"}
+                >
                   💬 {t("sns.SnsChat.option")}
                 </Text>
               </Tab>

@@ -14,6 +14,9 @@ i18n
         translation: {
           logo: "GenMail",
           copy: "Copy",
+          translate: "Translate",
+          translating: "Translating",
+          original: "original",
           copied: "Copied!",
           darkMode: "Dark Mode",
           lightMode: "Light Mode",
@@ -126,6 +129,9 @@ i18n
         translation: {
           logo: "ジェネメール",
           copy: "コピー",
+          translate: "翻訳",
+          translating: "翻訳中",
+          original: "原文",
           copied: "コピー完了",
           darkMode: "ダークモード",
           lightMode: "ライトモード",

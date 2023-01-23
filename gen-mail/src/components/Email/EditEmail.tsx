@@ -13,10 +13,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  FetchDavinci,
-  getLanguageInEnglish,
-} from "../../utility/CommonMethods";
+import { FetchGpt3, getLanguageInEnglish } from "../../utility/CommonMethods";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 
@@ -45,7 +42,13 @@ const EditEmail = (props: EditEmailProps) => {
       // getLanguageInEnglish(props.outputLanguage) +
       " using the following instruction: \n\n" +
       editDescription;
-    FetchDavinci(setIsGenerating, setResult, instruction, event);
+    FetchGpt3(
+      setIsGenerating,
+      setResult,
+      instruction,
+      event,
+      "text-davinci-003"
+    );
   }
 
   useEffect(() => {
@@ -57,7 +60,14 @@ const EditEmail = (props: EditEmailProps) => {
       <form onSubmit={handleSubmit}>
         <FormControl>
           <VStack alignItems={"left"} spacing={"40px"}>
-          <Text textAlign="center" mb="10px" fontWeight="bold" fontSize="20px">{t("email.editEmail.pageTitle")}</Text>
+            <Text
+              textAlign="center"
+              mb="10px"
+              fontWeight="bold"
+              fontSize="20px"
+            >
+              {t("email.editEmail.pageTitle")}
+            </Text>
             {/* <LanguageInputOutput
               pageTitle={t("email.editEmail.pageTitle") as string}
               setInputLanguage={props.setInputLanguage}

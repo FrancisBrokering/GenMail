@@ -14,10 +14,7 @@ import { useTranslation } from "react-i18next";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 import SelectTone from "../common/SelectTone";
-import {
-  FetchDavinci,
-  getLanguageInEnglish,
-} from "../../utility/CommonMethods";
+import { FetchGpt3, getLanguageInEnglish } from "../../utility/CommonMethods";
 
 type NewEmailProps = {
   inputLanguage: string;
@@ -51,7 +48,13 @@ const NewEmail = (props: NewEmailProps) => {
       "\n" +
       "3 Tone: " +
       tone;
-    FetchDavinci(setIsGenerating, setResult, instruction, event);
+    FetchGpt3(
+      setIsGenerating,
+      setResult,
+      instruction,
+      event,
+      "text-davinci-003"
+    );
   }
 
   useEffect(() => {
