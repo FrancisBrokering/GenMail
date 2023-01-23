@@ -89,12 +89,14 @@ const SnsPost = (props: SnsPostProps) => {
               setOutputLanguage={props.setOutputLanguage}
               inputLanguage={props.inputLanguage}
               outputLanguage={props.outputLanguage}
+              className={"first-step"}
             />
             <Box>
               <FormLabel>② {t("sns.SnsPost.platform")}</FormLabel>
               <Flex>
                 <Menu>
                   <MenuButton
+                    className="second-step"
                     as={Button}
                     leftIcon={GetPlatformLogo(platform, "22px", "22px")}
                     rightIcon={<ChevronDownIcon />}
@@ -140,6 +142,7 @@ const SnsPost = (props: SnsPostProps) => {
             <Box>
               <FormLabel>③ {t("sns.SnsPost.about")}</FormLabel>
               <Textarea
+                className="third-step"
                 name="description"
                 minH="200px"
                 value={postDescription}

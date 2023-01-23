@@ -22,7 +22,6 @@ import { ReactComponent as SpainFlag } from "../../assets/icons/Spain.svg";
 import { ReactComponent as FranceFlag } from "../../assets/icons/France.svg";
 import { ReactComponent as GermanyFlag } from "../../assets/icons/Germany.svg";
 import { ReactComponent as ItalyFlag } from "../../assets/icons/Italy.svg";
-//Use this link for flag SVGs https://uxwing.com/usa-flag-round-circle-icon/
 
 type LanguageInputOutputProps = {
   pageTitle: string;
@@ -30,6 +29,7 @@ type LanguageInputOutputProps = {
   setOutputLanguage: (language: string) => void;
   inputLanguage: string;
   outputLanguage: string;
+  className: string;
 };
 
 //TODO: when adding more languages, need to change props to have setOutputLanguage() and setInputLanguage(). setLanguage is currently serving no purpose
@@ -85,6 +85,8 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
       <FormLabel>① {t("selectLang")}</FormLabel>
       <Flex>
         {/* <Menu>
+      <Flex className="first-step">
+        <Menu>
           <MenuButton
             as={Button}
             leftIcon={getFlag(props.inputLanguage)}
@@ -124,20 +126,10 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
             rightIcon={<ChevronDownIcon />}
             variant="outline"
             borderColor={Menu_Border}
+            className={props.className}
           >
             <Text fontWeight="500">{getLanguage(props.outputLanguage)}</Text>
           </MenuButton>
-          {/* <MenuList>
-            <MenuItem
-              minH="40px"
-              onClick={(e) => {
-                props.setOutputLanguage("en")
-              }}
-              icon={<UsaFlag margin-right="12px" width="22px" height="22px" />}
-            >
-              <Text>{t("english")}</Text>
-            </MenuItem>
-          </MenuList> */}
           <MenuList>
             {outputLanguageOptions.map((lang, index) => {
               return (

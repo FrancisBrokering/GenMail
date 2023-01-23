@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 import { FetchGpt3, getLanguageInEnglish } from "../../utility/CommonMethods";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput";
+// import { useTour } from '@reactour/tour'
 
 type EditEmailProps = {
   inputLanguage: string;
