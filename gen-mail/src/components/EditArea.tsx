@@ -49,9 +49,9 @@ const EditArea = () => {
             });
           }}
           mt={2}
-          bg="#0dc5ea"
+          bg="#0768d2"
           width={"100px"}
-          _hover={{ bg: "#7dc5ea" }}
+          _hover={{ bg: "#0553a8" }}
           color={"white"}
         >
           {hasCopied ? t("copied") : t("copy")}

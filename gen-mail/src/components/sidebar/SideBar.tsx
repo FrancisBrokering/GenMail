@@ -181,6 +181,7 @@ const SidebarContent = ({
                 rightIcon={<ChevronDownIcon />}
                 variant="outline"
                 borderColor={SelectLang_Border}
+                ml="10px"
               >
                 <Text fontWeight="500">
                   {userLanguage === "ja" ? t("japanese") : t("english")}
@@ -275,7 +276,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       justifyContent="space-between"
       {...rest}
     >
-      <Box pl="30px" pt="5px" height="40px">
+      <Box height="40px">
         <Image src={GenPlateMobileLogoDarkModePNG} height="100%" />
       </Box>
       <DarkMode>

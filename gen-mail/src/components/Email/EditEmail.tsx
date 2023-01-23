@@ -110,8 +110,8 @@ const EditEmail = (props: EditEmailProps) => {
             <Button
               color="white"
               colorScheme="blue"
-              bg="cyan.400"
-              _hover={{ bg: "#7dc5ea" }}
+              bg="#0768d2"
+              _hover={{ bg: "#0553a8" }}
               variant="solid"
               type="submit"
               isLoading={isGenerating}

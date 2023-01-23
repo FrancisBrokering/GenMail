@@ -21,16 +21,16 @@ import GetPlatformLogo from "../../data/GetEditerLogo";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import SelectTone from "../common/SelectTone";
-import { FetchGpt3 } from "../../utility/CommonMethods";
+import { FetchDavinci } from "../../utility/CommonMethods";
 
-type SnsPostProps = {
+type NewEmailProps = {
   inputLanguage: string;
   outputLanguage: string;
   setInputLanguage: (lang: string) => void;
   setOutputLanguage: (lang: string) => void;
 };
 
-const SnsPost = (props: SnsPostProps) => {
+const NewSns = (props: NewEmailProps) => {
   const { t } = useTranslation();
   const [postDescription, setPostDescription] = useState("");
   const [tone, setTone] = useState("formal");
@@ -65,13 +65,7 @@ const SnsPost = (props: SnsPostProps) => {
       "3 Tone: " +
       tone;
 
-    FetchGpt3(
-      setIsGenerating,
-      setResult,
-      instruction,
-      event,
-      "text-davinci-003"
-    );
+    FetchDavinci(setIsGenerating, setResult, instruction, event);
   }
 
   useEffect(() => {
@@ -84,7 +78,7 @@ const SnsPost = (props: SnsPostProps) => {
         <FormControl>
           <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
-              pageTitle={t("sns.SnsPost.pageTitle")}
+              pageTitle={t("sns.newSns.pageTitle")}
               setInputLanguage={props.setInputLanguage}
               setOutputLanguage={props.setOutputLanguage}
               inputLanguage={props.inputLanguage}
@@ -92,11 +86,10 @@ const SnsPost = (props: SnsPostProps) => {
               className={"first-step"}
             />
             <Box>
-              <FormLabel>② {t("sns.SnsPost.platform")}</FormLabel>
+              <FormLabel>② {t("sns.newSns.platform")}</FormLabel>
               <Flex>
                 <Menu>
                   <MenuButton
-                    className="second-step"
                     as={Button}
                     leftIcon={GetPlatformLogo(platform, "22px", "22px")}
                     rightIcon={<ChevronDownIcon />}
@@ -140,14 +133,13 @@ const SnsPost = (props: SnsPostProps) => {
               </Flex>
             </Box>
             <Box>
-              <FormLabel>③ {t("sns.SnsPost.about")}</FormLabel>
+              <FormLabel>③ {t("sns.newSns.about")}</FormLabel>
               <Textarea
-                className="third-step"
                 name="description"
                 minH="200px"
                 value={postDescription}
                 onChange={(e) => setPostDescription(e.target.value)}
-                placeholder={t("sns.SnsPost.examples.about") as string}
+                placeholder={t("sns.newSns.examples.about") as string}
                 _placeholder={{ color: Placeholder_Color }}
                 maxLength={maxChars}
                 required
@@ -172,7 +164,7 @@ const SnsPost = (props: SnsPostProps) => {
               isLoading={isGenerating}
               loadingText={isGenerating ? (t("generating") as string) : ""}
             >
-              {t("sns.SnsPost.button")}
+              {t("sns.newSns.button")}
             </Button>
           </VStack>
         </FormControl>
@@ -190,4 +182,4 @@ const SnsPost = (props: SnsPostProps) => {
   );
 };
 
-export default SnsPost;
+export default NewSns;
