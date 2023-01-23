@@ -56,9 +56,7 @@ const TourModal = () => {
         <ModalContent maxWidth={"650px"}>
           <ModalHeader>
             <Flex alignItems={"center"}>
-              {colorMode == "dark"
-                ? GetIcon("GenPlateLogoDark", "20px", "20px")
-                : GetIcon("GenPlateLogo", "20px", "20px")}
+              {GetIcon("GenPlateIcon", "20px", "20px")}
               <Text ml={"5px"} fontWeight={"normal"}>
                 GenPlate
               </Text>

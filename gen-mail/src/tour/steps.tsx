@@ -8,7 +8,7 @@ export const steps = [
     content: () => {
       const { t, i18n } = useTranslation();
       return (
-        <Text>
+        <Text color={"black"}>
           {t("tour.firstStep")}
         </Text>
       )
@@ -19,7 +19,7 @@ export const steps = [
     content: () => {
       const { t, i18n } = useTranslation();
       return (
-        <Text>
+        <Text color={"black"}>
           {t("tour.secondStep")}
         </Text>
       )
@@ -30,7 +30,7 @@ export const steps = [
     content: () => {
       const { t, i18n } = useTranslation();
       return (
-        <Text>
+        <Text color={"black"}>
           {t("tour.thirdStep")}
         </Text>
       )
@@ -41,7 +41,7 @@ export const steps = [
     content: () => {
       const { t, i18n } = useTranslation();
       return (
-        <Text>
+        <Text color={"black"}>
           {t("tour.fourthStep")}
         </Text>
       )
@@ -52,7 +52,7 @@ export const steps = [
     content: () => {
       const { t, i18n } = useTranslation();
       return (
-        <Text>
+        <Text color={"black"}>
           {t("tour.fifthStep")}
         </Text>
       )
