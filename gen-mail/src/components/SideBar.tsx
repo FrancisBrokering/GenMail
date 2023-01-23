@@ -40,7 +40,6 @@ import ChangeThemeColor from "./ChangeThemeColor";
 import { ReactComponent as JapanFlag } from "../assets/icons/Japan.svg";
 import { ReactComponent as UsaFlag } from "../assets/icons/USA.svg";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-//Use this link for flag SVGs https://uxwing.com/usa-flag-round-circle-icon/
 
 type SidebarProps = {
   children?: JSX.Element | JSX.Element[];
@@ -74,7 +73,6 @@ export default function Sidebar({
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        // size="full"
       >
         <DrawerContent>
           <SidebarContent
@@ -92,6 +90,9 @@ export default function Sidebar({
         // bgGradient="linear(to-r, gray.50, gray.50)"
         bg={Sidebar_Body_Bg}
       >
+        {/* <Box position="absolute" top="50%" left="50%">
+          This is test
+        </Box> */}
         {children}
       </Box>
     </Box>
@@ -160,7 +161,7 @@ const SidebarContent = ({
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       <Flex flexDirection={"column"} height="70%">
-        <Box>
+        <Box className="fifth-step">
           {LinkItems.map((link) => (
             <NavItem
               key={link.name}

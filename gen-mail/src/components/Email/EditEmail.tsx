@@ -19,6 +19,7 @@ import {
 } from "../../utility/CommonMethods";
 import GeneratedText from "../common/GeneratedText";
 import LanguageInputOutput from "../common/LanguageInputOutput";
+// import { useTour } from '@reactour/tour'
 
 type EditEmailProps = {
   inputLanguage: string;

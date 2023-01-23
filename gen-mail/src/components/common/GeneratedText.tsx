@@ -27,9 +27,11 @@ const GeneratedText = (props: GeneratedTextProps) => {
   useEffect(() => {
     setValue(props.result);
     setlines(props.result.split("\n").length);
-    setMaxLineLength(props.result.split("\n").reduce(function(a, b) {
-      return Math.max(a, b.length);
-    }, 0));
+    setMaxLineLength(
+      props.result.split("\n").reduce(function (a, b) {
+        return Math.max(a, b.length);
+      }, 0)
+    );
   }, []);
 
   // useEffect(() => {
@@ -61,7 +63,11 @@ const GeneratedText = (props: GeneratedTextProps) => {
           </Button>
         </Flex>
         <Box rounded="5px" _hover={{ bg: Hover_Color }} key={props.index}>
-          <Textarea cols={maxLineLength} rows={lines+3}  value={props.result.replace(/^\s+|\s+$/g, "")}>
+          <Textarea
+            cols={maxLineLength}
+            rows={lines + 3}
+            value={props.result.replace(/^\s+|\s+$/g, "")}
+          >
             {/* <Text>
               {props.result.replace(/^\s+|\s+$/g, "")}
             </Text> */}

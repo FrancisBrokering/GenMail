@@ -14,6 +14,7 @@ const SelectTone = (props: SelectToneProps) => {
     <Box>
       <FormLabel>④ {t("tone.label")}</FormLabel>
       <Select
+        className="fourth-step"
         placeholder={t("tone.button") as string}
         _placeholder={{ color: Placeholder_Color }}
         onChange={(e) => props.setTone(e.target.value)}

@@ -120,6 +120,21 @@ i18n
               what: "(optional) What do you want to say?",
             },
           },
+          tour: {
+            modal: {
+              title: "Welcome to GenPlate!",
+              about: "GenPlate is a revolutionary new app that automatically generates E-mail and SNS message templates in various languages. With GenPlate, you'll never have to struggle with language barriers again.",
+              support: "We're still in the process of developing and improving GenPlate, so if you like it, please leave a review to let us know how we're doing.",
+              show: "Don't show this modal again.",
+              skip: "Skip",
+              openTour: "Open Tour",
+            },
+            firstStep: "Select output Language.",
+            secondStep: "Write details you want to include in your message.",
+            thirdStep: "Provide name of a person or organization you're sending your messages to.",
+            fourthStep: "Choose a tone of your email or add your customaized tone.",
+            fifthStep: "Try other fields and explore the app!"
+          }
         },
       },
       ja: {
@@ -233,6 +248,21 @@ i18n
               what: "(オプショナル) 返信したい内容を入力してください",
             },
           },
+          tour: {
+            modal: {
+              title: "GenPlateへようこそ",
+              aboud: "GenPlateは、様々な言語でメールやSNSのメッセージテンプレートを自動生成するアプリです。仕事やプライベートで海外の人と交流があり、普段メールのやりとりなどを英語で行なっている方に使っていただけます。",
+              support: "GenPlateはまだ開発・改良の途中ですので、もし気に入っていただけたなら、ぜひレビューやコメントなどを使って頂けると幸いです。",
+              show: "今後、このメッセージを表示しない。",
+              skip: "スキップ",
+              openTour: "使い方を見る",
+            },
+            firstStep: "作りたいテンプレートの言語を指定してください。",
+            secondStep: "テンプレートに含みたい内容を入力してください。",
+            thirdStep: "宛先を入力してください。",
+            fourthStep: "口調（ニュアンス）を選択してください。",
+            fifthStep: "他のSNSなどの機能を試してみてね！"
+          }
         },
       },
     },
