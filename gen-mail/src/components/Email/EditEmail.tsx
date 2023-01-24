@@ -35,6 +35,8 @@ const EditEmail = (props: EditEmailProps) => {
   const maxChars = 1500;
   const Countword_color = useColorModeValue("gray.400", "gray.400");
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
+  const Button_Bg = useColorModeValue("#0768d2", "#0768d2");
+  const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2")
 
   async function handleSubmit(event: React.FormEvent) {
     const instruction =
@@ -61,21 +63,7 @@ const EditEmail = (props: EditEmailProps) => {
       <form onSubmit={handleSubmit}>
         <FormControl>
           <VStack alignItems={"left"} spacing={"40px"}>
-            <Text
-              textAlign="center"
-              mb="10px"
-              fontWeight="bold"
-              fontSize="20px"
-            >
-              {t("email.editEmail.pageTitle")}
-            </Text>
-            {/* <LanguageInputOutput
-              pageTitle={t("email.editEmail.pageTitle") as string}
-              setInputLanguage={props.setInputLanguage}
-              setOutputLanguage={props.setOutputLanguage}
-              inputLanguage={props.inputLanguage}
-              outputLanguage={props.outputLanguage}
-            /> */}
+          <Text textAlign="center" mb="10px" fontWeight="bold" fontSize="20px">{t("email.editEmail.pageTitle")}</Text>
             <Box>
               <FormLabel>① {t("email.editEmail.paste")}</FormLabel>
               <Textarea
@@ -98,6 +86,7 @@ const EditEmail = (props: EditEmailProps) => {
             <Box>
               <FormLabel>② {t("email.editEmail.how")}</FormLabel>
               <Input
+                mb={"10px"}
                 type="text"
                 name="description"
                 value={editDescription}
@@ -110,8 +99,8 @@ const EditEmail = (props: EditEmailProps) => {
             <Button
               color="white"
               colorScheme="blue"
-              bg="#0768d2"
-              _hover={{ bg: "#0553a8" }}
+              bg={Button_Bg}
+              _hover={{ bg: Button_Bg_Hover }}
               variant="solid"
               type="submit"
               isLoading={isGenerating}

@@ -24,6 +24,8 @@ const EditArea = () => {
   const { t } = useTranslation();
   const Editor_BorderColor = useColorModeValue("#e2e8f0", "gray.600");
   const Editor_Bg = useColorModeValue("white", "gray.700");
+  const Button_Bg = useColorModeValue("#0768d2", "#0768d2");
+  const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2")
 
   return (
     <Box
@@ -49,9 +51,9 @@ const EditArea = () => {
             });
           }}
           mt={2}
-          bg="#0768d2"
+          bg={Button_Bg}
           width={"100px"}
-          _hover={{ bg: "#0553a8" }}
+          _hover={{ bg: Button_Bg_Hover }}
           color={"white"}
         >
           {hasCopied ? t("copied") : t("copy")}
