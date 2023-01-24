@@ -47,7 +47,7 @@ const SnsPage = () => {
         />
       );
     }
-  };
+  }
 
   const Tab_Bg = useColorModeValue("white", "gray.700");
   const Tab_Color = useColorModeValue("black", "white");
@@ -55,44 +55,18 @@ const SnsPage = () => {
   const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600");
 
   return (
-    <>
-      <Grid templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}>
-        <GridItem colSpan={3}>
-          <Box margin="10px 20px 10px 20px">
-            <Tabs variant="enclosed">
-              <TabList borderBottom={"0px"} pb={"1px"}>
-                <Tab
-                  height={"46px"}
-                  borderBottom={"0px"}
-                  bg={generateOption === "Post" ? Tab_Bg : "transparent"}
-                  onClick={() => setGenerateOption("Post")}
-                >
-                  <Text color={generateOption === "Post" ? Tab_Color : "gray.600"}>
-                    📝 {t("sns.SnsPost.option")}
-                  </Text>
-                </Tab>
-                <Tab
-                  height={"46px"}
-                  borderBottom={"0px"}
-                  bg={generateOption === "Chat" ? Tab_Bg : "transparent"}
-                  onClick={() => setGenerateOption("Chat")}
-                >
-                  <Text color={generateOption === 'Chat' ? Tab_Color : 'gray.600'}>
-                    💬 {t("sns.SnsChat.option")}
-                  </Text>
-                </Tab>
-              </TabList>
-              <TabPanels
-                bg={TabPanel_Bg}
-                border="1px solid"
-                borderColor={TabPanel_Border}
-                borderTopLeftRadius={generateOption === "Post" ? "0px" : "10px"}
-                borderTopRightRadius={"10px"}
-                borderBottomRadius={"10px"}
+    <Grid templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}>
+      <GridItem colSpan={3}>
+        <Box margin="10px 20px 10px 20px">
+          <Tabs variant="enclosed">
+            <TabList borderBottom={"0px"} pb={"1px"}>
+              <Tab
+                height={"46px"}
+                borderBottom={"0px"}
+                bg={generateOption === "Post" ? Tab_Bg : "transparent"}
+                onClick={() => setGenerateOption("Post")}
               >
-                <Text
-                  color={generateOption === "Post" ? Tab_Color : "gray.600"}
-                >
+                <Text color={generateOption === "Post" ? Tab_Color : "gray.600"}>
                   📝 {t("sns.SnsPost.option")}
                 </Text>
               </Tab>
@@ -102,9 +76,7 @@ const SnsPage = () => {
                 bg={generateOption === "Chat" ? Tab_Bg : "transparent"}
                 onClick={() => setGenerateOption("Chat")}
               >
-                <Text
-                  color={generateOption === "Chat" ? Tab_Color : "gray.600"}
-                >
+                <Text color={generateOption === 'Chat' ? Tab_Color : 'gray.600'}>
                   💬 {t("sns.SnsChat.option")}
                 </Text>
               </Tab>
@@ -130,7 +102,6 @@ const SnsPage = () => {
         </Box>
       </GridItem>
     </Grid>
-   </>
   );
 };
 
