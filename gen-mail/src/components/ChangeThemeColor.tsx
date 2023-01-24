@@ -1,9 +1,6 @@
 import React from "react";
 import {
   useColorMode,
-  FormControl,
-  FormLabel,
-  Switch,
   Flex,
   Button,
   Box,
@@ -16,7 +13,7 @@ import { ReactComponent as LightSun } from "../assets/icons/LightSun.svg";
 
 const ChangeThemeColor = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const ThemeButton_Bg = useColorModeValue("gray.300", "gray.700");
+  const ThemeButton_Bg = useColorModeValue("gray.700", "gray.700");
   const { t } = useTranslation();
 
   console.log(colorMode);
@@ -27,22 +24,13 @@ const ChangeThemeColor = () => {
         _hover={{ bg: ThemeButton_Bg }}
         onClick={toggleColorMode}
       >
-        <Flex alignItems={"center"}>
+        <Flex alignItems={"center"} color="gray.100">
           {colorMode === "dark" ? <LightSun /> : <DarkMoon />}
           <Text ml={"10px"}>
             {colorMode === "dark" ? t("lightMode") : t("darkMode")}
           </Text>
         </Flex>
       </Button>
-      {/* <Flex>
-        <FormLabel>{colorMode === "dark" ? t("lightMode") : t("darkMode")}</FormLabel>
-        <Switch
-          size={"md"}
-          mt="5px"
-          defaultChecked={colorMode === "dark" ? true : false}
-          onChange={toggleColorMode}
-        />
-      </Flex> */}
     </Box>
   );
 };

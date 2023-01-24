@@ -70,6 +70,7 @@ const GeneratedText = (props: GeneratedTextProps) => {
             {" "}
             {t("email.option")} {props.index + 1}
           </Text>
+
           <Box>
             <Button
               colorScheme="blue"
@@ -89,8 +90,8 @@ const GeneratedText = (props: GeneratedTextProps) => {
             </Button>
             <Button
               colorScheme="blue"
-              bg="cyan.400"
-              _hover={{ bg: "#7dc5ea" }}
+              bg="#0768d2"
+              _hover={{ bg: "#0553a8" }}
               variant="solid"
               w="90px"
               color="white"

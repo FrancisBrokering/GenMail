@@ -117,7 +117,7 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
         </Menu> */}
 
         {/* <Center pl="20px" pr="20px">
-          <ArrowRightIcon w={6} h={6} color="cyan.400" />
+          <ArrowRightIcon w={6} h={6} color="#0768d2" />
         </Center> */}
         <Menu>
           <MenuButton

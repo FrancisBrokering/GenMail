@@ -44,6 +44,8 @@ const SnsPost = (props: SnsPostProps) => {
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
   const Platform_Color = useColorModeValue("gray.700", "gray.200");
   const Menu_Border = useColorModeValue("gray.200", "gray.600");
+  const Button_Bg = useColorModeValue("#0768d2", "#0768d2");
+  const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2")
   const Platforms = [
     "Instagram",
     "Facebook",
@@ -165,8 +167,8 @@ const SnsPost = (props: SnsPostProps) => {
             <Button
               color="white"
               colorScheme="blue"
-              bg="cyan.400"
-              _hover={{ bg: "#7dc5ea" }}
+              bg={Button_Bg}
+              _hover={{ bg: Button_Bg_Hover }}
               variant="solid"
               type="submit"
               isLoading={isGenerating}
@@ -177,7 +179,7 @@ const SnsPost = (props: SnsPostProps) => {
           </VStack>
         </FormControl>
       </form>
-      <Box maxW="100%" whiteSpace="pre-wrap" pb="100px">
+      <Box maxW="100%" whiteSpace="pre-wrap" pb="70px">
         {results[0] === "" ? (
           <></>
         ) : (
