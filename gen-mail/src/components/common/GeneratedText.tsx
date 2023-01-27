@@ -40,6 +40,10 @@ const GeneratedText = (props: GeneratedTextProps) => {
     );
   }, []);
 
+  useEffect(() => {
+    setTextareaValue(props.result.replace(/^\s+|\s+$/g, ""));
+  }, [props.result]);
+
   async function handleTranslate(event: React.MouseEvent<HTMLElement>) {
     if (translatedText[0] != "") {
       return;
