@@ -45,7 +45,7 @@ const SnsPost = (props: SnsPostProps) => {
   const Platform_Color = useColorModeValue("gray.700", "gray.200");
   const Menu_Border = useColorModeValue("gray.200", "gray.600");
   const Button_Bg = useColorModeValue("#0768d2", "#0768d2");
-  const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2")
+  const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2");
   const Platforms = [
     "Instagram",
     "Facebook",
