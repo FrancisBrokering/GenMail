@@ -66,7 +66,7 @@ export const DRAG_DROP_PASTE: LexicalCommand<Array<File>> = createCommand(
     'DRAG_DROP_PASTE_FILE',
 );
 
-export default function EnableTabIndent(): any {
+export default function CustomCommands(): any {
   const [editor] = useLexicalComposerContext();
   editor.registerCommand<KeyboardEvent>(
     KEY_TAB_COMMAND,
@@ -109,4 +109,4 @@ export default function EnableTabIndent(): any {
     );
 }
 
-EnableTabIndent.displayName = "EnableTabIndent";
+CustomCommands.displayName = "EnableTabIndent";
