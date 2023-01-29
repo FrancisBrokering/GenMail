@@ -17,7 +17,7 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { useTour } from "@reactour/tour";
-import  { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import GetIcon from "../data/GetIcon";
 import GenPlateHome from "../assets/images/GenPlateHome.png";
 
@@ -38,11 +38,11 @@ const TourModal = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked === true) {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify("TRUE"));
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify("TRUE"));
     } else {
-        localStorage.removeItem(LOCAL_STORAGE_KEY);
+      localStorage.removeItem(LOCAL_STORAGE_KEY);
     }
-  }
+  };
 
   const handleTourClick = () => {
     setIsOpen(true);
@@ -67,28 +67,36 @@ const TourModal = () => {
             <Text fontWeight={"bold"} fontSize={"30px"}>
               {t("tour.modal.title")}
             </Text>
-            <Text mt={"10px"}>
-                {t("tour.modal.about")}
-            </Text>
+            <Text mt={"10px"}>{t("tour.modal.about")}</Text>
             <Text mt={"10px"} mb={"20px"}>
-                {t("tour.modal.support")}
+              {t("tour.modal.support")}
             </Text>
             <Box margin={"25px 70px"}>
-              <Image src={GenPlateHome} alt="GenPlate" borderRadius={"10px"}></Image>
+              <Image
+                src={GenPlateHome}
+                alt="GenPlate"
+                borderRadius={"10px"}
+              ></Image>
             </Box>
             <Box mb={"20px"}>
-              <input type="checkbox" name="ShowAgain" onChange={handleChange}></input>
+              <input
+                type="checkbox"
+                name="ShowAgain"
+                onChange={handleChange}
+              ></input>
               <label htmlFor="ShowAgain"> {t("tour.modal.show")}</label>
             </Box>
           </ModalBody>
-        
+
           <ModalFooter>
             <Flex width={"100%"}>
               <Button colorScheme="blue" mr={3} onClick={onClose}>
                 {t("tour.modal.skip")}
               </Button>
               <Spacer />
-              <Button onClick={() => handleTourClick()}>{t("tour.modal.openTour")}</Button>
+              <Button onClick={() => handleTourClick()}>
+                {t("tour.modal.openTour")}
+              </Button>
             </Flex>
           </ModalFooter>
         </ModalContent>

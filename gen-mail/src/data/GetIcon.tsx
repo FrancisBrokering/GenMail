@@ -4,8 +4,8 @@ import { ReactComponent as GenPlateIcon } from "../assets/icons/GenPlateIcon.svg
 
 const GetIcon = (name: string, w: string, h: string) => {
   if (name === "GenPlateIcon") return <GenPlateIcon width={w} height={h} />;
-//   if (name === "GenPlateLogoDark")
-//     return <GenPlateLogoDark width={w} height={h} />;
+  //   if (name === "GenPlateLogoDark")
+  //     return <GenPlateLogoDark width={w} height={h} />;
 };
 
 export default GetIcon;
