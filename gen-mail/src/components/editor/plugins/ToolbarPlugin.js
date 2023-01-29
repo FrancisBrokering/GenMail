@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React from "react";
+import { useMediaQuery } from "@chakra-ui/react";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -52,16 +53,18 @@ const supportedBlockTypes = new Set([
   "h2",
   "ul",
   "ol",
+  "strikethrough",
+  "link",
 ]);
 
 const blockTypeToBlockName = {
+  paragraph: "Normal",
+  quote: "Quote",
   code: "Code Block",
   h1: "Large Heading",
   h2: "Small Heading",
-  ol: "Numbered List",
-  paragraph: "Normal",
-  quote: "Quote",
   ul: "Bulleted List",
+  ol: "Numbered List",
 };
 
 function Divider() {
@@ -251,6 +254,71 @@ function getSelectedNode(selection) {
   }
 }
 
+function MediaBlockOptionsDropdownList({
+  editor,
+  toolbarRef,
+  setShowMediaBlockOptionsDropDown,
+  isStrikethrough,
+  isCode,
+  isLink,
+}) {
+  const mediaDropdownRef = useRef(null);
+
+  useEffect(() => {
+    const mediaDropdown = mediaDropdownRef.current;
+    const toolbar = toolbarRef.current;
+
+    if (mediaDropdown !== null && toolbar !== null) {
+      const handle = (event) => {
+        const target = event.target;
+
+        if (!mediaDropdown.contains(target) && !toolbar.contains(target)) {
+          setShowMediaBlockOptionsDropDown(false);
+        }
+      };
+      document.addEventListener("click", handle);
+
+      return () => {
+        document.removeEventListener("click", handle);
+      };
+    }
+  }, [mediaDropdownRef, setShowMediaBlockOptionsDropDown, toolbarRef]);
+
+  return (
+    <div className="media-dropdown" ref={mediaDropdownRef}>
+      <button
+        onClick={() => {
+          editor.dispatchCommand(FORMAT_TEXT_COMMAND, "strikethrough");
+        }}
+        className={"toolbar-item spaced " + (isStrikethrough ? "active" : "")}
+        aria-label="Format Strikethrough"
+      >
+        <i className="format strikethrough" />
+      </button>
+      <button
+        onClick={() => {
+          editor.dispatchCommand(FORMAT_TEXT_COMMAND, "link");
+        }}
+        className={"toolbar-item spaced " + (isLink ? "active" : "")}
+        aria-label="Insert Link"
+      >
+        <i className="format link" />
+      </button>
+      {isLink &&
+        createPortal(<FloatingLinkEditor editor={editor} />, document.body)}
+      <button
+        onClick={() => {
+          editor.dispatchCommand(FORMAT_TEXT_COMMAND, "code");
+        }}
+        className={"toolbar-item spaced " + (isCode ? "active" : "")}
+        aria-label="Insert Code"
+      >
+        <i className="format code" />
+      </button>
+    </div>
+  );
+}
+
 function BlockOptionsDropdownList({
   editor,
   blockType,
@@ -362,8 +430,6 @@ function BlockOptionsDropdownList({
     setShowBlockOptionsDropDown(false);
   };
 
-  console.log("this is dropdown menu");
-
   return (
     <div className="dropdown" ref={dropDownRef}>
       <button className="item" onClick={formatParagraph}>
@@ -414,6 +480,8 @@ export default function ToolbarPlugin() {
   const [selectedElementKey, setSelectedElementKey] = useState(null);
   const [showBlockOptionsDropDown, setShowBlockOptionsDropDown] =
     useState(false);
+  const [showMediaBlockOptionsDropDown, setShowMediaBlockOptionsDropDown] =
+    useState(false);
   const [codeLanguage, setCodeLanguage] = useState("");
   const [isRTL, setIsRTL] = useState(false);
   const [isLink, setIsLink] = useState(false);
@@ -422,10 +490,7 @@ export default function ToolbarPlugin() {
   const [isUnderline, setIsUnderline] = useState(false);
   const [isStrikethrough, setIsStrikethrough] = useState(false);
   const [isCode, setIsCode] = useState(false);
-
-  // useEffect(() => {
-  //   console.log(showBlockOptionsDropDown);
-  // }, [showBlockOptionsDropDown]);
+  const [isLargerThan1280] = useMediaQuery("(min-width: 1280px)");
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -565,9 +630,6 @@ export default function ToolbarPlugin() {
             <span className="text">{blockTypeToBlockName[blockType]}</span>
             <i className="chevron-down" />
           </button>
-          {/* {showBlockOptionsDropDown
-            ? console.log("dropdown true")
-            : console.log("dropdown false")} */}
           {showBlockOptionsDropDown && (
             <>
               <BlockOptionsDropdownList
@@ -620,72 +682,71 @@ export default function ToolbarPlugin() {
           >
             <i className="format underline" />
           </button>
-          <button
-            onClick={() => {
-              editor.dispatchCommand(FORMAT_TEXT_COMMAND, "strikethrough");
-            }}
-            className={
-              "toolbar-item spaced " + (isStrikethrough ? "active" : "")
-            }
-            aria-label="Format Strikethrough"
-          >
-            <i className="format strikethrough" />
-          </button>
-          <button
-            onClick={() => {
-              editor.dispatchCommand(FORMAT_TEXT_COMMAND, "code");
-            }}
-            className={"toolbar-item spaced " + (isCode ? "active" : "")}
-            aria-label="Insert Code"
-          >
-            <i className="format code" />
-          </button>
-          <button
-            onClick={insertLink}
-            className={"toolbar-item spaced " + (isLink ? "active" : "")}
-            aria-label="Insert Link"
-          >
-            <i className="format link" />
-          </button>
-          {isLink &&
-            createPortal(<FloatingLinkEditor editor={editor} />, document.body)}
-          <Divider />
-          {/* <button
-            onClick={() => {
-              editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "left");
-            }}
-            className="toolbar-item spaced"
-            aria-label="Left Align"
-          >
-            <i className="format left-align" />
-          </button>
-          <button
-            onClick={() => {
-              editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "center");
-            }}
-            className="toolbar-item spaced"
-            aria-label="Center Align"
-          >
-            <i className="format center-align" />
-          </button>
-          <button
-            onClick={() => {
-              editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "right");
-            }}
-            className="toolbar-item spaced"
-            aria-label="Right Align"
-          >
-            <i className="format right-align" />
-          </button>
-          <button
-            onClick={() => {
-              editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "justify");
-            }}
-            className="toolbar-item"
-            aria-label="Justify Align"
-          >
-            <i className="format justify-align" />
-          </button>{" "} */}
+          {isLargerThan1280 ? (
+            <>
+              <button
+                onClick={() => {
+                  editor.dispatchCommand(FORMAT_TEXT_COMMAND, "strikethrough");
+                }}
+                className={
+                  "toolbar-item spaced " + (isStrikethrough ? "active" : "")
+                }
+                aria-label="Format Strikethrough"
+              >
+                <i className="format strikethrough" />
+              </button>
+              <button
+                onClick={() => {
+                  editor.dispatchCommand(FORMAT_TEXT_COMMAND, "code");
+                }}
+                className={"toolbar-item spaced " + (isCode ? "active" : "")}
+                aria-label="Insert Code"
+              >
+                <i className="format code" />
+              </button>
+              <button
+                onClick={insertLink}
+                className={"toolbar-item spaced " + (isLink ? "active" : "")}
+                aria-label="Insert Link"
+              >
+                <i className="format link" />
+              </button>
+              {isLink &&
+                createPortal(
+                  <FloatingLinkEditor editor={editor} />,
+                  document.body
+                )}
+              <Divider />
+            </>
+          ) : (
+            <div className="blockdown-list">
+              <button
+                className="toolbar-item blcok-controls"
+                onClick={() =>
+                  setShowMediaBlockOptionsDropDown(
+                    !showMediaBlockOptionsDropDown
+                  )
+                }
+                aria-label="Formatting Options"
+              >
+                <i className="format more-horizontal" />
+              </button>
+              {showMediaBlockOptionsDropDown && (
+                <>
+                  <MediaBlockOptionsDropdownList
+                    editor={editor}
+                    toolbarRef={toolbarRef}
+                    setMediaBlockOptionsDropDown={
+                      setShowMediaBlockOptionsDropDown
+                    }
+                    isStrikethrough={isStrikethrough}
+                    isCode={isCode}
+                    isLink={isLink}
+                  />
+                </>
+              )}
+            </div>
+          )}
         </>
       )}
     </div>
