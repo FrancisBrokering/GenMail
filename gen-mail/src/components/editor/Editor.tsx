@@ -26,7 +26,7 @@ import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 // import TreeViewPlugin from "./plugins/TreeViewPlugin";
 import CopyPlugin from "./plugins/CopyPlugin";
 import KeyboardSupportPlugin from "./plugins/KeyboardSupport";
-import EnableTabIndent from "./plugins/EnableTabIndent";
+import CustomCommands from "./plugins/CustomCommands";
 
 import { useTranslation } from "react-i18next";
 
@@ -90,7 +90,7 @@ const Editor = forwardRef<EditorMethods>((_, ref) => {
             <AutoLinkPlugin />
             <CopyPlugin ref={copyPluginRef} />
             <KeyboardSupportPlugin />
-            <EnableTabIndent />
+            <CustomCommands />
           </div>
         </div>
       </LexicalComposer>
