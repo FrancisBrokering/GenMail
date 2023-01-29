@@ -6,6 +6,7 @@ import {
   Text,
   useClipboard,
   useColorModeValue,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import React, { ElementRef, useRef } from "react";
 import { useTranslation } from "react-i18next";
@@ -26,6 +27,7 @@ const EditArea = () => {
   const Editor_Bg = useColorModeValue("white", "gray.700");
   const Button_Bg = useColorModeValue("#0768d2", "#0768d2");
   const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2");
+  // const [isLargerThan1160] = useMediaQuery('(min-width: 1160px)');
 
   return (
     <Box
@@ -37,6 +39,7 @@ const EditArea = () => {
       borderRadius="10px"
       bg={Editor_Bg}
       display={{ base: "none", md: "flex" }}
+      // display={isLargerThan1160 ? "flex" : "none"}
       flexDirection="column"
     >
       <Editor ref={editorRef}></Editor>

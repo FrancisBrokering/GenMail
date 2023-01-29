@@ -26,6 +26,7 @@ import type_strikethrough from "./logos/type-strikethrough.svg";
 import link from "./logos/link.svg";
 import pencil_fill from "./logos/pencil-fill.svg";
 import chevron_down from "./logos/chevron-down.svg";
+import more_icon from "./logos/more-horizontal.svg";
 
 // const Editor_Bg = useColorModeValue("white", "gray.700");
 
@@ -564,10 +565,27 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
+  .media-dropdown {
+    z-index: 20;
+    display: flex;
+    position: absolute;
+    right: 3%;
+    box-shadow: ${(props) =>
+      props.theme === "dark"
+        ? "0 12px 28px 0 rgba(255, 255, 255, 0.2), 0 2px 4px 0 rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(45, 55, 72, 0.5)"
+        : "0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.5)"};
+    border-radius: 8px;
+    padding: 4px;
+    min-height: 40px;
+    background-color: ${(props) =>
+      props.theme === "dark" ? "#2D3748" : "#fff"};
+  }
+
   .dropdown {
     z-index: 20;
     display: block;
     position: absolute;
+    align-items: left;
     box-shadow: ${(props) =>
       props.theme === "dark"
         ? "0 12px 28px 0 rgba(255, 255, 255, 0.2), 0 2px 4px 0 rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(45, 55, 72, 0.5)"
@@ -770,6 +788,16 @@ const StyledEditor = styled("div")<StyledEditorProps>`
     filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 
+  .icon.strikethrough {
+    background-image: url(${type_strikethrough});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
+  }
+
+  .icon.link {
+    background-image: url(${link});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
+  }
+
   i.bold {
     background-image: url(${type_bold});
     filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
@@ -797,6 +825,11 @@ const StyledEditor = styled("div")<StyledEditorProps>`
 
   i.link {
     background-image: url(${link});
+    filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
+  }
+
+  i.more-horizontal {
+    background-image: url(${more_icon});
     filter: invert(${(props) => (props.theme === "dark" ? 1 : 0)});
   }
 `;
