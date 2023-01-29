@@ -10,6 +10,7 @@ import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
+// import { AutoFocusPlugin } from
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
@@ -25,6 +26,7 @@ import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 // import TreeViewPlugin from "./plugins/TreeViewPlugin";
 import CopyPlugin from "./plugins/CopyPlugin";
 import KeyboardSupportPlugin from "./plugins/KeyboardSupport";
+import EnableTabIndent from "./plugins/EnableTabIndent";
 
 import { useTranslation } from "react-i18next";
 
@@ -52,9 +54,6 @@ const Editor = forwardRef<EditorMethods>((_, ref) => {
       QuoteNode,
       CodeNode,
       CodeHighlightNode,
-      TableNode,
-      TableCellNode,
-      TableRowNode,
       AutoLinkNode,
       LinkNode,
     ],
@@ -91,6 +90,7 @@ const Editor = forwardRef<EditorMethods>((_, ref) => {
             <AutoLinkPlugin />
             <CopyPlugin ref={copyPluginRef} />
             <KeyboardSupportPlugin />
+            <EnableTabIndent />
           </div>
         </div>
       </LexicalComposer>

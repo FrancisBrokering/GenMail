@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React, { ElementRef, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import Editor from "./editor/Editor";
+import Editor from "./Editor";
 
 const countWords = (str: string) => {
   const arr = str.split(" ");
@@ -25,7 +25,7 @@ const EditArea = () => {
   const Editor_BorderColor = useColorModeValue("#e2e8f0", "gray.600");
   const Editor_Bg = useColorModeValue("white", "gray.700");
   const Button_Bg = useColorModeValue("#0768d2", "#0768d2");
-  const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2")
+  const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2");
 
   return (
     <Box

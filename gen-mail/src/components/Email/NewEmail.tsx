@@ -35,7 +35,7 @@ const NewEmail = (props: NewEmailProps) => {
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
   const Countword_color = useColorModeValue("gray.400", "gray.400");
   const Button_Bg = useColorModeValue("#0768d2", "#0768d2");
-  const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2")
+  const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2");
 
   async function handleSubmit(event: React.FormEvent) {
     const instruction =

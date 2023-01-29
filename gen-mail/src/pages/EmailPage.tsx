@@ -20,7 +20,7 @@ import { useTranslation } from "react-i18next";
 import NewEmail from "../components/Email/NewEmail";
 import ReplyEmail from "../components/Email/ReplyEmail";
 import EditEmail from "../components/Email/EditEmail";
-import EditArea from "../components/EditArea";
+import EditArea from "../components/editor/EditArea";
 import TourModal from "../components/TourModal";
 
 const EmailPages = ["New", "Reply", "Edit"];

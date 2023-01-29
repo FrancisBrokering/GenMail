@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 // type SidebarContentProps = {
 //     onClose: () => void;
 //     userLanguage: string;
 //     setUserLanguage: (lang: string) => void;
 // }
-  
+
 //   const SidebarContent = ({
 //     onClose,
 //     userLanguage,
@@ -13,7 +13,7 @@ import React from 'react';
 //     ...rest
 //   }: SidebarContentProps) => {
 //     const { t, i18n } = useTranslation();
-  
+
 //     interface LinkItemProps {
 //       name: string;
 //       link: string;
@@ -24,12 +24,12 @@ import React from 'react';
 //       { name: t("sidebar.email"), link: "email", icon: FiMail },
 //       { name: t("sidebar.sns"), link: "sns", icon: FiTwitter },
 //     ];
-  
+
 //     const Sidebar_Border = useColorModeValue("gray.200", "gray.700");
 //     const SelectLang_Border = useColorModeValue("gray.300", "gray.300");
 //     const Divider_Color = useColorModeValue("gray.600", "gray.600");
 //     const { colorMode } = useColorMode();
-  
+
 //     return (
 //       <Box
 //         borderRight="1px"
@@ -47,7 +47,7 @@ import React from 'react';
 //           mb="30px"
 //           mt="40px"
 //         >
-//           <Image src={GenPlateLogoDarkModePNG} height={{ base: "100%", md: "100px" }} /> 
+//           <Image src={GenPlateLogoDarkModePNG} height={{ base: "100%", md: "100px" }} />
 //           <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} color="gray.100"/>
 //         </Flex>
 //         <Flex flexDirection={"column"} height="70%">
@@ -115,7 +115,7 @@ import React from 'react';
 //       </Box>
 //     );
 //   };
-  
+
 //   interface NavItemProps extends FlexProps {
 //     icon: IconType;
 //     link: string;
@@ -123,7 +123,7 @@ import React from 'react';
 //   }
 //   const NavItem = ({ icon, children, link, ...rest }: NavItemProps) => {
 //     const NavItem_Bg = useColorModeValue("cyan.600", "cyan.600");
-  
+
 //     return (
 //       <Link
 //         as={ReactRouterLink}

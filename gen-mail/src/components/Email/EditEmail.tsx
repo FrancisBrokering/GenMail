@@ -36,7 +36,7 @@ const EditEmail = (props: EditEmailProps) => {
   const Countword_color = useColorModeValue("gray.400", "gray.400");
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
   const Button_Bg = useColorModeValue("#0768d2", "#0768d2");
-  const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2")
+  const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2");
 
   async function handleSubmit(event: React.FormEvent) {
     const instruction =
@@ -63,7 +63,14 @@ const EditEmail = (props: EditEmailProps) => {
       <form onSubmit={handleSubmit}>
         <FormControl>
           <VStack alignItems={"left"} spacing={"40px"}>
-          <Text textAlign="center" mb="10px" fontWeight="bold" fontSize="20px">{t("email.editEmail.pageTitle")}</Text>
+            <Text
+              textAlign="center"
+              mb="10px"
+              fontWeight="bold"
+              fontSize="20px"
+            >
+              {t("email.editEmail.pageTitle")}
+            </Text>
             <Box>
               <FormLabel>① {t("email.editEmail.paste")}</FormLabel>
               <Textarea

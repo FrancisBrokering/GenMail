@@ -1,6 +1,5 @@
 import { $generateHtmlFromNodes } from "@lexical/html";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { countBy } from "lodash";
 import { forwardRef, useImperativeHandle } from "react";
 
 type CopyPluginMethods = {

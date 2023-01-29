@@ -88,11 +88,7 @@ export default function Sidebar({
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
-      <Box
-        ml={{ base: 0, md: 60 }}
-        minH="100vh"
-        bg={Sidebar_Body_Bg}
-      >
+      <Box ml={{ base: 0, md: 60 }} minH="100vh" bg={Sidebar_Body_Bg}>
         {children}
       </Box>
     </Box>
@@ -146,8 +142,15 @@ const SidebarContent = ({
         mb="30px"
         mt="40px"
       >
-        <Image src={GenPlateLogoDarkModePNG} height={{ base: "100%", md: "100px" }} /> 
-        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} color="gray.100"/>
+        <Image
+          src={GenPlateLogoDarkModePNG}
+          height={{ base: "100%", md: "100px" }}
+        />
+        <CloseButton
+          display={{ base: "flex", md: "none" }}
+          onClick={onClose}
+          color="gray.100"
+        />
       </Flex>
       <Flex flexDirection={"column"} height="70%">
         <Box className="fifth-step" color={"gray.100"}>
