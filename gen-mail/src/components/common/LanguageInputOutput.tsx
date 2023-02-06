@@ -30,6 +30,7 @@ type LanguageInputOutputProps = {
   inputLanguage: string;
   outputLanguage: string;
   className: string;
+  page: string;
 };
 
 //TODO: when adding more languages, need to change props to have setOutputLanguage() and setInputLanguage(). setLanguage is currently serving no purpose
@@ -38,6 +39,21 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
   const Menu_Border = useColorModeValue("gray.200", "gray.600");
   const inputLanguageOptions = ["ja", "en"];
   const outputLanguageOptions = ["en", "es", "fr", "de", "it"];
+
+  const getSelectLanguagePrompt = () => {
+    switch (props.page) {
+      case "newEmail":
+        return t("selectLang.email");
+      case "replyEmail":
+        return t("selectLang.email");
+      case "snsPost":
+        return t("selectLang.sns.post");
+      case "snsChat":
+        return t("selectLang.sns.chat");
+      default:
+        return t("selectLang.email");
+    }
+  };
 
   const getFlag = (language: string) => {
     switch (language) {
@@ -82,7 +98,7 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
       <Text textAlign="center" mb="50px" fontWeight="bold" fontSize="20px">
         {props.pageTitle}
       </Text>
-      <FormLabel>① {t("selectLang")}</FormLabel>
+      <FormLabel>① {getSelectLanguagePrompt()}</FormLabel>
       <Flex>
         {/* <Menu>
       <Flex className="first-step">

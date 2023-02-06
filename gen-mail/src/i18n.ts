@@ -20,6 +20,7 @@ i18n
           copied: "Copied!",
           darkMode: "Dark Mode",
           lightMode: "Light Mode",
+          contact: "Contact",
           japanese: "Japanese",
           english: "English",
           spanish: "Spanish",
@@ -40,7 +41,13 @@ i18n
             favorite: "Favorites",
             settings: "Settings",
           },
-          selectLang: "Select output language",
+          selectLang: {
+            email: "Select Output Language",
+            sns: {
+              post: "Select Output Language",
+              chat: "Select Output Language",
+            },
+          },
           generating: "Generating",
           tone: {
             label: "Chose a tone",
@@ -154,6 +161,7 @@ i18n
           copied: "コピー完了",
           darkMode: "ダークモード",
           lightMode: "ライトモード",
+          contact: "お問い合わせ",
           japanese: "日本語",
           english: "英語",
           spanish: "スペイン語",
@@ -174,7 +182,13 @@ i18n
             favorite: "お気に入り",
             settings: "設定",
           },
-          selectLang: "出力言語を選択してください",
+          selectLang: {
+            email: "生成したいEメールの言語を選択してください",
+            sns: {
+              post: "投稿する言語を選択してください",
+              chat: "生成したいメッセージの言語を選択してください",
+            },
+          },
           generating: "生成中",
           tone: {
             label: "口調を選択してください",

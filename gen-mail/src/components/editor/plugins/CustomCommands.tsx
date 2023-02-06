@@ -17,53 +17,53 @@ import {
 import { $insertDataTransferForPlainText } from "@lexical/clipboard";
 
 function onPasteForRichText(
-    event: CommandPayloadType<typeof PASTE_COMMAND>,
-    editor: LexicalEditor,
+  event: CommandPayloadType<typeof PASTE_COMMAND>,
+  editor: LexicalEditor
 ): void {
-    event.preventDefault();
-    editor.update(
-        () => {
-        const selection = $getSelection();
-        const clipboardData =
-            event instanceof InputEvent || event instanceof KeyboardEvent
-            ? null
-            : event.clipboardData;
-        if (
-            clipboardData != null &&
-            ($isRangeSelection(selection) || DEPRECATED_$isGridSelection(selection))
-        ) {
-            $insertDataTransferForPlainText(clipboardData, selection);
-        }
-        },
-        {
-        tag: 'paste',
-        },
-    );
+  event.preventDefault();
+  editor.update(
+    () => {
+      const selection = $getSelection();
+      const clipboardData =
+        event instanceof InputEvent || event instanceof KeyboardEvent
+          ? null
+          : event.clipboardData;
+      if (
+        clipboardData != null &&
+        ($isRangeSelection(selection) || DEPRECATED_$isGridSelection(selection))
+      ) {
+        $insertDataTransferForPlainText(clipboardData, selection);
+      }
+    },
+    {
+      tag: "paste",
+    }
+  );
 }
 
 export function eventFiles(
-    event: DragEvent | PasteCommandType,
+  event: DragEvent | PasteCommandType
 ): [boolean, Array<File>, boolean] {
-    let dataTransfer: null | DataTransfer = null;
-    if (event instanceof DragEvent) {
-        dataTransfer = event.dataTransfer;
-    } else if (event instanceof ClipboardEvent) {
-        dataTransfer = event.clipboardData;
-    }
+  let dataTransfer: null | DataTransfer = null;
+  if (event instanceof DragEvent) {
+    dataTransfer = event.dataTransfer;
+  } else if (event instanceof ClipboardEvent) {
+    dataTransfer = event.clipboardData;
+  }
 
-    if (dataTransfer === null) {
-        return [false, [], false];
-    }
+  if (dataTransfer === null) {
+    return [false, [], false];
+  }
 
-    const types = dataTransfer.types;
-    const hasFiles = types.includes('Files');
-    const hasContent =
-        types.includes('text/html') || types.includes('text/plain');
-    return [hasFiles, Array.from(dataTransfer.files), hasContent];
+  const types = dataTransfer.types;
+  const hasFiles = types.includes("Files");
+  const hasContent =
+    types.includes("text/html") || types.includes("text/plain");
+  return [hasFiles, Array.from(dataTransfer.files), hasContent];
 }
 
 export const DRAG_DROP_PASTE: LexicalCommand<Array<File>> = createCommand(
-    'DRAG_DROP_PASTE_FILE',
+  "DRAG_DROP_PASTE_FILE"
 );
 
 export default function CustomCommands(): any {
@@ -85,28 +85,28 @@ export default function CustomCommands(): any {
     COMMAND_PRIORITY_EDITOR
   );
 
-    editor.registerCommand(
-        PASTE_COMMAND,
-        (event) => {
-            const [, files, hasTextContent] = eventFiles(event);
-            if (files.length > 0 && !hasTextContent) {
-            editor.dispatchCommand(DRAG_DROP_PASTE, files);
-            return true;
-            }
+  editor.registerCommand(
+    PASTE_COMMAND,
+    (event) => {
+      const [, files, hasTextContent] = eventFiles(event);
+      if (files.length > 0 && !hasTextContent) {
+        editor.dispatchCommand(DRAG_DROP_PASTE, files);
+        return true;
+      }
 
-            const selection = $getSelection();
-            if (
-            $isRangeSelection(selection) ||
-            DEPRECATED_$isGridSelection(selection)
-            ) {
-            onPasteForRichText(event, editor);
-            return true;
-            }
+      const selection = $getSelection();
+      if (
+        $isRangeSelection(selection) ||
+        DEPRECATED_$isGridSelection(selection)
+      ) {
+        onPasteForRichText(event, editor);
+        return true;
+      }
 
-            return false;
-        },
-        COMMAND_PRIORITY_EDITOR,
-    );
+      return false;
+    },
+    COMMAND_PRIORITY_EDITOR
+  );
 }
 
 CustomCommands.displayName = "EnableTabIndent";
