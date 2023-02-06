@@ -27,6 +27,7 @@ import {
   Divider,
   Image,
   DarkMode,
+  VStack,
 } from "@chakra-ui/react";
 import { FiHome, FiMenu, FiMail, FiTwitter, FiSend } from "react-icons/fi";
 import { IconType } from "react-icons";
@@ -123,6 +124,7 @@ const SidebarContent = ({
   const Sidebar_Border = useColorModeValue("gray.200", "gray.700");
   const SelectLang_Border = useColorModeValue("gray.300", "gray.300");
   const Divider_Color = useColorModeValue("gray.600", "gray.600");
+  const ThemeButton_Bg = useColorModeValue("gray.700", "gray.700");
   const { colorMode } = useColorMode();
 
   return (
@@ -169,51 +171,65 @@ const SidebarContent = ({
         <Box margin={"20px 15px"}>
           <Divider borderColor={Divider_Color} />
         </Box>
-        <Box mt="10px" ml="25px">
-          <Menu>
-            <DarkMode>
-              <MenuButton
-                as={Button}
-                leftIcon={
-                  userLanguage === "ja" ? (
+        <Flex mt="10px" ml="25px">
+          <VStack alignItems="left" spacing={4}>
+            <Menu>
+              <DarkMode>
+                <MenuButton
+                  as={Button}
+                  leftIcon={
+                    userLanguage === "ja" ? (
+                      <JapanFlag
+                        margin-right="12px"
+                        width="22px"
+                        height="22px"
+                      />
+                    ) : (
+                      <UsaFlag margin-right="12px" width="22px" height="22px" />
+                    )
+                  }
+                  rightIcon={<ChevronDownIcon />}
+                  variant="outline"
+                  borderColor={SelectLang_Border}
+                  ml="10px"
+                >
+                  <Text fontWeight="500">
+                    {userLanguage === "ja" ? t("japanese") : t("english")}
+                  </Text>
+                </MenuButton>
+              </DarkMode>
+              <MenuList>
+                <MenuItem
+                  minH="48px"
+                  onClick={() => setUserLanguage("ja")}
+                  icon={
                     <JapanFlag margin-right="12px" width="22px" height="22px" />
-                  ) : (
+                  }
+                >
+                  <Text>{t("japanese")}</Text>
+                </MenuItem>
+                <MenuItem
+                  minH="40px"
+                  onClick={() => setUserLanguage("en")}
+                  icon={
                     <UsaFlag margin-right="12px" width="22px" height="22px" />
-                  )
-                }
-                rightIcon={<ChevronDownIcon />}
-                variant="outline"
-                borderColor={SelectLang_Border}
-                ml="10px"
-              >
-                <Text fontWeight="500">
-                  {userLanguage === "ja" ? t("japanese") : t("english")}
-                </Text>
-              </MenuButton>
-            </DarkMode>
-            <MenuList>
-              <MenuItem
-                minH="48px"
-                onClick={() => setUserLanguage("ja")}
-                icon={
-                  <JapanFlag margin-right="12px" width="22px" height="22px" />
-                }
-              >
-                <Text>{t("japanese")}</Text>
-              </MenuItem>
-              <MenuItem
-                minH="40px"
-                onClick={() => setUserLanguage("en")}
-                icon={
-                  <UsaFlag margin-right="12px" width="22px" height="22px" />
-                }
-              >
-                <Text>{t("english")}</Text>
-              </MenuItem>
-            </MenuList>
-          </Menu>
-          <ChangeThemeColor />
-        </Box>
+                  }
+                >
+                  <Text>{t("english")}</Text>
+                </MenuItem>
+              </MenuList>
+            </Menu>
+            <ChangeThemeColor />
+            <Link href="https://forms.gle/zb6QWC1ggvmSLKej7" target="_blank">
+              <Button bg={"transparent"} _hover={{ bg: ThemeButton_Bg }}>
+                <Flex alignItems={"center"} color="gray.100">
+                  <FiSend />
+                  <Text ml={"10px"}>{t("contact")}</Text>
+                </Flex>
+              </Button>
+            </Link>
+          </VStack>
+        </Flex>
       </Flex>
     </Box>
   );

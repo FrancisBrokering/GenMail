@@ -91,6 +91,7 @@ const SnsPost = (props: SnsPostProps) => {
               setOutputLanguage={props.setOutputLanguage}
               inputLanguage={props.inputLanguage}
               outputLanguage={props.outputLanguage}
+              page={"snsPost"}
               className={"first-step"}
             />
             <Box>

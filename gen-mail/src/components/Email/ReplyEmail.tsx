@@ -76,6 +76,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               setOutputLanguage={props.setOutputLanguage}
               inputLanguage={props.inputLanguage}
               outputLanguage={props.outputLanguage}
+              page={"replyEmail"}
               className={"first-step"}
             />
             <Box>

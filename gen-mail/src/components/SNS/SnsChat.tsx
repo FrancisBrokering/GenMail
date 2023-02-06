@@ -79,6 +79,7 @@ const SnsChat = (props: SnsChatProps) => {
               setOutputLanguage={props.setOutputLanguage}
               inputLanguage={props.inputLanguage}
               outputLanguage={props.outputLanguage}
+              page={"snsChat"}
               className="first-step"
             />
             <Box>

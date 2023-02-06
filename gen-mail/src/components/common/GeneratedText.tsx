@@ -7,6 +7,7 @@ import {
   Flex,
   useColorModeValue,
   Textarea,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import React, { useEffect, useState } from "react";
@@ -27,11 +28,11 @@ const GeneratedText = (props: GeneratedTextProps) => {
   const [displayTranslatedText, setDisplayTranslatedText] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [textareaValue, setTextareaValue] = useState("");
+  const [isLargerThan848] = useMediaQuery("(min-width: 800px)");
 
   const Hover_Color = useColorModeValue("gray.100", "gray.600");
 
   useEffect(() => {
-    setValue(props.result);
     setlines(props.result.split("\n").length);
     setMaxLineLength(
       props.result.split("\n").reduce(function (a, b) {
@@ -106,19 +107,26 @@ const GeneratedText = (props: GeneratedTextProps) => {
           </Box>
         </Flex>
         <Box rounded="5px" _hover={{ bg: Hover_Color }} key={props.index}>
-          <Textarea
-            onChange={(event) => {
-              setTextareaValue(event.target.value);
-            }}
-            isReadOnly={displayTranslatedText ? true : false}
-            cols={maxLineLength}
-            rows={lines + 3}
-            value={
-              displayTranslatedText && !isGenerating
-                ? translatedText[0].replace(/^\s+|\s+$/g, "")
-                : textareaValue
-            }
-          />
+          {isLargerThan848 ? (
+            <Text margin="5px 5px 5px 5px">
+              {props.result.replace(/^\s+|\s+$/g, "")}
+            </Text>
+          ) : (
+            <Textarea
+              onChange={(event) => {
+                setTextareaValue(event.target.value);
+                setValue(event.target.value);
+              }}
+              isReadOnly={displayTranslatedText ? true : false}
+              cols={maxLineLength}
+              rows={lines + 3}
+              value={
+                displayTranslatedText && !isGenerating
+                  ? translatedText[0].replace(/^\s+|\s+$/g, "")
+                  : textareaValue
+              }
+            />
+          )}
         </Box>
       </Flex>
     </>
