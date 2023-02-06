@@ -14,4 +14,10 @@ export const chakraCustomTheme = extendTheme({
     xl: "80em",
     "2xl": "96em",
   },
+  // styles: (props: any) => ({
+  //   'html, body' : {
+  //     color: props.colorMode === "dark" ? "gray.800" : "gray.100",
+  //   }
+  // })
+  
 });
