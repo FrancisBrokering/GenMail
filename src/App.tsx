@@ -9,6 +9,7 @@ import "./App.css";
 import { TourProvider } from "@reactour/tour";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { steps } from "./tour/steps";
+import Home from "./pages/Home";
 
 const LOCAL_STORAGE_KEY = "USER_LANGUAGE";
 
@@ -57,7 +58,7 @@ function App() {
         <Sidebar userLanguage={language} setUserLanguage={setLanguage}>
           <Routes>
             <Route path="/" element={<EmailPage />} />
-            {/* <Route path="/home" element={<Home />} /> */}
+            <Route path="/home" element={<Home />} />
             <Route path="/email" element={<EmailPage />} />
             <Route path="/sns" element={<SnsPage />} />
           </Routes>
