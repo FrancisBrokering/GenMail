@@ -53,8 +53,8 @@ const Home = () => {
         // height='510px'
       >
         <Image w='70px' position='absolute' left='1000px' right='200px' top='100px' bottom='200px' src={Face1} />
-        <Image w='70px' position='absolute' src={Face2} />
-        <Image w='70px' position='absolute' src={Face3} />
+        <Image w='70px' position='absolute' left='250px' right='200px' top='130px' bottom='200px' src={Face2} />
+        <Image w='70px' position='absolute' left='250px' right='200px' top='130px' bottom='200px' src={Face3} />
         <Image w='70px' position='absolute' src={Face4} />
         <Text>世界中の人との繋がりをよりスムーズに</Text>
         <Text>無料で体験</Text>
