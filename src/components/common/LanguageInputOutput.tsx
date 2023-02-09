@@ -149,7 +149,6 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
           <MenuList>
             {outputLanguageOptions.map((lang, index) => {
               return (
-                <>
                   <MenuItem
                     key={index}
                     minH="48px"
@@ -160,7 +159,6 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
                   >
                     <Text>{getLanguage(lang)}</Text>
                   </MenuItem>
-                </>
               );
             })}
           </MenuList>

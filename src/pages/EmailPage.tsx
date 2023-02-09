@@ -22,6 +22,12 @@ import ReplyEmail from "../components/Email/ReplyEmail";
 import EditEmail from "../components/Email/EditEmail";
 import EditArea from "../components/editor/EditArea";
 import TourModal from "../components/TourModal";
+import { ReactComponent as NewEmailIcon } from "../assets/icons/newEmailIcon.svg";
+import { ReactComponent as Email2 } from "../assets/icons/Email2.svg";
+import { ReactComponent as Email3 } from "../assets/icons/Email3.svg";
+import { ReactComponent as ReplyEmailIcon } from "../assets/icons/replyEmailIcon.svg";
+import { ReactComponent as EditEmailIcon } from "../assets/icons/editEmailIcon.svg";
+import { ReactComponent as Email6 } from "../assets/icons/Email6.svg";
 
 const EmailPages = ["New", "Reply", "Edit"];
 
@@ -36,9 +42,21 @@ const EmailPage = () => {
   const TabPanel_Bg = useColorModeValue("white", "gray.700");
   const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600");
   const tabs = [
-    { option: "New", emoji: "✉️", i18message: t("email.newEmail.option") },
-    { option: "Reply", emoji: "📩", i18message: t("email.replyEmail.option") },
-    { option: "Edit", emoji: "📧", i18message: t("email.editEmail.option") },
+    {
+      option: "New",
+      icon: <NewEmailIcon width="27px" />,
+      i18message: t("email.newEmail.option"),
+    },
+    {
+      option: "Reply",
+      icon: <ReplyEmailIcon width="27px" />,
+      i18message: t("email.replyEmail.option"),
+    },
+    {
+      option: "Edit",
+      icon: <EditEmailIcon width="27px" />,
+      i18message: t("email.editEmail.option"),
+    },
     // {
     //   option: "Review",
     //   emoji: "📨",
@@ -87,7 +105,7 @@ const EmailPage = () => {
                 {tabs.map((tab) => {
                   return (
                     <Tab
-                      height={"47px"}
+                      // height={"47px"}
                       key={tab.option}
                       borderBottom={"0px"}
                       bg={
@@ -95,16 +113,11 @@ const EmailPage = () => {
                       }
                       onClick={() => setGenerateOption(tab.option)}
                     >
-                      <Flex direction={{ base: "column", md: "row" }}>
-                        <Text
-                          color={
-                            generateOption === tab.option
-                              ? SelectedTab_Color
-                              : Tab_Color
-                          }
-                        >
-                          {tab.emoji}
-                        </Text>
+                      <Flex
+                        direction={{ base: "column", md: "row" }}
+                        alignItems="center"
+                      >
+                        {tab.icon}
                         <Text
                           ml={{ base: "0px", md: "5px" }}
                           color={

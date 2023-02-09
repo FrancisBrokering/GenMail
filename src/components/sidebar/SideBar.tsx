@@ -116,7 +116,7 @@ const SidebarContent = ({
     icon: IconType;
   }
   const LinkItems: Array<LinkItemProps> = [
-    // { name: t("sidebar.home"), link: "home", icon: FiHome },
+    { name: t("sidebar.home"), link: "home", icon: FiHome },
     { name: t("sidebar.email"), link: "email", icon: FiMail },
     { name: t("sidebar.sns"), link: "sns", icon: FiTwitter },
   ];
@@ -129,7 +129,7 @@ const SidebarContent = ({
 
   return (
     <Box
-      borderRight="1px"
+      // borderRight="1px"
       borderRightColor={Sidebar_Border}
       w={{ base: "full", md: 60 }}
       pos="fixed"
@@ -290,7 +290,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       height="60px"
       alignItems="center"
       bg={useColorModeValue("gray.800", "gray.900")}
-      borderBottomWidth="1px"
+      // borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent="space-between"
       {...rest}
