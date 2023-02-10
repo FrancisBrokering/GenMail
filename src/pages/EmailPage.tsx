@@ -88,7 +88,7 @@ const EmailPage = () => {
       />
       <Grid templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}>
         <GridItem colSpan={3}>
-          <Box margin="20px 20px 10px 20px">
+          <Box margin="20px 20px 10px 20px" position={"sticky"} top="20px">
             <Tabs variant="enclosed">
               <Box
                 mb={"20px"}
