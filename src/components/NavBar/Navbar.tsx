@@ -53,10 +53,10 @@ export const Navbar = (props: NavbarProps) => {
       <Box as="section">
         <Box 
             as="nav" 
-            // position={"fixed"} 
             bg={navbar_bg} 
-            // width={"100%"} 
-            // zIndex={10} 
+            position={"fixed"} 
+            width={"100%"} 
+            zIndex={10} 
             boxShadow="sm"
         >
           <Container py={{ base: "3", lg: "3" }} margin="0px">

@@ -14,6 +14,7 @@ import {
   TabPanel,
   TabPanels,
   useColorModeValue,
+  Divider,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
@@ -68,27 +69,18 @@ const EmailPage = () => {
       );
   };
 
-  const getPageDescriptions = (name: string) => {
-    return (
-      <>
-        <Text textAlign="center" mb="50px" fontWeight="bold" fontSize="20px">
-          {t("email." + name + ".pageTitle")}
-        </Text>
-        <Text></Text>
-      </>
-    );
-  };
-
   return (
     <>
       <TourModal />
+      <Box as="header">
       <Navbar
         generateOption={generateOption}
         setGenerateOption={setGenerateOption}
       />
-      <Grid templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}>
-        <GridItem colSpan={3}>
-          <Box margin="20px 20px 10px 20px" position={"sticky"} top="20px">
+      </Box>
+      <Grid templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }} position="relative">
+        <GridItem colSpan={3} mt={"70px"} maxHeight={"90vh"} overflowY={"scroll"}>
+          <Box margin="20px 20px 10px 20px" pb="70px" position={"sticky"} top="20px">
             <Tabs variant="enclosed">
               <Box
                 mb={"20px"}
@@ -110,6 +102,7 @@ const EmailPage = () => {
               </Box>
               <TabPanels
                 bg={TabPanel_Bg}
+                mt={"20px"}
                 border="1px solid"
                 borderColor={TabPanel_Border}
                 borderRadius={"10px"}
@@ -121,13 +114,12 @@ const EmailPage = () => {
                     </TabPanel>
                   );
                 })}
-                {/* <TabPanel>{getEmailPage(generateOption)}</TabPanel> */}
               </TabPanels>
             </Tabs>
           </Box>
         </GridItem>
-        <GridItem colSpan={{ base: 0, md: 2 }}>
-          <Box maxW="100%" whiteSpace="pre-wrap" pb="70px">
+        <GridItem colSpan={{ base: 0, md: 2 }} mt={"70px"} maxHeight={"90vh"} overflowY={"scroll"}>
+          <Box margin={"10px 0px 10px 10px"} pb="70px">
             {results[0] === "" ? (
               <Box margin="20px 20px 10px 0px" position={"sticky"} top="10px">
                 <EditArea></EditArea>
