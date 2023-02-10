@@ -42,9 +42,9 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
 
   const getSelectLanguagePrompt = () => {
     switch (props.page) {
-      case "newEmail":
+      case "New":
         return t("selectLang.email");
-      case "replyEmail":
+      case "Reply":
         return t("selectLang.email");
       case "snsPost":
         return t("selectLang.sns.post");
@@ -95,9 +95,6 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
 
   return (
     <Box>
-      <Text textAlign="center" mb="50px" fontWeight="bold" fontSize="20px">
-        {props.pageTitle}
-      </Text>
       <FormLabel>① {getSelectLanguagePrompt()}</FormLabel>
       <Flex>
         {/* <Menu>
@@ -149,16 +146,16 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
           <MenuList>
             {outputLanguageOptions.map((lang, index) => {
               return (
-                  <MenuItem
-                    key={index}
-                    minH="48px"
-                    onClick={(e) => {
-                      props.setOutputLanguage(lang);
-                    }}
-                    icon={getFlag(lang)}
-                  >
-                    <Text>{getLanguage(lang)}</Text>
-                  </MenuItem>
+                <MenuItem
+                  key={index}
+                  minH="48px"
+                  onClick={(e) => {
+                    props.setOutputLanguage(lang);
+                  }}
+                  icon={getFlag(lang)}
+                >
+                  <Text>{getLanguage(lang)}</Text>
+                </MenuItem>
               );
             })}
           </MenuList>

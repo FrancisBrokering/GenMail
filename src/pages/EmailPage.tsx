@@ -22,12 +22,8 @@ import ReplyEmail from "../components/Email/ReplyEmail";
 import EditEmail from "../components/Email/EditEmail";
 import EditArea from "../components/editor/EditArea";
 import TourModal from "../components/TourModal";
-import { ReactComponent as NewEmailIcon } from "../assets/icons/newEmailIcon.svg";
-import { ReactComponent as Email2 } from "../assets/icons/Email2.svg";
-import { ReactComponent as Email3 } from "../assets/icons/Email3.svg";
-import { ReactComponent as ReplyEmailIcon } from "../assets/icons/replyEmailIcon.svg";
-import { ReactComponent as EditEmailIcon } from "../assets/icons/editEmailIcon.svg";
-import { ReactComponent as Email6 } from "../assets/icons/Email6.svg";
+import Navbar from "../components/NavBar/Navbar";
+import GeneratedText from "../components/common/GeneratedText";
 
 const EmailPages = ["New", "Reply", "Edit"];
 
@@ -36,33 +32,10 @@ const EmailPage = () => {
   const [generateOption, setGenerateOption] = useState("New");
   const [inputLanguage, setInputLanguage] = useState("ja");
   const [outputLanguage, setOutputLanguage] = useState("en");
-  const Tab_Bg = useColorModeValue("white", "gray.700");
-  const SelectedTab_Color = useColorModeValue("black", "white");
-  const Tab_Color = useColorModeValue("gray.600", "gray.400");
+  const [results, setResult] = useState(["", "", ""]);
   const TabPanel_Bg = useColorModeValue("white", "gray.700");
   const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600");
-  const tabs = [
-    {
-      option: "New",
-      icon: <NewEmailIcon width="27px" />,
-      i18message: t("email.newEmail.option"),
-    },
-    {
-      option: "Reply",
-      icon: <ReplyEmailIcon width="27px" />,
-      i18message: t("email.replyEmail.option"),
-    },
-    {
-      option: "Edit",
-      icon: <EditEmailIcon width="27px" />,
-      i18message: t("email.editEmail.option"),
-    },
-    // {
-    //   option: "Review",
-    //   emoji: "📨",
-    //   i18message: t("email.reviewEmail.option"),
-    // },
-  ];
+  const Result_Bg = useColorModeValue("white", "gray.700");
 
   const getEmailPage = (name: string) => {
     if (name === "New")
@@ -72,6 +45,7 @@ const EmailPage = () => {
           outputLanguage={outputLanguage}
           setInputLanguage={setInputLanguage}
           setOutputLanguage={setOutputLanguage}
+          setResult={setResult}
         />
       );
     if (name === "Reply")
@@ -94,63 +68,85 @@ const EmailPage = () => {
       );
   };
 
+  const getPageDescriptions = (name: string) => {
+    return (
+      <>
+        <Text textAlign="center" mb="50px" fontWeight="bold" fontSize="20px">
+          {t("email." + name + ".pageTitle")}
+        </Text>
+        <Text></Text>
+      </>
+    );
+  };
+
   return (
     <>
       <TourModal />
+      <Navbar
+        generateOption={generateOption}
+        setGenerateOption={setGenerateOption}
+      />
       <Grid templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}>
         <GridItem colSpan={3}>
-          <Box margin="10px 20px 10px 20px">
+          <Box margin="20px 20px 10px 20px">
             <Tabs variant="enclosed">
-              <TabList borderBottom={"0px"} pb={"1px"}>
-                {tabs.map((tab) => {
-                  return (
-                    <Tab
-                      // height={"47px"}
-                      key={tab.option}
-                      borderBottom={"0px"}
-                      bg={
-                        generateOption === tab.option ? Tab_Bg : "transparent"
-                      }
-                      onClick={() => setGenerateOption(tab.option)}
-                    >
-                      <Flex
-                        direction={{ base: "column", md: "row" }}
-                        alignItems="center"
-                      >
-                        {tab.icon}
-                        <Text
-                          ml={{ base: "0px", md: "5px" }}
-                          color={
-                            generateOption === tab.option
-                              ? SelectedTab_Color
-                              : Tab_Color
-                          }
-                        >
-                          {tab.i18message}
-                        </Text>
-                      </Flex>
-                    </Tab>
-                  );
-                })}
-              </TabList>
+              <Box
+                mb={"20px"}
+                borderBottom={"1px solid"}
+                borderColor="gray.400"
+              >
+                <Text ml={"10px"} fontWeight="bold" fontSize="19px">
+                  {t("email." + generateOption + ".pageTitle")}
+                </Text>
+                <Text
+                  ml={"10px"}
+                  mb={"10px"}
+                  mt={"10px"}
+                  opacity={0.7}
+                  fontSize="16px"
+                >
+                  {t("email." + generateOption + ".pageSubtitle")}
+                </Text>
+              </Box>
               <TabPanels
                 bg={TabPanel_Bg}
                 border="1px solid"
                 borderColor={TabPanel_Border}
-                borderTopLeftRadius={generateOption === "New" ? "0px" : "10px"}
-                borderTopRightRadius={"10px"}
-                borderBottomRadius={"10px"}
+                borderRadius={"10px"}
               >
                 {EmailPages.map((page) => {
-                  return <TabPanel key={page}>{getEmailPage(page)}</TabPanel>;
+                  return (
+                    <TabPanel key={page}>
+                      {getEmailPage(generateOption)}
+                    </TabPanel>
+                  );
                 })}
+                {/* <TabPanel>{getEmailPage(generateOption)}</TabPanel> */}
               </TabPanels>
             </Tabs>
           </Box>
         </GridItem>
         <GridItem colSpan={{ base: 0, md: 2 }}>
-          <Box margin="10px 20px 10px 0px" position={"sticky"} top="10px">
-            <EditArea></EditArea>
+          <Box maxW="100%" whiteSpace="pre-wrap" pb="70px">
+            {results[0] === "" ? (
+              <Box margin="20px 20px 10px 0px" position={"sticky"} top="10px">
+                <EditArea></EditArea>
+              </Box>
+            ) : (
+              results.map((r, index) => {
+                return (
+                  <Box 
+                    key={index} 
+                    margin="20px 20px 10px 0px" 
+                    top={"20px"}
+                    bg={Result_Bg}
+                    borderRadius={"10px"}
+                  >
+                    <GeneratedText index={index} result={r} />
+                  </Box>
+                );
+              })
+            )}
           </Box>
         </GridItem>
       </Grid>

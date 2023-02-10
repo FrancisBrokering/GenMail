@@ -61,7 +61,7 @@ i18n
           },
           email: {
             option: "Option",
-            newEmail: {
+            New: {
               examples: {
                 about:
                   "e.g. Not going to work tomorrow. Kevin will be covering my shift. I plan to be back by Tuesday.",
@@ -69,35 +69,34 @@ i18n
               },
               option: "New",
               pageTitle: "Generate Your Email",
+              pageSubtitle:
+                "Hey there! You can generate a new email right here!",
               button: "Generate",
               about: "What is this Email about?",
               who: "Who is this Email for?",
             },
-            replyEmail: {
+            Reply: {
               examples: {
                 what: "e.g. I am available at 2pm on Tuesday",
               },
               option: "Reply",
               pageTitle: "Generate Email Reply",
+              pageSubtitle:
+                "Hey there! You can generate an email reply right here!",
               button: "Generate",
               paste: "Paste the Email you received",
               what: "(optional) What do you want to say?",
             },
-            editEmail: {
+            Edit: {
               examples: {
                 how: "e.g. Correct spelling mistakes\n e.g. Change the tone to formal \n e.g. Add a more paragraphs",
               },
               option: "Edit",
               pageTitle: "Edit Your Email",
+              pageSubtitle: "Hey there! You can edit your email right here!",
               button: "Generate",
               paste: "Paste the Email you want to edit",
               how: "How do you want to edit?",
-            },
-            reviewEmail: {
-              option: "Review",
-              pageTitle: "Review Your Email",
-              button: "Review",
-              paste: "Paste the Email you want to review",
             },
           },
           sns: {
@@ -117,6 +116,8 @@ i18n
               platform: "Select a Platform",
               option: "New Post",
               pageTitle: "Generate SNS Post",
+              pageSubtitle:
+                "Hey there! You can generate a SNS post right here!",
               button: "Generate",
             },
             SnsChat: {
@@ -125,6 +126,8 @@ i18n
               },
               option: "Chat",
               pageTitle: "Generate Chat Reply",
+              pageSubtitle:
+                "Hey there! You can generate a chat reply right here!",
               button: "Generate",
               paste: "Paste the message you received",
               what: "(optional) What do you want to say?",
@@ -202,7 +205,7 @@ i18n
           },
           email: {
             option: "オプション",
-            newEmail: {
+            New: {
               examples: {
                 about:
                   "（例) 体調不良のため、明日のバイトを休む。ケビンがシフトの代わりを引き受ける。来週の火曜日には戻る予定。",
@@ -210,35 +213,32 @@ i18n
               },
               option: "新規",
               pageTitle: "新規Eメールの生成",
+              pageSubtitle: "ここで新しいメールを生成しましょう！",
               button: "生成",
               about: "Eメールの内容を入力してください",
               who: "宛名との関係を入力してください",
             },
-            replyEmail: {
+            Reply: {
               examples: {
                 what: "（例）今週の水曜日の午後2時が好都合。来週まで待てるなら月曜日と火曜日の午前中が可能。",
               },
               option: "返信",
               pageTitle: "Eメールの返信を生成",
+              pageSubtitle: "ここでメールの返信を生成しましょう！",
               button: "生成",
               paste: "送られてきたEメールを貼り付けてください",
               what: "(オプショナル) 返信したい内容を入力してください",
             },
-            editEmail: {
+            Edit: {
               examples: {
                 how: "（例）文法を直して\n （例）もっと丁寧な言葉を使って\n （例）文章を長くして",
               },
               option: "編集",
               pageTitle: "Eメールの編集",
+              pageSubtitle: "ここでメールの編集をしましょう！",
               button: "編集",
               paste: "編集したいEメールを貼り付けてください",
               how: "編集内容を入力してください",
-            },
-            reviewEmail: {
-              option: "確認",
-              pageTitle: "Eメールの確認",
-              button: "確認",
-              paste: "確認したいEメールを貼り付けてください",
             },
           },
           sns: {
@@ -259,6 +259,7 @@ i18n
               platform: "プラットフォームを選択してください",
               option: "投稿の生成",
               pageTitle: "SNSの投稿を生成",
+              pageSubtitle: "ここで新しいSNSの投稿を生成しましょう！",
               button: "生成",
             },
             SnsChat: {
@@ -267,6 +268,7 @@ i18n
               },
               option: "チャット",
               pageTitle: "チャットの返信を生成",
+              pageSubtitle: "ここでチャットの返信を生成しましょう！",
               button: "生成",
               paste: "送られてきたチャットを貼り付けてください",
               what: "(オプショナル) 返信したい内容を入力してください",
