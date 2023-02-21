@@ -76,7 +76,7 @@ const GeneratedText = (props: GeneratedTextProps) => {
               {t("email.option")} {props.index + 1}
             </Text>
           </Box>
-          
+
           <Box>
             <Button
               colorScheme="blue"

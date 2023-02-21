@@ -49,55 +49,53 @@ export const Navbar = (props: NavbarProps) => {
 
   //   const isDesktop = useBreakpointValue({ base: false, lg: true });
   return (
-    <>
-      <Box as="section">
-        <Box 
-            as="nav" 
-            bg={navbar_bg} 
-            position={"fixed"} 
-            width={"100%"} 
-            zIndex={10} 
-            boxShadow="sm"
-        >
-          <Container py={{ base: "3", lg: "3" }} margin="0px">
-            <HStack spacing="10">
-              <Flex>
-                <ButtonGroup>
-                  {tabs.map((tab, index) => {
-                    return (
-                      <Button
-                        key={index}
-                        _hover={{ bg: tabButton_hover }}
-                        bg={
-                          tab.option === props.generateOption
-                            ? selectedTabButton_bg
-                            : "transparent"
-                        }
-                        onClick={() => props.setGenerateOption(tab.option)}
-                      >
-                        <Flex alignItems="center">
-                          {tab.icon}
-                          <Text
-                            ml={{ base: "0px", md: "5px" }}
-                            color={
-                              props.generateOption === tab.option
-                                ? SelectedTab_Color
-                                : Tab_Color
-                            }
-                          >
-                            {tab.i18message}
-                          </Text>
-                        </Flex>
-                      </Button>
-                    );
-                  })}
-                </ButtonGroup>
-              </Flex>
-            </HStack>
-          </Container>
-        </Box>
+    <Box as="section">
+      <Box
+        as="nav"
+        bg={navbar_bg}
+        position={"fixed"}
+        width={"100%"}
+        zIndex={10}
+        boxShadow="sm"
+      >
+        <Container py={{ base: "3", lg: "3" }} margin="0px">
+          <HStack spacing="10">
+            <Flex>
+              <ButtonGroup>
+                {tabs.map((tab, index) => {
+                  return (
+                    <Button
+                      key={index}
+                      _hover={{ bg: tabButton_hover }}
+                      bg={
+                        tab.option === props.generateOption
+                          ? selectedTabButton_bg
+                          : "transparent"
+                      }
+                      onClick={() => props.setGenerateOption(tab.option)}
+                    >
+                      <Flex alignItems="center">
+                        {tab.icon}
+                        <Text
+                          ml={{ base: "0px", md: "5px" }}
+                          color={
+                            props.generateOption === tab.option
+                              ? SelectedTab_Color
+                              : Tab_Color
+                          }
+                        >
+                          {tab.i18message}
+                        </Text>
+                      </Flex>
+                    </Button>
+                  );
+                })}
+              </ButtonGroup>
+            </Flex>
+          </HStack>
+        </Container>
       </Box>
-    </>
+    </Box>
   );
 };
 

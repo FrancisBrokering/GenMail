@@ -73,14 +73,27 @@ const EmailPage = () => {
     <>
       <TourModal />
       <Box as="header">
-      <Navbar
-        generateOption={generateOption}
-        setGenerateOption={setGenerateOption}
-      />
+        <Navbar
+          generateOption={generateOption}
+          setGenerateOption={setGenerateOption}
+        />
       </Box>
-      <Grid templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }} position="relative">
-        <GridItem colSpan={3} mt={"70px"} maxHeight={"90vh"} overflowY={"scroll"}>
-          <Box margin="20px 20px 10px 20px" pb="70px" position={"sticky"} top="20px">
+      <Grid
+        templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}
+        position="relative"
+      >
+        <GridItem
+          colSpan={3}
+          mt={"70px"}
+          maxHeight={"90vh"}
+          overflowY={"scroll"}
+        >
+          <Box
+            margin="20px 20px 10px 20px"
+            pb="70px"
+            position={"sticky"}
+            top="20px"
+          >
             <Tabs variant="enclosed">
               <Box
                 mb={"20px"}
@@ -118,7 +131,12 @@ const EmailPage = () => {
             </Tabs>
           </Box>
         </GridItem>
-        <GridItem colSpan={{ base: 0, md: 2 }} mt={"70px"} maxHeight={"90vh"} overflowY={"scroll"}>
+        <GridItem
+          colSpan={{ base: 0, md: 2 }}
+          mt={"70px"}
+          maxHeight={"90vh"}
+          overflowY={"scroll"}
+        >
           <Box margin={"10px 0px 10px 10px"} pb="70px">
             {results[0] === "" ? (
               <Box margin="20px 20px 10px 0px" position={"sticky"} top="10px">
@@ -127,9 +145,9 @@ const EmailPage = () => {
             ) : (
               results.map((r, index) => {
                 return (
-                  <Box 
-                    key={index} 
-                    margin="20px 20px 10px 0px" 
+                  <Box
+                    key={index}
+                    margin="20px 20px 10px 0px"
                     top={"20px"}
                     bg={Result_Bg}
                     borderRadius={"10px"}
