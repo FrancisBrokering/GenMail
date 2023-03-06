@@ -29,6 +29,7 @@ const GeneratedText = (props: GeneratedTextProps) => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [textareaValue, setTextareaValue] = useState("");
   const [isLargerThan848] = useMediaQuery("(min-width: 800px)");
+  const Option_Bg = useColorModeValue("blue.100", "blue.100");
 
   const Hover_Color = useColorModeValue("gray.100", "gray.600");
 
@@ -51,7 +52,6 @@ const GeneratedText = (props: GeneratedTextProps) => {
     }
     const instruction =
       "translate the following sentence to Japanese: \n" + props.result;
-    console.log("instruction!!!!!!!!!: ", instruction);
     FetchGpt3(
       setIsGenerating,
       setTranslatedText,
@@ -67,14 +67,15 @@ const GeneratedText = (props: GeneratedTextProps) => {
   }, [translatedText]);
 
   return (
-    <>
-      <Divider mt="10px" orientation="horizontal" />
-      <Flex direction="column" mt="40px" bg={"transparent"}>
+    <Box padding={"10px"}>
+      <Flex direction="column" bg={"transparent"}>
         <Flex justifyContent={"space-between"} mb="5px">
-          <Text fontWeight="bold">
-            {" "}
-            {t("email.option")} {props.index + 1}
-          </Text>
+          <Box bg={""}>
+            <Text fontWeight="bold" fontSize={"20px"}>
+              {" "}
+              {t("email.option")} {props.index + 1}
+            </Text>
+          </Box>
 
           <Box>
             <Button
@@ -106,6 +107,7 @@ const GeneratedText = (props: GeneratedTextProps) => {
             </Button>
           </Box>
         </Flex>
+        <Divider mt="10px" orientation="horizontal" />
         <Box rounded="5px" _hover={{ bg: Hover_Color }} key={props.index}>
           {isLargerThan848 ? (
             <Text margin="5px 5px 5px 5px">
@@ -129,7 +131,7 @@ const GeneratedText = (props: GeneratedTextProps) => {
           )}
         </Box>
       </Flex>
-    </>
+    </Box>
   );
 };
 

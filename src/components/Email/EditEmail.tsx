@@ -69,10 +69,10 @@ const EditEmail = (props: EditEmailProps) => {
               fontWeight="bold"
               fontSize="20px"
             >
-              {t("email.editEmail.pageTitle")}
+              {t("email.Edit.pageTitle")}
             </Text>
             <Box>
-              <FormLabel>① {t("email.editEmail.paste")}</FormLabel>
+              <FormLabel>① {t("email.Edit.paste")}</FormLabel>
               <Textarea
                 minH="200px"
                 name="oldEmail"
@@ -91,14 +91,14 @@ const EditEmail = (props: EditEmailProps) => {
               </Text>
             </Box>
             <Box>
-              <FormLabel>② {t("email.editEmail.how")}</FormLabel>
+              <FormLabel>② {t("email.Edit.how")}</FormLabel>
               <Input
                 mb={"10px"}
                 type="text"
                 name="description"
                 value={editDescription}
                 onChange={(e) => setEditDescription(e.target.value)}
-                placeholder={t("email.editEmail.examples.how") as string}
+                placeholder={t("email.Edit.examples.how") as string}
                 _placeholder={{ color: Placeholder_Color }}
                 required
               />
@@ -113,7 +113,7 @@ const EditEmail = (props: EditEmailProps) => {
               isLoading={isGenerating}
               loadingText={isGenerating ? (t("generating") as string) : ""}
             >
-              {t("email.editEmail.button")}
+              {t("email.Edit.button")}
             </Button>
           </VStack>
         </FormControl>

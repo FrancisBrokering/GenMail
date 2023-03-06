@@ -71,16 +71,16 @@ const ReplyEmail = (props: ReplyEmailProps) => {
         <FormControl>
           <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
-              pageTitle={t("email.replyEmail.pageTitle") as string}
+              pageTitle={t("email.Reply.pageTitle") as string}
               setInputLanguage={props.setInputLanguage}
               setOutputLanguage={props.setOutputLanguage}
               inputLanguage={props.inputLanguage}
               outputLanguage={props.outputLanguage}
-              page={"replyEmail"}
+              page={"Reply"}
               className={"first-step"}
             />
             <Box>
-              <FormLabel>② {t("email.replyEmail.paste")}</FormLabel>
+              <FormLabel>② {t("email.Reply.paste")}</FormLabel>
               <Textarea
                 minH="200px"
                 name="reply"
@@ -99,12 +99,12 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               </Text>
             </Box>
             <Box>
-              <FormLabel>③ {t("email.replyEmail.what")}</FormLabel>
+              <FormLabel>③ {t("email.Reply.what")}</FormLabel>
               <Textarea
                 name="description"
                 value={emailDescription}
                 onChange={(e) => setEmailDescription(e.target.value)}
-                placeholder={t("email.replyEmail.examples.what") as string}
+                placeholder={t("email.Reply.examples.what") as string}
                 _placeholder={{ color: Placeholder_Color }}
               />
             </Box>
@@ -119,7 +119,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               isLoading={isGenerating}
               loadingText={isGenerating ? (t("generating") as string) : ""}
             >
-              {t("email.replyEmail.button")}
+              {t("email.Reply.button")}
             </Button>
           </VStack>
         </FormControl>
