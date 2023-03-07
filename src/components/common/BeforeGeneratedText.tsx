@@ -1,6 +1,6 @@
 import React from "react";
 import workingPerson from "../../assets/images/workingPerson.gif";
-import { Box, Center, Flex, Img, VStack, Text } from "@chakra-ui/react";
+import { Box, Flex, Img, VStack, Text } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
 const BeforeGeneratedText = () => {
