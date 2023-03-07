@@ -12,6 +12,7 @@ import {
   MenuList,
   MenuItem,
   useColorModeValue,
+  HStack,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { ArrowRightIcon, ChevronDownIcon } from "@chakra-ui/icons";
@@ -22,6 +23,8 @@ import { ReactComponent as SpainFlag } from "../../assets/icons/Spain.svg";
 import { ReactComponent as FranceFlag } from "../../assets/icons/France.svg";
 import { ReactComponent as GermanyFlag } from "../../assets/icons/Germany.svg";
 import { ReactComponent as ItalyFlag } from "../../assets/icons/Italy.svg";
+import { ReactComponent as StepBlue } from "../../assets/icons/StepBlue.svg";
+import InstructionStep from "./InstructionStep";
 
 type LanguageInputOutputProps = {
   pageTitle: string;
@@ -31,6 +34,7 @@ type LanguageInputOutputProps = {
   outputLanguage: string;
   className: string;
   page: string;
+  currentStep: number;
 };
 
 //TODO: when adding more languages, need to change props to have setOutputLanguage() and setInputLanguage(). setLanguage is currently serving no purpose
@@ -46,9 +50,9 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
         return t("selectLang.email");
       case "Reply":
         return t("selectLang.email");
-      case "snsPost":
+      case "Post":
         return t("selectLang.sns.post");
-      case "snsChat":
+      case "Chat":
         return t("selectLang.sns.chat");
       default:
         return t("selectLang.email");
@@ -94,11 +98,13 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
   };
 
   return (
-    <Box>
-      <FormLabel>① {getSelectLanguagePrompt()}</FormLabel>
+    <Box key={Math.floor(Math.random() * 10000)}>
+      <InstructionStep
+        instructionPrompt={getSelectLanguagePrompt()}
+        stepNumber={1}
+        currentStep={props.currentStep}
+      />
       <Flex>
-        {/* <Menu>
-      <Flex className="first-step">
         <Menu>
           <MenuButton
             as={Button}
@@ -109,12 +115,12 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
           >
             <Text fontWeight="500">{getLanguage(props.inputLanguage)}</Text>
           </MenuButton>
-          <MenuList>
+          <MenuList zIndex={3}>
             {inputLanguageOptions.map((lang, index) => {
               return (
                 <>
                   <MenuItem
-                    key={index}
+                    key={Math.floor(Math.random() * 10000)}
                     minH="48px"
                     onClick={(e) => {
                       props.setInputLanguage(lang);
@@ -127,11 +133,11 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
               );
             })}
           </MenuList>
-        </Menu> */}
+        </Menu>
 
-        {/* <Center pl="20px" pr="20px">
+        <Center pl="20px" pr="20px">
           <ArrowRightIcon w={6} h={6} color="#0768d2" />
-        </Center> */}
+        </Center>
         <Menu>
           <MenuButton
             as={Button}
@@ -147,7 +153,7 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
             {outputLanguageOptions.map((lang, index) => {
               return (
                 <MenuItem
-                  key={index}
+                  key={Math.floor(Math.random() * 10000)}
                   minH="48px"
                   onClick={(e) => {
                     props.setOutputLanguage(lang);

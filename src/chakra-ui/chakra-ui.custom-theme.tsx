@@ -8,7 +8,7 @@ const config: ThemeConfig = {
 export const chakraCustomTheme = extendTheme({
   config,
   breakpoints: {
-    sm: "30em",
+    sm: "35em",
     md: "53em", //default: 48em
     lg: "62em",
     xl: "80em",

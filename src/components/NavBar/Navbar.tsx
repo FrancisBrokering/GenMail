@@ -11,13 +11,10 @@ import {
   useBreakpointValue,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { FiMenu } from "react-icons/fi";
-import { ReactComponent as NewEmailIcon } from "../../assets/icons/newEmailIcon.svg";
-import { ReactComponent as ReplyEmailIcon } from "../../assets/icons/replyEmailIcon.svg";
-import { ReactComponent as EditEmailIcon } from "../../assets/icons/editEmailIcon.svg";
 import { useTranslation } from "react-i18next";
 
 type NavbarProps = {
+  tabs: { option: string; icon: JSX.Element; i18message: string }[];
   generateOption: string;
   setGenerateOption: (lang: string) => void;
 };
@@ -29,23 +26,6 @@ export const Navbar = (props: NavbarProps) => {
   const tabButton_hover = useColorModeValue("blue.100", "blue.100");
   const SelectedTab_Color = useColorModeValue("#0768d2", "#0768d2");
   const Tab_Color = useColorModeValue("gray.600", "gray.400");
-  const tabs = [
-    {
-      option: "New",
-      icon: <NewEmailIcon width="27px" />,
-      i18message: t("email.New.option"),
-    },
-    {
-      option: "Reply",
-      icon: <ReplyEmailIcon width="27px" />,
-      i18message: t("email.Reply.option"),
-    },
-    {
-      option: "Edit",
-      icon: <EditEmailIcon width="27px" />,
-      i18message: t("email.Edit.option"),
-    },
-  ];
 
   //   const isDesktop = useBreakpointValue({ base: false, lg: true });
   return (
@@ -62,7 +42,7 @@ export const Navbar = (props: NavbarProps) => {
           <HStack spacing="10">
             <Flex>
               <ButtonGroup>
-                {tabs.map((tab, index) => {
+                {props.tabs.map((tab, index) => {
                   return (
                     <Button
                       key={index}

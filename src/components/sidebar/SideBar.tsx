@@ -219,7 +219,7 @@ const SidebarContent = ({
                 </MenuItem>
               </MenuList>
             </Menu>
-            <ChangeThemeColor />
+            {/* <ChangeThemeColor /> */}
             <Link href="https://forms.gle/zb6QWC1ggvmSLKej7" target="_blank">
               <Button bg={"transparent"} _hover={{ bg: ThemeButton_Bg }}>
                 <Flex alignItems={"center"} color="gray.100">

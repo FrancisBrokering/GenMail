@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import React, { useEffect, useState } from "react";
-import { FetchGpt3 } from "../../utility/CommonMethods";
+import { FetchDeepL, FetchGpt3 } from "../../utility/CommonMethods";
 
 type GeneratedTextProps = {
   result: string;
@@ -44,27 +44,23 @@ const GeneratedText = (props: GeneratedTextProps) => {
 
   useEffect(() => {
     setTextareaValue(props.result.replace(/^\s+|\s+$/g, ""));
+    setValue(props.result.replace(/^\s+|\s+$/g, ""));
   }, [props.result]);
 
   async function handleTranslate(event: React.MouseEvent<HTMLElement>) {
     if (translatedText[0] != "") {
       return;
     }
-    const instruction =
-      "translate the following sentence to Japanese: \n" + props.result;
-    FetchGpt3(
-      setIsGenerating,
-      setTranslatedText,
-      instruction,
-      event,
-      "text-davinci-003"
-    );
+    FetchDeepL(setIsGenerating, setTranslatedText, props.result, event);
   }
 
   useEffect(() => {
-    console.log("passed: ", translatedText);
     setTextareaValue(props.result.replace(/^\s+|\s+$/g, ""));
   }, [translatedText]);
+
+  useEffect(() => {
+    setDisplayTranslatedText(false);
+  }, [props.result]);
 
   return (
     <Box padding={"10px"}>
@@ -109,26 +105,26 @@ const GeneratedText = (props: GeneratedTextProps) => {
         </Flex>
         <Divider mt="10px" orientation="horizontal" />
         <Box rounded="5px" _hover={{ bg: Hover_Color }} key={props.index}>
-          {isLargerThan848 ? (
+          {/* {isLargerThan848 ? (
             <Text margin="5px 5px 5px 5px">
               {props.result.replace(/^\s+|\s+$/g, "")}
             </Text>
-          ) : (
-            <Textarea
-              onChange={(event) => {
-                setTextareaValue(event.target.value);
-                setValue(event.target.value);
-              }}
-              isReadOnly={displayTranslatedText ? true : false}
-              cols={maxLineLength}
-              rows={lines + 3}
-              value={
-                displayTranslatedText && !isGenerating
-                  ? translatedText[0].replace(/^\s+|\s+$/g, "")
-                  : textareaValue
-              }
-            />
-          )}
+          ) : ( */}
+          <Textarea
+            onChange={(event) => {
+              setTextareaValue(event.target.value);
+              setValue(event.target.value);
+            }}
+            isReadOnly={displayTranslatedText ? true : false}
+            cols={maxLineLength}
+            rows={lines + 3}
+            value={
+              displayTranslatedText && !isGenerating
+                ? translatedText[0].replace(/^\s+|\s+$/g, "")
+                : textareaValue
+            }
+          />
+          {/* )} */}
         </Box>
       </Flex>
     </Box>

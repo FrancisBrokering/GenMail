@@ -25,6 +25,11 @@ import EditArea from "../components/editor/EditArea";
 import TourModal from "../components/TourModal";
 import Navbar from "../components/NavBar/Navbar";
 import GeneratedText from "../components/common/GeneratedText";
+import BeforeGeneratedText from "../components/common/BeforeGeneratedText";
+import { FiMenu } from "react-icons/fi";
+import { ReactComponent as NewEmailIcon } from "../assets/icons/newEmailIcon.svg";
+import { ReactComponent as ReplyEmailIcon } from "../assets/icons/replyEmailIcon.svg";
+import { ReactComponent as EditEmailIcon } from "../assets/icons/editEmailIcon.svg";
 
 const EmailPages = ["New", "Reply", "Edit"];
 
@@ -37,6 +42,23 @@ const EmailPage = () => {
   const TabPanel_Bg = useColorModeValue("white", "gray.700");
   const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600");
   const Result_Bg = useColorModeValue("white", "gray.700");
+  const tabs = [
+    {
+      option: "New",
+      icon: <NewEmailIcon width="27px" />,
+      i18message: t("email.New.option"),
+    },
+    {
+      option: "Reply",
+      icon: <ReplyEmailIcon width="27px" />,
+      i18message: t("email.Reply.option"),
+    },
+    {
+      option: "Edit",
+      icon: <EditEmailIcon width="27px" />,
+      i18message: t("email.Edit.option"),
+    },
+  ];
 
   const getEmailPage = (name: string) => {
     if (name === "New")
@@ -56,6 +78,7 @@ const EmailPage = () => {
           outputLanguage={outputLanguage}
           setInputLanguage={setInputLanguage}
           setOutputLanguage={setOutputLanguage}
+          setResult={setResult}
         />
       );
     if (name === "Edit")
@@ -65,9 +88,14 @@ const EmailPage = () => {
           outputLanguage={outputLanguage}
           setInputLanguage={setInputLanguage}
           setOutputLanguage={setOutputLanguage}
+          setResult={setResult}
         />
       );
   };
+
+  useEffect(() => {
+    setResult(["", "", ""]);
+  }, [generateOption]);
 
   return (
     <>
@@ -76,6 +104,7 @@ const EmailPage = () => {
         <Navbar
           generateOption={generateOption}
           setGenerateOption={setGenerateOption}
+          tabs={tabs}
         />
       </Box>
       <Grid
@@ -140,7 +169,8 @@ const EmailPage = () => {
           <Box margin={"10px 0px 10px 10px"} pb="70px">
             {results[0] === "" ? (
               <Box margin="20px 20px 10px 0px" position={"sticky"} top="10px">
-                <EditArea></EditArea>
+                {/* <EditArea></EditArea> */}
+                <BeforeGeneratedText />
               </Box>
             ) : (
               results.map((r, index) => {

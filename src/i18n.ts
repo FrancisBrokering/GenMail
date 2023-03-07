@@ -12,6 +12,9 @@ i18n
     resources: {
       en: {
         translation: {
+          noText: "No text to display!",
+          beforeGeneratedText:
+            "Please enter the content of the text you want to generate.",
           logo: "GenMail",
           copy: "Copy",
           translate: "Translate",
@@ -35,7 +38,7 @@ i18n
           sidebar: {
             home: "Home",
             email: "Email",
-            sns: "SNS",
+            sns: "Social Media",
             chat: "Chat",
             trend: "Trending",
             favorite: "Favorites",
@@ -52,12 +55,24 @@ i18n
           tone: {
             label: "Chose a tone",
             button: "Select a Tone",
-            friendly: "Friendly",
+            happy: "Happy",
             formal: "Formal",
             angry: "Angry",
             casual: "Casual",
             sad: "Sad",
             professional: "Professional",
+            funny: "Funny",
+            serious: "Serious",
+            other: "Other",
+          },
+          receiver: {
+            boss: "Boss",
+            colleague: "Colleague",
+            friend: "Friend",
+            family: "Family Member",
+            partner: "Business Partner",
+            lover: "Lover",
+            other: "Other",
           },
           email: {
             option: "Option",
@@ -108,19 +123,19 @@ i18n
               youtube: "YouTube",
               linkedin: "LinkedIn",
             },
-            SnsPost: {
+            Post: {
               examples: {
                 about: "e.g. I went to Hawaii",
               },
               about: "What should this post be about?",
               platform: "Select a Platform",
               option: "New Post",
-              pageTitle: "Generate SNS Post",
+              pageTitle: "Generate Social Media Post",
               pageSubtitle:
-                "Hey there! You can generate a SNS post right here!",
+                "Hey there! You can generate a social media post right here!",
               button: "Generate",
             },
-            SnsChat: {
+            Chat: {
               examples: {
                 what: "e.g. available at 2pm on Tuesday",
               },
@@ -137,7 +152,7 @@ i18n
             modal: {
               title: "Welcome to GenPlate!",
               about:
-                "GenPlate is a revolutionary new app that automatically generates E-mail and SNS message templates in various languages. With GenPlate, you'll never have to struggle with language barriers again.",
+                "GenPlate is a revolutionary new app that automatically generates E-mail and social media message templates in various languages. With GenPlate, you'll never have to struggle with language barriers again.",
               support:
                 "We're still in the process of developing and improving GenPlate, so if you like it, please leave a review to let us know how we're doing.",
               show: "Don't show this modal again.",
@@ -156,6 +171,8 @@ i18n
       },
       ja: {
         translation: {
+          noText: "表示するテキストがありません",
+          beforeGeneratedText: "生成したい文章の内容を左に入力してください",
           logo: "ジェネメール",
           copy: "コピー",
           translate: "翻訳",
@@ -196,12 +213,24 @@ i18n
           tone: {
             label: "口調を選択してください",
             button: "- 選択 -",
-            friendly: "フレンドリー",
+            happy: "ハッピー",
             formal: "フォーマル",
             angry: "怒り",
             casual: "カジュアル",
             sad: "悲しい",
             professional: "プロフェッショナル",
+            funny: "面白い",
+            serious: "真剣",
+            other: "その他",
+          },
+          receiver: {
+            boss: "上司",
+            colleague: "同僚",
+            friend: "友達",
+            family: "家族",
+            partner: "取引先",
+            lover: "恋人",
+            other: "その他",
           },
           email: {
             option: "オプション",
@@ -216,7 +245,7 @@ i18n
               pageSubtitle: "ここで新しいメールを生成しましょう！",
               button: "生成",
               about: "Eメールの内容を入力してください",
-              who: "宛名との関係を入力してください",
+              who: "誰宛のEメールですか？",
             },
             Reply: {
               examples: {
@@ -227,7 +256,7 @@ i18n
               pageSubtitle: "ここでメールの返信を生成しましょう！",
               button: "生成",
               paste: "送られてきたEメールを貼り付けてください",
-              what: "(オプショナル) 返信したい内容を入力してください",
+              what: "返信したい内容を入力してください (空欄でも的確な返信が生成されます) ",
             },
             Edit: {
               examples: {
@@ -250,7 +279,7 @@ i18n
               youtube: "YouTube",
               linkedin: "LinkedIn",
             },
-            SnsPost: {
+            Post: {
               examples: {
                 about:
                   "（例）ハワイ旅行に行って海亀を見た。ホテルからの景色は最高だった。また来年も行きたい。",
@@ -262,7 +291,7 @@ i18n
               pageSubtitle: "ここで新しいSNSの投稿を生成しましょう！",
               button: "生成",
             },
-            SnsChat: {
+            Chat: {
               examples: {
                 what: " （例）火曜日の午後2時が好都合。貸していた本もその時返してほしい。",
               },
