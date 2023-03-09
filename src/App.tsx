@@ -64,12 +64,7 @@ function App() {
             <Route path="/email" element={<EmailPage />} />
             <Route path="/sns" element={<SnsPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route
-              path="/resetPassword"
-              element={
-                <ResetPasswordPage />
-              }
-            />
+            <Route path="/resetPassword" element={<ResetPasswordPage />} />
           </Routes>
         </Sidebar>
       </TourProvider>
