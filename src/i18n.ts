@@ -136,7 +136,7 @@ i18n
             },
             Edit: {
               examples: {
-                how: "e.g. Correct spelling mistakes\ne.g. Change the tone to formal \ne.g. Add a more paragraphs",
+                how: "e.g. Correct spelling mistakes\ne.g. Change the tone to formal \ne.g. Add more paragraphs",
               },
               option: "Edit",
               pageTitle: "Edit Your Email",

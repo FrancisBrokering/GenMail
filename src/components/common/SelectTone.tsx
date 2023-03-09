@@ -62,9 +62,14 @@ const SelectTone = (props: SelectToneProps) => {
       >
         <Grid
           templateColumns={{
-            base: "repeat(1, 6fr)",
-            sm: "repeat(2, 3fr)",
-            md: "repeat(3, 2fr)",
+            base: "repeat(1, 1fr)",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
+          }}
+          templateRows={{
+            base: "repeat(7, 1fr)",
+            sm: "repeat(4, 1fr)",
+            md: "repeat(3, 1fr)",
           }}
           gap={{ base: 1, md: 6 }}
           className={props.className}
@@ -72,6 +77,16 @@ const SelectTone = (props: SelectToneProps) => {
           {toneOptions.map((toneOption) => {
             return (
               <GridItem
+                colSpan={{
+                  base: 1,
+                  sm: 1,
+                  md: 1,
+                }}
+                rowSpan={{
+                  base: 1,
+                  sm: 1,
+                  md: 1,
+                }}
                 key={toneOption.value}
                 border="solid #e2e8f0"
                 h="55px"
@@ -87,11 +102,20 @@ const SelectTone = (props: SelectToneProps) => {
           })}
           {
             <GridItem
+              colSpan={{
+                base: 1,
+                sm: 2,
+                md: 3,
+              }}
+              rowSpan={{
+                base: 1,
+                sm: 1,
+                md: 1,
+              }}
               rounded="8px"
               display="flex"
               alignItems="center"
               bg={isOtherSelected ? "#F2F7FF" : "white"}
-              colSpan={{ base: 1, md: 3 }}
             >
               <InputGroup>
                 <Input
