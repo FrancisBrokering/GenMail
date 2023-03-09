@@ -70,9 +70,9 @@ const SnsPage = () => {
     }
   };
 
-  useEffect(() => {
-    setResult(["", "", ""]);
-  }, [generateOption]);
+  // useEffect(() => {
+  //   setResult(["", "", ""]);
+  // }, [generateOption]);
 
   const Tab_Bg = useColorModeValue("white", "gray.700");
   const Tab_Color = useColorModeValue("black", "white");
@@ -80,7 +80,7 @@ const SnsPage = () => {
   const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600");
 
   return (
-    <>
+    <Box overflow={{ base: "scroll", md: "hidden" }}>
       <Box as="header">
         <Navbar
           generateOption={generateOption}
@@ -88,17 +88,17 @@ const SnsPage = () => {
           tabs={tabs}
         />
       </Box>
-      <Grid
-        templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}
-        position="relative"
+      <Flex
+        direction={{ base: "column", md: "row" }}
+        height="100vh"
       >
-        <GridItem
-          colSpan={3}
-          mt={"70px"}
-          maxHeight={"90vh"}
-          overflowY={"scroll"}
-        >
-          <Box margin="20px 20px 10px 20px">
+        <Box flex={{base: 1, md: 6}}
+          mt={"64px"}
+          overflowY={{ base: "visible", md: "scroll" }}>
+          <Box
+            margin="20px 20px 10px 20px"
+            pb={{ base: "0px", md: "70px" }}
+          >
             <Tabs variant="enclosed">
               <Box
                 mb={"20px"}
@@ -120,6 +120,7 @@ const SnsPage = () => {
               </Box>
               <TabPanels
                 bg={TabPanel_Bg}
+                mt={"20px"}
                 border="1px solid"
                 borderColor={TabPanel_Border}
                 rounded="10px"
@@ -132,14 +133,13 @@ const SnsPage = () => {
               </TabPanels>
             </Tabs>
           </Box>
-        </GridItem>
-        <GridItem
-          colSpan={{ base: 0, md: 2 }}
-          mt={{ base: "0px", md: "70px" }}
-          maxHeight={"90vh"}
+        </Box>
+        <Box
+          flex={{base: 1, md: 4}}
+          mt={{ base: "0px", md: "64px" }}
           overflowY={{ base: "visible", md: "scroll" }}
         >
-          <Box margin={"10px 0px 10px 10px"} pb="70px">
+          <Box margin={"20px"}>
             {results[0] === "" ? (
               <BeforeGeneratedText />
             ) : (
@@ -147,10 +147,9 @@ const SnsPage = () => {
                 return (
                   <Box
                     key={index}
-                    margin="20px 20px 10px 0px"
-                    top={"20px"}
                     bg={Result_Bg}
                     borderRadius={"10px"}
+                    mb="40px"
                   >
                     <GeneratedText index={index} result={r} />
                   </Box>
@@ -158,9 +157,9 @@ const SnsPage = () => {
               })
             )}
           </Box>
-        </GridItem>
-      </Grid>
-    </>
+        </Box>
+      </Flex>
+    </Box>
   );
 };
 

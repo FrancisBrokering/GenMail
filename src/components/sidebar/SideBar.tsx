@@ -126,7 +126,7 @@ const SidebarContent = ({
     { name: t("sidebar.home"), link: "home", icon: FiHome },
     { name: t("sidebar.email"), link: "email", icon: FiMail },
     { name: t("sidebar.sns"), link: "sns", icon: FiTwitter },
-    { name: t("sidebar.login"), link: "login", icon: FiUser },
+    // { name: t("sidebar.login"), link: "login", icon: FiUser },
   ];
 
   const Sidebar_Border = useColorModeValue("gray.200", "gray.700");

@@ -93,12 +93,12 @@ const EmailPage = () => {
       );
   };
 
-  useEffect(() => {
-    setResult(["", "", ""]);
-  }, [generateOption]);
+  // useEffect(() => {
+  //   setResult(["", "", ""]);
+  // }, [generateOption]);
 
   return (
-    <>
+    <Box overflow={{base:"scroll", md: "hidden"}}>
       <TourModal />
       <Box as="header">
         <Navbar
@@ -107,21 +107,18 @@ const EmailPage = () => {
           tabs={tabs}
         />
       </Box>
-      <Grid
-        templateColumns={{ base: "repeat(1, 2fr)", md: "repeat(5, 1fr)" }}
-        position="relative"
+      <Flex
+        direction={{ base: "column", md: "row" }}
+        height="100vh"
       >
-        <GridItem
-          colSpan={{ base: 1, md: 3 }}
-          mt={"70px"}
-          maxHeight={"90vh"}
-          overflowY={"scroll"}
+        <Box
+          flex={{base: 1, md: 6}}
+          mt={"64px"}
+          overflowY={{ base: "visible", md: "scroll" }}
         >
           <Box
             margin="20px 20px 10px 20px"
             pb={{ base: "0px", md: "70px" }}
-            position={"sticky"}
-            top="20px"
           >
             <Tabs variant="enclosed">
               <Box
@@ -159,14 +156,13 @@ const EmailPage = () => {
               </TabPanels>
             </Tabs>
           </Box>
-        </GridItem>
-        <GridItem
-          colSpan={{ base: 1, md: 2 }}
-          mt={{ base: "0px", md: "70px" }}
-          maxHeight={"90vh"}
+        </Box>
+        <Box
+          flex={{base: 1, md: 4}}
+          mt={{ base: "0px", md: "64px" }}
           overflowY={{ base: "visible", md: "scroll" }}
         >
-          <Box>
+          <Box margin={"20px"}>
             {results[0] === "" ? (
               <BeforeGeneratedText />
             ) : (
@@ -174,10 +170,9 @@ const EmailPage = () => {
                 return (
                   <Box
                     key={index}
-                    margin="20px 20px 10px 0px"
-                    top={"20px"}
                     bg={Result_Bg}
                     borderRadius={"10px"}
+                    mb="40px"
                   >
                     <GeneratedText index={index} result={r} />
                   </Box>
@@ -185,9 +180,9 @@ const EmailPage = () => {
               })
             )}
           </Box>
-        </GridItem>
-      </Grid>
-    </>
+        </Box>
+      </Flex>
+    </Box>
   );
 };
 
