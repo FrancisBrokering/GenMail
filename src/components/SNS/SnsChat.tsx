@@ -43,11 +43,7 @@ const SnsChat = (props: SnsChatProps) => {
   async function handleSubmit(event: React.FormEvent) {
     let details = messageDescription;
     if (messageDescription != "") {
-      details =
-        "\n\n2 Reply:  including the details " +
-        "'" +
-        messageDescription +
-        "' ";
+      details = "\n\n2 reply details: " + "'" + messageDescription + "' ";
     }
     const instruction =
       reply +

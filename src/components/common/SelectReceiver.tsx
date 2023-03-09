@@ -83,9 +83,6 @@ const SelectReceiver = (props: SelectToneProps) => {
           })}
           {
             <GridItem
-              border="solid #e2e8f0"
-              h="55px"
-              padding="0px 22px 0px 22px"
               rounded="8px"
               display="flex"
               alignItems="center"
@@ -94,6 +91,8 @@ const SelectReceiver = (props: SelectToneProps) => {
             >
               <InputGroup>
                 <Input
+                  h="55px"
+                  border="solid #e2e8f0"
                   placeholder={t("tone.other") as string}
                   onChange={(e) => {
                     props.setReceiver(e.target.value);

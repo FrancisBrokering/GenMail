@@ -39,7 +39,7 @@ const SnsPage = () => {
     },
     {
       option: "Chat",
-      icon: <ChatSnsIcon width="27px" />,
+      icon: <ChatSnsIcon width="27px" height="27px" />,
       i18message: t("sns.Chat.option"),
     },
   ];
@@ -98,7 +98,7 @@ const SnsPage = () => {
           maxHeight={"90vh"}
           overflowY={"scroll"}
         >
-          <Box margin="10px 20px 10px 20px">
+          <Box margin="20px 20px 10px 20px">
             <Tabs variant="enclosed">
               <Box
                 mb={"20px"}
@@ -122,9 +122,7 @@ const SnsPage = () => {
                 bg={TabPanel_Bg}
                 border="1px solid"
                 borderColor={TabPanel_Border}
-                borderTopLeftRadius={generateOption === "Post" ? "0px" : "10px"}
-                borderTopRightRadius={"10px"}
-                borderBottomRadius={"10px"}
+                rounded="10px"
               >
                 {SnsPages.map((page) => {
                   return (
@@ -137,16 +135,13 @@ const SnsPage = () => {
         </GridItem>
         <GridItem
           colSpan={{ base: 0, md: 2 }}
-          mt={"70px"}
+          mt={{ base: "0px", md: "70px" }}
           maxHeight={"90vh"}
-          overflowY={"scroll"}
+          overflowY={{ base: "visible", md: "scroll" }}
         >
           <Box margin={"10px 0px 10px 10px"} pb="70px">
             {results[0] === "" ? (
-              <Box margin="20px 20px 10px 0px" position={"sticky"} top="10px">
-                {/* <EditArea></EditArea> */}
-                <BeforeGeneratedText />
-              </Box>
+              <BeforeGeneratedText />
             ) : (
               results.map((r, index) => {
                 return (

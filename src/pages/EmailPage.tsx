@@ -108,18 +108,18 @@ const EmailPage = () => {
         />
       </Box>
       <Grid
-        templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}
+        templateColumns={{ base: "repeat(1, 2fr)", md: "repeat(5, 1fr)" }}
         position="relative"
       >
         <GridItem
-          colSpan={3}
+          colSpan={{ base: 1, md: 3 }}
           mt={"70px"}
           maxHeight={"90vh"}
           overflowY={"scroll"}
         >
           <Box
             margin="20px 20px 10px 20px"
-            pb="70px"
+            pb={{ base: "0px", md: "70px" }}
             position={"sticky"}
             top="20px"
           >
@@ -161,17 +161,14 @@ const EmailPage = () => {
           </Box>
         </GridItem>
         <GridItem
-          colSpan={{ base: 0, md: 2 }}
-          mt={"70px"}
+          colSpan={{ base: 1, md: 2 }}
+          mt={{ base: "0px", md: "70px" }}
           maxHeight={"90vh"}
-          overflowY={"scroll"}
+          overflowY={{ base: "visible", md: "scroll" }}
         >
-          <Box margin={"10px 0px 10px 10px"} pb="70px">
+          <Box>
             {results[0] === "" ? (
-              <Box margin="20px 20px 10px 0px" position={"sticky"} top="10px">
-                {/* <EditArea></EditArea> */}
-                <BeforeGeneratedText />
-              </Box>
+              <BeforeGeneratedText />
             ) : (
               results.map((r, index) => {
                 return (

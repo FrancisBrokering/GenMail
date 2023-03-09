@@ -292,28 +292,34 @@ interface MobileProps extends FlexProps {
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   return (
-    <Flex
-      ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 24 }}
-      height="60px"
-      alignItems="center"
-      bg={useColorModeValue("gray.800", "gray.900")}
-      // borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      justifyContent="space-between"
-      {...rest}
-    >
-      <Box height="40px">
-        <Image src={GenPlateMobileLogoDarkModePNG} height="100%" />
-      </Box>
-      <DarkMode>
-        <IconButton
-          variant="outline"
-          onClick={onOpen}
-          aria-label="open menu"
-          icon={<FiMenu />}
-        />
-      </DarkMode>
-    </Flex>
+    <>
+      <Flex
+        position="fixed"
+        top="0"
+        width="100%"
+        ml={{ base: 0, md: 60 }}
+        px={{ base: 4, md: 24 }}
+        height="60px"
+        alignItems="center"
+        bg={useColorModeValue("gray.800", "gray.900")}
+        borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+        justifyContent="space-between"
+        zIndex="1000"
+        {...rest}
+      >
+        <Box height="40px">
+          <Image src={GenPlateMobileLogoDarkModePNG} height="100%" />
+        </Box>
+        <DarkMode>
+          <IconButton
+            variant="outline"
+            onClick={onOpen}
+            aria-label="open menu"
+            icon={<FiMenu />}
+          />
+        </DarkMode>
+      </Flex>
+      <Box paddingTop="60px" display={{ base: "flex", md: "none" }} />
+    </>
   );
 };

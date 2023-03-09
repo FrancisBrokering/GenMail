@@ -132,7 +132,7 @@ const SnsPost = (props: SnsPostProps) => {
                   >
                     <Text fontWeight="500">{platform}</Text>
                   </MenuButton>
-                  <MenuList>
+                  <MenuList zIndex="3">
                     {Platforms.map((p) => {
                       return (
                         <MenuItem

@@ -44,7 +44,8 @@ const EditEmail = (props: EditEmailProps) => {
       "\n\nRewrite the above email " +
       // getLanguageInEnglish(props.outputLanguage) +
       " using the following instruction: \n\n" +
-      editDescription;
+      editDescription +
+      "。";
     FetchGpt3(
       setIsGenerating,
       props.setResult,
@@ -108,9 +109,9 @@ const EditEmail = (props: EditEmailProps) => {
                 stepNumber={2}
                 currentStep={currentStep}
               />
-              <Input
+              <Textarea
+                minH="100px"
                 mb={"10px"}
-                type="text"
                 name="description"
                 value={editDescription}
                 onChange={(e) => setEditDescription(e.target.value)}

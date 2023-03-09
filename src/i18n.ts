@@ -136,7 +136,7 @@ i18n
             },
             Edit: {
               examples: {
-                how: "e.g. Correct spelling mistakes\n e.g. Change the tone to formal \n e.g. Add a more paragraphs",
+                how: "e.g. Correct spelling mistakes\ne.g. Change the tone to formal \ne.g. Add a more paragraphs",
               },
               option: "Edit",
               pageTitle: "Edit Your Email",
@@ -327,7 +327,7 @@ i18n
             },
             Edit: {
               examples: {
-                how: "（例）文法を直して\n （例）もっと丁寧な言葉を使って\n （例）文章を長くして",
+                how: "(例）文法を直して\n(例）もっと丁寧な言葉を使って\n(例）文章を長くして",
               },
               option: "編集",
               pageTitle: "Eメールの編集",
