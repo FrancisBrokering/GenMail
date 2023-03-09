@@ -29,7 +29,7 @@ import {
   DarkMode,
   VStack,
 } from "@chakra-ui/react";
-import { FiHome, FiMenu, FiMail, FiTwitter, FiSend } from "react-icons/fi";
+import { FiHome, FiMenu, FiMail, FiTwitter, FiSend, FiUser } from "react-icons/fi";
 import { IconType } from "react-icons";
 import { ReactText } from "react";
 import { useTranslation } from "react-i18next";
@@ -119,6 +119,7 @@ const SidebarContent = ({
     { name: t("sidebar.home"), link: "home", icon: FiHome },
     { name: t("sidebar.email"), link: "email", icon: FiMail },
     { name: t("sidebar.sns"), link: "sns", icon: FiTwitter },
+    { name: t("sidebar.login"), link: "login", icon: FiUser}
   ];
 
   const Sidebar_Border = useColorModeValue("gray.200", "gray.700");

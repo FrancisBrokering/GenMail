@@ -10,6 +10,8 @@ import { TourProvider } from "@reactour/tour";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { steps } from "./tour/steps";
 import Home from "./pages/Home";
+import LoginPage from "./pages/LoginPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 const LOCAL_STORAGE_KEY = "USER_LANGUAGE";
 
@@ -61,6 +63,13 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/email" element={<EmailPage />} />
             <Route path="/sns" element={<SnsPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/resetPassword"
+              element={
+                <ResetPasswordPage />
+              }
+            />
           </Routes>
         </Sidebar>
       </TourProvider>
