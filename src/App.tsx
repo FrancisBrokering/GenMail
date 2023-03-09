@@ -12,7 +12,7 @@ import { steps } from "./tour/steps";
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
-import { Button, Box, Flex, Text, Icon } from "@chakra-ui/react";
+import { Button, Box, Flex, Text, Icon, useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import { ArrowForwardIcon, ArrowBackIcon } from "@chakra-ui/icons";
 
 const LOCAL_STORAGE_KEY = "USER_LANGUAGE";
@@ -20,6 +20,8 @@ const LOCAL_STORAGE_KEY = "USER_LANGUAGE";
 function App() {
   const [language, setLanguage] = useState("ja");
   const { t, i18n } = useTranslation();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isLargerThan800] = useMediaQuery('(min-width: 800px)');
 
   useEffect(() => {
     const storedUserLang = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -48,6 +50,9 @@ function App() {
         }
         prevButton={({ currentStep, setCurrentStep, steps }) => {
           const first = currentStep === 0;
+          if (currentStep <= 5 && !isLargerThan800) {
+            onClose()
+          }
           return (
             <Box
               onClick={() => {
@@ -78,6 +83,9 @@ function App() {
           steps,
         }) => {
           const last = currentStep === stepsLength - 1;
+          if (currentStep >= 5 && !isLargerThan800) {
+            onOpen();
+          }
           return (
             <Box
               onClick={() => {
@@ -112,7 +120,7 @@ function App() {
           close: (base) => ({ ...base, right: "auto", left: 8, top: 8 }),
         }}
       >
-        <Sidebar userLanguage={language} setUserLanguage={setLanguage}>
+        <Sidebar userLanguage={language} setUserLanguage={setLanguage} isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
           <Routes>
             <Route path="/" element={<EmailPage />} />
             <Route path="/home" element={<Home />} />
