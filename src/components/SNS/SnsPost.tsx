@@ -197,6 +197,7 @@ const SnsPost = (props: SnsPostProps) => {
               setTone={setTone}
               currentStep={currentStep}
               tone={tone}
+              className="third-step"
             />
             <Button
               color="white"

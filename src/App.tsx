@@ -12,6 +12,8 @@ import { steps } from "./tour/steps";
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
+import { Button, Box, Flex, Text, Icon } from "@chakra-ui/react";
+import { ArrowForwardIcon, ArrowBackIcon } from "@chakra-ui/icons";
 
 const LOCAL_STORAGE_KEY = "USER_LANGUAGE";
 
@@ -44,6 +46,60 @@ function App() {
         badgeContent={({ totalSteps, currentStep }) =>
           currentStep + 1 + "/" + totalSteps
         }
+        prevButton={({ currentStep, setCurrentStep, steps }) => {
+          const first = currentStep === 0;
+          return (
+            <Box
+              onClick={() => {
+                if (first) {
+                  if (steps?.length) {
+                    setCurrentStep((s) => steps.length - 1);
+                  }
+                } else {
+                  setCurrentStep((s) => s - 1);
+                }
+              }}
+              _hover={{ cursor: "pointer" }}
+            >
+              <Flex alignItems={"center"}>
+                {first ? null : (
+                  <Icon as={ArrowBackIcon} boxSize={5} mr={"5px"} />
+                )}
+                <Text>{first ? "Back" : "Back"}</Text>
+              </Flex>
+            </Box>
+          );
+        }}
+        nextButton={({
+          currentStep,
+          stepsLength,
+          setIsOpen,
+          setCurrentStep,
+          steps,
+        }) => {
+          const last = currentStep === stepsLength - 1;
+          return (
+            <Box
+              onClick={() => {
+                if (last) {
+                  setIsOpen(false);
+                } else {
+                  if (steps?.length) {
+                    setCurrentStep((s) => (s === steps.length - 1 ? 0 : s + 1));
+                  }
+                }
+              }}
+              _hover={{ cursor: "pointer" }}
+            >
+              <Flex alignItems={"center"}>
+                <Text>{last ? "Close" : "Next"}</Text>
+                {last ? null : (
+                  <Icon as={ArrowForwardIcon} boxSize={5} ml={"5px"} />
+                )}
+              </Flex>
+            </Box>
+          );
+        }}
         styles={{
           popover: (base) => ({
             ...base,
@@ -51,7 +107,6 @@ function App() {
             borderRadius: radius,
           }),
           maskArea: (base) => ({ ...base, rx: radius }),
-          // maskWrapper: (base) => ({ ...base, color: '#ef5a3d' }),
           badge: (base) => ({ ...base, left: "auto", right: "-0.8125em" }),
           controls: (base) => ({ ...base, marginTop: 30 }),
           close: (base) => ({ ...base, right: "auto", left: 8, top: 8 }),

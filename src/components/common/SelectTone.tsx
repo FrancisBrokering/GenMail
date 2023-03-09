@@ -20,6 +20,7 @@ type SelectToneProps = {
   setTone: (tone: string) => void;
   tone: string;
   currentStep: number;
+  className: string;
 };
 
 const SelectTone = (props: SelectToneProps) => {
@@ -66,6 +67,7 @@ const SelectTone = (props: SelectToneProps) => {
             md: "repeat(3, 2fr)",
           }}
           gap={{ base: 1, md: 6 }}
+          className={props.className}
         >
           {toneOptions.map((toneOption) => {
             return (

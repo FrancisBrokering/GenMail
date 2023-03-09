@@ -191,13 +191,17 @@ i18n
               skip: "Skip",
               openTour: "Open Tour",
             },
-            firstStep: "Select output Language.",
-            secondStep: "Write details you want to include in your message.",
+            firstStep: "Select the desired input and output languages.",
+            secondStep:
+              "Provide all the necessary details you would like to include in your message.",
             thirdStep:
-              "Provide name of a person or organization you're sending your messages to.",
+              "Enter the name of the person or organization you are addressing in your message. ",
             fourthStep:
-              "Choose a tone of your email or add your customized tone.",
-            fifthStep: "Try other fields and explore the app!",
+              "Customize the tone of your email to suit your unique style and voice.",
+            fifthStep:
+              "You're all set! Now you can generate your own templates!",
+            sixthStep:
+              "Try out other fields and explore all the features our app has to offer!",
           },
         },
       },
@@ -370,18 +374,22 @@ i18n
             modal: {
               title: "GenPlateへようこそ",
               about:
-                "GenPlateは、様々な言語でメールやSNSのメッセージテンプレートを自動生成するアプリです。仕事やプライベートで海外の人と交流があり、普段メールのやりとりなどを英語で行なっている方に使っていただけます。",
+                "GenPlateは、メールやSNSのメッセージテンプレートを様々な言語で自動生成するアプリです。仕事やプライベートで海外の人と交流があり、普段メールのやりとりなどを外国語で行なっている方に、非常に便利なアプリとなっております。",
               support:
-                "GenPlateはまだ開発・改良の途中ですので、もし気に入っていただけたなら、ぜひレビューやコメントなどを使って頂けると幸いです。",
+                "GenPlateはまだ開発・改良の途中ですので、もし気に入っていただけたなら、ぜひ左下のお問合せからレビューやコメントを送って頂けると嬉しいです。",
               show: "今後、このメッセージを表示しない。",
               skip: "スキップ",
               openTour: "使い方を見る",
             },
-            firstStep: "作りたいテンプレートの言語を指定してください。",
-            secondStep: "テンプレートに含みたい内容を入力してください。",
-            thirdStep: "宛先を入力してください。",
-            fourthStep: "口調（ニュアンス）を選択してください。",
-            fifthStep: "他のSNSなどの機能を試してみてね！",
+            firstStep:
+              "入力言語と出力言語を選択しよう。＊出力言語には作りたいテンプレートの言語を入れてください。",
+            secondStep: "テンプレートに含みたい内容を入力しよう。",
+            thirdStep:
+              "メッセージを送りたい相手、企業などを選択、または作成しよう。",
+            fourthStep:
+              "送りたいメッセージの内容に合わせて、口調（ニュアンス）を選択しよう。",
+            fifthStep: "さっそくテンプレートを生成しよう！",
+            sixthStep: "SNSの投稿を作成したり、他の機能も試してみてね！",
           },
         },
       },

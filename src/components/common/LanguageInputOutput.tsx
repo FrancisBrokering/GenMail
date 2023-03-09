@@ -104,7 +104,7 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
         stepNumber={1}
         currentStep={props.currentStep}
       />
-      <Flex>
+      <Flex className={props.className}>
         <Menu>
           <MenuButton
             as={Button}
@@ -145,7 +145,6 @@ const LanguageInputOutput = (props: LanguageInputOutputProps) => {
             rightIcon={<ChevronDownIcon />}
             variant="outline"
             borderColor={Menu_Border}
-            className={props.className}
           >
             <Text fontWeight="500">{getLanguage(props.outputLanguage)}</Text>
           </MenuButton>

@@ -124,11 +124,13 @@ const NewEmail = (props: NewEmailProps) => {
               setReceiver={setReceiver}
               currentStep={currentStep}
               receiver={receiver}
+              className="third-step"
             />
             <SelectTone
               setTone={setTone}
               currentStep={currentStep}
               tone={tone}
+              className="fourth-step"
             />
             <Button
               color="white"
@@ -140,6 +142,7 @@ const NewEmail = (props: NewEmailProps) => {
               isLoading={isGenerating}
               loadingText={isGenerating ? (t("generating") as string) : ""}
               bgGradient="linear(to-l, #17A8E5, #0968D3)"
+              className="fifth-step"
             >
               {t("email.New.button")}
             </Button>
