@@ -6,7 +6,14 @@ import { useTranslation } from "react-i18next";
 const BeforeGeneratedText = () => {
   const { t } = useTranslation();
   return (
-    <Flex bg="white" direction="column" rounded="8px" border="solid #e2e8f0">
+    <Flex
+      bg="white"
+      direction="column"
+      rounded="8px"
+      border="solid #e2e8f0"
+      display={{ base: "none", md: "flex" }}
+      margin="20px 20px 10px 0px"
+    >
       <Box w="100%" h="60px" bg="#F2F7FF" borderTopRadius="8px" />
       <VStack
         bg="white"

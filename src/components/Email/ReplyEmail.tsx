@@ -131,6 +131,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               />
               <Textarea
                 name="description"
+                minH="100px"
                 value={emailDescription}
                 onChange={(e) => setEmailDescription(e.target.value)}
                 placeholder={t("email.Reply.examples.what") as string}

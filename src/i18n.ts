@@ -63,7 +63,8 @@ i18n
           },
           resetPassword: {
             title: "Forgot your password?",
-            subtitle: "Enter your email address and we'll send you a link to reset your password.",
+            subtitle:
+              "Enter your email address and we'll send you a link to reset your password.",
             email: "Email Address",
             example: "example@gmail.com",
             send: "Send",
@@ -72,7 +73,8 @@ i18n
             invalidEmail: "Please enter a valid email address.",
             back: "Back to login",
             emailSent: "Email Sent",
-            emailSentSubtitle: "Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.",
+            emailSentSubtitle:
+              "Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.",
           },
           selectLang: {
             email: "Select Output Language",
@@ -134,7 +136,7 @@ i18n
             },
             Edit: {
               examples: {
-                how: "e.g. Correct spelling mistakes\n e.g. Change the tone to formal \n e.g. Add a more paragraphs",
+                how: "e.g. Correct spelling mistakes\ne.g. Change the tone to formal \ne.g. Add a more paragraphs",
               },
               option: "Edit",
               pageTitle: "Edit Your Email",
@@ -194,7 +196,7 @@ i18n
             thirdStep:
               "Provide name of a person or organization you're sending your messages to.",
             fourthStep:
-              "Choose a tone of your email or add your customaized tone.",
+              "Choose a tone of your email or add your customized tone.",
             fifthStep: "Try other fields and explore the app!",
           },
         },
@@ -246,7 +248,8 @@ i18n
             login: "ログイン",
             continue: "または以下の方法でログインする",
             notRegistered: "このメールアドレスは登録されていません",
-            differentCredentials: "このメールアドレスは別のログイン方法で使用されています",
+            differentCredentials:
+              "このメールアドレスは別のログイン方法で使用されています",
             wrongPassword: "パスワードが間違っています",
           },
           resetPassword: {
@@ -320,7 +323,7 @@ i18n
             },
             Edit: {
               examples: {
-                how: "（例）文法を直して\n （例）もっと丁寧な言葉を使って\n （例）文章を長くして",
+                how: "(例）文法を直して\n(例）もっと丁寧な言葉を使って\n(例）文章を長くして",
               },
               option: "編集",
               pageTitle: "Eメールの編集",

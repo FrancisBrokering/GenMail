@@ -13,8 +13,12 @@ const LoginPageHeader = (props: LoginPageHeaderProps) => {
     <Stack spacing="6">
       {/* <SpeaktocodeLogo /> */}
       <Stack spacing={{ base: "2", md: "3" }} textAlign="center">
-        <Heading size={{ base: "xs", md: "sm" }} color="white" textAlign="center">
-          {props.isNewUser ?  t("login.titleSignup") : t("login.title")}
+        <Heading
+          size={{ base: "xs", md: "sm" }}
+          color="white"
+          textAlign="center"
+        >
+          {props.isNewUser ? t("login.titleSignup") : t("login.title")}
         </Heading>
         <HStack spacing="1" justify="center">
           {props.isNewUser ? (
@@ -26,21 +30,23 @@ const LoginPageHeader = (props: LoginPageHeaderProps) => {
                 onClick={() => {
                   props.setIsNewUser(false);
                 }}
-                textDecoration='underline'
+                textDecoration="underline"
               >
                 {t("login.login")}
               </Button>
             </>
           ) : (
             <>
-              <Text color="white"  alignContent="center">{t("login.subtitle")}</Text>
+              <Text color="white" alignContent="center">
+                {t("login.subtitle")}
+              </Text>
               <Button
                 variant="link"
                 color="#fff"
                 onClick={() => {
                   props.setIsNewUser(true);
                 }}
-                textDecoration='underline'
+                textDecoration="underline"
               >
                 {t("login.signup")}
               </Button>
