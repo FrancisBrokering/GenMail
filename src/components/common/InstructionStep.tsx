@@ -15,7 +15,7 @@ const InstructionStep = (props: InstructionStepProps) => {
     <HStack textAlign="center" alignItems="center" ml="-16px">
       <Box
         position="relative"
-        padding={props.stepNumber === props.currentStep ? "0px" : "32px"}
+        padding={props.stepNumber === props.currentStep ? "0px" : "30px"}
       >
         <Img
           zIndex={0}
