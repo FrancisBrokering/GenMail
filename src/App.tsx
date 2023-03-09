@@ -59,6 +59,7 @@ function App() {
                   setCurrentStep((s) => s - 1)
                 }
               }}
+              _hover={{ cursor: "pointer" }}
             >
               <Flex alignItems={"center"}>
                 {first ? null : <Icon as={ArrowBackIcon} boxSize={5} mr={"5px"}/>}
