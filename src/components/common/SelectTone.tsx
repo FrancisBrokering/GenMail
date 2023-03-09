@@ -89,14 +89,16 @@ const SelectTone = (props: SelectToneProps) => {
                 }}
                 key={toneOption.value}
                 border="solid #e2e8f0"
-                h="55px"
-                padding="0px 22px 0px 22px"
                 rounded="8px"
                 display="flex"
                 alignItems="center"
                 bg={props.tone === toneOption.value ? "#F2F7FF" : "white"}
               >
-                <Radio value={toneOption.value}>{toneOption.label}</Radio>
+                <Radio
+                  w="100%"
+                  h="55px"
+                  padding="0px 22px 0px 22px"
+                  value={toneOption.value}>{toneOption.label}</Radio>
               </GridItem>
             );
           })}
@@ -126,7 +128,7 @@ const SelectTone = (props: SelectToneProps) => {
                     props.setTone(e.target.value);
                     setIsOtherSelected(true);
                   }}
-                  // value={props.tone}
+                // value={props.tone}
                 />
               </InputGroup>
             </GridItem>
