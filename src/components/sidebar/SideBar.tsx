@@ -156,7 +156,7 @@ const SidebarContent = ({
         />
       </Flex>
       <Flex flexDirection={"column"} height="70%">
-        <Box className="fifth-step" color={"gray.100"}>
+        <Box className="sixth-step" color={"gray.100"}>
           {LinkItems.map((link) => (
             <NavItem
               key={link.name}

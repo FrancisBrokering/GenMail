@@ -18,8 +18,10 @@ import {
 } from "@chakra-ui/react";
 import { useTour } from "@reactour/tour";
 import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
 import GetIcon from "../data/GetIcon";
 import GenPlateHome from "../assets/images/GenPlateHome.png";
+import TutorialUsageVideo from "../assets/videos/TutorialUsage.mp4";
 
 const LOCAL_STORAGE_KEY = "FIRST_TIME_ENTER";
 
@@ -64,19 +66,21 @@ const TourModal = () => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text fontWeight={"bold"} fontSize={"30px"}>
+            <Text fontWeight={"bold"} fontSize={"28px"}>
               {t("tour.modal.title")}
             </Text>
-            <Text mt={"10px"}>{t("tour.modal.about")}</Text>
+            <Text>{t("tour.modal.about")}</Text>
             <Text mt={"10px"} mb={"20px"}>
               {t("tour.modal.support")}
             </Text>
-            <Box margin={"25px 70px"}>
-              <Image
-                src={GenPlateHome}
-                alt="GenPlate"
-                borderRadius={"10px"}
-              ></Image>
+            <Box margin={"25px 70px"} borderRadius="10px solid black">
+              <StyledVideoOuter>
+                <div id="outer">
+                <video autoPlay loop width="460px" height="250px" controls>
+                  <source src={TutorialUsageVideo} type="video/mp4"/>
+                </video>
+                </div>
+              </StyledVideoOuter>
             </Box>
             <Box mb={"20px"}>
               <input
@@ -104,5 +108,21 @@ const TourModal = () => {
     </>
   );
 };
+
+const StyledVideoOuter = styled.div`
+  #outer {
+    width: 430px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .video {
+    position: relative;
+    background-size: cover;
+  }
+`
 
 export default TourModal;

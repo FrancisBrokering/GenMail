@@ -145,6 +145,7 @@ const SnsChat = (props: SnsChatProps) => {
               setTone={setTone}
               currentStep={currentStep}
               tone={tone}
+              className={"fourth-step"}
             />
             <Button
               color="white"
