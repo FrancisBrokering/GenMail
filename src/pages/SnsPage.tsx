@@ -18,12 +18,31 @@ import { useTranslation } from "react-i18next";
 import EditArea from "../components/editor/EditArea";
 import SnsPost from "../components/SNS/SnsPost";
 import SnsChat from "../components/SNS/SnsChat";
+import BeforeGeneratedText from "../components/common/BeforeGeneratedText";
+import Navbar from "../components/NavBar/Navbar";
+import { ReactComponent as PostSnsIcon } from "../assets/icons/postSnsIcon.svg";
+import { ReactComponent as ChatSnsIcon } from "../assets/icons/chatSnsIcon.svg";
+import GeneratedText from "../components/common/GeneratedText";
 
 const SnsPage = () => {
   const [generateOption, setGenerateOption] = useState("Post");
   const [inputLanguage, setInputLanguage] = useState("ja");
   const [outputLanguage, setOutputLanguage] = useState("en");
+  const [results, setResult] = useState(["", "", ""]);
+  const Result_Bg = useColorModeValue("white", "gray.700");
   const { t, i18n } = useTranslation();
+  const tabs = [
+    {
+      option: "Post",
+      icon: <PostSnsIcon width="27px" />,
+      i18message: t("sns.Post.option"),
+    },
+    {
+      option: "Chat",
+      icon: <ChatSnsIcon width="27px" />,
+      i18message: t("sns.Chat.option"),
+    },
+  ];
 
   const SnsPages = ["Post", "Chat"];
 
@@ -35,6 +54,7 @@ const SnsPage = () => {
           outputLanguage={outputLanguage}
           setInputLanguage={setInputLanguage}
           setOutputLanguage={setOutputLanguage}
+          setResult={setResult}
         />
       );
     if (name === "Chat") {
@@ -44,10 +64,15 @@ const SnsPage = () => {
           outputLanguage={outputLanguage}
           setInputLanguage={setInputLanguage}
           setOutputLanguage={setOutputLanguage}
+          setResult={setResult}
         />
       );
     }
   };
+
+  useEffect(() => {
+    setResult(["", "", ""]);
+  }, [generateOption]);
 
   const Tab_Bg = useColorModeValue("white", "gray.700");
   const Tab_Color = useColorModeValue("black", "white");
@@ -55,57 +80,92 @@ const SnsPage = () => {
   const TabPanel_Border = useColorModeValue("#e2e8f0", "gray.600");
 
   return (
-    <Grid templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}>
-      <GridItem colSpan={3}>
-        <Box margin="10px 20px 10px 20px">
-          <Tabs variant="enclosed">
-            <TabList borderBottom={"0px"} pb={"1px"}>
-              <Tab
-                height={"46px"}
-                borderBottom={"0px"}
-                bg={generateOption === "Post" ? Tab_Bg : "transparent"}
-                onClick={() => setGenerateOption("Post")}
+    <>
+      <Box as="header">
+        <Navbar
+          generateOption={generateOption}
+          setGenerateOption={setGenerateOption}
+          tabs={tabs}
+        />
+      </Box>
+      <Grid
+        templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(5, 1fr)" }}
+        position="relative"
+      >
+        <GridItem
+          colSpan={3}
+          mt={"70px"}
+          maxHeight={"90vh"}
+          overflowY={"scroll"}
+        >
+          <Box margin="10px 20px 10px 20px">
+            <Tabs variant="enclosed">
+              <Box
+                mb={"20px"}
+                borderBottom={"1px solid"}
+                borderColor="gray.400"
               >
-                <Text
-                  color={generateOption === "Post" ? Tab_Color : "gray.600"}
-                >
-                  📝 {t("sns.SnsPost.option")}
+                <Text ml={"10px"} fontWeight="bold" fontSize="19px">
+                  {t("sns." + generateOption + ".pageTitle")}
                 </Text>
-              </Tab>
-              <Tab
-                height={"46px"}
-                borderBottom={"0px"}
-                bg={generateOption === "Chat" ? Tab_Bg : "transparent"}
-                onClick={() => setGenerateOption("Chat")}
+                <Text
+                  ml={"10px"}
+                  mb={"10px"}
+                  mt={"10px"}
+                  opacity={0.7}
+                  fontSize="16px"
+                >
+                  {t("sns." + generateOption + ".pageSubtitle")}
+                </Text>
+              </Box>
+              <TabPanels
+                bg={TabPanel_Bg}
+                border="1px solid"
+                borderColor={TabPanel_Border}
+                borderTopLeftRadius={generateOption === "Post" ? "0px" : "10px"}
+                borderTopRightRadius={"10px"}
+                borderBottomRadius={"10px"}
               >
-                <Text
-                  color={generateOption === "Chat" ? Tab_Color : "gray.600"}
-                >
-                  💬 {t("sns.SnsChat.option")}
-                </Text>
-              </Tab>
-            </TabList>
-            <TabPanels
-              bg={TabPanel_Bg}
-              border="1px solid"
-              borderColor={TabPanel_Border}
-              borderTopLeftRadius={generateOption === "Post" ? "0px" : "10px"}
-              borderTopRightRadius={"10px"}
-              borderBottomRadius={"10px"}
-            >
-              {SnsPages.map((page) => {
-                return <TabPanel key={page}>{getSnsPage(page)}</TabPanel>;
-              })}
-            </TabPanels>
-          </Tabs>
-        </Box>
-      </GridItem>
-      <GridItem colSpan={{ base: 0, md: 2 }}>
-        <Box margin="10px 20px 10px 0px" position={"sticky"} top="10px">
-          <EditArea></EditArea>
-        </Box>
-      </GridItem>
-    </Grid>
+                {SnsPages.map((page) => {
+                  return (
+                    <TabPanel key={page}>{getSnsPage(generateOption)}</TabPanel>
+                  );
+                })}
+              </TabPanels>
+            </Tabs>
+          </Box>
+        </GridItem>
+        <GridItem
+          colSpan={{ base: 0, md: 2 }}
+          mt={"70px"}
+          maxHeight={"90vh"}
+          overflowY={"scroll"}
+        >
+          <Box margin={"10px 0px 10px 10px"} pb="70px">
+            {results[0] === "" ? (
+              <Box margin="20px 20px 10px 0px" position={"sticky"} top="10px">
+                {/* <EditArea></EditArea> */}
+                <BeforeGeneratedText />
+              </Box>
+            ) : (
+              results.map((r, index) => {
+                return (
+                  <Box
+                    key={index}
+                    margin="20px 20px 10px 0px"
+                    top={"20px"}
+                    bg={Result_Bg}
+                    borderRadius={"10px"}
+                  >
+                    <GeneratedText index={index} result={r} />
+                  </Box>
+                );
+              })
+            )}
+          </Box>
+        </GridItem>
+      </Grid>
+    </>
   );
 };
 

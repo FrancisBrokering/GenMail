@@ -1,8 +1,6 @@
 import {
   Box,
-  Input,
   FormControl,
-  FormLabel,
   Button,
   VStack,
   useColorModeValue,
@@ -14,6 +12,8 @@ import { useTranslation } from "react-i18next";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 import SelectTone from "../common/SelectTone";
 import { FetchGpt3, getLanguageInEnglish } from "../../utility/CommonMethods";
+import InstructionStep from "../common/InstructionStep";
+import SelectReceiver from "../common/SelectReceiver";
 
 type NewEmailProps = {
   inputLanguage: string;
@@ -26,16 +26,16 @@ type NewEmailProps = {
 const NewEmail = (props: NewEmailProps) => {
   const { t } = useTranslation();
   const [emailDescription, setEmailDescription] = useState("");
-  const [tone, setTone] = useState("formal");
+  const [tone, setTone] = useState("");
   const [receiver, setReceiver] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  // const [results, setResult] = useState(["", "", ""]);
   const [numChars, setNumChars] = useState(0);
   const maxChars = 1500;
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
   const Countword_color = useColorModeValue("gray.400", "gray.400");
   const Button_Bg = useColorModeValue("#0768d2", "#0768d2");
   const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2");
+  const [currentStep, setCurrentStep] = useState(1);
 
   async function handleSubmit(event: React.FormEvent) {
     const instruction =
@@ -61,7 +61,22 @@ const NewEmail = (props: NewEmailProps) => {
 
   useEffect(() => {
     setNumChars(emailDescription.length);
+    if (emailDescription != "") {
+      setCurrentStep(2);
+    }
   }, [emailDescription]);
+
+  useEffect(() => {
+    if (receiver != "") {
+      setCurrentStep(3);
+    }
+  }, [receiver]);
+
+  useEffect(() => {
+    if (tone != "") {
+      setCurrentStep(4);
+    }
+  }, [tone]);
 
   return (
     <Box position={"relative"}>
@@ -76,9 +91,15 @@ const NewEmail = (props: NewEmailProps) => {
               outputLanguage={props.outputLanguage}
               page={"New"}
               className={"first-step"}
+              currentStep={currentStep}
             />
             <Box>
-              <FormLabel>② {t("email.New.about")}</FormLabel>
+              {/* <FormLabel>② {t("email.New.about")}</FormLabel> */}
+              <InstructionStep
+                instructionPrompt={t("email.New.about")}
+                stepNumber={2}
+                currentStep={currentStep}
+              />
               <Textarea
                 className="second-step"
                 name="description"
@@ -99,20 +120,16 @@ const NewEmail = (props: NewEmailProps) => {
                 {numChars} / {maxChars}
               </Text>
             </Box>
-            <Box>
-              <FormLabel>③ {t("email.New.who")}</FormLabel>
-              <Input
-                className="third-step"
-                type="text"
-                name="receiver"
-                value={receiver}
-                onChange={(e) => setReceiver(e.target.value)}
-                placeholder={t("email.New.examples.who") as string}
-                _placeholder={{ color: Placeholder_Color }}
-                required
-              />
-            </Box>
-            <SelectTone setTone={setTone} />
+            <SelectReceiver
+              setReceiver={setReceiver}
+              currentStep={currentStep}
+              receiver={receiver}
+            />
+            <SelectTone
+              setTone={setTone}
+              currentStep={currentStep}
+              tone={tone}
+            />
             <Button
               color="white"
               colorScheme="blue"
@@ -122,6 +139,7 @@ const NewEmail = (props: NewEmailProps) => {
               type="submit"
               isLoading={isGenerating}
               loadingText={isGenerating ? (t("generating") as string) : ""}
+              bgGradient="linear(to-l, #17A8E5, #0968D3)"
             >
               {t("email.New.button")}
             </Button>

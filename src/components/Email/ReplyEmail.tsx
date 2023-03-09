@@ -13,6 +13,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FetchGpt3, getLanguageInEnglish } from "../../utility/CommonMethods";
 import GeneratedText from "../common/GeneratedText";
+import InstructionStep from "../common/InstructionStep";
 import LanguageInputOutput from "../common/LanguageInputOutput";
 import SelectTone from "../common/SelectTone";
 
@@ -21,21 +22,23 @@ type ReplyEmailProps = {
   outputLanguage: string;
   setInputLanguage: (lang: string) => void;
   setOutputLanguage: (lang: string) => void;
+  setResult: (results: string[]) => void;
 };
 
 const ReplyEmail = (props: ReplyEmailProps) => {
   const { t } = useTranslation();
   const [emailDescription, setEmailDescription] = useState("");
-  const [tone, setTone] = useState("formal");
+  const [tone, setTone] = useState("");
   const [reply, setReply] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [results, setResult] = useState(["", "", ""]);
+  // const [results, setResult] = useState(["", "", ""]);
   const [numChars, setNumChars] = useState(0);
   const maxChars = 1500;
   const Countword_color = useColorModeValue("gray.400", "gray.400");
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
   const Button_Bg = useColorModeValue("#0768d2", "#0768d2");
   const Button_Bg_Hover = useColorModeValue("#005dc1", "#1b73d2");
+  const [currentStep, setCurrentStep] = useState(1);
 
   async function handleSubmit(event: React.FormEvent) {
     let details = emailDescription;
@@ -54,7 +57,7 @@ const ReplyEmail = (props: ReplyEmailProps) => {
 
     FetchGpt3(
       setIsGenerating,
-      setResult,
+      props.setResult,
       instruction,
       event,
       "text-davinci-003"
@@ -63,7 +66,22 @@ const ReplyEmail = (props: ReplyEmailProps) => {
 
   useEffect(() => {
     setNumChars(reply.length);
+    if (reply != "") {
+      setCurrentStep(2);
+    }
   }, [reply]);
+
+  useEffect(() => {
+    if (emailDescription != "") {
+      setCurrentStep(3);
+    }
+  }, [emailDescription]);
+
+  useEffect(() => {
+    if (tone != "") {
+      setCurrentStep(4);
+    }
+  }, [tone]);
 
   return (
     <Box position={"relative"}>
@@ -78,9 +96,15 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               outputLanguage={props.outputLanguage}
               page={"Reply"}
               className={"first-step"}
+              currentStep={currentStep}
             />
             <Box>
-              <FormLabel>② {t("email.Reply.paste")}</FormLabel>
+              {/* <FormLabel>② {t("email.Reply.paste")}</FormLabel> */}
+              <InstructionStep
+                instructionPrompt={t("email.Reply.paste")}
+                stepNumber={2}
+                currentStep={currentStep}
+              />
               <Textarea
                 minH="200px"
                 name="reply"
@@ -99,7 +123,12 @@ const ReplyEmail = (props: ReplyEmailProps) => {
               </Text>
             </Box>
             <Box>
-              <FormLabel>③ {t("email.Reply.what")}</FormLabel>
+              {/* <FormLabel>③ {t("email.Reply.what")}</FormLabel> */}
+              <InstructionStep
+                instructionPrompt={t("email.Reply.what")}
+                stepNumber={3}
+                currentStep={currentStep}
+              />
               <Textarea
                 name="description"
                 value={emailDescription}
@@ -108,7 +137,11 @@ const ReplyEmail = (props: ReplyEmailProps) => {
                 _placeholder={{ color: Placeholder_Color }}
               />
             </Box>
-            <SelectTone setTone={setTone} />
+            <SelectTone
+              setTone={setTone}
+              currentStep={currentStep}
+              tone={tone}
+            />
             <Button
               color="white"
               colorScheme="blue"
@@ -124,15 +157,6 @@ const ReplyEmail = (props: ReplyEmailProps) => {
           </VStack>
         </FormControl>
       </form>
-      <Box maxW="100%" whiteSpace="pre-wrap" pb="70px">
-        {results[0] === "" ? (
-          <></>
-        ) : (
-          results.map((r, index) => {
-            return <GeneratedText key={index} index={index} result={r} />;
-          })
-        )}
-      </Box>
     </Box>
   );
 };

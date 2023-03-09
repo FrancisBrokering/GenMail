@@ -17,45 +17,41 @@ import React, { useEffect, useState } from "react";
 import InstructionStep from "./InstructionStep";
 
 type SelectToneProps = {
-  setTone: (tone: string) => void;
-  tone: string;
+  setReceiver: (tone: string) => void;
+  receiver: string;
   currentStep: number;
 };
 
-const SelectTone = (props: SelectToneProps) => {
+const SelectReceiver = (props: SelectToneProps) => {
   const { t } = useTranslation();
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
   const [isOtherSelected, setIsOtherSelected] = useState(false);
   const toneOptions = [
-    { value: "happy", label: "😊 " + t("tone.happy") },
-    { value: "casual", label: "😌 " + t("tone.casual") },
-    { value: "formal", label: "👔 " + t("tone.formal") },
-    // { value: "professional", label: "💼 " + t("tone.professional") },
-    // { value: "angry", label: "🤬 " + t("tone.angry") },
-    { value: "sad", label: "😢 " + t("tone.sad") },
-    { value: "funny", label: "😂 " + t("tone.funny") },
-    // { value: "informal", label: "🤪 " + t("tone.informal")},
-    { value: "serious", label: "😡 " + t("tone.serious") },
+    { value: "my boss", label: "👨‍🏫 " + t("receiver.boss") },
+    { value: "colleague", label: "🧑‍💻 " + t("receiver.colleague") },
+    { value: "friend", label: "🤝 " + t("receiver.friend") },
+    { value: "business Partner", label: "👔 " + t("receiver.partner") },
+    { value: "family member", label: "👨‍👩‍👧‍👦 " + t("receiver.family") },
+    { value: "lover", label: "👩‍❤️‍💋‍👨 " + t("receiver.lover") },
   ];
 
   return (
     <Box>
-      {/* <FormLabel>④ {t("tone.label")}</FormLabel> */}
       <InstructionStep
-        instructionPrompt={t("tone.label")}
-        stepNumber={4}
+        instructionPrompt={t("email.New.who")}
+        stepNumber={3}
         currentStep={props.currentStep}
       />
       <RadioGroup
         mb={"10px"}
         _placeholder={{ color: Placeholder_Color }}
-        placeholder={isOtherSelected ? "other" : props.tone}
+        placeholder={isOtherSelected ? "other" : props.receiver}
         onChange={(value) => {
           if (value === "other") {
             setIsOtherSelected(true);
           } else {
             setIsOtherSelected(false);
-            props.setTone(value);
+            props.setReceiver(value);
           }
         }}
       >
@@ -77,7 +73,7 @@ const SelectTone = (props: SelectToneProps) => {
                 rounded="8px"
                 display="flex"
                 alignItems="center"
-                bg={props.tone === toneOption.value ? "#F2F7FF" : "white"}
+                bg={props.receiver === toneOption.value ? "#F2F7FF" : "white"}
               >
                 <Radio value={toneOption.value}>{toneOption.label}</Radio>
               </GridItem>
@@ -98,7 +94,7 @@ const SelectTone = (props: SelectToneProps) => {
                 <Input
                   placeholder={t("tone.other") as string}
                   onChange={(e) => {
-                    props.setTone(e.target.value);
+                    props.setReceiver(e.target.value);
                     setIsOtherSelected(true);
                   }}
                   // value={props.tone}
@@ -112,4 +108,4 @@ const SelectTone = (props: SelectToneProps) => {
   );
 };
 
-export default SelectTone;
+export default SelectReceiver;

@@ -24,7 +24,7 @@ import Face2 from "../assets/images/face2.png";
 import Face3 from "../assets/images/face3.png";
 import Face4 from "../assets/images/face4.png";
 import Face5 from "../assets/images/face5.png";
-import BackgroundMap from "../assets/images/worldMap2.png";
+import BackgroundMap from "../assets/images/worldMap3.png";
 import Background from "../assets/images/background.png";
 import AI from "../assets/images/emailPerson1.png";
 import { useNavigate } from "react-router-dom";
@@ -274,14 +274,14 @@ const Home = () => {
             <Text textAlign="center" fontSize="30px" fontWeight="600">
               世界中の人との繋がりをよりスムーズに
             </Text>
-            <Text
+            {/* <Text
               fontSize="40px"
               fontWeight="800"
               color="#03c3ff"
               textShadow="2px 2px #020d2f"
             >
               今すぐ体験
-            </Text>
+            </Text> */}
             <Button
               bg="#dead40"
               color="white"

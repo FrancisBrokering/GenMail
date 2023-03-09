@@ -22,23 +22,26 @@ import LanguageInputOutput from "../common/LanguageInputOutput";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import SelectTone from "../common/SelectTone";
 import { FetchGpt3 } from "../../utility/CommonMethods";
+import InstructionStep from "../common/InstructionStep";
 
 type SnsPostProps = {
   inputLanguage: string;
   outputLanguage: string;
   setInputLanguage: (lang: string) => void;
   setOutputLanguage: (lang: string) => void;
+  setResult: (results: string[]) => void;
 };
 
 const SnsPost = (props: SnsPostProps) => {
   const { t } = useTranslation();
   const [postDescription, setPostDescription] = useState("");
-  const [tone, setTone] = useState("formal");
+  const [tone, setTone] = useState("");
   const [platform, setPlatform] = useState("Instagram");
   const [platformOther, setPlatformOther] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [results, setResult] = useState(["", "", ""]);
+  // const [results, setResult] = useState(["", "", ""]);
   const [numChars, setNumChars] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
   const maxChars = 1500;
   const Countword_color = useColorModeValue("gray.400", "gray.400");
   const Placeholder_Color = useColorModeValue("gray.500", "gray.200");
@@ -69,7 +72,7 @@ const SnsPost = (props: SnsPostProps) => {
 
     FetchGpt3(
       setIsGenerating,
-      setResult,
+      props.setResult,
       instruction,
       event,
       "text-davinci-003"
@@ -77,8 +80,23 @@ const SnsPost = (props: SnsPostProps) => {
   }
 
   useEffect(() => {
+    if (platform != "Instagram") {
+      setCurrentStep(2);
+    }
+  }, [platform]);
+
+  useEffect(() => {
     setNumChars(postDescription.length);
+    if (postDescription != "") {
+      setCurrentStep(3);
+    }
   }, [postDescription]);
+
+  useEffect(() => {
+    if (tone != "") {
+      setCurrentStep(4);
+    }
+  }, [tone]);
 
   return (
     <Box position={"relative"}>
@@ -86,16 +104,22 @@ const SnsPost = (props: SnsPostProps) => {
         <FormControl>
           <VStack alignItems={"left"} spacing={"40px"}>
             <LanguageInputOutput
-              pageTitle={t("sns.SnsPost.pageTitle")}
+              pageTitle={t("sns.Post.pageTitle")}
               setInputLanguage={props.setInputLanguage}
               setOutputLanguage={props.setOutputLanguage}
               inputLanguage={props.inputLanguage}
               outputLanguage={props.outputLanguage}
-              page={"snsPost"}
+              page={"Post"}
               className={"first-step"}
+              currentStep={currentStep}
             />
             <Box>
-              <FormLabel>② {t("sns.SnsPost.platform")}</FormLabel>
+              {/* <FormLabel>② {t("sns.Post.platform")}</FormLabel> */}
+              <InstructionStep
+                instructionPrompt={t("sns.Post.platform")}
+                stepNumber={2}
+                currentStep={currentStep}
+              />
               <Flex>
                 <Menu>
                   <MenuButton
@@ -143,14 +167,19 @@ const SnsPost = (props: SnsPostProps) => {
               </Flex>
             </Box>
             <Box>
-              <FormLabel>③ {t("sns.SnsPost.about")}</FormLabel>
+              {/* <FormLabel>③ {t("sns.Post.about")}</FormLabel> */}
+              <InstructionStep
+                instructionPrompt={t("sns.Post.about")}
+                stepNumber={3}
+                currentStep={currentStep}
+              />
               <Textarea
                 className="third-step"
                 name="description"
                 minH="200px"
                 value={postDescription}
                 onChange={(e) => setPostDescription(e.target.value)}
-                placeholder={t("sns.SnsPost.examples.about") as string}
+                placeholder={t("sns.Post.examples.about") as string}
                 _placeholder={{ color: Placeholder_Color }}
                 maxLength={maxChars}
                 required
@@ -164,7 +193,11 @@ const SnsPost = (props: SnsPostProps) => {
                 {numChars} / {maxChars}
               </Text>
             </Box>
-            <SelectTone setTone={setTone} />
+            <SelectTone
+              setTone={setTone}
+              currentStep={currentStep}
+              tone={tone}
+            />
             <Button
               color="white"
               colorScheme="blue"
@@ -175,20 +208,11 @@ const SnsPost = (props: SnsPostProps) => {
               isLoading={isGenerating}
               loadingText={isGenerating ? (t("generating") as string) : ""}
             >
-              {t("sns.SnsPost.button")}
+              {t("sns.Post.button")}
             </Button>
           </VStack>
         </FormControl>
       </form>
-      <Box maxW="100%" whiteSpace="pre-wrap" pb="70px">
-        {results[0] === "" ? (
-          <></>
-        ) : (
-          results.map((r, index) => {
-            return <GeneratedText key={index} index={index} result={r} />;
-          })
-        )}
-      </Box>
     </Box>
   );
 };
