@@ -45,9 +45,7 @@ const ResetPasswordForm = (props: ResetPasswordFormProps) => {
             onChange={handleInputChange}
           />
           {props.isError ? (
-            <FormErrorMessage>
-              {t("resetPassword.required")}
-            </FormErrorMessage>
+            <FormErrorMessage>{t("resetPassword.required")}</FormErrorMessage>
           ) : (
             <></>
           )}
@@ -77,9 +75,7 @@ const ResetPasswordForm = (props: ResetPasswordFormProps) => {
             </Box>
           )}
           {props.emailSent ? (
-            <Button colorScheme="blue">
-              {t("resetPassword.emailSent")}
-            </Button>
+            <Button colorScheme="blue">{t("resetPassword.emailSent")}</Button>
           ) : (
             <Button colorScheme="blue" onClick={props.resetPasswordViaEmail}>
               {t("resetPassword.send")}

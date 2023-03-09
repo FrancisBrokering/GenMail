@@ -47,28 +47,29 @@ function App() {
           currentStep + 1 + "/" + totalSteps
         }
         prevButton={({ currentStep, setCurrentStep, steps }) => {
-          const first = currentStep === 0
+          const first = currentStep === 0;
           return (
             <Box
               onClick={() => {
                 if (first) {
                   if (steps?.length) {
-                    setCurrentStep((s) => steps.length - 1)
+                    setCurrentStep((s) => steps.length - 1);
                   }
                 } else {
-                  setCurrentStep((s) => s - 1)
+                  setCurrentStep((s) => s - 1);
                 }
               }}
               _hover={{ cursor: "pointer" }}
             >
               <Flex alignItems={"center"}>
-                {first ? null : <Icon as={ArrowBackIcon} boxSize={5} mr={"5px"}/>}
-                <Text>{first ? 'Back' : 'Back'}</Text>
+                {first ? null : (
+                  <Icon as={ArrowBackIcon} boxSize={5} mr={"5px"} />
+                )}
+                <Text>{first ? "Back" : "Back"}</Text>
               </Flex>
             </Box>
-          )
+          );
         }}
-    
         nextButton={({
           currentStep,
           stepsLength,
@@ -76,27 +77,29 @@ function App() {
           setCurrentStep,
           steps,
         }) => {
-          const last = currentStep === stepsLength - 1
+          const last = currentStep === stepsLength - 1;
           return (
             <Box
               onClick={() => {
-                  if (last) {
-                    setIsOpen(false)
-                  } else {
-                    if (steps?.length){
-                      setCurrentStep((s) => (s === steps.length - 1 ? 0 : s + 1))
-                    }
+                if (last) {
+                  setIsOpen(false);
+                } else {
+                  if (steps?.length) {
+                    setCurrentStep((s) => (s === steps.length - 1 ? 0 : s + 1));
                   }
+                }
               }}
               _hover={{ cursor: "pointer" }}
             >
               <Flex alignItems={"center"}>
-                <Text>{last ? 'Close' : 'Next'}</Text>
-                {last ? null : <Icon as={ArrowForwardIcon} boxSize={5} ml={"5px"}/>}
+                <Text>{last ? "Close" : "Next"}</Text>
+                {last ? null : (
+                  <Icon as={ArrowForwardIcon} boxSize={5} ml={"5px"} />
+                )}
               </Flex>
             </Box>
-          )}
-        }
+          );
+        }}
         styles={{
           popover: (base) => ({
             ...base,
@@ -116,12 +119,7 @@ function App() {
             <Route path="/email" element={<EmailPage />} />
             <Route path="/sns" element={<SnsPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route
-              path="/resetPassword"
-              element={
-                <ResetPasswordPage />
-              }
-            />
+            <Route path="/resetPassword" element={<ResetPasswordPage />} />
           </Routes>
         </Sidebar>
       </TourProvider>

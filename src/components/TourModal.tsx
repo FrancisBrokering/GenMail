@@ -76,9 +76,9 @@ const TourModal = () => {
             <Box margin={"25px 70px"} borderRadius="10px solid black">
               <StyledVideoOuter>
                 <div id="outer">
-                <video autoPlay loop width="460px" height="250px" controls>
-                  <source src={TutorialUsageVideo} type="video/mp4"/>
-                </video>
+                  <video autoPlay loop width="460px" height="250px" controls>
+                    <source src={TutorialUsageVideo} type="video/mp4" />
+                  </video>
                 </div>
               </StyledVideoOuter>
             </Box>
@@ -123,6 +123,6 @@ const StyledVideoOuter = styled.div`
     position: relative;
     background-size: cover;
   }
-`
+`;
 
 export default TourModal;

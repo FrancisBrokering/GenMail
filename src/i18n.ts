@@ -63,7 +63,8 @@ i18n
           },
           resetPassword: {
             title: "Forgot your password?",
-            subtitle: "Enter your email address and we'll send you a link to reset your password.",
+            subtitle:
+              "Enter your email address and we'll send you a link to reset your password.",
             email: "Email Address",
             example: "example@gmail.com",
             send: "Send",
@@ -72,7 +73,8 @@ i18n
             invalidEmail: "Please enter a valid email address.",
             back: "Back to login",
             emailSent: "Email Sent",
-            emailSentSubtitle: "Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.",
+            emailSentSubtitle:
+              "Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.",
           },
           selectLang: {
             email: "Select Output Language",
@@ -190,12 +192,16 @@ i18n
               openTour: "Open Tour",
             },
             firstStep: "Select the desired input and output languages.",
-            secondStep: "Provide all the necessary details you would like to include in your message.",
+            secondStep:
+              "Provide all the necessary details you would like to include in your message.",
             thirdStep:
               "Enter the name of the person or organization you are addressing in your message. ",
-            fourthStep: "Customize the tone of your email to suit your unique style and voice.",
-            fifthStep: "You're all set! Now you can generate your own templates!",
-            sixthStep: "Try out other fields and explore all the features our app has to offer!"
+            fourthStep:
+              "Customize the tone of your email to suit your unique style and voice.",
+            fifthStep:
+              "You're all set! Now you can generate your own templates!",
+            sixthStep:
+              "Try out other fields and explore all the features our app has to offer!",
           },
         },
       },
@@ -246,7 +252,8 @@ i18n
             login: "ログイン",
             continue: "または以下の方法でログインする",
             notRegistered: "このメールアドレスは登録されていません",
-            differentCredentials: "このメールアドレスは別のログイン方法で使用されています",
+            differentCredentials:
+              "このメールアドレスは別のログイン方法で使用されています",
             wrongPassword: "パスワードが間違っています",
           },
           resetPassword: {
@@ -374,10 +381,13 @@ i18n
               skip: "スキップ",
               openTour: "使い方を見る",
             },
-            firstStep: "入力言語と出力言語を選択しよう。＊出力言語には作りたいテンプレートの言語を入れてください。",
+            firstStep:
+              "入力言語と出力言語を選択しよう。＊出力言語には作りたいテンプレートの言語を入れてください。",
             secondStep: "テンプレートに含みたい内容を入力しよう。",
-            thirdStep: "メッセージを送りたい相手、企業などを選択、または作成しよう。",
-            fourthStep: "送りたいメッセージの内容に合わせて、口調（ニュアンス）を選択しよう。",
+            thirdStep:
+              "メッセージを送りたい相手、企業などを選択、または作成しよう。",
+            fourthStep:
+              "送りたいメッセージの内容に合わせて、口調（ニュアンス）を選択しよう。",
             fifthStep: "さっそくテンプレートを生成しよう！",
             sixthStep: "SNSの投稿を作成したり、他の機能も試してみてね！",
           },

@@ -66,6 +66,6 @@ const TourConfig = `
     controls: (base) => ({ ...base, marginTop: 30 }),
     close: (base) => ({ ...base, right: "auto", left: 8, top: 8 }),
     }}
-`
+`;
 
 export default TourConfig;

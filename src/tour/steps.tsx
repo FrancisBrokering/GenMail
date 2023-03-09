@@ -17,7 +17,7 @@ export const steps: StepType[] = [
           </Text>
           <Text>The above will generate English templates.</Text> */}
         </Box>
-      )
+      );
     },
   },
   {
@@ -28,7 +28,7 @@ export const steps: StepType[] = [
         <Box width="300px">
           <Text color={"black"}>{t("tour.secondStep")}</Text>
         </Box>
-      )
+      );
     },
   },
   {
@@ -39,7 +39,7 @@ export const steps: StepType[] = [
         <Box width="300px">
           <Text color={"black"}>{t("tour.thirdStep")}</Text>
         </Box>
-      )
+      );
     },
   },
   {
@@ -50,7 +50,7 @@ export const steps: StepType[] = [
         <Box width="300px">
           <Text color={"black"}>{t("tour.fourthStep")}</Text>
         </Box>
-      )
+      );
     },
   },
   {
@@ -61,7 +61,7 @@ export const steps: StepType[] = [
         <Box width="300px">
           <Text color={"black"}>{t("tour.fifthStep")}</Text>
         </Box>
-      )
+      );
     },
   },
   {
@@ -72,7 +72,7 @@ export const steps: StepType[] = [
         <Box width="300px">
           <Text color={"black"}>{t("tour.sixthStep")}</Text>
         </Box>
-      )
+      );
     },
     position: [280, 200],
     // position: "center",
