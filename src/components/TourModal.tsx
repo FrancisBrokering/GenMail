@@ -15,12 +15,12 @@ import {
   ModalCloseButton,
   useDisclosure,
   useColorMode,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { useTour } from "@reactour/tour";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import GetIcon from "../data/GetIcon";
-import GenPlateHome from "../assets/images/GenPlateHome.png";
 import TutorialUsageVideo from "../assets/videos/TutorialUsage.mp4";
 
 const LOCAL_STORAGE_KEY = "FIRST_TIME_ENTER";
@@ -30,6 +30,7 @@ const TourModal = () => {
   const { colorMode } = useColorMode();
   const { setIsOpen } = useTour();
   const { t, i18n } = useTranslation();
+  const [isLargerThan800] = useMediaQuery('(min-width: 780px)')
 
   useEffect(() => {
     const storedFirsttimeEnter = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -73,15 +74,18 @@ const TourModal = () => {
             <Text mt={"10px"} mb={"20px"}>
               {t("tour.modal.support")}
             </Text>
-            <Box margin={"25px 70px"} borderRadius="10px solid black">
-              <StyledVideoOuter>
-                <div id="outer">
-                  <video autoPlay loop width="460px" height="250px" controls>
-                    <source src={TutorialUsageVideo} type="video/mp4" />
-                  </video>
-                </div>
-              </StyledVideoOuter>
-            </Box>
+            {isLargerThan800 ? (
+                <Box margin={"25px 70px"} borderRadius="10px solid black">
+                  <StyledVideoOuter>
+                    <div id="outer">
+                      <video autoPlay loop width="460px" height="250px" controls>
+                        <source src={TutorialUsageVideo} type="video/mp4" />
+                      </video>
+                    </div>
+                  </StyledVideoOuter>
+                </Box>
+              ): null
+            }
             <Box mb={"20px"}>
               <input
                 type="checkbox"

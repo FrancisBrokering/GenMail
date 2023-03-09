@@ -74,7 +74,7 @@ export const steps: StepType[] = [
         </Box>
       );
     },
-    position: [280, 200],
+    position: "right",
     // position: "center",
   },
 ];

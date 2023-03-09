@@ -22,12 +22,11 @@ import {
   MenuItem,
   Button,
   Spacer,
-  Select,
-  Center,
   Divider,
   Image,
   DarkMode,
   VStack,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -55,17 +54,24 @@ type SidebarProps = {
   children?: JSX.Element | JSX.Element[];
   userLanguage: string;
   setUserLanguage: (lang: string) => void;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
 };
 
 export default function Sidebar({
   children,
   userLanguage,
   setUserLanguage,
+  isOpen,
+  onOpen,
+  onClose,
 }: SidebarProps) {
   // const [ theme, setTheme ] = useState("")
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
   const Sidebar_Content_Bg = useColorModeValue("gray.900", "gray.900");
   const Sidebar_Body_Bg = useColorModeValue("gray.100", "gray.800");
+  const [isLargerThan800] = useMediaQuery('(min-width: 800px)');
 
   return (
     <Box minH="100vh">
@@ -75,6 +81,7 @@ export default function Sidebar({
         display={{ base: "none", md: "block" }}
         userLanguage={userLanguage}
         setUserLanguage={setUserLanguage}
+        className={isLargerThan800 ? "sixth-step" : ""}
       />
       <Drawer
         autoFocus={false}
@@ -91,11 +98,11 @@ export default function Sidebar({
             onClose={onClose}
             userLanguage={userLanguage}
             setUserLanguage={setUserLanguage}
+            className={isLargerThan800 ? "" : "sixth-step"}
           />
         </DrawerContent>
       </Drawer>
-      {/* mobilenav */}
-      <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
+      <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen}/>
       <Box ml={{ base: 0, md: 60 }} minH="100vh" bg={Sidebar_Body_Bg}>
         {children}
       </Box>
@@ -107,12 +114,14 @@ interface SidebarContentProps extends BoxProps {
   onClose: () => void;
   userLanguage: string;
   setUserLanguage: (lang: string) => void;
+  className: string
 }
 
 const SidebarContent = ({
   onClose,
   userLanguage,
   setUserLanguage,
+  className,
   ...rest
 }: SidebarContentProps) => {
   const { t, i18n } = useTranslation();
@@ -134,6 +143,7 @@ const SidebarContent = ({
   const Divider_Color = useColorModeValue("gray.600", "gray.600");
   const ThemeButton_Bg = useColorModeValue("gray.700", "gray.700");
   const { colorMode } = useColorMode();
+  const [isLargerThan800] = useMediaQuery('(min-width: 800px)');
 
   return (
     <Box
@@ -163,7 +173,7 @@ const SidebarContent = ({
         />
       </Flex>
       <Flex flexDirection={"column"} height="70%">
-        <Box className="sixth-step" color={"gray.100"}>
+        <Box className={className} color={"gray.100"}>
           {LinkItems.map((link) => (
             <NavItem
               key={link.name}
